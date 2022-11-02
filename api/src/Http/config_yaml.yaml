@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Http\:
+        resource: '%kernel.project_dir%/src/Http'
+        exclude:
+            - '%kernel.project_dir%/src/Http/Response'
+        tags: [ 'controller.service_arguments' ]

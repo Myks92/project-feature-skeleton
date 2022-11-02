@@ -1,0 +1,17 @@
+parameters:
+    paths:
+        - src
+
+    exclude_files:
+        - '#.*Test.php#'
+
+    layers:
+        - { name: Http, collectors: [ { type: className, regex: ^App\\Http\\ } ] }
+        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Shared|Http).* } ] }
+        - { name: Shared, collectors: [ { type: className, regex: ^App\\Shared\\ } ] }
+        - { name: Vendor, collectors: [ { type: className, regex: ^(?!App\\).* } ] }
+
+    ruleset:
+        Http: [ Http, Feature, +Shared ]
+        Feature: [ +Shared ]
+        Shared: [ Vendor ]

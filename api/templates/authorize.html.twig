@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>123</title>
+    <script src="https://unpkg.com/@vkontakte/superappkit@1.41.0/dist/index-umd.js"></script>
+
+    <script>
+        window.SuperAppKit.Config.init({
+            appId: 8192853, // Идентификатор приложения
+        });
+
+        const oneTapButton = window.SuperAppKit.Connect.buttonOneTapAuth({
+            // Обязательный параметр в который нужно добавить обработчик событий приходящих из SDK
+            callback: function(e) {
+                const type = e.type;
+
+                if (!type) {
+                    return false;
+                }
+
+                switch (type) {
+                    case window.SuperAppKit.ConnectEvents.OneTapAuthEventsSDK.LOGIN_SUCCESS: // = 'VKSDKOneTapAuthLoginSuccess'
+                        console.log(e);
+                        return false
+                    // Для этих событий нужно открыть полноценный VK ID чтобы
+                    // пользователь дорегистрировался или подтвердил телефон
+                    case window.SuperAppKit.ConnectEvents.OneTapAuthEventsSDK.FULL_AUTH_NEEDED: //  = 'VKSDKOneTapAuthFullAuthNeeded'
+                    case window.SuperAppKit.ConnectEvents.OneTapAuthEventsSDK.PHONE_VALIDATION_NEEDED: // = 'VKSDKOneTapAuthPhoneValidationNeeded'
+                    case window.SuperAppKit.ConnectEvents.ButtonOneTapAuthEventsSDK.SHOW_LOGIN: // = 'VKSDKButtonOneTapAuthShowLogin'
+                        return window.SuperAppKit.Connect.redirectAuth({ url: 'http://localhost', state: 'dj29fnsadjsd82'}); // url - строка с url, на который будет произведён редирект после авторизации.
+                    // state - состояние вашего приложение или любая произвольная строка, которая будет добавлена к url после авторизации.
+                    // Пользователь перешел по кнопке "Войти другим способом"
+                    case window.SuperAppKit.ConnectEvents.ButtonOneTapAuthEventsSDK.SHOW_LOGIN_OPTIONS: // = 'VKSDKButtonOneTapAuthShowLoginOptions'
+                        // Параметр screen: phone позволяет сразу открыть окно ввода телефона в VK ID
+                        return window.SuperAppKit.Connect.redirectAuth({ screen: 'phone' });
+                }
+
+                return false;
+            },
+            // Не обязательный параметр с настройками отображения OneTap
+            options: {
+                showAlternativeLogin: true, // Отображение кнопки "Войти другим способом"
+                showAgreementsDialog: true, // отображает диалоговое окно принятия политик
+                displayMode: 'phone_name', // Режим отображения кнопки 'default' | 'name_phone' | 'phone_name'
+                buttonStyles: {
+                    borderRadius: 8, // Радиус скругления кнопок
+                }
+            },
+        });
+
+        window.onload=function(){
+            document.body.appendChild(oneTapButton.getFrame());
+        }
+        // Получить iframe можно с помощью метода getFrame()
+
+        // Удалить iframe можно с помощью OneTapButton.destroy();
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            background-color: #fcfcfc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        body {
+            margin: 2em auto;
+            padding: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+            font-size: 1rem;
+        }
+        .block {
+            display: block;
+            vertical-align: middle;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, .05);
+            border-radius: 4px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo a {
+            font-size: 1.6rem;
+            color: #333;
+            text-decoration: none;
+        }
+        .alert {
+            position: relative;
+            padding: .75rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            font-size: .9rem;
+        }
+        .alert.error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        form {
+            margin-bottom: 25px;
+        }
+        form .input-row {
+            margin-bottom: 14px;
+        }
+        form .input {
+            display: block;
+            width: 100%;
+            color: #444;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 4px;
+            padding: 10px 8px;
+            font-size: 0.9rem;
+            font-family: Arial, sans-serif;
+        }
+        form .button-row {
+            padding-top: 0;
+        }
+        form .button-row button.submit {
+            border: none;
+            background: linear-gradient(to bottom, #ad0090, #af0061);
+            padding: 11px 15px;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: block;
+            width: 100%;
+        }
+        p.links {
+            font-size: .8rem;
+            color: #666;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        p.links a {
+            color: #2d6ba1;
+        }
+    </style>
+</head>
+
+<body>
+<div class="block" data-testid="authorize-page">
+    123
+</div>
+</body>
+</html>

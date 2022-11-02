@@ -1,0 +1,47 @@
+parameters:
+    env(MESSENGER_ASYNC_TRANSPORT_DSN): 'sync://'
+    env(MESSENGER_SYNC_TRANSPORT_DSN): 'sync://'
+
+framework:
+    messenger:
+        # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
+        #failure_transport: failed
+
+        # The bus that is going to be injected when injecting MessageBusInterface
+        default_bus: default.bus
+
+        buses:
+            default.bus:
+
+            command.bus:
+                middleware:
+                    - App\Shared\Bus\Middleware\ValidationMiddleware
+                    - router_context
+                    - doctrine_transaction
+
+            query.bus:
+                middleware:
+                    - App\Shared\Bus\Middleware\ValidationMiddleware
+
+            event.bus:
+                default_middleware: allow_no_handlers
+                middleware:
+                    - router_context
+                    - doctrine_transaction
+
+        transports:
+            # https://symfony.com/doc/current/messenger.html#transport-configuration
+            async: '%env(MESSENGER_ASYNC_TRANSPORT_DSN)%'
+            #failed: '%env(MESSENGER_FAILED_TRANSPORT_DSN)%'
+            sync: '%env(MESSENGER_SYNC_TRANSPORT_DSN)%'
+
+        routing:
+            App\Shared\Bus\Command\CommandInterface: async
+            App\Shared\Bus\Query\QueryInterface: sync
+            App\Shared\Bus\Event\EventInterface: async
+
+when@test:
+    framework:
+        messenger:
+            transports:
+                async: 'in-memory://?serialize=true'
