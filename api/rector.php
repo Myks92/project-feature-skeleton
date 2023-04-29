@@ -3,16 +3,29 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\Core\Configuration\Option;
 use Rector\Doctrine\Set\DoctrineSetList;
+use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
+use Rector\Php71\Rector\FuncCall\CountOnNullRector;
+use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
+use Rector\Php74\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
+use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
+use Rector\Php80\Rector\Class_\StringableForToStringRector;
+use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
+use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Rector\Class_\InvokableControllerRector;
 use Rector\Symfony\Set\SymfonySetList;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNeverTypeRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->parallel();
+    $rectorConfig->importNames();
+    $rectorConfig->importShortClasses(false);
+    $rectorConfig->parameters()->set(Option::APPLY_AUTO_IMPORT_NAMES_ON_CHANGED_FILES_ONLY, true);
     $rectorConfig->cacheDirectory(__DIR__.'/var/cache/rector');
 
     $rectorConfig->paths([
@@ -23,10 +36,17 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->skip([
         __DIR__ . '/tests/bootstrap.php',
-        __DIR__ . '/tests/container.php'
+        __DIR__ . '/tests/container.php',
+        ArraySpreadInsteadOfArrayMergeRector::class,
+        ClassPropertyAssignToConstructorPromotionRector::class => [__DIR__ . '/src/Http'],
+        CountOnNullRector::class,
+        NullToStrictStringFuncCallArgRector::class,
+        RemoveExtraParametersRector::class,
+        ReturnNeverTypeRector::class,
+        StringableForToStringRector::class,
+        UnionTypesRector::class,
+        StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations'],
     ]);
-
-    $rectorConfig->importNames();
 
     //Common
     $rectorConfig->sets([
@@ -40,7 +60,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     //PHP
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_81,
+        LevelSetList::UP_TO_PHP_82,
     ]);
 
     //Doctrine
