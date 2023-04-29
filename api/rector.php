@@ -73,7 +73,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->rule(InvokableControllerRector::class);
 
     $rectorConfig->sets([
-        SymfonySetList::SYMFONY_60,
+        SymfonySetList::SYMFONY_62,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
     ]);
