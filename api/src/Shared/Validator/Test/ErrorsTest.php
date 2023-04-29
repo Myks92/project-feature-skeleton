@@ -7,14 +7,13 @@ namespace App\Shared\Validator\Test;
 use App\Shared\Validator\Error;
 use App\Shared\Validator\Errors;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Validator\Errors
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Errors::class)]
 final class ErrorsTest extends TestCase
 {
     public function testValid(): void

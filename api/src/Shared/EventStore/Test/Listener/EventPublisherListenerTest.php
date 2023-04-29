@@ -16,15 +16,14 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Events;
 use LogicException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
- * @covers \App\Shared\EventStore\Listener\EventPublisherListener
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(EventPublisherListener::class)]
 final class EventPublisherListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
@@ -106,7 +105,7 @@ final class EventPublisherListenerTest extends TestCase
         $objectManager = $this->createStub(EntityManagerInterface::class);
         $domainEvent = new PostFlushEventArgs($objectManager);
         $this->expectException(LogicException::class);
-        $this->expectDeprecationMessage('Event not supported.');
+        $this->expectExceptionMessage('Event not supported.');
         $this->dispatcher->dispatch($domainEvent, Events::postFlush);
     }
 

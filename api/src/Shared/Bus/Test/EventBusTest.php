@@ -8,16 +8,15 @@ use App\Shared\Bus\Event\EventBus;
 use App\Shared\Bus\Event\EventInterface;
 use DomainException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * @covers \App\Shared\Bus\Event\EventBus
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(EventBus::class)]
 final class EventBusTest extends TestCase
 {
     public function testSuccess(): void

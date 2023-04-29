@@ -6,14 +6,13 @@ namespace App\Shared\Paginator\Test;
 
 use App\Shared\Paginator\Pagination;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Paginator\Pagination
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Pagination::class)]
 final class PaginationTest extends TestCase
 {
     public function testSuccess(): void

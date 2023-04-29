@@ -7,14 +7,13 @@ namespace App\Shared\ValueObject\Test;
 use App\Shared\ValueObject\Enum;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\ValueObject\Enum
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Enum::class)]
 final class EnumTest extends TestCase
 {
     public function testSuccessString(): void

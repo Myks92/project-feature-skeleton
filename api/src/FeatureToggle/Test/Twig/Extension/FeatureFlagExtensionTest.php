@@ -7,14 +7,14 @@ namespace App\FeatureToggle\Test\Twig\Extension;
 use App\FeatureToggle\FeatureFlagInterface;
 use App\FeatureToggle\Twig\Extension\FeatureFlagExtension;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
 /**
- * @covers \App\FeatureToggle\Twig\Extension\FeatureFlagExtension
- *
  * @internal
  */
+#[CoversClass(FeatureFlagExtension::class)]
 final class FeatureFlagExtensionTest extends TestCase
 {
     public function testEnabled(): void

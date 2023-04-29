@@ -10,15 +10,14 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 
 /**
- * @covers \App\Shared\Doctrine\Types\AbstractUuidType
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(AbstractUuidType::class)]
 final class AbstractUuidTypeTest extends TestCase
 {
     /** @var AbstractPlatform&MockObject */

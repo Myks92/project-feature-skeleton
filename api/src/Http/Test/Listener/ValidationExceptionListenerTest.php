@@ -11,6 +11,7 @@ use App\Shared\Validator\Errors;
 use App\Shared\Validator\ValidationException;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
@@ -18,12 +19,10 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * @covers \App\Http\Listener\ValidationExceptionListener
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(ValidationExceptionListener::class)]
 final class ValidationExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;

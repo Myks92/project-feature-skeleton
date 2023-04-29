@@ -8,17 +8,16 @@ use App\Shared\Bus\Middleware\ValidationMiddleware;
 use App\Shared\Validator\ValidationException;
 use App\Shared\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Middleware\StackInterface;
 
 /**
- * @covers \App\Shared\Bus\Middleware\ValidationMiddleware
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(ValidationMiddleware::class)]
 final class ValidationMiddlewareTest extends TestCase
 {
     /**

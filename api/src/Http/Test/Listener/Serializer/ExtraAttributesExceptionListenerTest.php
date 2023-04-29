@@ -8,6 +8,7 @@ use App\Http\Listener\Serializer\ExtraAttributesExceptionListener;
 use App\Shared\Validator\ValidationException;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +19,10 @@ use Symfony\Component\Serializer\Exception\ExtraAttributesException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @covers \App\Http\Listener\Serializer\ExtraAttributesExceptionListener
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(ExtraAttributesExceptionListener::class)]
 final class ExtraAttributesExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;

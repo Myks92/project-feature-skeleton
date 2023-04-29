@@ -9,6 +9,7 @@ use App\Http\Response\JsonResponse;
 use App\Shared\Bus\Query\NotFoundException;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +19,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @covers \App\Http\Listener\NotFoundExceptionListener
  *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(NotFoundExceptionListener::class)]
 final class NotFoundExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;

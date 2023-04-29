@@ -6,6 +6,7 @@ namespace App\Shared\Serializer\Test\Normalizer;
 
 use App\Shared\Serializer\Normalizer\Denormalizer;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 use Symfony\Component\Serializer\Context\ContextBuilderInterface;
 use Symfony\Component\Serializer\Context\Normalizer\JsonSerializableNormalizerContextBuilder;
@@ -14,12 +15,10 @@ use Symfony\Component\Serializer\Exception\PartialDenormalizationException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
- * @covers \App\Shared\Serializer\Normalizer\Denormalizer
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Denormalizer::class)]
 final class DenormalizerTest extends TestCase
 {
     public function testValid(): void

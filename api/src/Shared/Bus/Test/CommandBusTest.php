@@ -8,16 +8,15 @@ use App\Shared\Bus\Command\CommandBus;
 use App\Shared\Bus\Command\CommandInterface;
 use DomainException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * @covers \App\Shared\Bus\Command\CommandBus
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(CommandBus::class)]
 final class CommandBusTest extends TestCase
 {
     public function testSuccess(): void

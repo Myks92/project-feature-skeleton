@@ -9,14 +9,13 @@ use App\Shared\Flusher\DoctrineFlusher;
 use App\Shared\Flusher\FlusherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Flusher\DoctrineFlusher
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(DoctrineFlusher::class)]
 final class DoctrineFlusherTest extends TestCase
 {
     public function testInterface(): void

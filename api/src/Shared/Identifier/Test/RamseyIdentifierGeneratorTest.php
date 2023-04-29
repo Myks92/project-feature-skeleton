@@ -6,16 +6,15 @@ namespace App\Shared\Identifier\Test;
 
 use App\Shared\Identifier\RamseyIdentifierGenerator;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Ramsey\Uuid\Lazy\LazyUuidFromString;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @covers \App\Shared\Identifier\RamseyIdentifierGenerator
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(RamseyIdentifierGenerator::class)]
 final class RamseyIdentifierGeneratorTest extends TestCase
 {
     public function testValid(): void

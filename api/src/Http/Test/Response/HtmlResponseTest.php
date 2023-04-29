@@ -6,14 +6,13 @@ namespace App\Http\Test\Response;
 
 use App\Http\Response\HtmlResponse;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Http\Response\HtmlResponse
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(HtmlResponse::class)]
 final class HtmlResponseTest extends TestCase
 {
     public function testDefault(): void

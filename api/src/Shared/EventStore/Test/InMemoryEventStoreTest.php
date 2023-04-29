@@ -12,14 +12,13 @@ use App\Shared\EventStore\Event;
 use App\Shared\EventStore\InMemoryEventStore;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\EventStore\InMemoryEventStoreTest
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(InMemoryEventStore::class)]
 final class InMemoryEventStoreTest extends TestCase
 {
     public function testSave(): void

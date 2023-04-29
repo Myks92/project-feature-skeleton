@@ -6,14 +6,13 @@ namespace App\Http\Test\Response;
 
 use App\Http\Response\EmptyResponse;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Http\Response\EmptyResponse
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(EmptyResponse::class)]
 final class EmptyResponseTest extends TestCase
 {
     public function testDefault(): void

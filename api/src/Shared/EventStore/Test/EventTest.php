@@ -7,15 +7,14 @@ namespace App\Shared\EventStore\Test;
 use App\Shared\EventStore\Event;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 
 /**
- * @covers \App\Shared\EventStore\Event
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Event::class)]
 final class EventTest extends TestCase
 {
     public function testSuccess(): void

@@ -6,20 +6,22 @@ namespace App\FeatureToggle\Test\Listener;
 
 use App\FeatureToggle\FeatureSwitcherInterface;
 use App\FeatureToggle\Listener\CookieFeatureSwitcherListener;
+use App\Shared\PHPUnit\ConsecutiveTrait;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
- * @covers \App\FeatureToggle\Listener\CookieFeatureSwitcherListener
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(CookieFeatureSwitcherListener::class)]
 final class CookieFeatureSwitcherListenerTest extends TestCase
 {
+    use ConsecutiveTrait;
+
     public function testEmpty(): void
     {
         $switcher = $this->createMock(FeatureSwitcherInterface::class);
@@ -42,8 +44,8 @@ final class CookieFeatureSwitcherListenerTest extends TestCase
     public function testWithFeatures(): void
     {
         $switcher = $this->createMock(FeatureSwitcherInterface::class);
-        $switcher->expects(self::exactly(2))->method('enable')->withConsecutive(['ONE'], ['TWO']);
-        $switcher->expects(self::once())->method('disable')->withConsecutive(['THREE']);
+        $switcher->expects(self::exactly(2))->method('enable')->with(...self::withConsecutive(['ONE'], ['TWO']));
+        $switcher->expects(self::once())->method('disable')->with(...self::withConsecutive(['THREE']));
 
         $listener = new CookieFeatureSwitcherListener($switcher, 'X-Features');
 

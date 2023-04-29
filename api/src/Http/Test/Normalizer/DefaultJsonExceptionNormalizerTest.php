@@ -6,16 +6,15 @@ namespace App\Http\Test\Normalizer;
 
 use App\Http\Normalizer\DefaultJsonExceptionNormalizer;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @covers \App\Http\Normalizer\DefaultJsonExceptionNormalizer
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(DefaultJsonExceptionNormalizer::class)]
 final class DefaultJsonExceptionNormalizerTest extends TestCase
 {
     public function testSuccessSupportsNormalization(): void

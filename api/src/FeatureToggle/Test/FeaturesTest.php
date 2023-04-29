@@ -6,12 +6,12 @@ namespace App\FeatureToggle\Test;
 
 use App\FeatureToggle\Features;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\FeatureToggle\Features
- *
  * @internal
  */
+#[CoversClass(Features::class)]
 final class FeaturesTest extends TestCase
 {
     public function testInitial(): void

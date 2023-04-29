@@ -6,15 +6,14 @@ namespace App\Security\Test;
 
 use App\Security\RedirectUrlAuthenticationEntryPoint;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @covers \App\Security\RedirectUrlAuthenticationEntryPoint
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(RedirectUrlAuthenticationEntryPoint::class)]
 final class AuthenticationEntryPointTest extends TestCase
 {
     public function testSuccess(): void

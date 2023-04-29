@@ -6,14 +6,13 @@ namespace App\Shared\ValueObject\Test;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\ValueObject\Url
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(\App\Shared\ValueObject\Url::class)]
 final class UrlTest extends TestCase
 {
     public function testSuccess(): void

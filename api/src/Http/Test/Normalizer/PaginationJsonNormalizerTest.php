@@ -8,16 +8,15 @@ use App\Http\Normalizer\DefaultJsonExceptionNormalizer;
 use App\Http\Normalizer\PaginationJsonNormalizer;
 use App\Shared\Paginator\PaginationInterface;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @covers \App\Http\Normalizer\PaginationJsonNormalizer
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(PaginationJsonNormalizer::class)]
 final class PaginationJsonNormalizerTest extends TestCase
 {
     public function testSuccessSupportsNormalization(): void

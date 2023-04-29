@@ -9,15 +9,14 @@ use App\Shared\Flusher\FlusherInterface;
 use App\Shared\Flusher\FlushersFlusher;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 
 /**
- * @covers \App\Shared\Flusher\FlushersFlusher
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(FlushersFlusher::class)]
 final class FlushersFlusherTest extends TestCase
 {
     public function testInterface(): void

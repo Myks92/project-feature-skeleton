@@ -7,15 +7,14 @@ namespace App\Shared\EventDispatcher\Test;
 use App\Shared\Bus\Event\EventInterface;
 use App\Shared\EventDispatcher\EventDispatcher;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcher;
 
 /**
- * @covers \App\Shared\EventDispatcher
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(EventDispatcher::class)]
 final class EventDispatcherTest extends TestCase
 {
     public function testDispatch(): void

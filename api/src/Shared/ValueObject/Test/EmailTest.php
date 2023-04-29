@@ -6,14 +6,13 @@ namespace App\Shared\ValueObject\Test;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\ValueObject\Email
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(\App\Shared\ValueObject\Email::class)]
 final class EmailTest extends TestCase
 {
     public function testSuccess(): void

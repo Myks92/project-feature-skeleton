@@ -9,6 +9,7 @@ use App\Http\Response\JsonResponse;
 use DomainException;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +19,10 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @covers \App\Http\Listener\DomainExceptionListener
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(DomainExceptionListener::class)]
 final class DomainExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;

@@ -6,16 +6,15 @@ namespace App\Shared\Serializer\Test\Normalizer;
 
 use App\Shared\Serializer\Normalizer\Normalizer;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * @covers \App\Shared\Serializer\Normalizer\Normalizer
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Normalizer::class)]
 final class NormalizerTest extends TestCase
 {
     public function testValid(): void

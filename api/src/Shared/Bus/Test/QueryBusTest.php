@@ -7,18 +7,17 @@ namespace App\Shared\Bus\Test;
 use App\Shared\Bus\Query\QueryBus;
 use App\Shared\Bus\Query\QueryInterface;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
 /**
- * @covers \App\Shared\Bus\Query\QueryBus
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(QueryBus::class)]
 final class QueryBusTest extends TestCase
 {
     /**

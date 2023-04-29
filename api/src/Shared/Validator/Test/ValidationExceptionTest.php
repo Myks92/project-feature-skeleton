@@ -8,14 +8,13 @@ use App\Shared\Validator\Error;
 use App\Shared\Validator\Errors;
 use App\Shared\Validator\ValidationException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Validator\ValidationException
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(ValidationException::class)]
 final class ValidationExceptionTest extends TestCase
 {
     public function testValid(): void

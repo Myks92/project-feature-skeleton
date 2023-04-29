@@ -6,15 +6,14 @@ namespace App\Shared\ValueObject\Test;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @covers \App\Shared\ValueObject\Uuid
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(\App\Shared\ValueObject\Uuid::class)]
 final class UuidTest extends TestCase
 {
     public function testSuccess(): void

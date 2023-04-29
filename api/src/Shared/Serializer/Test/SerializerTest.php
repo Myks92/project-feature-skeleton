@@ -6,6 +6,7 @@ namespace App\Shared\Serializer\Test;
 
 use App\Shared\Serializer\Serializer;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 use Symfony\Component\Serializer\Context\ContextBuilderInterface;
 use Symfony\Component\Serializer\Context\Encoder\JsonEncoderContextBuilder;
@@ -14,12 +15,10 @@ use Symfony\Component\Serializer\Context\SerializerContextBuilder;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @covers \App\Shared\Serializer\Serializer
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Serializer::class)]
 final class SerializerTest extends TestCase
 {
     public function testSerialize(): void

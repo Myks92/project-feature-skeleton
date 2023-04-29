@@ -8,14 +8,13 @@ use App\Shared\Paginator\Paginator;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Paginator\Paginator
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(Paginator::class)]
 final class PaginatorTest extends TestCase
 {
     public function testPaginate(): void

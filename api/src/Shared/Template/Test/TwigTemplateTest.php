@@ -6,15 +6,14 @@ namespace App\Shared\Template\Test;
 
 use App\Shared\Template\TwigTemplate;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Twig\Environment;
 
 /**
- * @covers \App\Shared\Template\TwigTemplate
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(TwigTemplate::class)]
 final class TwigTemplateTest extends TestCase
 {
     public function testRender(): void

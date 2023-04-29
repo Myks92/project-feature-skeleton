@@ -6,15 +6,15 @@ namespace App\Http\Test\Response;
 
 use App\Http\Response\JsonResponse;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use stdClass;
 
 /**
- * @covers \App\Http\Response\JsonResponse
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(JsonResponse::class)]
 final class JsonResponseTest extends TestCase
 {
     public function testWithCode(): void
@@ -27,9 +27,9 @@ final class JsonResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider getCases
      * @noRector UnionTypesRector
      */
+    #[DataProvider('getCases')]
     public function testResponse(mixed $source, mixed $expect): void
     {
         $response = new JsonResponse($source);
@@ -42,7 +42,7 @@ final class JsonResponseTest extends TestCase
     /**
      * @return iterable<array-key, array>
      */
-    public function getCases(): iterable
+    public static function getCases(): iterable
     {
         $object = new stdClass();
         $object->str = 'value';

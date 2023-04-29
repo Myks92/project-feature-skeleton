@@ -16,14 +16,13 @@ use App\Shared\Identifier\IdentifierGeneratorInterface;
 use App\Shared\Serializer\SerializerInterface;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Flusher\EventFlusher
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(EventFlusher::class)]
 final class EventFlusherTest extends TestCase
 {
     public function testInterface(): void

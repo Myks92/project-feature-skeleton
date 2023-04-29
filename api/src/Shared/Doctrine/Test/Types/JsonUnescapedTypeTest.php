@@ -9,14 +9,13 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
- * @covers \App\Shared\Doctrine\Types\JsonUnescapedType
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(JsonUnescapedType::class)]
 final class JsonUnescapedTypeTest extends TestCase
 {
     /** @var AbstractPlatform&MockObject */

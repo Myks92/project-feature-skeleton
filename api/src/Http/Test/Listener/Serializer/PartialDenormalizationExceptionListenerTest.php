@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Test\Listener\Serializer;
 
 use App\Http\Listener\Serializer\PartialDenormalizationExceptionListener;
+use App\Shared\PHPUnit\ConsecutiveTrait;
 use App\Shared\Validator\ValidationException;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,14 +21,14 @@ use Symfony\Component\Serializer\Exception\PartialDenormalizationException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @covers \App\Http\Listener\Serializer\PartialDenormalizationExceptionListener
- *
  * @internal
- *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
+#[CoversClass(PartialDenormalizationExceptionListener::class)]
 final class PartialDenormalizationExceptionListenerTest extends TestCase
 {
+    use ConsecutiveTrait;
+
     private EventDispatcher $dispatcher;
 
     protected function setUp(): void
@@ -60,7 +62,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
         $logger->expects(self::once())->method('warning');
 
         $translator = $this->createMock(TranslatorInterface::class);
-        $translator->expects(self::exactly(2))->method('trans')->withConsecutive(
+        $translator->expects(self::exactly(2))->method('trans')->with(...self::withConsecutive(
             [
                 self::equalTo('The type must be one of "{types}" ("{current}" given).'),
                 self::equalTo([
@@ -77,7 +79,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
                 ]),
                 self::equalTo('exceptions'),
             ],
-        )->willReturn(
+        ))->willReturn(
             'Тип должен быть одним из "string" (задано "int").',
             'Тип должен быть одним из "int" (задано "string").'
         );
