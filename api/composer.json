@@ -33,7 +33,7 @@
     "friendsofphp/php-cs-fixer": "^3.13",
     "icanhazstring/composer-unused": "^0.8.4",
     "overtrue/phplint": "^5.3",
-    "phpunit/phpunit": "^9.5",
+    "phpunit/phpunit": "10",
     "psalm/plugin-phpunit": "^0.18.4",
     "psalm/plugin-symfony": "^5.0",
     "qossmic/deptrac-shim": "^1.0",
