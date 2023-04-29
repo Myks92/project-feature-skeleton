@@ -13,11 +13,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 #[AsEventListener(event: KernelEvents::REQUEST)]
-final class HeaderFeatureSwitcherListener
+final readonly class HeaderFeatureSwitcherListener
 {
     public function __construct(
-        public readonly FeatureSwitcherInterface $switcher,
-        public readonly string $key = 'X-Features'
+        public FeatureSwitcherInterface $switcher,
+        public string $key = 'X-Features'
     ) {
     }
 

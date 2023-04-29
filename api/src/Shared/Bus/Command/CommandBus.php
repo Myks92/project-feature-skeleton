@@ -10,10 +10,10 @@ use Symfony\Component\Messenger\MessageBusInterface;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class CommandBus implements CommandBusInterface
+final readonly class CommandBus implements CommandBusInterface
 {
     public function __construct(
-        private readonly MessageBusInterface $commandBus,
+        private MessageBusInterface $commandBus,
     ) {
     }
 

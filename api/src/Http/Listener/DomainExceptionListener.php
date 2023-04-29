@@ -17,11 +17,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @see \App\Http\Test\Listener\DomainExceptionListenerTest
  */
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
-final class DomainExceptionListener
+final readonly class DomainExceptionListener
 {
     public function __construct(
-        private readonly LoggerInterface $logger,
-        private readonly TranslatorInterface $translator
+        private LoggerInterface $logger,
+        private TranslatorInterface $translator
     ) {
     }
 

@@ -12,10 +12,10 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface as SymfonyDeno
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Serializer\Test\Normalizer\DenormalizerTest
  */
-final class Denormalizer implements DenormalizerInterface
+final readonly class Denormalizer implements DenormalizerInterface
 {
     public function __construct(
-        private readonly SymfonyDenormalizerInterface $denormalizer
+        private SymfonyDenormalizerInterface $denormalizer
     ) {
     }
 

@@ -17,13 +17,13 @@ use DateTimeImmutable;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Flusher\Test\EventFlusherTest
  */
-final class EventFlusher implements FlusherInterface
+final readonly class EventFlusher implements FlusherInterface
 {
     public function __construct(
-        private readonly EventDispatcherInterface $dispatcher,
-        private readonly EventStoreInterface $eventStore,
-        private readonly SerializerInterface $serializer,
-        private readonly IdentifierGeneratorInterface $identifier,
+        private EventDispatcherInterface $dispatcher,
+        private EventStoreInterface $eventStore,
+        private SerializerInterface $serializer,
+        private IdentifierGeneratorInterface $identifier,
     ) {
     }
 

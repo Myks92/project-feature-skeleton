@@ -9,10 +9,10 @@ use App\Shared\Serializer\SerializerInterface;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class JsonResponseFactory
+final readonly class JsonResponseFactory
 {
     public function __construct(
-        private readonly SerializerInterface $serializer
+        private SerializerInterface $serializer
     ) {
     }
 

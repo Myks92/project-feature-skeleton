@@ -10,10 +10,10 @@ use Twig\Environment;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Template\Test\TwigTemplateTest
  */
-final class TwigTemplate implements TemplateInterface
+final readonly class TwigTemplate implements TemplateInterface
 {
     public function __construct(
-        public readonly Environment $twig,
+        public Environment $twig,
     ) {
     }
 

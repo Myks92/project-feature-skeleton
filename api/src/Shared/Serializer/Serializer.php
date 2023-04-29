@@ -12,10 +12,10 @@ use Symfony\Component\Serializer\Context\SerializerContextBuilder;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Serializer\Test\SerializerTest
  */
-final class Serializer implements SerializerInterface
+final readonly class Serializer implements SerializerInterface
 {
     public function __construct(
-        private readonly \Symfony\Component\Serializer\SerializerInterface $serializer,
+        private \Symfony\Component\Serializer\SerializerInterface $serializer,
     ) {
     }
 

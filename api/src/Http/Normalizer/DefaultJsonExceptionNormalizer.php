@@ -13,10 +13,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Http\Test\Normalizer\DefaultJsonExceptionNormalizerTest
  */
-final class DefaultJsonExceptionNormalizer implements NormalizerInterface
+final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterface
 {
     public function __construct(
-        private readonly TranslatorInterface $translator,
+        private TranslatorInterface $translator,
     ) {
     }
 

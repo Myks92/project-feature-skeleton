@@ -20,11 +20,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @see \App\Http\Test\Listener\Serializer\PartialDenormalizationExceptionListenerTest
  */
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
-final class PartialDenormalizationExceptionListener
+final readonly class PartialDenormalizationExceptionListener
 {
     public function __construct(
-        private readonly LoggerInterface $logger,
-        private readonly TranslatorInterface $translator
+        private LoggerInterface $logger,
+        private TranslatorInterface $translator
     ) {
     }
 

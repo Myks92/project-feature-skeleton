@@ -8,13 +8,13 @@ namespace App\Shared\Validator;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Validator\Test\ErrorsTest
  */
-final class Errors
+final readonly class Errors
 {
     /**
      * @param array<array-key, Error> $errors
      */
     public function __construct(
-        private readonly array $errors = []
+        private array $errors = []
     ) {
     }
 

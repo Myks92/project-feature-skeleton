@@ -10,10 +10,11 @@ use Stringable;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class AggregateType implements Stringable
+final readonly class AggregateType implements Stringable
 {
-    public function __construct(private readonly string $aggregateType)
-    {
+    public function __construct(
+        private string $aggregateType
+    ) {
     }
 
     public function __toString(): string

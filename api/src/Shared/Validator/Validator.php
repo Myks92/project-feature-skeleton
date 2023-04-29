@@ -11,10 +11,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Validator\Test\ValidatorTest
  */
-final class Validator implements ValidatorInterface
+final readonly class Validator implements ValidatorInterface
 {
-    public function __construct(private readonly SymfonyValidatorInterface $validator)
-    {
+    public function __construct(
+        private SymfonyValidatorInterface $validator
+    ) {
     }
 
     public function validate(object $value): void

@@ -14,11 +14,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
  * @see \App\FeatureToggle\Test\Listener\CookieFeatureSwitcherListenerTest
  */
 #[AsEventListener(event: KernelEvents::REQUEST)]
-final class CookieFeatureSwitcherListener
+final readonly class CookieFeatureSwitcherListener
 {
     public function __construct(
-        public readonly FeatureSwitcherInterface $switcher,
-        public readonly string $key = 'X-Features'
+        public FeatureSwitcherInterface $switcher,
+        public string $key = 'X-Features'
     ) {
     }
 

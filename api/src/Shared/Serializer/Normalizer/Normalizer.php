@@ -11,10 +11,10 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface as SymfonyNormal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Serializer\Test\Normalizer\NormalizerTest
  */
-final class Normalizer implements NormalizerInterface
+final readonly class Normalizer implements NormalizerInterface
 {
     public function __construct(
-        private readonly SymfonyNormalizerInterface $normalizer
+        private SymfonyNormalizerInterface $normalizer
     ) {
     }
 

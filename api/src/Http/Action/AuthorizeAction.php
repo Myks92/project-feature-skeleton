@@ -12,10 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 #[Route('/authorize', name: 'authorize', methods: ['GET'])]
-final class AuthorizeAction
+final readonly class AuthorizeAction
 {
     public function __construct(
-        private readonly TemplateInterface $template
+        private TemplateInterface $template
     ) {
     }
 

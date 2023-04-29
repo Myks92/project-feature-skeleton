@@ -19,11 +19,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @see \App\Http\Test\Listener\Serializer\NotNormalizableValueExceptionListenerTest
  */
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
-final class NotNormalizableValueExceptionListener
+final readonly class NotNormalizableValueExceptionListener
 {
     public function __construct(
-        private readonly LoggerInterface $logger,
-        private readonly TranslatorInterface $translator
+        private LoggerInterface $logger,
+        private TranslatorInterface $translator
     ) {
     }
 

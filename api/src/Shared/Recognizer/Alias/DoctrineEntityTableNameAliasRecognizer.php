@@ -11,10 +11,11 @@ use Doctrine\Persistence\Mapping\MappingException;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class DoctrineEntityTableNameAliasRecognizer implements AliasRecognizerInterface
+final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasRecognizerInterface
 {
-    public function __construct(private readonly EntityManagerInterface $em)
-    {
+    public function __construct(
+        private EntityManagerInterface $em
+    ) {
     }
 
     public function supports(mixed $data): bool

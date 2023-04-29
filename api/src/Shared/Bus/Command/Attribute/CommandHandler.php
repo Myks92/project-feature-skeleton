@@ -10,10 +10,10 @@ use Attribute;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 #[Attribute(Attribute::TARGET_CLASS)]
-final class CommandHandler
+final readonly class CommandHandler
 {
     public function __construct(
-        public readonly bool $async = true
+        public bool $async = true
     ) {
     }
 }

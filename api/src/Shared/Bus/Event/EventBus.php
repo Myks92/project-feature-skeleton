@@ -12,10 +12,10 @@ use Symfony\Component\Messenger\Stamp\TransportMessageIdStamp;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class EventBus implements EventBusInterface
+final readonly class EventBus implements EventBusInterface
 {
     public function __construct(
-        private readonly MessageBusInterface $eventBus,
+        private MessageBusInterface $eventBus,
     ) {
     }
 

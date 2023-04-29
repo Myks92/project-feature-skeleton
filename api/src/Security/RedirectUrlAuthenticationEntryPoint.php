@@ -13,11 +13,11 @@ use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class RedirectUrlAuthenticationEntryPoint implements AuthenticationEntryPointInterface
+final readonly class RedirectUrlAuthenticationEntryPoint implements AuthenticationEntryPointInterface
 {
     public function __construct(
-        private readonly string $loginUrl,
-        private readonly string $targetPathParameter,
+        private string $loginUrl,
+        private string $targetPathParameter,
     ) {
     }
 

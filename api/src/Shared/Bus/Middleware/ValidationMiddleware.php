@@ -13,10 +13,10 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Bus\Test\Middleware\ValidationMiddlewareTest
  */
-final class ValidationMiddleware implements MiddlewareInterface
+final readonly class ValidationMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private readonly ValidatorInterface $validator
+        private ValidatorInterface $validator
     ) {
     }
 

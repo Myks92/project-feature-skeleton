@@ -11,10 +11,10 @@ use Doctrine\ORM\EntityManagerInterface;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Flusher\Test\DoctrineFlusherTest
  */
-final class DoctrineFlusher implements FlusherInterface
+final readonly class DoctrineFlusher implements FlusherInterface
 {
     public function __construct(
-        private readonly EntityManagerInterface $em,
+        private EntityManagerInterface $em,
     ) {
     }
 

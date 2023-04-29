@@ -8,10 +8,10 @@ namespace App\Shared\Paginator;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Paginator\Test\PaginatorTest
  */
-final class Paginator implements PaginatorInterface
+final readonly class Paginator implements PaginatorInterface
 {
     public function __construct(
-        private readonly \Knp\Component\Pager\PaginatorInterface $paginator
+        private \Knp\Component\Pager\PaginatorInterface $paginator
     ) {
     }
 

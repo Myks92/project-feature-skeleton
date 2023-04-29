@@ -11,18 +11,18 @@ use DateTimeImmutable;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\EventStore\Test\EventTest
  */
-final class Event implements EventInterface
+final readonly class Event implements EventInterface
 {
     /**
      * @param class-string $type
      */
     public function __construct(
-        private readonly string $id,
-        private readonly string $type,
-        private readonly mixed $payload,
-        private readonly string $aggregateId,
-        private readonly string $aggregateType,
-        private readonly DateTimeImmutable $occurredDate,
+        private string $id,
+        private string $type,
+        private mixed $payload,
+        private string $aggregateId,
+        private string $aggregateType,
+        private DateTimeImmutable $occurredDate,
     ) {
     }
 

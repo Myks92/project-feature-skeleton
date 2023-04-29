@@ -18,12 +18,12 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
  * @see \App\Shared\EventStore\Test\Listener\EventPublisherListenerTest
  */
 #[AsEventListener(event: Events::postFlush)]
-final class EventPublisherListener
+final readonly class EventPublisherListener
 {
     public function __construct(
-        private readonly EventStoreInterface $eventStore,
-        private readonly EventBusInterface $eventBus,
-        private readonly SerializerInterface $serializer,
+        private EventStoreInterface $eventStore,
+        private EventBusInterface $eventBus,
+        private SerializerInterface $serializer,
     ) {
     }
 
