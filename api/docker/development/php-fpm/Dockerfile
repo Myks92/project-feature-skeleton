@@ -8,6 +8,7 @@ RUN apk add --no-cache postgresql-dev fcgi git linux-headers \
     && docker-php-ext-configure xdebug --enable-xdebug-dev \
     && docker-php-ext-install pdo_pgsql xdebug \
     && docker-php-ext-configure intl \
+    && docker-php-ext-install opcache \
     && docker-php-ext-install intl \
     && apk del git
 
