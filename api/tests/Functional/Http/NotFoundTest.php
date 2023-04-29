@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Http;
 
-use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
-
 /**
  * @internal
  *
@@ -13,8 +11,6 @@ use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
  */
 final class NotFoundTest extends WebTestCase
 {
-    use ArraySubsetAsserts;
-
     public function testMethod(): void
     {
         $this->client->jsonRequest('GET', '/not-found');
@@ -26,8 +22,6 @@ final class NotFoundTest extends WebTestCase
 
         $data = Json::decode($body);
 
-        self::assertArraySubset([
-            'message' => '404 Not Found',
-        ], $data);
+        self::assertSame(['message' => '404 Not Found'], $data);
     }
 }
