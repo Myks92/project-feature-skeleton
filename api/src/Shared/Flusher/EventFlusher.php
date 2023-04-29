@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher;
 
+use App\Shared\Bus\Event\EventInterface;
 use App\Shared\Aggregate\AggregateRoot;
 use App\Shared\Aggregate\AggregateType;
 use App\Shared\EventDispatcher\EventDispatcherInterface;
@@ -37,7 +38,7 @@ final readonly class EventFlusher implements FlusherInterface
     }
 
     /**
-     * @param array<array-key, \App\Shared\Bus\Event\EventInterface> $events
+     * @param array<array-key, EventInterface> $events
      */
     private function saveEvents(AggregateRoot $aggregateRoot, array $events): void
     {
