@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Shared\Serializer\Test\Normalizer;
 
 use App\Shared\Serializer\Normalizer\Normalizer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

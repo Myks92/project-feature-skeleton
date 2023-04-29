@@ -8,8 +8,8 @@ use App\Shared\Aggregate\AggregateRoot;
 use App\Shared\Flusher\FlusherInterface;
 use App\Shared\Flusher\FlushersFlusher;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**

@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject\Test;
 
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 
 /**
- *
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */

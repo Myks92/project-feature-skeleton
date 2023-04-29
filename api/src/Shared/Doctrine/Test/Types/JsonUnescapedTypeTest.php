@@ -7,9 +7,9 @@ namespace App\Shared\Doctrine\Test\Types;
 use App\Shared\Doctrine\Types\JsonUnescapedType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal

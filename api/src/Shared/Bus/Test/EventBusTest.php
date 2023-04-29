@@ -7,8 +7,8 @@ namespace App\Shared\Bus\Test;
 use App\Shared\Bus\Event\EventBus;
 use App\Shared\Bus\Event\EventInterface;
 use DomainException;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 

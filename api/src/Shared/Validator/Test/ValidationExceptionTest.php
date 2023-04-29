@@ -7,8 +7,8 @@ namespace App\Shared\Validator\Test;
 use App\Shared\Validator\Error;
 use App\Shared\Validator\Errors;
 use App\Shared\Validator\ValidationException;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @internal

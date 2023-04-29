@@ -6,8 +6,8 @@ namespace App\Shared\EventDispatcher\Test;
 
 use App\Shared\Bus\Event\EventInterface;
 use App\Shared\EventDispatcher\EventDispatcher;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcher;
 
 /**

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Test\Response;
 
 use App\Http\Response\JsonResponse;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**

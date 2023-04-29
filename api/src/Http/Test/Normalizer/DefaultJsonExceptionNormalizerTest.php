@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Test\Normalizer;
 
 use App\Http\Normalizer\DefaultJsonExceptionNormalizer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

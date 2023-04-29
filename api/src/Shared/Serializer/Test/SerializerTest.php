@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Shared\Serializer\Test;
 
 use App\Shared\Serializer\Serializer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 use Symfony\Component\Serializer\Context\ContextBuilderInterface;
 use Symfony\Component\Serializer\Context\Encoder\JsonEncoderContextBuilder;

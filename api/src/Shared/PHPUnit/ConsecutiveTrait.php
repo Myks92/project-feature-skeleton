@@ -16,7 +16,7 @@ trait ConsecutiveTrait
      * @param array<mixed> $firstCallArguments
      * @param array<mixed> ...$consecutiveCallsArguments
      *
-     * @return iterable<Callback<mixed>>
+     * @return iterable<callback<mixed>>
      */
     public static function withConsecutive(array $firstCallArguments, array ...$consecutiveCallsArguments): iterable
     {
@@ -26,9 +26,9 @@ trait ConsecutiveTrait
 
         $allConsecutiveCallsArguments = [$firstCallArguments, ...$consecutiveCallsArguments];
 
-        $numberOfArguments = count($firstCallArguments);
+        $numberOfArguments = \count($firstCallArguments);
         $argumentList      = [];
-        for ($argumentPosition = 0; $argumentPosition < $numberOfArguments; $argumentPosition++) {
+        for ($argumentPosition = 0; $argumentPosition < $numberOfArguments; ++$argumentPosition) {
             $argumentList[$argumentPosition] = array_column($allConsecutiveCallsArguments, $argumentPosition);
         }
 
@@ -39,8 +39,8 @@ trait ConsecutiveTrait
                 static function (mixed $actualArgument) use ($argumentList, &$mockedMethodCall, &$callbackCall, $index, $numberOfArguments): bool {
                     $expected = $argumentList[$index][$mockedMethodCall] ?? null;
 
-                    $callbackCall++;
-                    $mockedMethodCall = (int) ($callbackCall / $numberOfArguments);
+                    ++$callbackCall;
+                    $mockedMethodCall = (int)($callbackCall / $numberOfArguments);
 
                     if ($expected instanceof Constraint) {
                         self::assertThat($actualArgument, $expected);

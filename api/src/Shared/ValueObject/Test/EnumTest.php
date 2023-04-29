@@ -6,8 +6,8 @@ namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Enum;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @internal

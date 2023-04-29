@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Shared\Template\Test;
 
 use App\Shared\Template\TwigTemplate;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Twig\Environment;
 
 /**

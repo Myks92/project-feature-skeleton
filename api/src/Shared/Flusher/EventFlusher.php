@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher;
 
-use App\Shared\Bus\Event\EventInterface;
 use App\Shared\Aggregate\AggregateRoot;
 use App\Shared\Aggregate\AggregateType;
+use App\Shared\Bus\Event\EventInterface;
 use App\Shared\EventDispatcher\EventDispatcherInterface;
 use App\Shared\EventStore\Event;
 use App\Shared\EventStore\EventStoreInterface;

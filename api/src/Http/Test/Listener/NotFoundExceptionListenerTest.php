@@ -8,8 +8,8 @@ use App\Http\Listener\NotFoundExceptionListener;
 use App\Http\Response\JsonResponse;
 use App\Shared\Bus\Query\NotFoundException;
 use Exception;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- *
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */

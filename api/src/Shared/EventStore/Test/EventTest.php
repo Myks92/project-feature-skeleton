@@ -6,8 +6,8 @@ namespace App\Shared\EventStore\Test;
 
 use App\Shared\EventStore\Event;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**

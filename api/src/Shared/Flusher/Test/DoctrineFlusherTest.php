@@ -8,8 +8,8 @@ use App\Shared\Aggregate\AggregateRoot;
 use App\Shared\Flusher\DoctrineFlusher;
 use App\Shared\Flusher\FlusherInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @internal

@@ -15,8 +15,8 @@ use App\Shared\Flusher\FlusherInterface;
 use App\Shared\Identifier\IdentifierGeneratorInterface;
 use App\Shared\Serializer\SerializerInterface;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @internal

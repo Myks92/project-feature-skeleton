@@ -6,8 +6,8 @@ namespace App\FeatureToggle\Test\Twig\Extension;
 
 use App\FeatureToggle\FeatureFlagInterface;
 use App\FeatureToggle\Twig\Extension\FeatureFlagExtension;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Security\Test;
 
 use App\Security\RedirectUrlAuthenticationEntryPoint;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 /**

@@ -6,8 +6,8 @@ namespace App\Shared\Bus\Test;
 
 use App\Shared\Bus\Query\QueryBus;
 use App\Shared\Bus\Query\QueryInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
