@@ -10,11 +10,11 @@ use Attribute;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 #[Attribute(Attribute::TARGET_CLASS | Attribute::TARGET_METHOD)]
-final class EventHandler
+final readonly class EventHandler
 {
     public function __construct(
-        public readonly string $event,
-        public readonly bool $async = true
+        public string $event,
+        public bool $async = true
     ) {
     }
 }
