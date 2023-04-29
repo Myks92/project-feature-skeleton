@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Core\Configuration\Option;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
@@ -25,7 +24,6 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->parallel();
     $rectorConfig->importNames();
     $rectorConfig->importShortClasses(false);
-    $rectorConfig->parameters()->set(Option::APPLY_AUTO_IMPORT_NAMES_ON_CHANGED_FILES_ONLY, true);
     $rectorConfig->cacheDirectory(__DIR__.'/var/cache/rector');
 
     $rectorConfig->paths([
@@ -53,7 +51,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
-        SetList::TYPE_DECLARATION_STRICT,
     ]);
 
     $rectorConfig->rule(NormalizeNamespaceByPSR4ComposerAutoloadRector::class);
