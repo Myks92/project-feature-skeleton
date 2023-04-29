@@ -23,6 +23,7 @@ return
             '@PSR12' => true,
             '@PSR12:risky' => true,
             '@DoctrineAnnotation' => true,
+            '@PHP82Migration' => true,
             '@PHP81Migration' => true,
             '@PHP80Migration:risky' => true,
             '@PHPUnit84Migration:risky' => true,
