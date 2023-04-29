@@ -7,10 +7,10 @@
   "prefer-stable": true,
   "require": {
     "php": ">=8.2",
-    "doctrine/doctrine-bundle": "^2.7",
+    "doctrine/doctrine-bundle": "^2.9",
     "doctrine/doctrine-fixtures-bundle": "^3.4",
     "doctrine/doctrine-migrations-bundle": "^3.2",
-    "doctrine/orm": "^2.13",
+    "doctrine/orm": "^2.14",
     "knplabs/knp-paginator-bundle": "^5.8",
     "ramsey/uuid": "^4.4",
     "symfony/console": "6.2.*",
