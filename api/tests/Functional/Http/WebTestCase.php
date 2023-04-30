@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Http;
 
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
@@ -28,7 +29,8 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
     }
 
     /**
-     * @param array<int|string,string> $fixtures
+     * @param array<array-key, class-string<Fixture|AbstractFixture>> $fixtures
+     * @psalm-suppress PossiblyUnusedMethod
      */
     protected function loadFixtures(array $fixtures): void
     {

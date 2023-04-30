@@ -17,13 +17,15 @@ use Stringable;
  */
 abstract class Money implements ValueObjectInterface, Stringable
 {
-    public function __construct(private readonly float $amount, private readonly Currency $currency)
-    {
+    public function __construct(
+        private readonly float $amount,
+        private readonly Currency $currency
+    ) {
     }
 
     public function __toString(): string
     {
-        $currencyValue = (string)$this->getCurrency()->getValue();
+        $currencyValue = $this->getCurrency()->getValue();
         return $this->amount . ' ' . $currencyValue;
     }
 

@@ -7,6 +7,7 @@ namespace App\Shared\Recognizer\Alias;
 use App\Shared\Recognizer\Alias\Exception\AliasNotRecognizedException;
 
 /**
+ * @template-implements AliasRecognizerInterface<object>
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 final class ObjectAliasRecognizer implements AliasRecognizerInterface

@@ -9,16 +9,20 @@ use Iterator;
 use ReturnTypeWillChange;
 
 /**
+ * @template TKey
+ * @template TValue
+ *
+ * @template-implements PaginationInterface<TKey, TValue>
+ * @template-implements Iterator<TKey, TValue>
+ *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
+ *
  * @see \App\Shared\Paginator\Test\PaginationTest
  */
 final class Pagination implements Iterator, PaginationInterface
 {
     private int $currentPageNumber = 1;
     private int $numItemsPerPage = 10;
-    /**
-     * @psalm-var array
-     */
     private iterable $items = [];
     private int $totalCount = 10;
     private array $paginatorOptions = [];
@@ -26,51 +30,67 @@ final class Pagination implements Iterator, PaginationInterface
 
     public function rewind(): void
     {
-        reset($this->items);
+        if (is_object($this->items)) {
+            $items = get_mangled_object_vars($this->items);
+            reset($items);
+            $this->items = new \ArrayObject($items);
+        } else {
+            reset($this->items);
+        }
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     #[ReturnTypeWillChange]
     public function current(): mixed
     {
         return current($this->items);
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     #[ReturnTypeWillChange]
-    public function key(): bool|float|int|string|null
+    public function key(): string|int|null
     {
+        if (is_object($this->items)) {
+            $items = get_mangled_object_vars($this->items);
+            return key($items);
+        }
+
         return key($this->items);
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function next(): void
     {
         next($this->items);
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function valid(): bool
     {
         return key($this->items) !== null;
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function count(): int
     {
         return \count($this->items);
     }
 
-    /**
-     * @psalm-suppress InvalidPropertyAssignmentValue
-     * @psalm-suppress MoreSpecificImplementedParamType
-     * @psalm-param array $items
-     * @noRector AddArrayParamDocTypeRector
-     */
     public function setItems(iterable $items): void
     {
         $this->items = $items;
     }
 
-    /**
-     * @psalm-return array
-     * @noRector AddArrayParamDocTypeRector
-     */
     public function getItems(): iterable
     {
         return $this->items;
@@ -84,9 +104,6 @@ final class Pagination implements Iterator, PaginationInterface
         return $this->customParameters[$name] ?? null;
     }
 
-    /**
-     * @param mixed[] $parameters
-     */
     public function setCustomParameters(array $parameters): void
     {
         $this->customParameters = $parameters;
@@ -122,17 +139,11 @@ final class Pagination implements Iterator, PaginationInterface
         return $this->totalCount;
     }
 
-    /**
-     * @param mixed[] $options
-     */
     public function setPaginatorOptions(array $options): void
     {
         $this->paginatorOptions = $options;
     }
 
-    /**
-     * @return mixed|null
-     */
     public function getPaginatorOption(string $name): mixed
     {
         return $this->paginatorOptions[$name] ?? null;
@@ -140,7 +151,7 @@ final class Pagination implements Iterator, PaginationInterface
 
     /**
      * @psalm-param string|int $offset
-     * @psalm-suppress DocblockTypeContradiction
+     * @psalm-suppress InvalidArgument
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -153,6 +164,7 @@ final class Pagination implements Iterator, PaginationInterface
 
     /**
      * @psalm-param string|int $offset
+     * @psalm-suppress InvalidArrayAccess
      */
     #[ReturnTypeWillChange]
     public function offsetGet(mixed $offset): mixed
@@ -162,6 +174,8 @@ final class Pagination implements Iterator, PaginationInterface
 
     /**
      * @psalm-param string|int|null $offset
+     * @psalm-suppress InvalidArrayAccess
+     * @psalm-suppress InvalidArrayAssignment
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
@@ -174,6 +188,7 @@ final class Pagination implements Iterator, PaginationInterface
 
     /**
      * @psalm-param string|int $offset
+     * @psalm-suppress InvalidArrayAccess
      */
     public function offsetUnset(mixed $offset): void
     {

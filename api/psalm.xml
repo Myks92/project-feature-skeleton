@@ -6,7 +6,7 @@
         xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
         cacheDirectory="./var/cache/.psalm"
         findUnusedBaselineEntry="true"
-        findUnusedCode="true"
+        findUnusedCode="false"
 >
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>

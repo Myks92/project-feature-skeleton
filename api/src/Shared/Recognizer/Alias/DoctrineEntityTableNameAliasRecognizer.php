@@ -7,8 +7,15 @@ namespace App\Shared\Recognizer\Alias;
 use App\Shared\Recognizer\Alias\Exception\AliasNotRecognizedException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\Mapping\MappingException;
+use LogicException;
+
+use function is_object;
+use function is_string;
+use function class_exists;
 
 /**
+ * @template-implements AliasRecognizerInterface<mixed>
+ *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasRecognizerInterface
@@ -20,9 +27,13 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
 
     public function supports(mixed $data): bool
     {
+        if (!is_object($data) && !is_string($data)) {
+            return false;
+        }
+
         $className = $this->getClassName($data);
 
-        if ($className === null) {
+        if (!class_exists($className)) {
             return false;
         }
 
@@ -43,18 +54,14 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
         return $this->em->getClassMetadata($className)->getTableName();
     }
 
-    /**
-     * @return class-string|null
-     */
-    private function getClassName(mixed $data): ?string
+    private function getClassName(mixed $data): string
     {
-        $className = null;
-        if (\is_object($data) && class_exists($data::class)) {
-            $className = $data::class;
+        if (is_object($data)) {
+            return $data::class;
         }
-        if (class_exists($data)) {
-            $className = $data;
+        if (is_string($data)) {
+            return $data;
         }
-        return $className;
+        throw new LogicException('Type not supported.');
     }
 }

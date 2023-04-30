@@ -9,12 +9,24 @@ use Countable;
 use Traversable;
 
 /**
+ * @template TKey
+ * @template TValue
+ *
+ * @template-extends Traversable<TKey, TValue>
+ * @template-extends ArrayAccess<TKey, TValue>
+ *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 interface PaginationInterface extends Countable, Traversable, ArrayAccess
 {
+    /**
+     * @param iterable<TKey, TValue> $items
+     */
     public function setItems(iterable $items): void;
 
+    /**
+     * @return iterable<TKey, TValue>
+     */
     public function getItems(): iterable;
 
     public function setCurrentPageNumber(int $pageNumber): void;

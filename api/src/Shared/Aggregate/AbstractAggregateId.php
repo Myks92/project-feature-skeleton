@@ -13,7 +13,7 @@ abstract class AbstractAggregateId implements AggregateIdInterface
 {
     private readonly string $value;
 
-    public function __construct(string $value)
+    final public function __construct(string $value)
     {
         Assert::uuid($value);
         $this->value = mb_strtolower($value);

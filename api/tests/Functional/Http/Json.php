@@ -11,6 +11,7 @@ final class Json
 {
     /**
      * @noRector
+     * @psalm-suppress PossiblyUnusedMethod
      */
     public static function decode(string $data): array
     {
@@ -20,6 +21,7 @@ final class Json
 
     /**
      * @noRector
+     * @psalm-suppress PossiblyUnusedMethod
      */
     public static function encode(mixed $data): string
     {

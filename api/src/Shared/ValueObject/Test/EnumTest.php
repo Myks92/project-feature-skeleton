@@ -40,9 +40,11 @@ final class EnumTest extends TestCase
     public function testInvalidBoolean(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress InvalidArgument */
         new TestEnum(false);
 
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress InvalidArgument */
         new TestEnum(true);
     }
 
@@ -55,6 +57,7 @@ final class EnumTest extends TestCase
     public function testInvalidNull(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress NullArgument */
         new TestEnum(null);
     }
 
@@ -95,6 +98,7 @@ final class EnumTest extends TestCase
 
 /**
  * @psalm-immutable
+ * @template-extends Enum<string|int>
  *
  * @method static TestEnum string()
  * @method static TestEnum integer()

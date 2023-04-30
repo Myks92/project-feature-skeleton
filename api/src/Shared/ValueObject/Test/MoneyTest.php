@@ -34,6 +34,7 @@ final class MoneyTest extends TestCase
     public function testToString(): void
     {
         $money = new Money($amount = 100, $currency = $this->createCurrency());
+        /** @psalm-suppress RedundantCastGivenDocblockType */
         $currencyValue = (string)$currency->getValue();
 
         self::assertSame($amount . ' ' . $currencyValue, (string)$money);
