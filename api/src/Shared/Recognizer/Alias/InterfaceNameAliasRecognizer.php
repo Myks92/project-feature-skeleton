@@ -14,7 +14,7 @@ final class InterfaceNameAliasRecognizer implements AliasRecognizerInterface
 {
     public function supports(mixed $data): bool
     {
-        return is_string($data) && interface_exists($data, false);
+        return \is_string($data) && interface_exists($data, false);
     }
 
     public function recognize(mixed $data): string

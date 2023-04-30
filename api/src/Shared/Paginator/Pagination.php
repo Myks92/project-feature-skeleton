@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\Paginator;
 
 use ArrayIterator;
+use ArrayObject;
 use Iterator;
 use ReturnTypeWillChange;
 
@@ -30,10 +31,10 @@ final class Pagination implements Iterator, PaginationInterface
 
     public function rewind(): void
     {
-        if (is_object($this->items)) {
+        if (\is_object($this->items)) {
             $items = get_mangled_object_vars($this->items);
             reset($items);
-            $this->items = new \ArrayObject($items);
+            $this->items = new ArrayObject($items);
         } else {
             reset($this->items);
         }
@@ -54,7 +55,7 @@ final class Pagination implements Iterator, PaginationInterface
     #[ReturnTypeWillChange]
     public function key(): string|int|null
     {
-        if (is_object($this->items)) {
+        if (\is_object($this->items)) {
             $items = get_mangled_object_vars($this->items);
             return key($items);
         }

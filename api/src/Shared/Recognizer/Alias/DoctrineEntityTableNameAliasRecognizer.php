@@ -9,10 +9,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\Mapping\MappingException;
 use LogicException;
 
-use function is_object;
-use function is_string;
-use function class_exists;
-
 /**
  * @template-implements AliasRecognizerInterface<mixed>
  *
@@ -27,7 +23,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
 
     public function supports(mixed $data): bool
     {
-        if (!is_object($data) && !is_string($data)) {
+        if (!\is_object($data) && !\is_string($data)) {
             return false;
         }
 
@@ -56,10 +52,10 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
 
     private function getClassName(mixed $data): string
     {
-        if (is_object($data)) {
+        if (\is_object($data)) {
             return $data::class;
         }
-        if (is_string($data)) {
+        if (\is_string($data)) {
             return $data;
         }
         throw new LogicException('Type not supported.');

@@ -17,7 +17,7 @@ trait ConsecutiveTrait
     public static function consecutiveCalls(string ...$args): Callback
     {
         $count = 0;
-        return self::callback(static function(string $arg) use (&$count, $args): bool {
+        return self::callback(static function (string $arg) use (&$count, $args): bool {
             return $arg === $args[$count++];
         });
     }

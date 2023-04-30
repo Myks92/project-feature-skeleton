@@ -35,7 +35,7 @@ final class MoneyTest extends TestCase
     {
         $money = new Money($amount = 100, $currency = $this->createCurrency());
         /** @psalm-suppress RedundantCastGivenDocblockType */
-        $currencyValue = (string)$currency->getValue();
+        $currencyValue = $currency->getValue();
 
         self::assertSame($amount . ' ' . $currencyValue, (string)$money);
     }

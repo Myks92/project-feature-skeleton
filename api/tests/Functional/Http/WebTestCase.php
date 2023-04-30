@@ -29,7 +29,7 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
     }
 
     /**
-     * @param array<array-key, class-string<Fixture|AbstractFixture>> $fixtures
+     * @param array<array-key, class-string<AbstractFixture|Fixture>> $fixtures
      * @psalm-suppress PossiblyUnusedMethod
      */
     protected function loadFixtures(array $fixtures): void
