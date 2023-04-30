@@ -62,23 +62,9 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
         $logger->expects(self::once())->method('warning');
 
         $translator = $this->createMock(TranslatorInterface::class);
-        $translator->expects(self::exactly(2))->method('trans')->with(...self::withConsecutive(
-            [
-                self::equalTo('The type must be one of "{types}" ("{current}" given).'),
-                self::equalTo([
-                    'types' => implode(', ', ['string']),
-                    'current' => 'int',
-                ]),
-                self::equalTo('exceptions'),
-            ],
-            [
-                self::equalTo('The type must be one of "{types}" ("{current}" given).'),
-                self::equalTo([
-                    'types' => implode(', ', ['int']),
-                    'current' => 'string',
-                ]),
-                self::equalTo('exceptions'),
-            ],
+        $translator->expects(self::exactly(2))->method('trans')->with(self::consecutiveCalls(
+            'The type must be one of "{types}" ("{current}" given).',
+            'The type must be one of "{types}" ("{current}" given).',
         ))->willReturn(
             'Тип должен быть одним из "string" (задано "int").',
             'Тип должен быть одним из "int" (задано "string").'

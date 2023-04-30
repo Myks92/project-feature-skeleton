@@ -44,8 +44,8 @@ final class CookieFeatureSwitcherListenerTest extends TestCase
     public function testWithFeatures(): void
     {
         $switcher = $this->createMock(FeatureSwitcherInterface::class);
-        $switcher->expects(self::exactly(2))->method('enable')->with(...self::withConsecutive(['ONE'], ['TWO']));
-        $switcher->expects(self::once())->method('disable')->with(...self::withConsecutive(['THREE']));
+        $switcher->expects(self::exactly(2))->method('enable')->with(self::consecutiveCalls('ONE', 'TWO'));
+        $switcher->expects(self::once())->method('disable')->with('THREE');
 
         $listener = new CookieFeatureSwitcherListener($switcher, 'X-Features');
 
