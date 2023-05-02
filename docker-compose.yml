@@ -44,7 +44,7 @@ services:
       MAILER_PORT: 1025
       MAILER_USERNAME: app
       MAILER_PASSWORD: secret
-      MAILER_FROM_EMAIL: mail@app.test
+      MAILER_FROM_EMAIL: App <mail@app.test>
     volumes:
       - ./api:/app
 
