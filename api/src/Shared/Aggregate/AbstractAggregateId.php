@@ -9,9 +9,9 @@ use App\Shared\Assert;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract class AbstractAggregateId implements AggregateIdInterface
+abstract readonly class AbstractAggregateId implements AggregateIdInterface
 {
-    private readonly string $value;
+    private string $value;
 
     final public function __construct(string $value)
     {
@@ -19,7 +19,7 @@ abstract class AbstractAggregateId implements AggregateIdInterface
         $this->value = mb_strtolower($value);
     }
 
-    public function __toString(): string
+    final public function __toString(): string
     {
         return $this->getValue();
     }
