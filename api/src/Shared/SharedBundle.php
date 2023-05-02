@@ -112,6 +112,7 @@ final class SharedBundle extends AbstractBundle
                     'method' => $method,
                     'handles' => $attribute->event,
                     'from_transport' => $attribute->async ? 'async' : 'sync',
+                    'priority' => $attribute->priority,
                 ]);
             }
         );
