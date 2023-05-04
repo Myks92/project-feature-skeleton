@@ -10,7 +10,7 @@
     "doctrine/doctrine-bundle": "^2.9",
     "doctrine/doctrine-fixtures-bundle": "^3.4",
     "doctrine/doctrine-migrations-bundle": "^3.2",
-    "doctrine/orm": "^2.14",
+    "doctrine/orm": "^2.15",
     "knplabs/knp-paginator-bundle": "^6.2",
     "ramsey/uuid": "^4.7",
     "symfony/console": "6.2.*",
@@ -29,7 +29,7 @@
     "symfony/twig-bundle": "6.2.*",
     "symfony/validator": "6.2.*",
     "symfony/yaml": "6.2.*",
-    "twig/twig": "^3.5",
+    "twig/twig": "^3.6",
     "webmozart/assert": "^1.11"
   },
   "require-dev": {
@@ -48,7 +48,7 @@
     "symfony/stopwatch": "6.2.*",
     "symfony/var-dumper": "6.2.*",
     "symfony/web-profiler-bundle": "6.2.*",
-    "vimeo/psalm": "^5.9"
+    "vimeo/psalm": "^5.10"
   },
   "config": {
     "allow-plugins": {
