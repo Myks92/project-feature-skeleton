@@ -20,17 +20,13 @@ return
         )
         ->setRules([
             '@Symfony' => true,
-            '@PSR12' => true,
+            '@PER' => true,
             '@PSR12:risky' => true,
             '@DoctrineAnnotation' => true,
             '@PHP82Migration' => true,
-            '@PHP81Migration' => true,
-            '@PHP80Migration:risky' => true,
-            '@PHPUnit84Migration:risky' => true,
+            '@PHPUnit100Migration:risky' => true,
             '@PhpCsFixer' => true,
             '@PhpCsFixer:risky' => true,
-
-            'ordered_imports' => ['imports_order' => ['class', 'function', 'const']],
 
             'concat_space' => ['spacing' => 'one'],
             'cast_spaces' => ['space' => 'none'],
