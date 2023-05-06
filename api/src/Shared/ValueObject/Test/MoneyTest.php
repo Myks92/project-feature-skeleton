@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject\Test;
 
+use App\Shared\ValueObject\Currency;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -112,7 +113,7 @@ final class MoneyTest extends TestCase
      */
     private function createCurrency(string $code = 'USD'): Currency
     {
-        return new Currency($code);
+        return Currency::from($code);
     }
 }
 

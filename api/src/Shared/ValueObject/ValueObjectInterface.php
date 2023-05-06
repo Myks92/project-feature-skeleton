@@ -10,8 +10,6 @@ namespace App\Shared\ValueObject;
  */
 interface ValueObjectInterface
 {
-    public function __toString(): string;
-
     /**
      * @param T $object
      */
