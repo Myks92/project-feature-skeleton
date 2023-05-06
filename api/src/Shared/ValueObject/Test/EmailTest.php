@@ -74,6 +74,7 @@ final class EmailTest extends TestCase
     public function testEmpty(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress InvalidArgument */
         new Email('');
     }
 }

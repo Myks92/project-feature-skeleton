@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @psalm-import-type PhoneCountryType from \App\Shared\ValueObject\Phone
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
@@ -45,12 +46,14 @@ final class PhoneTest extends TestCase
     public function testNegativeCountry(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress InvalidArgument */
         new Phone(-7, '9995552233');
     }
 
     public function testCountryLengthMax(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress InvalidArgument */
         new Phone(3333, '9995552233');
     }
 
@@ -66,6 +69,10 @@ final class PhoneTest extends TestCase
         new Phone(7, '99955522331');
     }
 
+    /**
+     * @param PhoneCountryType $country
+     * @param non-empty-string $number
+     */
     private function createPhone(int $country = 7, string $number = '9995552233'): Phone
     {
         return new Phone($country, $number);

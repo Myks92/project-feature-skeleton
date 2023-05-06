@@ -107,6 +107,9 @@ final class MoneyTest extends TestCase
         $money->divide(0);
     }
 
+    /**
+     * @param non-empty-string $code
+     */
     private function createCurrency(string $code = 'USD'): Currency
     {
         return new Currency($code);

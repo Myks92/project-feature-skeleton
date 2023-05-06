@@ -35,12 +35,14 @@ final class NameTest extends TestCase
     public function testFirstEmpty(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress  InvalidArgument */
         new Name('', 'Last', 'Middle');
     }
 
     public function testLastEmpty(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress  InvalidArgument */
         new Name('First', '', 'Middle');
     }
 

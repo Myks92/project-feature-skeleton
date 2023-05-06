@@ -107,8 +107,8 @@ final class AbstractUuidTypeTest extends TestCase
 }
 
 /**
- * @internal
  * @psalm-immutable
+ * @internal
  */
 final class UuidTest extends Uuid
 {

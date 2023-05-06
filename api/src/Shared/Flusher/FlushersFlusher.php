@@ -11,20 +11,15 @@ use App\Shared\Assert;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Flusher\Test\FlushersFlusherTest
  */
-final class FlushersFlusher implements FlusherInterface
+final readonly class FlushersFlusher implements FlusherInterface
 {
     /**
-     * @var FlusherInterface[]
+     * @param iterable<FlusherInterface> $flushers
      */
-    private readonly iterable $flushers;
-
-    /**
-     * @param FlusherInterface[] $flushers
-     */
-    public function __construct(iterable $flushers)
-    {
+    public function __construct(
+        private iterable $flushers
+    ) {
         Assert::allIsInstanceOf($flushers, FlusherInterface::class);
-        $this->flushers = $flushers;
     }
 
     public function flush(AggregateRoot ...$roots): void

@@ -8,9 +8,9 @@ use App\Shared\Assert;
 use Stringable;
 
 /**
+ * @template-implements ValueObjectInterface<Money>
  * @psalm-immutable
  * @psalm-consistent-constructor
- * @template-implements ValueObjectInterface<Money>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\MoneyTest
@@ -23,6 +23,9 @@ abstract class Money implements ValueObjectInterface, Stringable
     ) {
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function __toString(): string
     {
         $currencyValue = $this->getCurrency()->getValue();

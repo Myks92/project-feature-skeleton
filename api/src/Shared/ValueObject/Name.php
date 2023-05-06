@@ -16,39 +16,58 @@ use Stringable;
  */
 abstract class Name implements ValueObjectInterface, Stringable
 {
-    private readonly string $first;
-    private readonly string $last;
-
-    public function __construct(string $first, string $last, private readonly ?string $middle = null)
-    {
+    /**
+     * @param non-empty-string $first
+     * @param non-empty-string $last
+     * @param non-empty-string|null $middle
+     */
+    public function __construct(
+        private readonly string $first,
+        private readonly string $last,
+        private readonly ?string $middle = null
+    ) {
         Assert::notEmpty($first);
         Assert::notEmpty($last);
-        $this->first = $first;
-        $this->last = $last;
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function __toString(): string
     {
         return $this->getFull();
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getFirst(): string
     {
         return $this->first;
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getLast(): string
     {
         return $this->last;
     }
 
+    /**
+     * @return non-empty-string|null
+     */
     final public function getMiddle(): ?string
     {
         return $this->middle;
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getFull(string $separator = ' '): string
     {
+        /** @var non-empty-string */
         return implode($separator, array_filter([
             $this->first,
             $this->last,

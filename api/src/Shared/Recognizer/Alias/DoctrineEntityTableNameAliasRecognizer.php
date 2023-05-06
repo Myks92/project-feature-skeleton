@@ -10,7 +10,8 @@ use Doctrine\Persistence\Mapping\MappingException;
 use LogicException;
 
 /**
- * @template-implements AliasRecognizerInterface<mixed>
+ * @template T
+ * @template-implements AliasRecognizerInterface<T>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */

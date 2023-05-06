@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject;
 
 /**
+ * @template-extends Enum<non-empty-string>
  * @psalm-immutable
- * @template-extends Enum<string>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\CurrencyTest

@@ -7,15 +7,21 @@ namespace App\Shared\ValueObject;
 use InvalidArgumentException;
 
 /**
- * @psalm-immutable
  * @template-implements ValueObjectInterface<Color>
+ * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 abstract class Color implements ValueObjectInterface
 {
+    /**
+     * @var non-empty-string
+     */
     private readonly string $value;
 
+    /**
+     * @param non-empty-string $value
+     */
     public function __construct(string $value)
     {
         $color = str_replace('#', '', $value);
@@ -31,9 +37,13 @@ abstract class Color implements ValueObjectInterface
             throw new InvalidArgumentException('HEX color needs to be 6 or 3 digits long.');
         }
 
+        /** @var non-empty-string $color */
         $this->value = $color;
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getValue(): string
     {
         return $this->value;

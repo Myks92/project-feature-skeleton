@@ -7,14 +7,16 @@ namespace App\Shared\Recognizer\Alias;
 use App\Shared\Recognizer\Alias\Exception\AliasNotRecognizedException;
 
 /**
- * @template-implements AliasRecognizerInterface<object>
+ * @template T as object
+ * @template-implements AliasRecognizerInterface<T>
+ *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 final class ObjectAliasRecognizer implements AliasRecognizerInterface
 {
     public function supports(mixed $data): bool
     {
-        return \is_object($data) && class_exists($data::class, false);
+        return class_exists($data::class, false);
     }
 
     public function recognize(mixed $data): string

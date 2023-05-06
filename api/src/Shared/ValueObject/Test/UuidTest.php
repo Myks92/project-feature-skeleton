@@ -33,8 +33,10 @@ final class UuidTest extends TestCase
     public function testCase(): void
     {
         $value = Uuid::uuid4()->toString();
+        /** @var non-empty-string $upper */
+        $upper = mb_strtoupper($value);
 
-        $id = new Id(mb_strtoupper($value));
+        $id = new Id($upper);
 
         self::assertSame($value, $id->getValue());
     }
@@ -48,6 +50,7 @@ final class UuidTest extends TestCase
     public function testEmpty(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @psalm-suppress InvalidArgument */
         new Id('');
     }
 
@@ -63,6 +66,7 @@ final class UuidTest extends TestCase
 
 /**
  * @psalm-immutable
+ * @internal
  */
 final class Id extends \App\Shared\ValueObject\Uuid
 {

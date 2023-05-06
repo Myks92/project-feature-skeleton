@@ -8,8 +8,9 @@ use App\Shared\Assert;
 use Stringable;
 
 /**
- * @psalm-immutable
+ * @psalm-type PhoneCountryType = int<1,999>
  * @template-implements ValueObjectInterface<Phone>
+ * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\PhoneTest
@@ -19,9 +20,19 @@ abstract class Phone implements ValueObjectInterface, Stringable
     final public const PATTERN_COUNTRY = '/^\\d{1,3}$/';
     final public const PATTERN_NUMBER = '/^\\d{10}$/';
 
+    /**
+     * @var PhoneCountryType
+     */
     private readonly int $country;
+    /**
+     * @var non-empty-string
+     */
     private readonly string $number;
 
+    /**
+     * @param PhoneCountryType $country
+     * @param non-empty-string $number
+     */
     public function __construct(int $country, string $number)
     {
         Assert::regex((string)$country, self::PATTERN_COUNTRY);
@@ -30,21 +41,33 @@ abstract class Phone implements ValueObjectInterface, Stringable
         $this->number = $number;
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function __toString(): string
     {
         return $this->getFull();
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getFull(): string
     {
         return $this->getCountry() . $this->getNumber();
     }
 
+    /**
+     * @return PhoneCountryType
+     */
     final public function getCountry(): int
     {
         return $this->country;
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getNumber(): string
     {
         return $this->number;

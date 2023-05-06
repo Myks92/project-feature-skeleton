@@ -12,6 +12,9 @@ use App\Shared\Recognizer\Alias\Exception\AliasNotRecognizedException;
  */
 interface AliasRecognizerInterface
 {
+    /**
+     * @param T $data
+     */
     public function supports(mixed $data): bool;
 
     /**

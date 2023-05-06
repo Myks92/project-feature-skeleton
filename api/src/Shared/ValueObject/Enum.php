@@ -10,9 +10,9 @@ use Stringable;
 
 /**
  * @template T
+ * @template-implements ValueObjectInterface<Enum>
  * @psalm-immutable
  * @psalm-consistent-constructor
- * @template-implements ValueObjectInterface<Enum>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\EnumTest

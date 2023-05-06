@@ -8,16 +8,22 @@ use InvalidArgumentException;
 use Stringable;
 
 /**
- * @psalm-immutable
  * @template-implements ValueObjectInterface<Url>
+ * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\UrlTest
  */
 abstract class Url implements ValueObjectInterface, Stringable
 {
+    /**
+     * @var non-empty-string
+     */
     private readonly string $value;
 
+    /**
+     * @param non-empty-string $value
+     */
     public function __construct(string $value)
     {
         if (false === filter_var($value, FILTER_VALIDATE_URL)) {
@@ -26,11 +32,17 @@ abstract class Url implements ValueObjectInterface, Stringable
         $this->value = $value;
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function __toString(): string
     {
         return $this->getValue();
     }
 
+    /**
+     * @return non-empty-string
+     */
     final public function getValue(): string
     {
         return $this->value;
