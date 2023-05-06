@@ -86,7 +86,7 @@
     "lint": "phplint",
     "php-cs-fixer": "php-cs-fixer --config=.php-cs-fixer.php --allow-risky=yes",
     "psalm": "psalm --config=psalm.xml",
-    "deptrac": "deptrac --config-file=deptrac.yaml --cache-file=var/cache/.deptrac.cache",
+    "deptrac": "deptrac --config-file=deptrac.yaml --cache-file=var/cache/.deptrac",
     "rector": "rector",
     "unused": "composer-unused",
     "test": "phpunit --colors=always",
