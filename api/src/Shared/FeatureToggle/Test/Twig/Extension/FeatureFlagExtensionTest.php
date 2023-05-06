@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\FeatureToggle\Test\Twig\Extension;
+namespace App\Shared\FeatureToggle\Test\Twig\Extension;
 
-use App\FeatureToggle\FeatureFlagInterface;
-use App\FeatureToggle\Twig\Extension\FeatureFlagExtension;
+use App\Shared\FeatureToggle\FeatureFlagInterface;
+use App\Shared\FeatureToggle\Twig\Extension\FeatureFlagExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Twig\Environment;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\FeatureToggle\Listener;
+namespace App\Shared\FeatureToggle\Listener;
 
-use App\FeatureToggle\FeatureSwitcherInterface;
+use App\Shared\FeatureToggle\FeatureSwitcherInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

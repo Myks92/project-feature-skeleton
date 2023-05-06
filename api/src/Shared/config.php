@@ -34,6 +34,7 @@ return static function (ContainerConfigurator $configurator): void {
         './*/Test',
         './ValueObject',
         './Aggregate',
+        './FeatureToggle',
         './Notifier',
         './Assert.php',
     ]);

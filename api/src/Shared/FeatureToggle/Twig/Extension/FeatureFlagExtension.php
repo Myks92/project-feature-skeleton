@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\FeatureToggle\Twig\Extension;
+namespace App\Shared\FeatureToggle\Twig\Extension;
 
-use App\FeatureToggle\FeatureFlagInterface;
+use App\Shared\FeatureToggle\FeatureFlagInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**
- * @see \App\FeatureToggle\Test\Twig\Extension\FeatureFlagExtensionTest
+ * @see \App\Shared\FeatureToggle\Test\Twig\Extension\FeatureFlagExtensionTest
  */
 final class FeatureFlagExtension extends AbstractExtension
 {

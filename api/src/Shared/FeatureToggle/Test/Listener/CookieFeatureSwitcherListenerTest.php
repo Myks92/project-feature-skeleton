@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\FeatureToggle\Test\Listener;
+namespace App\Shared\FeatureToggle\Test\Listener;
 
-use App\FeatureToggle\FeatureSwitcherInterface;
-use App\FeatureToggle\Listener\HeaderFeatureSwitcherListener;
+use App\Shared\FeatureToggle\FeatureSwitcherInterface;
+use App\Shared\FeatureToggle\Listener\CookieFeatureSwitcherListener;
 use App\Shared\PHPUnit\ConsecutiveTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -17,8 +17,8 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-#[CoversClass(HeaderFeatureSwitcherListener::class)]
-final class HeaderFeatureSwitchListenerTest extends TestCase
+#[CoversClass(CookieFeatureSwitcherListener::class)]
+final class CookieFeatureSwitcherListenerTest extends TestCase
 {
     use ConsecutiveTrait;
 
@@ -28,7 +28,7 @@ final class HeaderFeatureSwitchListenerTest extends TestCase
         $switcher->expects(self::never())->method('enable');
         $switcher->expects(self::never())->method('disable');
 
-        $listener = new HeaderFeatureSwitcherListener($switcher, 'X-Features');
+        $listener = new CookieFeatureSwitcherListener($switcher, 'X-Features');
 
         $request = self::createRequest();
 
@@ -47,10 +47,10 @@ final class HeaderFeatureSwitchListenerTest extends TestCase
         $switcher->expects(self::exactly(2))->method('enable')->with(self::consecutiveCalls('ONE', 'TWO'));
         $switcher->expects(self::once())->method('disable')->with('THREE');
 
-        $listener = new HeaderFeatureSwitcherListener($switcher, 'X-Features');
+        $listener = new CookieFeatureSwitcherListener($switcher, 'X-Features');
 
         $request = self::createRequest();
-        $request->headers->set('X-Features', 'ONE, TWO, !THREE');
+        $request->cookies->set('X-Features', 'ONE, TWO, !THREE');
 
         $event = new RequestEvent(
             $this->createStub(HttpKernelInterface::class),

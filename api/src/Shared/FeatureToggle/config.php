@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\FeatureToggle;
+namespace App\Shared\FeatureToggle;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -18,7 +18,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('App\\FeatureToggle\\', '.')->exclude([
+    $services->load('App\\Shared\\FeatureToggle\\', '.')->exclude([
         './config.php',
     ]);
 

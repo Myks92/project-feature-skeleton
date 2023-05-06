@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\FeatureToggle\Test;
+namespace App\Shared\FeatureToggle\Test;
 
-use App\FeatureToggle\Features;
+use App\Shared\FeatureToggle\Features;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
