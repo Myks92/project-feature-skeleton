@@ -33,7 +33,7 @@ final class RamseyIdentifierGeneratorTest extends TestCase
         $uuid = Uuid::fromString($identifier);
 
         /** @psalm-suppress InternalMethod */
-        self::assertSame(4, $uuid->getVersion());
+        self::assertSame(7, $uuid->getVersion());
     }
 
     private function createGenerator(): RamseyIdentifierGenerator

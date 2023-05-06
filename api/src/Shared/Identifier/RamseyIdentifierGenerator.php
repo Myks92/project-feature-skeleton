@@ -14,6 +14,6 @@ final class RamseyIdentifierGenerator implements IdentifierGeneratorInterface
 {
     public function generate(): string
     {
-        return Uuid::uuid4()->toString();
+        return Uuid::uuid7()->toString();
     }
 }
