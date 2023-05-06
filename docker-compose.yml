@@ -45,6 +45,8 @@ services:
       MAILER_USERNAME: app
       MAILER_PASSWORD: secret
       MAILER_FROM_EMAIL: App <mail@app.test>
+      NOTIFIER_TELEGRAM_TOKEN: secret
+      NOTIFIER_SMS_RU_API_ID: secret
     volumes:
       - ./api:/app
 
@@ -60,6 +62,8 @@ services:
       MAILER_USERNAME: app
       MAILER_PASSWORD: secret
       MAILER_FROM_EMAIL: App <mail@app.test>
+      NOTIFIER_TELEGRAM_TOKEN: secret
+      NOTIFIER_SMS_RU_API_ID: secret
     volumes:
       - ./api:/app
 
