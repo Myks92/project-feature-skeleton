@@ -25,6 +25,7 @@
     <testsuite name="unit">
       <directory>src/*/Test</directory>
       <directory>src/*/*/Test</directory>
+      <directory>src/*/*/*/Test</directory>
       <directory>src/*/Test/Unit</directory>
     </testsuite>
   </testsuites>
