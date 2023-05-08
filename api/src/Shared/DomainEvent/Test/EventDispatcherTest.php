@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\EventDispatcher\Test;
+namespace App\Shared\DomainEvent\Test;
 
-use App\Shared\Bus\Event\EventInterface;
-use App\Shared\EventDispatcher\EventDispatcher;
+use App\Shared\DomainEvent\DomainEventInterface;
+use App\Shared\DomainEvent\EventDispatcher;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcher;
@@ -19,7 +19,7 @@ final class EventDispatcherTest extends TestCase
 {
     public function testDispatch(): void
     {
-        $event = new class() implements EventInterface {
+        $event = new class() implements DomainEventInterface {
             public string $id = '00000000-0000-0000-0000-000000000000';
         };
 
@@ -29,7 +29,7 @@ final class EventDispatcherTest extends TestCase
 
         $dispatcher = new EventDispatcher($origin);
 
-        $dispatcher->dispatch([$event]);
+        $dispatcher->dispatch($event);
     }
 
     public function testDispatchEmpty(): void
@@ -39,6 +39,6 @@ final class EventDispatcherTest extends TestCase
 
         $dispatcher = new EventDispatcher($origin);
 
-        $dispatcher->dispatch([]);
+        $dispatcher->dispatch();
     }
 }

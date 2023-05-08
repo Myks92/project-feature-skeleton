@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Aggregate;
-
-use App\Shared\Bus\Event\EventInterface;
+namespace App\Shared\DomainEvent;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -12,7 +10,7 @@ use App\Shared\Bus\Event\EventInterface;
 interface ReleaseEventsInterface
 {
     /**
-     * @return list<EventInterface>
+     * @return list<DomainEventInterface>
      */
     public function releaseEvents(): array;
 }

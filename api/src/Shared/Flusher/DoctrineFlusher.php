@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -18,7 +18,7 @@ final readonly class DoctrineFlusher implements FlusherInterface
     ) {
     }
 
-    public function flush(AggregateRoot ...$roots): void
+    public function flush(AggregateRootInterface ...$roots): void
     {
         $this->em->flush();
     }

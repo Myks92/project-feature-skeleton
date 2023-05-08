@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace App\Shared\Aggregate;
 
-use App\Shared\Bus\Event\EventInterface;
+use App\Shared\DomainEvent\DomainEventInterface;
+use App\Shared\DomainEvent\ReleaseEventsInterface;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract class AggregateRoot implements AggregateRootInterface, AggregateVersioningInterface
+#[ORM\MappedSuperclass]
+abstract class AggregateRoot implements AggregateRootInterface, AggregateVersioningInterface, ReleaseEventsInterface
 {
+    #[ORM\Version]
     protected int $aggregateVersion = 0;
 
     /**
-     * List of events that are not committed to the EventStore.
-     *
-     * @var list<EventInterface>
+     * @var list<DomainEventInterface>
      */
     private array $recordedEvents = [];
 
@@ -28,7 +30,7 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
     }
 
     /**
-     * @return list<EventInterface>
+     * @return list<DomainEventInterface>
      */
     final public function releaseEvents(): array
     {
@@ -42,7 +44,7 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
         return $this->aggregateVersion;
     }
 
-    final protected function recordEvent(EventInterface $event): void
+    final protected function recordEvent(DomainEventInterface $event): void
     {
         ++$this->aggregateVersion;
         $this->recordedEvents[] = $event;

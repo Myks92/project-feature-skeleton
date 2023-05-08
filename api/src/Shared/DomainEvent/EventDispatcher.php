@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\EventDispatcher;
+namespace App\Shared\DomainEvent;
 
-use App\Shared\Bus\Event\EventInterface;
 use Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcher;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\EventDispatcher\Test\EventDispatcherTest
+ * @see \App\Shared\DomainEvent\Test\EventDispatcherTest
  */
 final readonly class EventDispatcher implements EventDispatcherInterface
 {
@@ -18,10 +17,7 @@ final readonly class EventDispatcher implements EventDispatcherInterface
     ) {
     }
 
-    /**
-     * @param list<EventInterface> $events
-     */
-    public function dispatch(array $events): void
+    public function dispatch(DomainEventInterface ...$events): void
     {
         foreach ($events as $event) {
             $this->dispatcher->dispatch($event);

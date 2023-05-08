@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\EventStore;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use App\Shared\Aggregate\AggregateType;
 
 /**
@@ -29,13 +29,13 @@ final class InMemoryEventStore implements EventStoreInterface
     /**
      * @return array<array-key, Event>
      */
-    public function getAllForAggregate(AggregateRoot $aggregateRoot): array
+    public function getAllForAggregate(AggregateRootInterface $aggregateRoot): array
     {
         return array_values(array_filter($this->events, static fn (Event $event): bool => $event->getAggregateId() === $aggregateRoot->getId()->getValue() &&
             $event->getAggregateType() === AggregateType::fromAggregateRoot($aggregateRoot)->toString()));
     }
 
-    public function has(AggregateRoot $aggregateRoot): bool
+    public function has(AggregateRootInterface $aggregateRoot): bool
     {
         foreach ($this->events as $existingEvent) {
             if (

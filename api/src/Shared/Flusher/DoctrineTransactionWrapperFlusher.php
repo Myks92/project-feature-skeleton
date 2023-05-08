@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -19,7 +19,7 @@ final readonly class DoctrineTransactionWrapperFlusher implements FlusherInterfa
     ) {
     }
 
-    public function flush(AggregateRoot ...$roots): void
+    public function flush(AggregateRootInterface ...$roots): void
     {
         $this->em->wrapInTransaction(function () use ($roots): void {
             $this->flusher->flush(...$roots);

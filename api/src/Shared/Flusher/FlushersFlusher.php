@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use App\Shared\Assert;
 
 /**
@@ -22,7 +22,7 @@ final readonly class FlushersFlusher implements FlusherInterface
         Assert::allIsInstanceOf($flushers, FlusherInterface::class);
     }
 
-    public function flush(AggregateRoot ...$roots): void
+    public function flush(AggregateRootInterface ...$roots): void
     {
         foreach ($this->flushers as $flusher) {
             $flusher->flush(...$roots);

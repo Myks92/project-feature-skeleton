@@ -10,7 +10,7 @@ use App\Shared\Bus\Event\Attribute\EventHandler;
 use App\Shared\Bus\Event\EventHandlerInterface;
 use App\Shared\Bus\Query\Attribute\QueryHandler;
 use App\Shared\Bus\Query\QueryHandlerInterface;
-use App\Shared\EventDispatcher\EventListenerInterface;
+use App\Shared\DomainEvent\EventListenerInterface;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionNamedType;

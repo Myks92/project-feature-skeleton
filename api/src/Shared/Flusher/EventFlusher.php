@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use App\Shared\Aggregate\AggregateType;
-use App\Shared\Bus\Event\EventInterface;
-use App\Shared\EventDispatcher\EventDispatcherInterface;
+use App\Shared\DomainEvent\DomainEventInterface;
+use App\Shared\DomainEvent\EventDispatcherInterface;
+use App\Shared\DomainEvent\ReleaseEventsInterface;
 use App\Shared\EventStore\Event;
 use App\Shared\EventStore\EventStoreInterface;
 use App\Shared\Identifier\IdentifierGeneratorInterface;
 use App\Shared\Serializer\SerializerInterface;
 use DateTimeImmutable;
+use LogicException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -28,19 +30,22 @@ final readonly class EventFlusher implements FlusherInterface
     ) {
     }
 
-    public function flush(AggregateRoot ...$roots): void
+    public function flush(AggregateRootInterface ...$roots): void
     {
         foreach ($roots as $root) {
+            if (!$root instanceof ReleaseEventsInterface) {
+                throw new LogicException(sprintf('Root must implement %s', ReleaseEventsInterface::class));
+            }
             $events = $root->releaseEvents();
-            $this->dispatcher->dispatch($events);
+            $this->dispatcher->dispatch(...$events);
             $this->saveEvents($root, $events);
         }
     }
 
     /**
-     * @param array<array-key, EventInterface> $events
+     * @param list<DomainEventInterface> $events
      */
-    private function saveEvents(AggregateRoot $aggregateRoot, array $events): void
+    private function saveEvents(AggregateRootInterface $aggregateRoot, array $events): void
     {
         $eventsStream = [];
         foreach ($events as $event) {

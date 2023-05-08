@@ -30,7 +30,7 @@ final readonly class AggregateType implements Stringable
     /**
      * Use this factory when aggregate type should be detected based on given aggregate root.
      */
-    public static function fromAggregateRoot(AggregateRoot $root): self
+    public static function fromAggregateRoot(AggregateRootInterface $root): self
     {
         return new self($root::class);
     }
