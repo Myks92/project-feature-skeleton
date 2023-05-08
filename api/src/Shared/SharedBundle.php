@@ -122,7 +122,9 @@ final class SharedBundle extends AbstractBundle
         $container->registerForAutoconfiguration(EventListenerInterface::class)
             ->addTag('kernel.event_listener');
 
-        $container->registerAttributeForAutoconfiguration(EventListener::class, static function (
+        $container->registerAttributeForAutoconfiguration(
+            EventListener::class,
+            static function (
                 ChildDefinition $definition,
                 EventListener $attribute,
                 ReflectionClass|ReflectionMethod|Reflector $reflector,
