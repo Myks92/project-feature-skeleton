@@ -6,7 +6,7 @@ namespace App\Shared;
 
 use App\Shared\Doctrine\Types\JsonUnescapedType;
 use App\Shared\Flusher\DoctrineFlusher;
-use App\Shared\Flusher\EventFlusher;
+use App\Shared\Flusher\DomainEventDispatcherFlusher;
 use App\Shared\Flusher\FlusherInterface;
 use App\Shared\Flusher\FlushersFlusher;
 use Doctrine\DBAL\Types\Types as DoctrineTypes;
@@ -39,7 +39,7 @@ return static function (ContainerConfigurator $configurator): void {
         './Assert.php',
     ]);
 
-    $services->get(EventFlusher::class)->tag('flusher', ['priority' => -910]);
+    $services->get(DomainEventDispatcherFlusher::class)->tag('flusher', ['priority' => -910]);
     $services->get(DoctrineFlusher::class)->tag('flusher', ['priority' => -915]);
     $services->set(FlusherInterface::class, FlushersFlusher::class)->args([tagged_iterator('flusher')]);
 };
