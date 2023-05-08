@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher\Test;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use App\Shared\Flusher\DoctrineFlusher;
 use App\Shared\Flusher\FlusherInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,8 +28,7 @@ final class DoctrineFlusherTest extends TestCase
 
     public function testFlush(): void
     {
-        $aggregateRoot = $this->createMock(AggregateRoot::class);
-        $aggregateRoot->expects(self::never())->method('releaseEvents');
+        $aggregateRoot = $this->createMock(AggregateRootInterface::class);
 
         $em = $this->createMock(EntityManagerInterface::class);
         $em->expects(self::once())->method('flush');
@@ -39,7 +38,7 @@ final class DoctrineFlusherTest extends TestCase
         $flusher->flush($aggregateRoot);
     }
 
-    public function testFlushWithOutAggregateRoot(): void
+    public function testFlushWithOutAggregateRootInterface(): void
     {
         $em = $this->createMock(EntityManagerInterface::class);
         $em->expects(self::once())->method('flush');

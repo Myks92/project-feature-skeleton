@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher\Test;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use App\Shared\Flusher\DoctrineTransactionWrapperFlusher;
 use App\Shared\Flusher\FlusherInterface;
 use Doctrine\ORM\EntityManager;
@@ -30,7 +30,7 @@ final class DoctrineTransactionWrapperFlusherTest extends TestCase
 
     public function testFlush(): void
     {
-        $aggregateRoot = $this->createStub(AggregateRoot::class);
+        $aggregateRoot = $this->createStub(AggregateRootInterface::class);
 
         $em = $this->createMock(EntityManager::class);
         $em->expects(self::once())->method('wrapInTransaction')->with(self::callback(static function (callable $func): bool {

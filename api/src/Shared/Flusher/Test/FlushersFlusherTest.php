@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Flusher\Test;
 
-use App\Shared\Aggregate\AggregateRoot;
+use App\Shared\Aggregate\AggregateRootInterface;
 use App\Shared\Flusher\FlusherInterface;
 use App\Shared\Flusher\FlushersFlusher;
 use InvalidArgumentException;
@@ -30,8 +30,7 @@ final class FlushersFlusherTest extends TestCase
 
     public function testFlush(): void
     {
-        $aggregateRoot = $this->createMock(AggregateRoot::class);
-        $aggregateRoot->expects(self::never())->method('releaseEvents');
+        $aggregateRoot = $this->createMock(AggregateRootInterface::class);
 
         $flusher1 = $this->createMock(FlusherInterface::class);
         $flusher1->expects(self::once())->method('flush')->with(
