@@ -26,7 +26,7 @@ abstract class AbstractEmailType extends StringType
         }
 
         try {
-            return !empty($value) ? new $className($value) : null;
+            return empty($value) ? null : new $className($value);
         } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
