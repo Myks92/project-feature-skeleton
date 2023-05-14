@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\Config\RectorConfig;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
@@ -46,6 +47,7 @@ return static function (RectorConfig $rectorConfig): void {
         UnionTypesRector::class,
         NameImportingPostRector::class => [__DIR__ . '/src/*/config.php'],
         StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations'],
+        FlipTypeControlToUseExclusiveTypeRector::class,
     ]);
 
     //Common
