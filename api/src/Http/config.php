@@ -13,9 +13,16 @@ return static function (ContainerConfigurator $configurator): void {
         ->autowire()
         ->autoconfigure();
 
+    $services->load('App\\Http\\Action\\', './Action')
+        ->tag('controller.service_arguments');
+
     $services->load('App\\Http\\', '.')->exclude([
         './config.php',
+        './Action',
+        './Authentication/Identity',
+        './Authentication/UnauthorizedException',
+        './Exception',
         './Response',
         './Test',
-    ])->tag('controller.service_arguments');
+    ]);
 };
