@@ -12,6 +12,7 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @internal
@@ -45,5 +46,11 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
         $em = $container->get(EntityManagerInterface::class);
         $executor = new ORMExecutor($em, new ORMPurger($em));
         $executor->execute($loader->getFixtures());
+    }
+
+    public function jsonRequest(string $method, string $path, array $body = [], array $headers = []): Response
+    {
+        $this->client->jsonRequest($method, $path, $body, $headers);
+        return $this->client->getResponse();
     }
 }

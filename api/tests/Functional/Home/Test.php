@@ -15,18 +15,14 @@ final class Test extends WebTestCase
 {
     public function testMethod(): void
     {
-        $this->client->jsonRequest('POST', '/');
-
-        $response = $this->client->getResponse();
+        $response = $this->jsonRequest('POST', '/');
 
         self::assertSame(405, $response->getStatusCode());
     }
 
     public function testSuccess(): void
     {
-        $this->client->jsonRequest('GET', '/');
-
-        $response = $this->client->getResponse();
+        $response = $this->jsonRequest('GET', '/');
 
         self::assertSame(200, $response->getStatusCode());
         self::assertJson($content = (string)$response->getContent());

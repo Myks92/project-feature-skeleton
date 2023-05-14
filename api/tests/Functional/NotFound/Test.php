@@ -16,9 +16,7 @@ final class Test extends WebTestCase
 {
     public function testMethod(): void
     {
-        $this->client->jsonRequest('GET', '/not-found');
-
-        $response = $this->client->getResponse();
+        $response = $this->jsonRequest('GET', '/not-found');
 
         self::assertSame(404, $response->getStatusCode());
         self::assertJson($body = (string)$response->getContent());
