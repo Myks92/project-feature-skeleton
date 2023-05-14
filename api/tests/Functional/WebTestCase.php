@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Functional;
 
+use App\Http\Authentication\IdentityInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
@@ -52,5 +53,10 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
     {
         $this->client->jsonRequest($method, $path, $body, $headers);
         return $this->client->getResponse();
+    }
+
+    public function loginUser(IdentityInterface $identity, string $firewall = 'main'): void
+    {
+        $this->client->loginUser($identity, $firewall);
     }
 }
