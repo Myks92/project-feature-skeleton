@@ -12,8 +12,8 @@ use App\Shared\Filesystem\Exception\FilesystemException;
 use App\Shared\Filesystem\FilesystemInterface;
 use DateTimeInterface;
 use Generator;
-use League\Flysystem\FileAttributes as FlysystemFileAttributes;
 use League\Flysystem\DirectoryAttributes as FlysystemDirectoryAttributes;
+use League\Flysystem\FileAttributes as FlysystemFileAttributes;
 use League\Flysystem\FilesystemException as FlysystemFilesystemException;
 use League\Flysystem\FilesystemOperator;
 use Throwable;
@@ -84,38 +84,6 @@ final readonly class Filesystem implements FilesystemInterface
         }
 
         return new DirectoryListing($this->pipeListing($list));
-    }
-
-    /**
-     * @return Generator<mixed, StorageAttributes>
-     */
-    private function pipeListing(iterable $listing): Generator
-    {
-        try {
-            /** @var \League\Flysystem\StorageAttributes $item */
-            foreach ($listing as $item) {
-                if ($item instanceof FlysystemFileAttributes) {
-                    yield new FileAttributes(
-                        path: $item->path(),
-                        fileSize: $item->fileSize(),
-                        visibility: $item->visibility(),
-                        lastModified: $item->lastModified(),
-                        mimeType: $item->mimeType(),
-                        extraMetadata: $item->extraMetadata()
-                    );
-                }
-                if ($item instanceof FlysystemDirectoryAttributes) {
-                    yield new DirectoryAttributes(
-                        path: $item->path(),
-                        visibility: $item->visibility(),
-                        lastModified: $item->lastModified(),
-                        extraMetadata: $item->extraMetadata()
-                    );
-                }
-            }
-        } catch (Throwable $exception) {
-            throw FilesystemException::fromThrowable($exception);
-        }
     }
 
     public function lastModified(string $path): int
@@ -255,6 +223,38 @@ final readonly class Filesystem implements FilesystemInterface
             $this->defaultStorage->move($from, $to, $config);
         } catch (FlysystemFilesystemException $e) {
             throw FilesystemException::fromThrowable($e);
+        }
+    }
+
+    /**
+     * @return Generator<mixed, StorageAttributes>
+     */
+    private function pipeListing(iterable $listing): Generator
+    {
+        try {
+            /** @var \League\Flysystem\StorageAttributes $item */
+            foreach ($listing as $item) {
+                if ($item instanceof FlysystemFileAttributes) {
+                    yield new FileAttributes(
+                        path: $item->path(),
+                        fileSize: $item->fileSize(),
+                        visibility: $item->visibility(),
+                        lastModified: $item->lastModified(),
+                        mimeType: $item->mimeType(),
+                        extraMetadata: $item->extraMetadata()
+                    );
+                }
+                if ($item instanceof FlysystemDirectoryAttributes) {
+                    yield new DirectoryAttributes(
+                        path: $item->path(),
+                        visibility: $item->visibility(),
+                        lastModified: $item->lastModified(),
+                        extraMetadata: $item->extraMetadata()
+                    );
+                }
+            }
+        } catch (Throwable $exception) {
+            throw FilesystemException::fromThrowable($exception);
         }
     }
 }

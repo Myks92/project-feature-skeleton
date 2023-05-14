@@ -32,13 +32,13 @@ abstract class AbstractEmailType extends StringType
         }
     }
 
-    /**
-     * @return class-string<Email>
-     */
-    abstract protected function getClassName(): string;
-
     final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }
+
+    /**
+     * @return class-string<Email>
+     */
+    abstract protected function getClassName(): string;
 }

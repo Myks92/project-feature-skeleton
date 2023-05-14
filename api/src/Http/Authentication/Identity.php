@@ -11,7 +11,8 @@ final readonly class Identity implements IdentityInterface, UserInterface
     public function __construct(
         private string $id,
         private array $roles,
-    ) { }
+    ) {
+    }
 
     public function getId(): string
     {
