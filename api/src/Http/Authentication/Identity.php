@@ -8,6 +8,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class Identity implements IdentityInterface, UserInterface
 {
+    /**
+     * @param string[] $roles
+     */
     public function __construct(
         private string $id,
         private array $roles,
@@ -19,6 +22,9 @@ final readonly class Identity implements IdentityInterface, UserInterface
         return $this->id;
     }
 
+    /**
+     * @return string[]
+     */
     public function getRoles(): array
     {
         return $this->roles;

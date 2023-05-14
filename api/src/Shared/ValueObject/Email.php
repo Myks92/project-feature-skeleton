@@ -9,6 +9,8 @@ use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Email>
+ *
+ * @psalm-consistent-constructor
  * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>

@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @internal
@@ -35,7 +36,7 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
         return $this->client->getResponse();
     }
 
-    final public function loginUser(IdentityInterface $identity, string $firewall = 'main'): void
+    final public function loginUser(IdentityInterface&UserInterface $identity, string $firewall = 'main'): void
     {
         $this->client->loginUser($identity, $firewall);
     }

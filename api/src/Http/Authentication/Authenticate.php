@@ -24,6 +24,6 @@ final readonly class Authenticate
             );
         }
 
-        return throw new UnauthorizedException();
+        throw new UnauthorizedException();
     }
 }
