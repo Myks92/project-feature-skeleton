@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Security\Test;
+namespace App\Http\Test\Authenticator;
 
-use App\Security\RedirectUrlAuthenticationEntryPoint;
+use App\Http\Authenticator\RedirectUrlAuthenticationEntryPoint;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
