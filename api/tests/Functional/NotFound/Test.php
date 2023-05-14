@@ -2,14 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Http;
+namespace Test\Functional\NotFound;
+
+use Test\Functional\Json;
+use Test\Functional\WebTestCase;
 
 /**
  * @internal
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class NotFoundTest extends WebTestCase
+final class Test extends WebTestCase
 {
     public function testMethod(): void
     {
