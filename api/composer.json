@@ -13,6 +13,7 @@
     "doctrine/orm": "^2.15",
     "knplabs/knp-paginator-bundle": "^6.2",
     "league/flysystem-bundle": "^3.1",
+    "league/flysystem-memory": "*",
     "ramsey/uuid": "^4.7",
     "symfony/console": "6.2.*",
     "symfony/dotenv": "6.2.*",
