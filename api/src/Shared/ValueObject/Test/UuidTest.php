@@ -65,9 +65,8 @@ final class UuidTest extends TestCase
 }
 
 /**
- * @psalm-immutable
  * @internal
  */
-final class Id extends \App\Shared\ValueObject\Uuid
+final readonly class Id extends \App\Shared\ValueObject\Uuid
 {
 }

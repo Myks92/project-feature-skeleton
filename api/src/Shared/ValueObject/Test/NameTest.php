@@ -67,9 +67,8 @@ final class NameTest extends TestCase
 }
 
 /**
- * @psalm-immutable
  * @see \App\Shared\ValueObject\Test\NameTest
  */
-final class Name extends \App\Shared\ValueObject\Name
+final readonly class Name extends \App\Shared\ValueObject\Name
 {
 }

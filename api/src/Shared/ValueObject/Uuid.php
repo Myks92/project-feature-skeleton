@@ -10,17 +10,16 @@ use Stringable;
 /**
  * @template-implements ValueObjectInterface<Uuid>
  * @psalm-consistent-constructor
- * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\UuidTest
  */
-abstract class Uuid implements ValueObjectInterface, Stringable
+abstract readonly class Uuid implements ValueObjectInterface, Stringable
 {
     /**
      * @var non-empty-string
      */
-    private readonly string $value;
+    private string $value;
 
     /**
      * @param non-empty-string $value

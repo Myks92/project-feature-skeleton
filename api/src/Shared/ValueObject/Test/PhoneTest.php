@@ -80,9 +80,8 @@ final class PhoneTest extends TestCase
 }
 
 /**
- * @psalm-immutable
  * @see \App\Shared\ValueObject\Test\PhoneTest
  */
-final class Phone extends \App\Shared\ValueObject\Phone
+final readonly class Phone extends \App\Shared\ValueObject\Phone
 {
 }

@@ -10,12 +10,11 @@ use Stringable;
 /**
  * @psalm-type PhoneCountryType = int<1,999>
  * @template-implements ValueObjectInterface<Phone>
- * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\PhoneTest
  */
-abstract class Phone implements ValueObjectInterface, Stringable
+abstract readonly class Phone implements ValueObjectInterface, Stringable
 {
     final public const PATTERN_COUNTRY = '/^\\d{1,3}$/';
     final public const PATTERN_NUMBER = '/^\\d{10}$/';
@@ -23,11 +22,11 @@ abstract class Phone implements ValueObjectInterface, Stringable
     /**
      * @var PhoneCountryType
      */
-    private readonly int $country;
+    private int $country;
     /**
      * @var non-empty-string
      */
-    private readonly string $number;
+    private string $number;
 
     /**
      * @param PhoneCountryType $country

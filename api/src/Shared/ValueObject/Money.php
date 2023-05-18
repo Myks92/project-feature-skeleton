@@ -9,17 +9,16 @@ use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Money>
- * @psalm-immutable
  * @psalm-consistent-constructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\MoneyTest
  */
-abstract class Money implements ValueObjectInterface, Stringable
+abstract readonly class Money implements ValueObjectInterface, Stringable
 {
     public function __construct(
-        private readonly float $amount,
-        private readonly Currency $currency
+        private float $amount,
+        private Currency $currency
     ) {
     }
 

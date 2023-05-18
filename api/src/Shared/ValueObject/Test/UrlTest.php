@@ -46,9 +46,8 @@ final class UrlTest extends TestCase
 }
 
 /**
- * @psalm-immutable
  * @see \App\Shared\ValueObject\Test\UrlTest
  */
-final class Url extends \App\Shared\ValueObject\Url
+final readonly class Url extends \App\Shared\ValueObject\Url
 {
 }

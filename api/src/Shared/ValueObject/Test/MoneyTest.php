@@ -118,9 +118,8 @@ final class MoneyTest extends TestCase
 }
 
 /**
- * @psalm-immutable
  * @see \App\Shared\ValueObject\Test\MoneyTest
  */
-final class Money extends \App\Shared\ValueObject\Money
+final readonly class Money extends \App\Shared\ValueObject\Money
 {
 }

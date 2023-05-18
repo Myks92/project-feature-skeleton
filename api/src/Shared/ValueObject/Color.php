@@ -8,16 +8,15 @@ use InvalidArgumentException;
 
 /**
  * @template-implements ValueObjectInterface<Color>
- * @psalm-immutable
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract class Color implements ValueObjectInterface
+abstract readonly class Color implements ValueObjectInterface
 {
     /**
      * @var non-empty-string
      */
-    private readonly string $value;
+    private string $value;
 
     /**
      * @param non-empty-string $value

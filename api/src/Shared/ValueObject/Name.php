@@ -8,13 +8,12 @@ use App\Shared\Assert;
 use Stringable;
 
 /**
- * @psalm-immutable
  * @template-implements ValueObjectInterface<Name>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\NameTest
  */
-abstract class Name implements ValueObjectInterface, Stringable
+abstract readonly class Name implements ValueObjectInterface, Stringable
 {
     /**
      * @param non-empty-string $first
@@ -22,9 +21,9 @@ abstract class Name implements ValueObjectInterface, Stringable
      * @param non-empty-string|null $middle
      */
     public function __construct(
-        private readonly string $first,
-        private readonly string $last,
-        private readonly ?string $middle = null
+        private string $first,
+        private string $last,
+        private ?string $middle = null
     ) {
         Assert::notEmpty($first);
         Assert::notEmpty($last);

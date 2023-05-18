@@ -80,9 +80,8 @@ final class EmailTest extends TestCase
 }
 
 /**
- * @psalm-immutable
  * @see \App\Shared\ValueObject\Test\EmailTest
  */
-final class Email extends \App\Shared\ValueObject\Email
+final readonly class Email extends \App\Shared\ValueObject\Email
 {
 }
