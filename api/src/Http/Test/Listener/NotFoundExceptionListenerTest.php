@@ -77,7 +77,7 @@ final class NotFoundExceptionListenerTest extends TestCase
             $this->createMock(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new class('Some error.') extends NotFoundException {}
+            new class('Some error.') extends Exception implements NotFoundException {}
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);

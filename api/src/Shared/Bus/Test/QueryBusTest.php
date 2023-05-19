@@ -6,6 +6,7 @@ namespace App\Shared\Bus\Test;
 
 use App\Shared\Bus\Query\QueryBus;
 use App\Shared\Bus\Query\QueryInterface;
+use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
@@ -69,6 +70,6 @@ final class QueryBusTest extends TestCase
     }
 }
 
-class NotFoundException extends \App\Shared\Bus\Query\NotFoundException
+class NotFoundException extends Exception implements \App\Shared\Bus\Query\NotFoundException
 {
 }
