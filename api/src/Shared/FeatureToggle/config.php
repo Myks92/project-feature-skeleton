@@ -20,8 +20,9 @@ return static function (ContainerConfigurator $configurator): void {
 
     $services->load('App\\Shared\\FeatureToggle\\', '.')->exclude([
         './config.php',
+        './Test.php',
     ]);
 
-    $services->get(Features::class)
+    $services->set(Features::class)
         ->arg('$features', param('feature_toggle.features'));
 };

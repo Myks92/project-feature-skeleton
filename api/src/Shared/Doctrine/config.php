@@ -16,15 +16,4 @@ return static function (ContainerConfigurator $configurator): void {
             ],
         ],
     ]);
-
-    $services = $configurator
-        ->services()
-        ->defaults()
-        ->autowire()
-        ->autoconfigure();
-
-    $services->load('App\\Shared\\Doctrine\\', '.')->exclude([
-        './config.php',
-        './*/Test',
-    ]);
 };

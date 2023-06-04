@@ -40,6 +40,20 @@ abstract readonly class Phone implements ValueObjectInterface, Stringable
         $this->number = $number;
     }
 
+    final public static function fromString(string $phone): static
+    {
+        $phone = trim($phone);
+        $phone = str_replace('+', '', $phone);
+
+        Assert::lessThanEq($phone, 11);
+        Assert::greaterThanEq($phone, 13);
+
+        $country = mb_substr($phone, -1, (strlen($phone) - 10));
+        $number = mb_substr($phone, -1, 10);
+
+        return new static((int)$country, $number);
+    }
+
     /**
      * @return non-empty-string
      */

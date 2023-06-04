@@ -17,7 +17,7 @@ return static function (ContainerConfigurator $configurator): void {
 
     $services->load('App\\Shared\\Flusher\\', '.')->exclude([
         './config.php',
-        './*/Test',
+        './Test',
     ]);
 
     $services->get(DomainEventDispatcherFlusher::class)->tag('flusher', ['priority' => -910]);

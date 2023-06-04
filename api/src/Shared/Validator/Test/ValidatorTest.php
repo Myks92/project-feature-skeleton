@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Validator\Test;
 
+use App\Shared\Validator\Adapter\Validator;
 use App\Shared\Validator\Error;
 use App\Shared\Validator\ValidationException;
-use App\Shared\Validator\Validator;
 use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

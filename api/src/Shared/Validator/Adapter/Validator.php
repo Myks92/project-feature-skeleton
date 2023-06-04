@@ -2,8 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Validator;
+namespace App\Shared\Validator\Adapter;
 
+use App\Shared\Validator\Error;
+use App\Shared\Validator\Errors;
+use App\Shared\Validator\ValidationException;
+use App\Shared\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidatorInterface;
 

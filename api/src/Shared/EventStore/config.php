@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared;
+namespace App\Shared\EventStore;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -13,15 +13,9 @@ return static function (ContainerConfigurator $configurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('App\\Shared\\', '.')->exclude([
+    $services->load('App\\Shared\\EventStore\\', '.')->exclude([
         './config.php',
-        './*/Test',
-        './Doctrine',
-        './Flusher',
-        './ValueObject',
-        './Aggregate',
-        './FeatureToggle',
-        './Notifier',
-        './Assert.php',
+        './Test',
+        './Event.php',
     ]);
 };
