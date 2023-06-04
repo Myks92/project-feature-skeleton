@@ -1,7 +1,10 @@
 doctrine:
     dbal:
         driver: 'pdo_pgsql'
-        url: '%env(resolve:DATABASE_URL)%'
+        host: '%env(DB_HOST)%'
+        user: '%env(DB_USER)%'
+        password: '%env(DB_PASSWORD)%'
+        port: '%env(DB_PORT)%'
         server_version: '13.3'
         charset: utf8
     orm:

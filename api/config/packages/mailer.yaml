@@ -1,5 +1,5 @@
 framework:
     mailer:
-        dsn: '%env(resolve:MAILER_DSN)%'
+        dsn: 'smtp://%env(MAILER_USERNAME)%:%env(MAILER_PASSWORD)%@%env(MAILER_HOST)%:%env(MAILER_PORT)%'
         envelope:
             sender: '%env(MAILER_FROM_EMAIL)%'

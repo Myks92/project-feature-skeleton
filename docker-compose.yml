@@ -44,6 +44,7 @@ services:
       DB_USER: app
       DB_PASSWORD: secret
       DB_NAME: app
+      DB_PORT: 5432
       MAILER_HOST: mailer
       MAILER_PORT: 1025
       MAILER_USERNAME: app
@@ -51,6 +52,8 @@ services:
       MAILER_FROM_EMAIL: App <mail@app.test>
       NOTIFIER_TELEGRAM_TOKEN: secret
       NOTIFIER_SMS_RU_API_ID: secret
+      MESSENGER_ASYNC_TRANSPORT_DSN: sync://
+      MESSENGER_SYNC_TRANSPORT_DSN: sync://
     volumes:
       - ./api:/app
 
@@ -65,6 +68,7 @@ services:
       DB_USER: app
       DB_PASSWORD: secret
       DB_NAME: app
+      DB_PORT: 5432
       MAILER_HOST: mailer
       MAILER_PORT: 1025
       MAILER_USERNAME: app
@@ -72,6 +76,8 @@ services:
       MAILER_FROM_EMAIL: App <mail@app.test>
       NOTIFIER_TELEGRAM_TOKEN: secret
       NOTIFIER_SMS_RU_API_ID: secret
+      MESSENGER_ASYNC_TRANSPORT_DSN: sync://
+      MESSENGER_SYNC_TRANSPORT_DSN: sync://
     volumes:
       - ./api:/app
 
