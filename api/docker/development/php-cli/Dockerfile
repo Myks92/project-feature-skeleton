@@ -2,7 +2,7 @@ FROM php:8.2-cli-alpine
 
 ENV XDEBUG_VERSION 3.2.1
 
-RUN apk add --no-cache postgresql-dev bash coreutils git linux-headers \
+RUN apk add --no-cache postgresql-dev bash coreutils git linux-headers zlib-dev libpng libjpeg-turbo-dev libpng-dev libwebp-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && git clone --branch $XDEBUG_VERSION --depth 1 https://github.com/xdebug/xdebug.git /usr/src/php/ext/xdebug \
     && docker-php-ext-configure xdebug --enable-xdebug-dev \
@@ -10,6 +10,7 @@ RUN apk add --no-cache postgresql-dev bash coreutils git linux-headers \
     && docker-php-ext-install opcache \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
+    && docker-php-ext-install gd \
     && apk del git
 
 RUN apk add --no-cache unzip
