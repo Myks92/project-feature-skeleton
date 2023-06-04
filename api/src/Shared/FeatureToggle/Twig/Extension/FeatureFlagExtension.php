@@ -15,7 +15,8 @@ final class FeatureFlagExtension extends AbstractExtension
 {
     public function __construct(
         private readonly FeatureFlagInterface $flag
-    ) { }
+    ) {
+    }
 
     /**
      * @return TwigFunction[]

@@ -1,14 +1,14 @@
 main:
-  resource: ../src/Http/Action
-  type: attribute
-  trailing_slash_on_root: false
-  defaults:
+    resource: ../src/Http/Action
+    type: attribute
+    trailing_slash_on_root: false
+    defaults:
 
 v1:
-  resource: ../src/Http/Action/V1
-  prefix: /v1
-  name_prefix: v1.
-  type: attribute
-  trailing_slash_on_root: false
-  defaults:
-    _format: json
+    resource: ../src/Http/Action/V1
+    prefix: /v1
+    name_prefix: v1.
+    type: attribute
+    trailing_slash_on_root: false
+    defaults:
+        _format: json
