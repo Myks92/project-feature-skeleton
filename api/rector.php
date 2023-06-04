@@ -18,6 +18,7 @@ use Rector\PostRector\Rector\NameImportingPostRector;
 use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 use Rector\Symfony\Rector\Class_\InvokableControllerRector;
 use Rector\Symfony\Set\SymfonySetList;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNeverTypeRector;
@@ -48,6 +49,7 @@ return static function (RectorConfig $rectorConfig): void {
         NameImportingPostRector::class => [__DIR__ . '/src/*/config.php'],
         StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations'],
         FlipTypeControlToUseExclusiveTypeRector::class,
+        DisallowedEmptyRuleFixerRector::class,
     ]);
 
     //Common
