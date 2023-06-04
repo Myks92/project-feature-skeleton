@@ -1,6 +1,6 @@
 .DEFAULT_GOAL: help
 
-DOCKER_COMPOSE = docker-compose
+DOCKER_COMPOSE = docker compose
 EXEC_PHP = $(DOCKER_COMPOSE) run --rm api-php-cli
 COMPOSER = $(EXEC_PHP) composer
 APP_CLI = $(COMPOSER) app
@@ -35,19 +35,19 @@ update-deps: api-composer-update restart ## Обновление зависим�
 
 #-- Docker
 docker-up: ## Запуск контейнеров
-	docker-compose up -d
+	$(DOCKER_COMPOSE) up -d
 
 docker-down: ## Остановка контейнеров
-	docker-compose down --remove-orphans
+	$(DOCKER_COMPOSE) down --remove-orphans
 
 docker-down-clear: ## Остановка контейнеров с очисткой volumes
-	docker-compose down -v --remove-orphans
+	$(DOCKER_COMPOSE) down -v --remove-orphans
 
 docker-pull: ## Получение образов
-	docker-compose pull
+	$(DOCKER_COMPOSE) pull
 
 docker-build: ## Сборка контейнеров
-	docker-compose build --pull
+	$(DOCKER_COMPOSE) build --pull
 
 #-- Api
 api-init: api-permissions api-composer-install api-wait-db api-migrations api-fixtures ## Инициализация
