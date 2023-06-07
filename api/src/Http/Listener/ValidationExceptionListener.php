@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Listener;
 
-use App\Http\Response\JsonResponse;
 use App\Contracts\Validator\Errors;
 use App\Contracts\Validator\Exception\ValidationFailed;
+use App\Http\Response\JsonResponse;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
