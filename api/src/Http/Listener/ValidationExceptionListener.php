@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Listener;
 
 use App\Http\Response\JsonResponse;
-use App\Shared\Validator\Errors;
-use App\Shared\Validator\ValidationException;
+use App\Contracts\Validator\Errors;
+use App\Contracts\Validator\Exception\ValidationFailed;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -22,7 +22,7 @@ final class ValidationExceptionListener
         $exception = $event->getThrowable();
         $request = $event->getRequest();
 
-        if (!$exception instanceof ValidationException) {
+        if (!$exception instanceof ValidationFailed) {
             return;
         }
 
