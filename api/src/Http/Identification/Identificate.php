@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Authentication;
+namespace App\Http\Identification;
 
 use Symfony\Bundle\SecurityBundle\Security as SymfonySecurity;
 
-final readonly class Authenticate
+final readonly class Identificate
 {
     public function __construct(
         private SymfonySecurity $security
     ) {
     }
 
-    public function getUser(): Identity
+    public function getIdentity(): Identity
     {
         $user = $this->security->getUser();
 

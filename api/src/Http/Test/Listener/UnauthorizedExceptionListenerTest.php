@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Test\Listener;
 
-use App\Http\Authentication\UnauthorizedException;
+use App\Http\Identification\UnauthorizedException;
 use App\Http\Listener\UnauthorizedExceptionListener;
 use App\Http\Response\JsonResponse;
 use Exception;

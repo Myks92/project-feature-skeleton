@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Authentication;
+namespace App\Http\Identification;
 
 use RuntimeException;
 use Throwable;
