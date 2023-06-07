@@ -11,7 +11,6 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Bus\Symfony\Test\Middleware\ValidationMiddlewareTest
  */
 final readonly class ValidationMiddleware implements MiddlewareInterface
 {

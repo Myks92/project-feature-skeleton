@@ -12,7 +12,6 @@ use InvalidArgumentException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\Doctrine\Test\Types\AbstractUuidTypeTest
  */
 abstract class AbstractAggregateIdType extends GuidType
 {

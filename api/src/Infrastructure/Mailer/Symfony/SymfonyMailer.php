@@ -10,7 +10,6 @@ use Symfony\Component\Mailer\MailerInterface as AdapterMailer;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Mailer\Symfony\Test\MailerTest
  */
 final readonly class SymfonyMailer implements MailerInterface
 {

@@ -10,7 +10,6 @@ use App\Shared\Assert;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Flusher\All\Test\AllFlusherTest
  */
 final readonly class AllFlusher implements FlusherInterface
 {

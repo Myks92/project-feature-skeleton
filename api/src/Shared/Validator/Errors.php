@@ -6,7 +6,6 @@ namespace App\Shared\Validator;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\Validator\Test\ErrorsTest
  */
 final readonly class Errors implements \App\Contracts\Validator\Errors
 {

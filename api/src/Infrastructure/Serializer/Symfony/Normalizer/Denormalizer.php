@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface as SymfonyDeno
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Serializer\Symfony\Test\Normalizer\DenormalizerTest
  */
 final readonly class Denormalizer implements DenormalizerInterface
 {

@@ -13,6 +13,7 @@ use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
+use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PostRector\Rector\NameImportingPostRector;
 use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
@@ -50,6 +51,7 @@ return static function (RectorConfig $rectorConfig): void {
         StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations'],
         FlipTypeControlToUseExclusiveTypeRector::class,
         DisallowedEmptyRuleFixerRector::class,
+        AddSeeTestAnnotationRector::class,
     ]);
 
     //Common

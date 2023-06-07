@@ -18,8 +18,6 @@ use ReturnTypeWillChange;
  * @template-implements Iterator<TKey, TValue>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- *
- * @see \App\Shared\Paginator\Test\PaginationTest
  */
 final class Pagination implements Iterator, PaginationInterface
 {

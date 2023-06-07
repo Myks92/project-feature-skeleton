@@ -117,9 +117,6 @@ final class MoneyTest extends TestCase
     }
 }
 
-/**
- * @see \App\Shared\ValueObject\Test\MoneyTest
- */
 final readonly class Money extends \App\Shared\ValueObject\Money
 {
 }

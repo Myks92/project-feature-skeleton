@@ -10,7 +10,6 @@ use App\Shared\Paginator\Pagination;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Paginator\Knp\Test\KnpPaginatorTest
  */
 final readonly class KnpPaginator implements PaginatorInterface
 {

@@ -8,9 +8,6 @@ use App\Contracts\FeatureToggle\FeatureFlagInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-/**
- * @see \App\Infrastructure\FeatureToggle\Twig\Test\Extension\FeatureFlagExtensionTest
- */
 final class FeatureFlagExtension extends AbstractExtension
 {
     public function __construct(

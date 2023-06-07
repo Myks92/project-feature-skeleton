@@ -10,7 +10,6 @@ use DateTimeInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\Mailer\Test\MessageTest
  */
 final class Message implements MessageInterface
 {

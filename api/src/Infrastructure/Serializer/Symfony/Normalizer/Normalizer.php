@@ -10,7 +10,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface as SymfonyNormal
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Serializer\Symfony\Test\Normalizer\NormalizerTest
  */
 final readonly class Normalizer implements NormalizerInterface
 {

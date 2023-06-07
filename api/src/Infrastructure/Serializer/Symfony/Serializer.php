@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Context\SerializerContextBuilder;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Serializer\Symfony\Test\SerializerTest
  */
 final readonly class Serializer implements SerializerInterface
 {

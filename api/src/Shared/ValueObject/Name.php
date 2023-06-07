@@ -12,7 +12,6 @@ use Stringable;
  * @template-implements ValueObjectInterface<Name>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\NameTest
  */
 abstract readonly class Name implements ValueObjectInterface, Stringable
 {

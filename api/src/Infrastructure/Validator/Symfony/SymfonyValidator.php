@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Validator\Symfony\Test\SymfonyValidatorTest
  */
 final readonly class SymfonyValidator implements ValidatorInterface
 {

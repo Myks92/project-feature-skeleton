@@ -14,7 +14,6 @@ use Stringable;
  * @psalm-consistent-constructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\EmailTest
  */
 abstract readonly class Email implements ValueObjectInterface, Stringable
 {

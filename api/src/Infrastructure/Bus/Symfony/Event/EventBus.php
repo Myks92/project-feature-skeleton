@@ -13,7 +13,6 @@ use Symfony\Component\Messenger\Stamp\TransportMessageIdStamp;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Bus\Symfony\Test\Event\EventBusTest
  */
 final readonly class EventBus implements EventBusInterface
 {

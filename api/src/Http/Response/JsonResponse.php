@@ -8,7 +8,6 @@ namespace App\Http\Response;
  * @psalm-suppress PropertyNotSetInConstructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Http\Test\Response\JsonResponseTest
  */
 final class JsonResponse extends \Symfony\Component\HttpFoundation\JsonResponse
 {

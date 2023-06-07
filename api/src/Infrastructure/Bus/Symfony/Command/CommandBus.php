@@ -11,7 +11,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Bus\Symfony\Test\Command\CommandBusTest
  */
 final readonly class CommandBus implements CommandBusInterface
 {

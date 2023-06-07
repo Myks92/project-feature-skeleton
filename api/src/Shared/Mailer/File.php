@@ -8,9 +8,6 @@ use App\Contracts\Mailer\FileInterface;
 use Exception;
 use RuntimeException;
 
-/**
- * @see \App\Shared\Mailer\Test\FileTest
- */
 final readonly class File implements FileInterface
 {
     /**

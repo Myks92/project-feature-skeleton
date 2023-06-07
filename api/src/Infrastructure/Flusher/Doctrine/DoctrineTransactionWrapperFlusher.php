@@ -10,7 +10,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Flusher\Doctrine\Test\DoctrineTransactionWrapperFlusherTest
  */
 final readonly class DoctrineTransactionWrapperFlusher implements FlusherInterface
 {

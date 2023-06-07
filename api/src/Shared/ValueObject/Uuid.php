@@ -13,7 +13,6 @@ use Stringable;
  * @psalm-consistent-constructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\UuidTest
  */
 abstract readonly class Uuid implements ValueObjectInterface, Stringable
 {

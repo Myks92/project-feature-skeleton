@@ -10,7 +10,6 @@ use Throwable;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\Validator\Test\ValidationExceptionTest
  */
 final class ValidationException extends RuntimeException implements ValidationFailed
 {

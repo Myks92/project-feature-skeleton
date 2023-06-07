@@ -10,7 +10,6 @@ use App\Contracts\ValueObject\ValueObjectInterface;
  * @template-implements ValueObjectInterface<Currency>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\CurrencyTest
  */
 enum Currency: string implements ValueObjectInterface
 {

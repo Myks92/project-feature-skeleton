@@ -14,7 +14,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Http\Test\Listener\NotFoundExceptionListenerTest
  */
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
 final readonly class NotFoundExceptionListener

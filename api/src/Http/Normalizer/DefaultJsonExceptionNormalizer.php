@@ -11,7 +11,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Http\Test\Normalizer\DefaultJsonExceptionNormalizerTest
  */
 final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterface
 {

@@ -10,7 +10,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Http\Test\Normalizer\PaginationJsonNormalizerTest
  */
 final class PaginationJsonNormalizer implements NormalizerInterface
 {

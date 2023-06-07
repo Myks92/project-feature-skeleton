@@ -14,7 +14,6 @@ use Stringable;
  * @psalm-consistent-constructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\PhoneTest
  */
 abstract readonly class Phone implements ValueObjectInterface, Stringable
 {

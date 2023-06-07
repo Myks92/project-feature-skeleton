@@ -12,7 +12,6 @@ use Stringable;
  * @template-implements ValueObjectInterface<Url>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\UrlTest
  */
 abstract readonly class Url implements ValueObjectInterface, Stringable
 {

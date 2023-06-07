@@ -9,7 +9,6 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Identifier\Ramsey\Test\RamseyIdentifierGeneratorTest
  */
 final class RamseyIdentifierGenerator implements IdentifierGeneratorInterface
 {

@@ -13,7 +13,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Http\Test\Listener\ValidationExceptionListenerTest
  */
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
 final class ValidationExceptionListener

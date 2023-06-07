@@ -13,7 +13,6 @@ use Stringable;
  * @psalm-consistent-constructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\ValueObject\Test\MoneyTest
  */
 abstract readonly class Money implements ValueObjectInterface, Stringable
 {

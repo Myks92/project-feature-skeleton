@@ -11,7 +11,6 @@ use JsonException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Shared\Doctrine\Test\Types\JsonUnescapedTypeTest
  */
 final class JsonUnescapedType extends JsonType
 {

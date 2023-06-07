@@ -9,7 +9,6 @@ use App\Contracts\DomainEvent\EventDispatcherInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\DomainEvent\Psr\Test\PsrEventDispatcherTest
  */
 final readonly class PsrEventDispatcher implements EventDispatcherInterface
 {

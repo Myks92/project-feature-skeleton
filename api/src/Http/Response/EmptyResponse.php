@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
  * @psalm-suppress PropertyNotSetInConstructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Http\Test\Response\EmptyResponseTest
  */
 final class EmptyResponse extends Response
 {

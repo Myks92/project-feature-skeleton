@@ -79,9 +79,6 @@ final class PhoneTest extends TestCase
     }
 }
 
-/**
- * @see \App\Shared\ValueObject\Test\PhoneTest
- */
 final readonly class Phone extends \App\Shared\ValueObject\Phone
 {
 }

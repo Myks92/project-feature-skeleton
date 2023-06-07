@@ -11,7 +11,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\FeatureToggle\Listener\Test\CookieFeatureSwitcherListenerTest
  */
 #[AsEventListener(event: KernelEvents::REQUEST)]
 final readonly class CookieFeatureSwitcherListener

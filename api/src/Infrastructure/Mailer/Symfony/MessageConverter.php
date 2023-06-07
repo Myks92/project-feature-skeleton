@@ -14,7 +14,6 @@ use Symfony\Component\Mime\Part\File as PartFile;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Mailer\Symfony\Test\MessageConverterTest
  */
 final class MessageConverter
 {

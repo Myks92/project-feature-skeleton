@@ -12,7 +12,6 @@ use LogicException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Flusher\DomainEvent\Test\DomainEventDispatcherFlusherTest
  */
 final readonly class DomainEventDispatcherFlusher implements FlusherInterface
 {

@@ -9,7 +9,6 @@ use Twig\Environment;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
- * @see \App\Infrastructure\Template\Twig\Test\TwigTemplateTest
  */
 final readonly class TwigTemplate implements TemplateInterface
 {
