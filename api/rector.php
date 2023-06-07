@@ -11,7 +11,6 @@ use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
 use Rector\Php74\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
-use Rector\Php80\Rector\FunctionLike\UnionTypesRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
@@ -46,7 +45,6 @@ return static function (RectorConfig $rectorConfig): void {
         RemoveExtraParametersRector::class,
         ReturnNeverTypeRector::class,
         StringableForToStringRector::class,
-        UnionTypesRector::class,
         NameImportingPostRector::class => [__DIR__ . '/src/*/config.php'],
         StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations'],
         FlipTypeControlToUseExclusiveTypeRector::class,
