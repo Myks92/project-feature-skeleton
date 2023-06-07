@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Test\Authenticator;
 
-use App\Http\Authenticator\RedirectUrlAuthenticationEntryPoint;
+use App\Http\Authentication\RedirectUrlAuthenticationEntryPoint;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
