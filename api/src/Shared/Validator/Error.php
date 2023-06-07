@@ -8,7 +8,7 @@ namespace App\Shared\Validator;
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\Validator\Test\ErrorTest
  */
-final readonly class Error
+final readonly class Error implements \App\Contracts\Validator\Error
 {
     public function __construct(
         private string $propertyPath,

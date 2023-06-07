@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Notifier;
 
+use App\Contracts\Notifier\NotifierInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
@@ -57,9 +58,11 @@ return static function (ContainerConfigurator $configurator): void {
     $services->set(Notifier\AllAvailableChannelsNotifier::class)->args([
         '$channels' => service(Channel\Channels::class),
     ]);
-    $services->set(NotifierInterface::class, Notifier\Notifiers::class)->args([
+    $services->set(Notifier\Notifiers::class)->args([
         '$notifiers' => [
             service(Notifier\AllAvailableChannelsNotifier::class),
         ],
     ]);
+
+    $services->alias(NotifierInterface::class, Notifier\Notifiers::class);
 };

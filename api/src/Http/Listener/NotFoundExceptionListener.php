@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Listener;
 
+use App\Contracts\Bus\Query\NotFoundException;
 use App\Http\Response\JsonResponse;
-use App\Shared\Bus\Query\NotFoundException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;

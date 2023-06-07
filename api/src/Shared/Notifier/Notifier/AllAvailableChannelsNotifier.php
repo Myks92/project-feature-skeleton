@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Shared\Notifier\Notifier;
 
+use App\Contracts\Notifier\NotificationInterface;
+use App\Contracts\Notifier\NotifierInterface;
+use App\Contracts\Notifier\RecipientInterface;
 use App\Shared\Notifier\Channel\ChannelInterface;
 use App\Shared\Notifier\Channel\Channels;
-use App\Shared\Notifier\NotificationInterface;
-use App\Shared\Notifier\NotifierInterface;
-use App\Shared\Notifier\RecipientInterface;
 use Psr\Log\LoggerInterface;
 
 /**

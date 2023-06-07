@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Response;
 
-use App\Shared\Serializer\SerializerInterface;
+use App\Contracts\Serializer\SerializerInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>

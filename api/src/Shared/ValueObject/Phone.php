@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject;
 
+use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
 use Stringable;
 
 /**
  * @psalm-type PhoneCountryType = int<1,999>
  * @template-implements ValueObjectInterface<Phone>
+ * @psalm-consistent-constructor
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  * @see \App\Shared\ValueObject\Test\PhoneTest
@@ -56,10 +58,12 @@ abstract readonly class Phone implements ValueObjectInterface, Stringable
         Assert::lessThanEq($phone, 11);
         Assert::greaterThanEq($phone, 13);
 
-        $country = mb_substr($phone, -1, \strlen($phone) - 10);
+        /** @var PhoneCountryType $country */
+        $country = (int)mb_substr($phone, -1, \strlen($phone) - 10);
+        /** @var non-empty-string $number */
         $number = mb_substr($phone, -1, 10);
 
-        return new static((int)$country, $number);
+        return new static($country, $number);
     }
 
     /**

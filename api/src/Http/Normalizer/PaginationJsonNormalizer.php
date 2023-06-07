@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Normalizer;
 
-use App\Shared\Paginator\PaginationInterface;
+use App\Contracts\Paginator\PaginationInterface;
 use InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

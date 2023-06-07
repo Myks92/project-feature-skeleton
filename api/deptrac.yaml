@@ -1,4 +1,4 @@
-parameters:
+deptrac:
     paths:
         - src
 
@@ -6,12 +6,18 @@ parameters:
         - '#.*Test.php#'
 
     layers:
-        - { name: Http, collectors: [ { type: className, regex: ^App\\Http\\ } ] }
-        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Shared|Http).* } ] }
-        - { name: Shared, collectors: [ { type: className, regex: ^App\\Shared\\ } ] }
-        - { name: Vendor, collectors: [ { type: className, regex: ^(?!App\\).* } ] }
+        - { name: Http, collectors: [ { type: directory, value: src/Http/.* } ] }
+        - { name: Console, collectors: [ { type: directory, value: src/Console/.* } ] }
+        - { name: Infrastructure, collectors: [ { type: directory, value: src/Infrastructure/.* } ] }
+        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Shared|Http|Infrastructure|Console|Contracts|Kernel).* } ] }
+        - { name: Contracts, collectors: [ { type: directory, value: src/Contracts/.* } ] }
+        - { name: Shared, collectors: [ { type: directory, value: src/Shared/.* } ] }
+        - { name: PHP, collectors: [ { type: php_internal, value: .* } ] }
 
     ruleset:
-        Http: [ Http, Feature, +Shared ]
-        Feature: [ +Shared ]
-        Shared: [ Vendor ]
+        Http: [ Http, Feature, Shared, +Contracts ]
+        Console: [ Console, Feature, Shared, +Contracts ]
+        Infrastructure: [ Shared, +Contracts ]
+        Feature: [ Shared, +Contracts ]
+        Shared: [ +Contracts ]
+        Contracts: [ PHP ]

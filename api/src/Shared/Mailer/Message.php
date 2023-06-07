@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Mailer;
 
+use App\Contracts\Mailer\MessageInterface;
 use DateTimeImmutable;
 use DateTimeInterface;
 

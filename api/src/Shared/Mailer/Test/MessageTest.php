@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Mailer\Test;
 
+use App\Contracts\Mailer\MessageInterface;
 use App\Shared\Mailer\File;
 use App\Shared\Mailer\Message;
-use App\Shared\Mailer\MessageInterface;
 use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;

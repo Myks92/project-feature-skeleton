@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Shared\Notifier\Channel\Email;
 
+use App\Contracts\Notifier\NotificationInterface;
+use App\Contracts\Notifier\RecipientInterface;
 use App\Shared\Notifier\Channel\ChannelInterface;
 use App\Shared\Notifier\Channel\Email\NotificationInterface as EmailNotificationInterface;
 use App\Shared\Notifier\Channel\Email\RecipientInterface as EmailRecipientInterface;
-use App\Shared\Notifier\NotificationInterface;
-use App\Shared\Notifier\RecipientInterface;
 use App\Shared\Notifier\Transport\TransportInterface;
 use LogicException;
 

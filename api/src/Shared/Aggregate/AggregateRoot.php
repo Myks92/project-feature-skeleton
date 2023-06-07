@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Shared\Aggregate;
 
-use App\Shared\DomainEvent\DomainEventInterface;
-use App\Shared\DomainEvent\ReleaseEventsInterface;
+use App\Contracts\Aggregate\AggregateIdInterface;
+use App\Contracts\Aggregate\AggregateRootInterface;
+use App\Contracts\Aggregate\AggregateVersioningInterface;
+use App\Contracts\DomainEvent\DomainEventInterface;
+use App\Contracts\DomainEvent\ReleaseEventsInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

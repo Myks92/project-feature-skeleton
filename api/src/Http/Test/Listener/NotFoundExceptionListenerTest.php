@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Test\Listener;
 
+use App\Contracts\Bus\Query\NotFoundException;
 use App\Http\Listener\NotFoundExceptionListener;
 use App\Http\Response\JsonResponse;
-use App\Shared\Bus\Query\NotFoundException;
 use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Filesystem\Exception;
 
+use App\Contracts\Filesystem\Exception\FilesystemExceptionInterface;
 use RuntimeException;
 use Throwable;
 

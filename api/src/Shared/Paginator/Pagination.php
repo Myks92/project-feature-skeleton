@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Paginator;
 
+use App\Contracts\Paginator\PaginationInterface;
 use ArrayIterator;
 use ArrayObject;
 use Iterator;

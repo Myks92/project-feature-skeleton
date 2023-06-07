@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Aggregate;
 
+use App\Contracts\Aggregate\AggregateIdInterface;
 use App\Shared\Assert;
 
 /**

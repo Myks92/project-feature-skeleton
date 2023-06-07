@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject;
 
+use App\Contracts\ValueObject\ValueObjectInterface;
+
 /**
  * @template-implements ValueObjectInterface<Currency>
  *

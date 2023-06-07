@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Notifier\Channel\Email;
 
-use App\Shared\Notifier\NotificationInterface;
+use App\Contracts\Notifier\NotificationInterface;
 use InvalidArgumentException;
 
 /**

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Notifier\Channel;
 
-use App\Shared\Notifier\NotificationInterface;
-use App\Shared\Notifier\RecipientInterface;
+use App\Contracts\Notifier\NotificationInterface;
+use App\Contracts\Notifier\RecipientInterface;
 
 /**
  * @template TNotification of NotificationInterface

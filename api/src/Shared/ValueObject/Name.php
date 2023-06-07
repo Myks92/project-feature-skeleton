@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject;
 
+use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
 use Stringable;
 

@@ -15,13 +15,13 @@ framework:
 
             command.bus:
                 middleware:
-                    - App\Shared\Bus\Middleware\ValidationMiddleware
+                    - App\Infrastructure\Bus\Symfony\Middleware\ValidationMiddleware
                     - router_context
                     - doctrine_transaction
 
             query.bus:
                 middleware:
-                    - App\Shared\Bus\Middleware\ValidationMiddleware
+                    - App\Infrastructure\Bus\Symfony\Middleware\ValidationMiddleware
 
             event.bus:
                 default_middleware: allow_no_handlers
@@ -36,9 +36,9 @@ framework:
             sync: '%env(MESSENGER_SYNC_TRANSPORT_DSN)%'
 
         routing:
-            App\Shared\Bus\Command\CommandInterface: async
-            App\Shared\Bus\Query\QueryInterface: sync
-            App\Shared\Bus\Event\EventInterface: async
+            App\Contracts\Bus\Command\CommandInterface: async
+            App\Contracts\Bus\Query\QueryInterface: sync
+            App\Contracts\Bus\Event\EventInterface: async
 
 when@test:
     framework:

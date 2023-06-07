@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Notifier\Channel\Telegram;
 
-use App\Shared\Notifier\NotificationInterface as BaseNotificationInterface;
-use App\Shared\Notifier\RecipientInterface;
+use App\Contracts\Notifier\NotificationInterface as BaseNotificationInterface;
+use App\Contracts\Notifier\RecipientInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
