@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Notifier;
+namespace App\Infrastructure\Notifier;
 
 use App\Contracts\Notifier\NotifierInterface;
+use App\Shared\Notifier\Channel;
+use App\Shared\Notifier\Notifier;
+use App\Shared\Notifier\Transport;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
@@ -17,9 +20,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('App\\Shared\\Notifier\\', '.')->exclude([
-        './config.php',
-    ]);
+    $services->set(Transport\Symfony\Mailer\Transport::class);
 
     $services->set(Transport\Telegram\Transport::class)->args([
         '$token' => env('NOTIFIER_TELEGRAM_TOKEN'),
