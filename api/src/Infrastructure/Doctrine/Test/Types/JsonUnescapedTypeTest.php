@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Doctrine\Test\Types;
+namespace App\Infrastructure\Doctrine\Test\Types;
 
-use App\Shared\Doctrine\Types\JsonUnescapedType;
+use App\Infrastructure\Doctrine\Types\JsonUnescapedType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use PHPUnit\Framework\Attributes\CoversClass;

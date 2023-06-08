@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Doctrine;
+namespace App\Infrastructure\Doctrine;
 
-use App\Shared\Doctrine\Types\JsonUnescapedType;
+use App\Infrastructure\Doctrine\Types\JsonUnescapedType;
 use Doctrine\DBAL\Types\Types as DoctrineTypes;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
