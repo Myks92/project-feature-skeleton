@@ -39,7 +39,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/tests/bootstrap.php',
         __DIR__ . '/tests/container.php',
         ArraySpreadInsteadOfArrayMergeRector::class,
-        ClassPropertyAssignToConstructorPromotionRector::class => [__DIR__ . '/src/Http'],
+        ClassPropertyAssignToConstructorPromotionRector::class => [__DIR__ . '/src/Http', __DIR__ . '/src/*/Entity/*'],
         CountOnNullRector::class,
         NullToStrictStringFuncCallArgRector::class,
         RemoveExtraParametersRector::class,
@@ -70,6 +70,14 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        DoctrineSetList::DOCTRINE_COMMON_20,
+        DoctrineSetList::DOCTRINE_DBAL_210,
+        DoctrineSetList::DOCTRINE_DBAL_211,
+        DoctrineSetList::DOCTRINE_DBAL_30,
+        DoctrineSetList::DOCTRINE_DBAL_40,
+        DoctrineSetList::DOCTRINE_ORM_213,
+        DoctrineSetList::DOCTRINE_ORM_214,
+        DoctrineSetList::DOCTRINE_ORM_29,
     ]);
 
     //Symfony
