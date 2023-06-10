@@ -24,6 +24,7 @@ abstract readonly class Phone implements ValueObjectInterface, Stringable
      * @var PhoneCountryType
      */
     private int $country;
+
     /**
      * @var non-empty-string
      */

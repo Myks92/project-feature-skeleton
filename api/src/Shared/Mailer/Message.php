@@ -14,36 +14,45 @@ use DateTimeInterface;
 final class Message implements MessageInterface
 {
     private string $charset = 'utf-8';
+
     /**
      * @var array<string, string>|string|string[]|null
      */
     private array|string|null $from = null;
+
     /**
      * @var array<string, string>|string|string[]|null
      */
     private array|string|null $to = null;
+
     /**
      * @var array<string, string>|string|string[]|null
      */
     private array|string|null $replyTo = null;
+
     /**
      * @var array<string, string>|string|string[]|null
      */
     private array|string|null $cc = null;
+
     /**
      * @var array<string, string>|string|string[]|null
      */
     private array|string|null $bcc = null;
+
     private ?string $subject = null;
     private ?string $text = null;
     private ?string $html = null;
     private ?DateTimeInterface $date = null;
+
     /**
      * @var self::PRIORITY_*
      */
     private int $priority = self::PRIORITY_NORMAL;
+
     private ?string $returnPath = null;
     private ?string $sender = null;
+
     /**
      * @var list<File>
      */

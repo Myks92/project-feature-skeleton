@@ -20,6 +20,7 @@ final class JsonUnescapedTypeTest extends TestCase
 {
     /** @var AbstractPlatform&MockObject */
     protected AbstractPlatform $platform;
+
     protected JsonUnescapedType $type;
 
     protected function setUp(): void

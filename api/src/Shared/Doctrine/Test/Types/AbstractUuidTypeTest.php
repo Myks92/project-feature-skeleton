@@ -22,6 +22,7 @@ final class AbstractUuidTypeTest extends TestCase
 {
     /** @var AbstractPlatform&MockObject */
     protected AbstractPlatform $platform;
+
     protected AbstractUuidType $type;
 
     protected function setUp(): void

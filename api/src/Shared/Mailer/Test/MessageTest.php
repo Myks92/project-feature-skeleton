@@ -7,7 +7,6 @@ namespace App\Shared\Mailer\Test;
 use App\Contracts\Mailer\MessageInterface;
 use App\Shared\Mailer\File;
 use App\Shared\Mailer\Message;
-use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -137,7 +136,7 @@ final class MessageTest extends TestCase
 
     public function testDate(): void
     {
-        $date = new DateTime();
+        $date = new \DateTimeImmutable();
         $message = $this->message->date($date);
 
         self::assertNotSame($message, $this->message);
@@ -357,7 +356,7 @@ final class MessageTest extends TestCase
         self::assertNotSame($this->message, $this->message->attach($file));
         self::assertNotSame($this->message, $this->message->header('name', 'value'));
         self::assertNotSame($this->message, $this->message->headers([]));
-        self::assertNotSame($this->message, $this->message->date(new DateTime()));
+        self::assertNotSame($this->message, $this->message->date(new \DateTimeImmutable()));
         self::assertNotSame($this->message, $this->message->priority(MessageInterface::PRIORITY_NORMAL));
         self::assertNotSame($this->message, $this->message->returnPath('bounce@example.com'));
         self::assertNotSame($this->message, $this->message->sender('sender@example.com'));
