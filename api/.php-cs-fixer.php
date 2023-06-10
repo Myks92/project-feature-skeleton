@@ -32,6 +32,16 @@ return
             'cast_spaces' => ['space' => 'none'],
             'binary_operator_spaces' => false,
 
+            'class_attributes_separation' => [
+                'elements' => [
+                    'const' => 'none',
+                    'method' => 'one',
+                    'property' => 'none',
+                    'trait_import' => 'none',
+                    'case' => 'none',
+                ],
+            ],
+
             'phpdoc_to_comment' => false,
             'phpdoc_separation' => false,
             'phpdoc_types_order' => ['null_adjustment' => 'always_last'],
@@ -57,4 +67,6 @@ return
             'self_static_accessor' => true,
 
             'static_lambda' => true,
+
+            'date_time_immutable' => true,
         ]);
