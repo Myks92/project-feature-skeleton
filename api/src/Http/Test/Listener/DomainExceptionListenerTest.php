@@ -45,7 +45,7 @@ final class DomainExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createMock(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['content-type' => 'application/json']),
+            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new Exception('No domain exception.')
         );
@@ -75,7 +75,7 @@ final class DomainExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createMock(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['content-type' => 'application/json']),
+            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new DomainException('Some error.')
         );

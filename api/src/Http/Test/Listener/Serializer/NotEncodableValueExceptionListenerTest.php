@@ -45,7 +45,7 @@ final class NotEncodableValueExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createMock(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['content-type' => 'application/json']),
+            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new Exception('No encodable value exception.')
         );
@@ -75,7 +75,7 @@ final class NotEncodableValueExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createMock(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['content-type' => 'application/json']),
+            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new NotEncodableValueException('Some error.')
         );

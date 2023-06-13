@@ -48,7 +48,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['content-type' => 'application/json']),
+            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new Exception('Some Error.')
         );
@@ -76,7 +76,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['content-type' => 'application/json']),
+            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new PartialDenormalizationException(
                 ['name' => 42, 'age' => 'John'],

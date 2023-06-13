@@ -33,7 +33,7 @@ final readonly class UnauthorizedExceptionListener
             return;
         }
 
-        if ($request->headers->get('content-type', '') !== 'application/json') {
+        if ($request->headers->get('CONTENT_TYPE', '') !== 'application/json') {
             return;
         }
 
