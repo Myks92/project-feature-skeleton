@@ -40,7 +40,7 @@ final class ValidationExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
+            new Request([], [], [], [], [], ['content-type' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new Exception('No validation exception.')
         );
@@ -60,7 +60,7 @@ final class ValidationExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
+            new Request([], [], [], [], [], ['content-type' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new ValidationException(
                 new Errors([

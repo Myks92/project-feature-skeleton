@@ -44,7 +44,7 @@ final class ExtraAttributesExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
+            new Request([], [], [], [], [], ['content-type' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new Exception('Some Error.')
         );
@@ -74,7 +74,7 @@ final class ExtraAttributesExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
+            new Request([], [], [], [], [], ['content-type' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new ExtraAttributesException(['age'])
         );

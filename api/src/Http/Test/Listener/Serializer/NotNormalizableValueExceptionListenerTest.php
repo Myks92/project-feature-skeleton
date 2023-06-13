@@ -44,7 +44,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
+            new Request([], [], [], [], [], ['content-type' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             new Exception('Some Error.')
         );
@@ -73,7 +73,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
 
         $event = new ExceptionEvent(
             $this->createStub(HttpKernelInterface::class),
-            new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
+            new Request([], [], [], [], [], ['content-type' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
             NotNormalizableValueException::createForUnexpectedDataType('Error', 42, ['string'], 'name'),
         );
