@@ -19,6 +19,9 @@ framework:
     #fragments: true
     php_errors:
         log: true
+        
+    property_info:
+        enabled: true
 
 when@test:
     framework:
