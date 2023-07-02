@@ -136,7 +136,7 @@ final class MessageTest extends TestCase
 
     public function testDate(): void
     {
-        $date = new \DateTimeImmutable();
+        $date = new DateTimeImmutable();
         $message = $this->message->date($date);
 
         self::assertNotSame($message, $this->message);
@@ -356,7 +356,7 @@ final class MessageTest extends TestCase
         self::assertNotSame($this->message, $this->message->attach($file));
         self::assertNotSame($this->message, $this->message->header('name', 'value'));
         self::assertNotSame($this->message, $this->message->headers([]));
-        self::assertNotSame($this->message, $this->message->date(new \DateTimeImmutable()));
+        self::assertNotSame($this->message, $this->message->date(new DateTimeImmutable()));
         self::assertNotSame($this->message, $this->message->priority(MessageInterface::PRIORITY_NORMAL));
         self::assertNotSame($this->message, $this->message->returnPath('bounce@example.com'));
         self::assertNotSame($this->message, $this->message->sender('sender@example.com'));
