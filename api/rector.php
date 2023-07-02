@@ -13,8 +13,10 @@ use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
+use Rector\PHPUnit\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PostRector\Rector\NameImportingPostRector;
+use Rector\RemovingStatic\Rector\ClassMethod\LocallyCalledStaticMethodToNonStaticRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
@@ -48,6 +50,8 @@ return static function (RectorConfig $rectorConfig): void {
         FlipTypeControlToUseExclusiveTypeRector::class,
         DisallowedEmptyRuleFixerRector::class,
         AddSeeTestAnnotationRector::class,
+        PreferPHPUnitThisCallRector::class,
+        LocallyCalledStaticMethodToNonStaticRector::class,
     ]);
 
     //Common
