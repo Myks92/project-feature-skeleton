@@ -10,8 +10,6 @@ namespace App\Contracts\Bus\Query;
 interface QueryBusInterface
 {
     /**
-     * @template R
-     * @return R
      * @throws NotFoundException
      */
     public function dispatch(QueryInterface $query, array $metadata = []): mixed;
