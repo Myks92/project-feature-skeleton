@@ -1,8 +1,8 @@
 .DEFAULT_GOAL: help
 
 DOCKER_COMPOSE = docker compose
-EXEC_PHP = $(DOCKER_COMPOSE) run --rm api-php-cli
-COMPOSER = $(EXEC_PHP) composer
+PHP = $(DOCKER_COMPOSE) run --rm api-php-cli
+COMPOSER = $(PHP) composer
 APP_CLI = $(COMPOSER) app
 
 help:
@@ -16,22 +16,22 @@ up: docker-up ## Запуск контейнеров
 down: docker-down ## Остановка контейнеров
 restart: down up ## Перезапуск контейнеров
 
-#-- Тестирование и проверка
-check: check-lint check-cs check-analyze check-deps check-scheme test  ## Проверка
-check-lint: api-check-lint ## Проверка синтаксиса файлов
-check-cs: api-check-cs ## Проверка стиля кода
-check-analyze: api-check-analyze ## Проверка анализаторами кода
-check-scheme: api-check-schema-validate ## Проверка схемы базы данных
-check-deps: api-check-composer-validate api-check-composer-audit api-check-composer-unused ## Проверка зависимостей
+check: lint check-cs analyze check-deps check-scheme test  ## Проверка
+lint: api-check-lint ## Проверка синтаксиса файлов
+analyze: api-analyze ## Анализ кода
 test: api-test api-fixtures ## Запуск тестов
 test-unit: api-test-unit ## Запуск Unit тестов
 test-functional: api-test-functional api-fixtures ## Запуск Functional тестов
+check-cs: api-check-cs ## Проверка стиля кода
+check-scheme: api-check-schema ## Проверка схемы базы данных
+check-deps: api-check-composer-validate api-check-composer-audit api-check-composer-unused ## Проверка зависимостей
 
-#-- Автоматическое исправление и обновление
-fix: fix-cs ## Исправление
-fix-cs: api-fix-cs ## Исправление стиля кода
-fix-refactor: api-fix-refactor ## Исправить рефакторинг кода
 update-deps: api-composer-update restart ## Обновление зависимостей
+
+fix: fix-cs fix-refactor fix-psalm ## Исправление ошибок
+fix-cs: api-fix-cs ## Исправление ошибок стиля кода
+fix-refactor: api-fix-refactor ## Исправление рефакторинга кода
+fix-psalm: api-fix-psalm ## Исправление ошибок Psalm
 
 #-- Docker
 docker-up: ## Запуск контейнеров
@@ -66,44 +66,33 @@ api-composer-update: ## Обновление зависимостей
 	$(COMPOSER) update
 
 api-wait-db:
-	$(EXEC_PHP) wait-for-it api-postgres:5432 -t 30
+	$(PHP) wait-for-it api-postgres:5432 -t 30
 
 api-migrations: ## Применение миграций
-	- $(COMPOSER) app doctrine:migrations:migrate -- --no-interaction
+	- $(APP_CLI) doctrine:migrations:migrate -- --no-interaction
 
 api-migrations-diff: ## Создание миграций
-	$(COMPOSER) app doctrine:migrations:diff -- --no-interaction
+	$(APP_CLI) doctrine:migrations:diff -- --no-interaction
 
 api-fixtures: ## Применение фикстур
-	- $(COMPOSER) app doctrine:fixtures:load -- --no-interaction
+	- $(APP_CLI) doctrine:fixtures:load -- --no-interaction
 
 api-check: ## Проверка
-	make -j api-check-composer-validate api-check-composer-audit api-check-composer-unused api-check-schema-validate api-check-lint api-check-cs api-check-analyze api-test
+	make -j api-check-composer-validate api-check-composer-audit api-check-composer-unused api-check-schema api-check-lint api-check-cs api-analyze api-test
 
 api-check-lint: ## Проверка синтаксиса кода
 	$(COMPOSER) lint
-	$(COMPOSER) app lint:container
-	$(COMPOSER) app lint:twig templates
-	$(COMPOSER) app lint:yaml config -- --parse-tags
+	$(APP_CLI) lint:container
+	$(APP_CLI) lint:twig templates
+	$(APP_CLI) lint:yaml config -- --parse-tags
 
 api-check-cs: ## Проверка стиля кода
 	$(COMPOSER) php-cs-fixer fix -- --dry-run --diff
 
-api-check-analyze: api-check-layer api-check-refactor api-check-analyze-psalm ## Проверка статическими анализаторами
+api-check-schema: ## Проверка схемы база данных
+	$(APP_CLI) doctrine:schema:validate
 
-api-check-layer: ## Проверить зависимости слоёв кода
-	$(COMPOSER) deptrac
-
-api-check-refactor: ## Проверка автоматического рефакторинга и актуализация кода
-	$(COMPOSER) rector -- --dry-run
-
-api-check-analyze-psalm: ## Проверка анализатора Psalm
-	$(COMPOSER) psalm -- --no-diff
-
-api-check-schema-validate: ## Проверка валидация схемы база данных
-	$(COMPOSER) app doctrine:schema:validate
-
-api-check-composer-validate: ## Валидация зависимостей
+api-check-composer-validate: ## Проверка валидности composer.json
 	$(COMPOSER) validate
 
 api-check-composer-audit: ## Проверить пакеты на уязвимость и безопасность
@@ -112,14 +101,16 @@ api-check-composer-audit: ## Проверить пакеты на уязвимо
 api-check-composer-unused: ## Проверить неиспользуемые пакеты
 	$(COMPOSER) unused
 
-api-fix-cs: ## Исправление стиля кода
-	$(COMPOSER) php-cs-fixer fix
+api-analyze: api-analyze-layer api-analyze-refactor api-analyze-psalm ## Анализ
 
-api-fix-refactor: ## Исправить рефакторинг кода
-	$(COMPOSER) rector
+api-analyze-layer: ## Анализ слоёв
+	$(COMPOSER) deptrac
 
-api-fix-psalm: ## Исправление анализатора Psalm кода
-	$(COMPOSER) psalm
+api-analyze-refactor: ## Анализ рефакторинга
+	$(COMPOSER) rector -- --dry-run
+
+api-analyze-psalm: ## Анализ Psalm
+	$(COMPOSER) psalm -- --no-diff
 
 api-test: ## Запуск тестов
 	$(COMPOSER) test
@@ -138,3 +129,12 @@ api-test-functional:  ## Запуск Functional тестов
 
 api-test-functional-coverage: ## Запуск Functional тестов с покрытием кода
 	$(COMPOSER) test-coverage -- --testsuite=functional
+
+api-fix-cs: ## Исправление стиля кода
+	$(COMPOSER) php-cs-fixer fix
+
+api-fix-refactor: ## Исправление рефакторинга
+	$(COMPOSER) rector
+
+api-fix-psalm: ## Исправление Psalm ошибок
+	$(COMPOSER) psalm
