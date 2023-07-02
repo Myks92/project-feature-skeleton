@@ -15,11 +15,9 @@ use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\PostRector\Rector\NameImportingPostRector;
-use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
-use Rector\Symfony\Rector\Class_\InvokableControllerRector;
 use Rector\Symfony\Set\SymfonySetList;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNeverTypeRector;
 
@@ -59,8 +57,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::TYPE_DECLARATION,
     ]);
 
-    $rectorConfig->rule(NormalizeNamespaceByPSR4ComposerAutoloadRector::class);
-
     //PHP
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_82,
@@ -84,7 +80,6 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
     $rectorConfig->symfonyContainerPhp(__DIR__ . '/tests/container.php');
 
-    $rectorConfig->rule(InvokableControllerRector::class);
 
     $rectorConfig->sets([
         SymfonySetList::SYMFONY_62,
@@ -99,6 +94,5 @@ return static function (RectorConfig $rectorConfig): void {
         PHPUnitSetList::REMOVE_MOCKS,
         PHPUnitSetList::PHPUNIT_EXCEPTION,
         PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
-        PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
     ]);
 };
