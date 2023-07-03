@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Identification;
+namespace App\Http\Authentication;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>

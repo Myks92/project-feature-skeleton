@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Identification;
+namespace App\Http\Authentication;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Listener;
 
-use App\Http\Identification\UnauthorizedException;
+use App\Http\Authentication\UnauthorizedException;
 use App\Http\Response\JsonResponse;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
