@@ -7,7 +7,7 @@
   "prefer-stable": true,
   "require": {
     "php": ">=8.2",
-    "doctrine/doctrine-bundle": "^2.9",
+    "doctrine/doctrine-bundle": "^2.10",
     "doctrine/doctrine-migrations-bundle": "^3.2",
     "doctrine/orm": "^2.15",
     "knplabs/knp-paginator-bundle": "^6.2",
@@ -37,10 +37,10 @@
   "require-dev": {
     "dg/bypass-finals": "^1.4",
     "doctrine/doctrine-fixtures-bundle": "^3.4",
-    "friendsofphp/php-cs-fixer": "^3.17",
+    "friendsofphp/php-cs-fixer": "^3.21",
     "icanhazstring/composer-unused": "^0.8.9",
     "overtrue/phplint": "^9.0",
-    "phpunit/phpunit": "^10.1",
+    "phpunit/phpunit": "^10.2",
     "psalm/plugin-phpunit": "^0.18.4",
     "psalm/plugin-symfony": "^5.0",
     "qossmic/deptrac-shim": "^1.0",
@@ -51,7 +51,7 @@
     "symfony/stopwatch": "6.3.*",
     "symfony/var-dumper": "6.3.*",
     "symfony/web-profiler-bundle": "6.3.*",
-    "vimeo/psalm": "^5.12"
+    "vimeo/psalm": "^5.13"
   },
   "config": {
     "allow-plugins": {
