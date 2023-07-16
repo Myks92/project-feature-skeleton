@@ -28,10 +28,10 @@ check-deps: api-check-composer-validate api-check-composer-audit api-check-compo
 
 update-deps: api-composer-update restart ## Обновление зависимостей
 
-fix: fix-cs fix-refactor fix-psalm ## Исправление ошибок
+fix: fix-cs fix-refactor fix-typing ## Исправление ошибок
 fix-cs: api-fix-cs ## Исправление ошибок стиля кода
 fix-refactor: api-fix-refactor ## Исправление рефакторинга кода
-fix-psalm: api-fix-psalm ## Исправление ошибок Psalm
+fix-typing: api-fix-typing ## Исправление типизации
 
 #-- Docker
 docker-up: ## Запуск контейнеров
@@ -101,7 +101,7 @@ api-check-composer-audit: ## Проверить пакеты на уязвимо
 api-check-composer-unused: ## Проверить неиспользуемые пакеты
 	$(COMPOSER) unused
 
-api-analyze: api-analyze-layer api-analyze-refactor api-analyze-psalm ## Анализ
+api-analyze: api-analyze-layer api-analyze-refactor api-analyze-typing ## Анализ
 
 api-analyze-layer: ## Анализ слоёв
 	$(COMPOSER) deptrac
@@ -109,7 +109,7 @@ api-analyze-layer: ## Анализ слоёв
 api-analyze-refactor: ## Анализ рефакторинга
 	$(COMPOSER) rector -- --dry-run
 
-api-analyze-psalm: ## Анализ Psalm
+api-analyze-typing: ## Анализ типизации
 	$(COMPOSER) psalm -- --no-diff
 
 api-test: ## Запуск тестов
@@ -124,7 +124,7 @@ api-test-unit: ## Запуск Unit тестов
 api-test-unit-coverage: ## Запуск Unit тестов с покрытием кода
 	$(COMPOSER) test-coverage -- --testsuite=unit
 
-api-test-functional:  ## Запуск Functional тестов
+api-test-functional: ## Запуск Functional тестов
 	$(COMPOSER) test -- --testsuite=functional
 
 api-test-functional-coverage: ## Запуск Functional тестов с покрытием кода
@@ -136,5 +136,5 @@ api-fix-cs: ## Исправление стиля кода
 api-fix-refactor: ## Исправление рефакторинга
 	$(COMPOSER) rector
 
-api-fix-psalm: ## Исправление Psalm ошибок
+api-fix-typing: ## Исправление типизации
 	$(COMPOSER) psalm
