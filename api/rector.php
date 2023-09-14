@@ -94,8 +94,5 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
-        PHPUnitSetList::REMOVE_MOCKS,
-        PHPUnitSetList::PHPUNIT_EXCEPTION,
-        PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
     ]);
 };
