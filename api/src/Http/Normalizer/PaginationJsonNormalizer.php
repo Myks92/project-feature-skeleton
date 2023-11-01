@@ -13,6 +13,13 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 final class PaginationJsonNormalizer implements NormalizerInterface
 {
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            PaginationInterface::class => true
+        ];
+    }
+
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof PaginationInterface && $format === 'json';

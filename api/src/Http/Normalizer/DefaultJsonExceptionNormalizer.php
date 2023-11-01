@@ -18,6 +18,13 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
         private TranslatorInterface $translator,
     ) {}
 
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            FlattenException::class => true
+        ];
+    }
+
     public function supportsNormalization($data, string $format = null, array $context = []): bool
     {
         return $data instanceof FlattenException && $format === 'json';
