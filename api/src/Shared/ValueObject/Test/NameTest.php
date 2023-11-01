@@ -66,6 +66,4 @@ final class NameTest extends TestCase
     }
 }
 
-final readonly class Name extends \App\Shared\ValueObject\Name
-{
-}
+final readonly class Name extends \App\Shared\ValueObject\Name {}

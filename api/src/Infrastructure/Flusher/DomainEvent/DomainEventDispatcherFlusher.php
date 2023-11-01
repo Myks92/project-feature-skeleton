@@ -17,8 +17,7 @@ final readonly class DomainEventDispatcherFlusher implements FlusherInterface
 {
     public function __construct(
         private EventDispatcherInterface $dispatcher,
-    ) {
-    }
+    ) {}
 
     public function flush(AggregateRootInterface ...$roots): void
     {

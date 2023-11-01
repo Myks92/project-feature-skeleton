@@ -79,6 +79,4 @@ final class EmailTest extends TestCase
     }
 }
 
-final readonly class Email extends \App\Shared\ValueObject\Email
-{
-}
+final readonly class Email extends \App\Shared\ValueObject\Email {}

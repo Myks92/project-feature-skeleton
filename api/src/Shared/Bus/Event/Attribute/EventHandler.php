@@ -16,6 +16,5 @@ final readonly class EventHandler
         public string $event,
         public bool $async = true,
         public int $priority = 0
-    ) {
-    }
+    ) {}
 }

@@ -70,6 +70,4 @@ final class QueryBusTest extends TestCase
     }
 }
 
-class NotFoundException extends Exception implements \App\Contracts\Bus\Query\NotFoundException
-{
-}
+class NotFoundException extends Exception implements \App\Contracts\Bus\Query\NotFoundException {}

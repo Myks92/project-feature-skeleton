@@ -26,8 +26,7 @@ final readonly class Filesystem implements FilesystemInterface
 {
     public function __construct(
         private FilesystemOperator $defaultStorage,
-    ) {
-    }
+    ) {}
 
     public function fileExists(string $path): bool
     {

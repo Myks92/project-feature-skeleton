@@ -7,6 +7,4 @@ namespace App\Contracts\Notifier;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface RecipientInterface
-{
-}
+interface RecipientInterface {}

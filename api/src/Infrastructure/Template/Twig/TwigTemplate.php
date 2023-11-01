@@ -14,8 +14,7 @@ final readonly class TwigTemplate implements TemplateInterface
 {
     public function __construct(
         public Environment $twig,
-    ) {
-    }
+    ) {}
 
     public function render(string $name, array $context = []): string
     {

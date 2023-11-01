@@ -16,8 +16,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
 {
     public function __construct(
         private TranslatorInterface $translator,
-    ) {
-    }
+    ) {}
 
     public function supportsNormalization($data, string $format = null, array $context = []): bool
     {

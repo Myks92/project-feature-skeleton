@@ -14,8 +14,7 @@ final readonly class Channels
      */
     public function __construct(
         private iterable $channels
-    ) {
-    }
+    ) {}
 
     /**
      * @return iterable<string, ChannelInterface>

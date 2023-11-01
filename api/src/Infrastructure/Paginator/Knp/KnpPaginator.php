@@ -15,8 +15,7 @@ final readonly class KnpPaginator implements PaginatorInterface
 {
     public function __construct(
         private \Knp\Component\Pager\PaginatorInterface $paginator
-    ) {
-    }
+    ) {}
 
     public function paginate(mixed $target, int $page = 1, int $limit = null, array $options = []): PaginationInterface
     {

@@ -20,8 +20,7 @@ final readonly class Transports implements TransportInterface
      */
     public function __construct(
         private iterable $transports
-    ) {
-    }
+    ) {}
 
     public function supports(MessageInterface $message): bool
     {

@@ -18,27 +18,27 @@ final class Message implements MessageInterface
     /**
      * @var array<string, string>|string|string[]|null
      */
-    private array|string|null $from = null;
+    private null|array|string $from = null;
 
     /**
      * @var array<string, string>|string|string[]|null
      */
-    private array|string|null $to = null;
+    private null|array|string $to = null;
 
     /**
      * @var array<string, string>|string|string[]|null
      */
-    private array|string|null $replyTo = null;
+    private null|array|string $replyTo = null;
 
     /**
      * @var array<string, string>|string|string[]|null
      */
-    private array|string|null $cc = null;
+    private null|array|string $cc = null;
 
     /**
      * @var array<string, string>|string|string[]|null
      */
-    private array|string|null $bcc = null;
+    private null|array|string $bcc = null;
 
     private ?string $subject = null;
     private ?string $text = null;
@@ -75,7 +75,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
-    public function getFrom(): array|string|null
+    public function getFrom(): null|array|string
     {
         return $this->from;
     }
@@ -90,7 +90,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
-    public function getTo(): array|string|null
+    public function getTo(): null|array|string
     {
         return $this->to;
     }
@@ -105,7 +105,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
-    public function getReplyTo(): array|string|null
+    public function getReplyTo(): null|array|string
     {
         return $this->replyTo;
     }
@@ -120,7 +120,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
-    public function getCc(): array|string|null
+    public function getCc(): null|array|string
     {
         return $this->cc;
     }
@@ -135,7 +135,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
-    public function getBcc(): array|string|null
+    public function getBcc(): null|array|string
     {
         return $this->bcc;
     }

@@ -16,8 +16,7 @@ final readonly class Handler
 {
     public function __construct(
         private TransportInterface $transport
-    ) {
-    }
+    ) {}
 
     public function __invoke(MessageInterface $message): void
     {

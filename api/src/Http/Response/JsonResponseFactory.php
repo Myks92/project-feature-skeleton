@@ -13,10 +13,9 @@ final readonly class JsonResponseFactory
 {
     public function __construct(
         private SerializerInterface $serializer
-    ) {
-    }
+    ) {}
 
-    public function __invoke(object|array $data, int $status = 200, array $headers = []): JsonResponse
+    public function __invoke(array|object $data, int $status = 200, array $headers = []): JsonResponse
     {
         return new JsonResponse(
             $this->serializer->serialize($data, SerializerInterface::FORMAT_JSON),

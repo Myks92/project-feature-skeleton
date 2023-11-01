@@ -14,6 +14,5 @@ final readonly class QueryHandler
 {
     public function __construct(
         public bool $async = false
-    ) {
-    }
+    ) {}
 }

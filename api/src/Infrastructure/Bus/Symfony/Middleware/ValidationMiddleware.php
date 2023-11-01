@@ -16,8 +16,7 @@ final readonly class ValidationMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private ValidatorInterface $validator
-    ) {
-    }
+    ) {}
 
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {

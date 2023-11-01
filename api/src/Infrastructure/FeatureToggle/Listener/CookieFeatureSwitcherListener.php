@@ -18,8 +18,7 @@ final readonly class CookieFeatureSwitcherListener
     public function __construct(
         public FeatureSwitcherInterface $switcher,
         public string $key = 'X-Features'
-    ) {
-    }
+    ) {}
 
     public function __invoke(RequestEvent $event): void
     {

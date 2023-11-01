@@ -34,9 +34,9 @@ interface StorageAttributes extends JsonSerializable, ArrayAccess
      */
     public function type(): string;
 
-    public function visibility(): string|null;
+    public function visibility(): null|string;
 
-    public function lastModified(): int|null;
+    public function lastModified(): null|int;
 
     /**
      * @param TDirectoryAttributes|TFileAttributes $attributes

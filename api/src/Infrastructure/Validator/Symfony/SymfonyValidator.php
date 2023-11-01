@@ -18,8 +18,7 @@ final readonly class SymfonyValidator implements ValidatorInterface
 {
     public function __construct(
         private SymfonyValidatorInterface $validator
-    ) {
-    }
+    ) {}
 
     public function validate(object $value): void
     {

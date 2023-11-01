@@ -23,8 +23,7 @@ final readonly class DirectoryListing implements IteratorAggregate
      */
     public function __construct(
         private iterable $listing
-    ) {
-    }
+    ) {}
 
     /**
      * @param callable(T): bool $filter

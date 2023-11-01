@@ -11,5 +11,5 @@ use ArrayObject;
  */
 interface NormalizerInterface
 {
-    public function normalize(mixed $object): array|string|int|float|bool|ArrayObject|null;
+    public function normalize(mixed $object): null|array|ArrayObject|bool|float|int|string;
 }

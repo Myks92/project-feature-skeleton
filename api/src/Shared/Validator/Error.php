@@ -12,8 +12,7 @@ final readonly class Error implements \App\Contracts\Validator\Error
     public function __construct(
         private string $propertyPath,
         private string $message
-    ) {
-    }
+    ) {}
 
     public function getPropertyPath(): string
     {

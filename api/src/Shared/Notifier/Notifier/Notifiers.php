@@ -23,8 +23,7 @@ final readonly class Notifiers implements NotifierInterface
      */
     public function __construct(
         private iterable $notifiers
-    ) {
-    }
+    ) {}
 
     public function send(NotificationInterface $notification, RecipientInterface ...$recipients): void
     {

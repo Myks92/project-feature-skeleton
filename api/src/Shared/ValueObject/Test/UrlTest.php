@@ -45,6 +45,4 @@ final class UrlTest extends TestCase
     }
 }
 
-final readonly class Url extends \App\Shared\ValueObject\Url
-{
-}
+final readonly class Url extends \App\Shared\ValueObject\Url {}

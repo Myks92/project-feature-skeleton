@@ -14,6 +14,5 @@ final readonly class CommandHandler
 {
     public function __construct(
         public bool $async = true
-    ) {
-    }
+    ) {}
 }

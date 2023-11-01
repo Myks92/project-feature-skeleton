@@ -15,10 +15,9 @@ final readonly class Normalizer implements NormalizerInterface
 {
     public function __construct(
         private SymfonyNormalizerInterface $normalizer
-    ) {
-    }
+    ) {}
 
-    public function normalize(mixed $object): array|string|int|float|bool|ArrayObject|null
+    public function normalize(mixed $object): null|array|ArrayObject|bool|float|int|string
     {
         return $this->normalizer->normalize($object);
     }

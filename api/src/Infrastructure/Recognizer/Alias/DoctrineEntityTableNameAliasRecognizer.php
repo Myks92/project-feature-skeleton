@@ -20,8 +20,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
 {
     public function __construct(
         private EntityManagerInterface $em
-    ) {
-    }
+    ) {}
 
     public function supports(mixed $data): bool
     {

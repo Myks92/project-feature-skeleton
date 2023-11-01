@@ -14,8 +14,7 @@ final readonly class Errors implements \App\Contracts\Validator\Errors
      */
     public function __construct(
         private array $errors = []
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<array-key, Error>

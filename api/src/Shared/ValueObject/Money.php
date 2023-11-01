@@ -19,8 +19,7 @@ abstract readonly class Money implements ValueObjectInterface, Stringable
     public function __construct(
         private float $amount,
         private Currency $currency
-    ) {
-    }
+    ) {}
 
     /**
      * @return non-empty-string

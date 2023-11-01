@@ -18,8 +18,7 @@ final readonly class RedirectUrlAuthenticationEntryPoint implements Authenticati
     public function __construct(
         private string $loginUrl,
         private string $targetPathParameter,
-    ) {
-    }
+    ) {}
 
     public function start(Request $request, AuthenticationException $authException = null): Response
     {

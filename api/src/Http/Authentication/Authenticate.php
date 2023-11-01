@@ -10,8 +10,7 @@ final readonly class Authenticate
 {
     public function __construct(
         private SymfonySecurity $security
-    ) {
-    }
+    ) {}
 
     public function getIdentity(): Identity
     {

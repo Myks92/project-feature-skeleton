@@ -7,6 +7,4 @@ namespace App\Contracts\Bus\Command;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface CommandInterface
-{
-}
+interface CommandInterface {}

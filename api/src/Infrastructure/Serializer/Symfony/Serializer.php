@@ -16,8 +16,7 @@ final readonly class Serializer implements SerializerInterface
 {
     public function __construct(
         private \Symfony\Component\Serializer\SerializerInterface $serializer,
-    ) {
-    }
+    ) {}
 
     public function serialize(mixed $data, string $format, array $context = []): string
     {

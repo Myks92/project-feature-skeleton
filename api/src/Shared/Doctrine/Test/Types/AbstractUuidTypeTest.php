@@ -110,6 +110,4 @@ final class AbstractUuidTypeTest extends TestCase
 /**
  * @internal
  */
-final readonly class UuidTest extends Uuid
-{
-}
+final readonly class UuidTest extends Uuid {}

@@ -29,35 +29,35 @@ interface MessageInterface
      *
      * @return array<string, string>|string|string[]|null the sender email address
      */
-    public function getFrom(): array|string|null;
+    public function getFrom(): null|array|string;
 
     /**
      * Returns the message recipient(s) email address.
      *
      * @return array<string, string>|string|string[]|null the message recipients email address
      */
-    public function getTo(): array|string|null;
+    public function getTo(): null|array|string;
 
     /**
      * Returns the reply-to address of this message.
      *
      * @return array<string, string>|string|string[]|null the reply-to address of this message
      */
-    public function getReplyTo(): array|string|null;
+    public function getReplyTo(): null|array|string;
 
     /**
      * Returns the Cc (additional copy receiver) addresses of this message.
      *
      * @return array<string, string>|string|string[]|null the Cc (additional copy receiver) addresses of this message
      */
-    public function getCc(): array|string|null;
+    public function getCc(): null|array|string;
 
     /**
      * Returns the Bcc (hidden copy receiver) addresses of this message.
      *
      * @return array<string, string>|string|string[]|null the Bcc (hidden copy receiver) addresses of this message
      */
-    public function getBcc(): array|string|null;
+    public function getBcc(): null|array|string;
 
     /**
      * Returns the message subject.

@@ -14,8 +14,7 @@ final readonly class Identity implements IdentityInterface, UserInterface
     public function __construct(
         private string $id,
         private array $roles,
-    ) {
-    }
+    ) {}
 
     public function getId(): string
     {
@@ -30,9 +29,7 @@ final readonly class Identity implements IdentityInterface, UserInterface
         return $this->roles;
     }
 
-    public function eraseCredentials(): void
-    {
-    }
+    public function eraseCredentials(): void {}
 
     public function getUserIdentifier(): string
     {

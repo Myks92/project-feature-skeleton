@@ -16,8 +16,7 @@ final readonly class DoctrineTransactionWrapperFlusher implements FlusherInterfa
     public function __construct(
         private EntityManagerInterface $em,
         private FlusherInterface $flusher,
-    ) {
-    }
+    ) {}
 
     public function flush(AggregateRootInterface ...$roots): void
     {

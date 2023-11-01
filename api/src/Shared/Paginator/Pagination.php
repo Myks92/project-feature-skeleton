@@ -52,7 +52,7 @@ final class Pagination implements Iterator, PaginationInterface
      * @psalm-suppress InvalidArgument
      */
     #[ReturnTypeWillChange]
-    public function key(): string|int|null
+    public function key(): null|int|string
     {
         if (\is_object($this->items)) {
             $items = get_mangled_object_vars($this->items);

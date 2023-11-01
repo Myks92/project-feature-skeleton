@@ -23,8 +23,7 @@ final readonly class Transport implements TransportInterface
 {
     public function __construct(
         private MailerInterface $mailer
-    ) {
-    }
+    ) {}
 
     public function supports(MessageInterface $message): bool
     {

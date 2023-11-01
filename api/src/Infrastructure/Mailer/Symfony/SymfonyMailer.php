@@ -15,8 +15,7 @@ final readonly class SymfonyMailer implements MailerInterface
 {
     public function __construct(
         private AdapterMailer $mailer,
-    ) {
-    }
+    ) {}
 
     public function send(MessageInterface $message): void
     {

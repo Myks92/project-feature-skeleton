@@ -67,6 +67,4 @@ final class UuidTest extends TestCase
 /**
  * @internal
  */
-final readonly class Id extends \App\Shared\ValueObject\Uuid
-{
-}
+final readonly class Id extends \App\Shared\ValueObject\Uuid {}

@@ -18,8 +18,7 @@ final readonly class EventBus implements EventBusInterface
 {
     public function __construct(
         private MessageBusInterface $eventBus,
-    ) {
-    }
+    ) {}
 
     public function dispatch(EventInterface $event, array $metadata = []): void
     {

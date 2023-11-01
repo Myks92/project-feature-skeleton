@@ -23,8 +23,7 @@ final readonly class NotNormalizableValueExceptionListener
     public function __construct(
         private LoggerInterface $logger,
         private TranslatorInterface $translator
-    ) {
-    }
+    ) {}
 
     public function __invoke(ExceptionEvent $event): void
     {

@@ -9,6 +9,4 @@ use RuntimeException;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class MessageSendException extends RuntimeException
-{
-}
+final class MessageSendException extends RuntimeException {}

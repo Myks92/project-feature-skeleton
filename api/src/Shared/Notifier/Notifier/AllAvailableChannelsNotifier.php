@@ -24,8 +24,7 @@ final readonly class AllAvailableChannelsNotifier implements NotifierInterface
     public function __construct(
         private Channels $channels,
         private LoggerInterface $logger,
-    ) {
-    }
+    ) {}
 
     public function send(NotificationInterface $notification, RecipientInterface ...$recipients): void
     {

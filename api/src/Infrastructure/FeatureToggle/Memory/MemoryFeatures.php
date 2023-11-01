@@ -15,8 +15,7 @@ final class MemoryFeatures implements FeatureFlagInterface, FeatureSwitcherInter
      */
     public function __construct(
         private array $features
-    ) {
-    }
+    ) {}
 
     public function isEnabled(string $name): bool
     {

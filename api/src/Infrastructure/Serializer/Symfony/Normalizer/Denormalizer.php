@@ -16,8 +16,7 @@ final readonly class Denormalizer implements DenormalizerInterface
 {
     public function __construct(
         private SymfonyDenormalizerInterface $denormalizer
-    ) {
-    }
+    ) {}
 
     /**
      * @template T

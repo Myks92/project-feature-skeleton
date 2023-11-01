@@ -9,6 +9,4 @@ use Throwable;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface AliasNotRecognized extends Throwable
-{
-}
+interface AliasNotRecognized extends Throwable {}

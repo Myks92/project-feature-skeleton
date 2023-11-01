@@ -24,8 +24,7 @@ final readonly class Channel implements ChannelInterface
 {
     public function __construct(
         private TransportInterface $transport
-    ) {
-    }
+    ) {}
 
     public function supports(NotificationInterface $notification, RecipientInterface $recipient): bool
     {

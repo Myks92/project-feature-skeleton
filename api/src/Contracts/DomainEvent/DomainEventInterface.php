@@ -7,6 +7,4 @@ namespace App\Contracts\DomainEvent;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface DomainEventInterface
-{
-}
+interface DomainEventInterface {}

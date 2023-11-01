@@ -26,8 +26,7 @@ final readonly class Transport implements TransportInterface
     public function __construct(
         private HttpClientInterface $client,
         private string $apiId,
-    ) {
-    }
+    ) {}
 
     public function supports(MessageInterface $message): bool
     {

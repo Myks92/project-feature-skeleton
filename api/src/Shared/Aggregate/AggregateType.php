@@ -15,8 +15,7 @@ final readonly class AggregateType implements Stringable
 {
     public function __construct(
         private string $aggregateType
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {
