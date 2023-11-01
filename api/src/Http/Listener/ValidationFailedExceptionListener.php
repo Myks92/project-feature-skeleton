@@ -37,6 +37,6 @@ final class ValidationFailedExceptionListener
 
     private static function violationToError(ConstraintViolationInterface $violation): Error
     {
-        return new Error($violation->getPropertyPath(), $violation->getMessage());
+        return new Error($violation->getPropertyPath(), (string)$violation->getMessage());
     }
 }

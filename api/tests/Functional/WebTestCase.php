@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Functional;
 
-use App\Http\Identification\IdentityInterface;
+use App\Http\Authentication\IdentityInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
