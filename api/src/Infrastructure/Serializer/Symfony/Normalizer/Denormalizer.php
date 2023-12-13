@@ -32,6 +32,7 @@ final readonly class Denormalizer implements DenormalizerInterface
             ->withContext($contextBuilder)
             ->withAllowExtraAttributes(true);
 
+        /** @var T */
         return $this->denormalizer->denormalize($data, $type, null, $contextBuilder->toArray());
     }
 }
