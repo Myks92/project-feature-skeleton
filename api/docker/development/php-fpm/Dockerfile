@@ -1,6 +1,6 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.3-fpm-alpine
 
-ENV XDEBUG_VERSION 3.2.1
+ENV XDEBUG_VERSION 3.3.0
 
 RUN apk add --no-cache postgresql-dev fcgi git linux-headers zlib-dev libpng libjpeg-turbo-dev libpng-dev libwebp-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
