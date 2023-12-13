@@ -7,9 +7,7 @@ use Rector\CodeQuality\Rector\ClassMethod\LocallyCalledStaticMethodToNonStaticRe
 use Rector\Config\RectorConfig;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
-use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
-use Rector\Php74\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
@@ -38,9 +36,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         __DIR__ . '/tests/bootstrap.php',
         __DIR__ . '/tests/container.php',
-        ArraySpreadInsteadOfArrayMergeRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class => [__DIR__ . '/src/Http', __DIR__ . '/src/*/Entity/*'],
-        CountOnNullRector::class,
         NullToStrictStringFuncCallArgRector::class,
         RemoveExtraParametersRector::class,
         ReturnNeverTypeRector::class,
