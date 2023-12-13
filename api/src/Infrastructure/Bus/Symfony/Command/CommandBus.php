@@ -23,7 +23,7 @@ final readonly class CommandBus implements CommandBusInterface
         try {
             $this->commandBus->dispatch($command);
         } catch (HandlerFailedException $e) {
-            throw $e->getNestedExceptions()[0];
+            throw $e->getWrappedExceptions()[0];
         }
     }
 }

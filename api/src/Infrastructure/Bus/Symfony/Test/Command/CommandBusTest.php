@@ -43,7 +43,7 @@ final class CommandBusTest extends TestCase
         };
 
         $failedException = $this->createMock(HandlerFailedException::class);
-        $failedException->expects(self::once())->method('getNestedExceptions')
+        $failedException->expects(self::once())->method('getWrappedExceptions')
             ->willReturn([new DomainException('Not found.')]);
 
         $messageBus = $this->createMock(MessageBusInterface::class);

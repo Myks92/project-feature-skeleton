@@ -27,7 +27,7 @@ final readonly class EventBus implements EventBusInterface
         try {
             $this->eventBus->dispatch($event, $stamps);
         } catch (HandlerFailedException $e) {
-            throw $e->getNestedExceptions()[0];
+            throw $e->getWrappedExceptions()[0];
         }
     }
 
