@@ -28,10 +28,10 @@ check-deps: api-check-composer-validate api-check-composer-audit api-check-compo
 
 update-deps: api-composer-update restart ## Обновление зависимостей
 
-fix: fix-cs fix-refactor fix-typing ## Исправление ошибок
+fix: fix-cs fix-refactor fix-types ## Исправление ошибок
 fix-cs: api-fix-cs ## Исправление ошибок стиля кода
 fix-refactor: api-fix-refactor ## Исправление рефакторинга кода
-fix-typing: api-fix-typing ## Исправление типизации
+fix-types: api-fix-types ## Исправление типизации
 
 #-- Docker
 docker-up: ## Запуск контейнеров
@@ -101,7 +101,7 @@ api-check-composer-audit: ## Проверить пакеты на уязвимо
 api-check-composer-unused: ## Проверить неиспользуемые пакеты
 	$(COMPOSER) unused
 
-api-analyze: api-analyze-layer api-analyze-refactor api-analyze-typing ## Анализ
+api-analyze: api-analyze-layer api-analyze-refactor api-analyze-types ## Анализ
 
 api-analyze-layer: ## Анализ слоёв
 	$(COMPOSER) deptrac
@@ -109,7 +109,7 @@ api-analyze-layer: ## Анализ слоёв
 api-analyze-refactor: ## Анализ рефакторинга
 	$(COMPOSER) rector -- --dry-run
 
-api-analyze-typing: ## Анализ типизации
+api-analyze-types: ## Анализ типизации
 	$(COMPOSER) psalm -- --no-diff
 
 api-test: ## Запуск тестов
@@ -136,5 +136,5 @@ api-fix-cs: ## Исправление стиля кода
 api-fix-refactor: ## Исправление рефакторинга
 	$(COMPOSER) rector
 
-api-fix-typing: ## Исправление типизации
+api-fix-types: ## Исправление типизации
 	$(COMPOSER) psalm
