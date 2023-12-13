@@ -16,7 +16,7 @@ final class PaginationJsonNormalizer implements NormalizerInterface
     public function getSupportedTypes(?string $format): array
     {
         return [
-            PaginationInterface::class => true
+            PaginationInterface::class => true,
         ];
     }
 

@@ -40,7 +40,10 @@ final class MessageTest extends TestCase
 
     public static function charsetDataProvider(): array
     {
-        return [['utf-8'], ['iso-8859-2']];
+        return [
+            ['utf-8'],
+            ['iso-8859-2'],
+        ];
     }
 
     #[DataProvider('charsetDataProvider')]
