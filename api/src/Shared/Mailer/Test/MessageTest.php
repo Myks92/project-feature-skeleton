@@ -8,6 +8,7 @@ use App\Contracts\Mailer\MessageInterface;
 use App\Shared\Mailer\File;
 use App\Shared\Mailer\Message;
 use DateTimeImmutable;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +24,7 @@ final class MessageTest extends TestCase
 {
     private Message $message;
 
-    #[\Override]
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

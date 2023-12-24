@@ -10,6 +10,7 @@ use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManagerInterface;
+use Override;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
 {
     protected KernelBrowser $client;
 
-    #[\Override]
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

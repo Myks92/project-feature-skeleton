@@ -9,13 +9,14 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\GuidType;
 use InvalidArgumentException;
+use Override;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 abstract class AbstractUuidType extends GuidType
 {
-    #[\Override]
+    #[Override]
     final public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
@@ -29,7 +30,7 @@ abstract class AbstractUuidType extends GuidType
         throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [$this->getName()]);
     }
 
-    #[\Override]
+    #[Override]
     final public function convertToPHPValue($value, AbstractPlatform $platform): ?Uuid
     {
         if (empty($value)) {
@@ -51,7 +52,7 @@ abstract class AbstractUuidType extends GuidType
         return $uuid;
     }
 
-    #[\Override]
+    #[Override]
     final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\Validator\Constraint;
 
 use Attribute;
+use Override;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Compound;
 
@@ -16,7 +17,7 @@ use Symfony\Component\Validator\Constraints\Compound;
 #[Attribute]
 final class EmailNotBlank extends Compound
 {
-    #[\Override]
+    #[Override]
     protected function getConstraints(array $options): array
     {
         return [

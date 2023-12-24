@@ -8,6 +8,7 @@ use App\Shared\Bus\Command\Attribute\CommandHandler;
 use App\Shared\Bus\Event\Attribute\EventHandler;
 use App\Shared\Bus\Query\Attribute\QueryHandler;
 use App\Shared\DomainEvent\Attribute\EventListener;
+use Override;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionNamedType;
@@ -21,7 +22,7 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  */
 final class InfrastructureBundle extends AbstractBundle
 {
-    #[\Override]
+    #[Override]
     public function build(ContainerBuilder $container): void
     {
         $this->registerCommandBus($container);

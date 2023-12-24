@@ -7,6 +7,7 @@ namespace App\Http\Test\Listener;
 use App\Contracts\Validator\Exception\ValidationFailed;
 use App\Http\Listener\ValidationFailedExceptionListener;
 use Exception;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -27,7 +28,7 @@ final class ValidationFailedExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[\Override]
+    #[Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();

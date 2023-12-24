@@ -7,6 +7,7 @@ namespace App\Infrastructure\Doctrine\Test\Types;
 use App\Infrastructure\Doctrine\Types\JsonUnescapedType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +24,7 @@ final class JsonUnescapedTypeTest extends TestCase
 
     protected JsonUnescapedType $type;
 
-    #[\Override]
+    #[Override]
     protected function setUp(): void
     {
         $this->platform = $this->createMock(AbstractPlatform::class);

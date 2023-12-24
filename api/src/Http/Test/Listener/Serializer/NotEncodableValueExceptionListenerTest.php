@@ -7,6 +7,7 @@ namespace App\Http\Test\Listener\Serializer;
 use App\Http\Listener\Serializer\NotEncodableValueExceptionListener;
 use App\Http\Response\JsonResponse;
 use Exception;
+use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -27,7 +28,7 @@ final class NotEncodableValueExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[\Override]
+    #[Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();

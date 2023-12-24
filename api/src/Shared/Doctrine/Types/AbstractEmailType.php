@@ -9,16 +9,17 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\StringType;
 use InvalidArgumentException;
+use Override;
 
 abstract class AbstractEmailType extends StringType
 {
-    #[\Override]
+    #[Override]
     final public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return $value instanceof Email ? $value->getValue() : $value;
     }
 
-    #[\Override]
+    #[Override]
     final public function convertToPHPValue($value, AbstractPlatform $platform): ?Email
     {
         $className = $this->getClassName();
@@ -34,7 +35,7 @@ abstract class AbstractEmailType extends StringType
         }
     }
 
-    #[\Override]
+    #[Override]
     final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

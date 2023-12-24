@@ -8,13 +8,14 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\JsonType;
 use JsonException;
+use Override;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 final class JsonUnescapedType extends JsonType
 {
-    #[\Override]
+    #[Override]
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if ($value === null) {
