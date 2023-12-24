@@ -21,6 +21,7 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  */
 final class InfrastructureBundle extends AbstractBundle
 {
+    #[\Override]
     public function build(ContainerBuilder $container): void
     {
         $this->registerCommandBus($container);

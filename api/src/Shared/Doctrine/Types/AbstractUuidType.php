@@ -15,6 +15,7 @@ use InvalidArgumentException;
  */
 abstract class AbstractUuidType extends GuidType
 {
+    #[\Override]
     final public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
@@ -28,6 +29,7 @@ abstract class AbstractUuidType extends GuidType
         throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [$this->getName()]);
     }
 
+    #[\Override]
     final public function convertToPHPValue($value, AbstractPlatform $platform): ?Uuid
     {
         if (empty($value)) {
@@ -49,6 +51,7 @@ abstract class AbstractUuidType extends GuidType
         return $uuid;
     }
 
+    #[\Override]
     final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

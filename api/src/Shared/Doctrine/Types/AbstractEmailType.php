@@ -12,11 +12,13 @@ use InvalidArgumentException;
 
 abstract class AbstractEmailType extends StringType
 {
+    #[\Override]
     final public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return $value instanceof Email ? $value->getValue() : $value;
     }
 
+    #[\Override]
     final public function convertToPHPValue($value, AbstractPlatform $platform): ?Email
     {
         $className = $this->getClassName();
@@ -32,6 +34,7 @@ abstract class AbstractEmailType extends StringType
         }
     }
 
+    #[\Override]
     final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

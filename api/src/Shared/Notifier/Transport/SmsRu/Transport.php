@@ -21,7 +21,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 final readonly class Transport implements TransportInterface
 {
-    private const URL = 'https://sms.ru/sms/send';
+    private const string URL = 'https://sms.ru/sms/send';
 
     public function __construct(
         private HttpClientInterface $client,

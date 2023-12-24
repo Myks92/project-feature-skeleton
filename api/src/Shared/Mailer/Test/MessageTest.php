@@ -23,6 +23,7 @@ final class MessageTest extends TestCase
 {
     private Message $message;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

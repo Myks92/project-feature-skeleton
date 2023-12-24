@@ -21,7 +21,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 final readonly class Transport implements TransportInterface
 {
-    private const HOST = 'api.telegram.org';
+    private const string HOST = 'api.telegram.org';
 
     public function __construct(
         private HttpClientInterface $client,

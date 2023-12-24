@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints\Compound;
 #[Attribute]
 final class EmailNotBlank extends Compound
 {
+    #[\Override]
     protected function getConstraints(array $options): array
     {
         return [

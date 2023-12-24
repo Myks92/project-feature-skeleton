@@ -25,6 +25,7 @@ final class AbstractUuidTypeTest extends TestCase
 
     protected AbstractUuidType $type;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->platform = $this->createMock(AbstractPlatform::class);

@@ -22,6 +22,7 @@ abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestC
 {
     protected KernelBrowser $client;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

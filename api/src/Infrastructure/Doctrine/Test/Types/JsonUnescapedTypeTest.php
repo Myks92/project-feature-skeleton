@@ -23,6 +23,7 @@ final class JsonUnescapedTypeTest extends TestCase
 
     protected JsonUnescapedType $type;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->platform = $this->createMock(AbstractPlatform::class);

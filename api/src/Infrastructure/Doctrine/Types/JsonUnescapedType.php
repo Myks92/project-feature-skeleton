@@ -14,6 +14,7 @@ use JsonException;
  */
 final class JsonUnescapedType extends JsonType
 {
+    #[\Override]
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if ($value === null) {

@@ -27,6 +27,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();

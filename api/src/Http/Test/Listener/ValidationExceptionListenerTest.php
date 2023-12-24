@@ -27,6 +27,7 @@ final class ValidationExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
