@@ -2,7 +2,6 @@
   "name": "myks92/project-feature-skeleton",
   "type": "project",
   "license": "MIT",
-  "description": "Sport Federation",
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
