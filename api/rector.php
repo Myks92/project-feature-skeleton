@@ -67,7 +67,6 @@ return static function (RectorConfig $rectorConfig): void {
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
         DoctrineSetList::DOCTRINE_COMMON_20,
-        DoctrineSetList::DOCTRINE_DBAL_210,
         DoctrineSetList::DOCTRINE_DBAL_211,
         DoctrineSetList::DOCTRINE_DBAL_30,
         DoctrineSetList::DOCTRINE_DBAL_40,
