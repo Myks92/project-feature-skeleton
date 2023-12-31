@@ -16,4 +16,12 @@ return static function (ContainerConfigurator $configurator): void {
             ],
         ],
     ]);
+
+    $services = $configurator
+        ->services()
+        ->defaults()
+        ->autowire()
+        ->autoconfigure();
+
+    $services->set(FixPostgreSQLDefaultSchemaListener::class);
 };
