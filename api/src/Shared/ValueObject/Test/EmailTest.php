@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject\Test;
 
+use App\Shared\ValueObject\Email as SharedEmail;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-#[CoversClass(\App\Shared\ValueObject\Email::class)]
+#[CoversClass(SharedEmail::class)]
 final class EmailTest extends TestCase
 {
     public function testSuccess(): void
@@ -79,4 +80,4 @@ final class EmailTest extends TestCase
     }
 }
 
-final readonly class Email extends \App\Shared\ValueObject\Email {}
+final readonly class Email extends SharedEmail {}

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject\Test;
 
+use App\Shared\ValueObject\Name as SharedName;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-#[CoversClass(\App\Shared\ValueObject\Name::class)]
+#[CoversClass(SharedName::class)]
 final class NameTest extends TestCase
 {
     public function testSuccess(): void
@@ -66,4 +67,4 @@ final class NameTest extends TestCase
     }
 }
 
-final readonly class Name extends \App\Shared\ValueObject\Name {}
+final readonly class Name extends SharedName {}

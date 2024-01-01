@@ -12,6 +12,7 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManagerInterface;
 use Override;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as SymfonyWebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -19,7 +20,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @internal
  */
-abstract class WebTestCase extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
+abstract class WebTestCase extends SymfonyWebTestCase
 {
     protected KernelBrowser $client;
 

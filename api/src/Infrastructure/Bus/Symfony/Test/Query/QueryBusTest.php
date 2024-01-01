@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Bus\Symfony\Test\Query;
 
+use App\Contracts\Bus\Query\NotFoundException as ContractNotFoundException;
 use App\Contracts\Bus\Query\QueryInterface;
 use App\Infrastructure\Bus\Symfony\Query\QueryBus;
 use Exception;
@@ -70,4 +71,4 @@ final class QueryBusTest extends TestCase
     }
 }
 
-class NotFoundException extends Exception implements \App\Contracts\Bus\Query\NotFoundException {}
+class NotFoundException extends Exception implements ContractNotFoundException {}

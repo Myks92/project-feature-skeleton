@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject\Test;
 
+use App\Shared\ValueObject\Url as SharedUrl;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-#[CoversClass(\App\Shared\ValueObject\Url::class)]
+#[CoversClass(SharedUrl::class)]
 final class UrlTest extends TestCase
 {
     public function testSuccess(): void
@@ -45,4 +46,4 @@ final class UrlTest extends TestCase
     }
 }
 
-final readonly class Url extends \App\Shared\ValueObject\Url {}
+final readonly class Url extends SharedUrl {}

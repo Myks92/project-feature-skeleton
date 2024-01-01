@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Currency;
+use App\Shared\ValueObject\Money as SharedMoney;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-#[CoversClass(\App\Shared\ValueObject\Money::class)]
+#[CoversClass(SharedMoney::class)]
 final class MoneyTest extends TestCase
 {
     public function testSuccess(): void
@@ -117,4 +118,4 @@ final class MoneyTest extends TestCase
     }
 }
 
-final readonly class Money extends \App\Shared\ValueObject\Money {}
+final readonly class Money extends SharedMoney {}
