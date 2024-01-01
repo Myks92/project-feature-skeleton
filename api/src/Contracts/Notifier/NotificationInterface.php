@@ -10,7 +10,7 @@ namespace App\Contracts\Notifier;
 interface NotificationInterface
 {
     /**
-     * @return non-empty-string|null $subject
+     * @return non-empty-string|null
      */
     public function getSubject(): ?string;
 
