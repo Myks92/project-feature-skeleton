@@ -69,10 +69,10 @@ abstract readonly class Money implements ValueObjectInterface, Stringable
         return new static((int)$amount, $this->getCurrency());
     }
 
-    final public function isEqual(ValueObjectInterface $object): bool
+    final public function equals(ValueObjectInterface $object): bool
     {
         return
-            $this->getAmount() === $object->getAmount() &&
-            $this->getCurrency() === $object->getCurrency();
+            $this->amount === $object->amount &&
+            $this->currency === $object->currency;
     }
 }

@@ -56,8 +56,8 @@ final class EmailTest extends TestCase
         $email = new Email('email@app.test');
         $email2 = new Email('email-other@app.test'); // other
 
-        self::assertTrue($email->isEqual($email));
-        self::assertFalse($email->isEqual($email2));
+        self::assertTrue($email->equals($email));
+        self::assertFalse($email->equals($email2));
     }
 
     public function testIncorrect(): void

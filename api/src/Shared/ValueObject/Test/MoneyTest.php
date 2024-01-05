@@ -49,8 +49,8 @@ final class MoneyTest extends TestCase
         $money = new Money(100, $currency);
         $money2 = new Money(200, $currency); // other
 
-        self::assertTrue($money->isEqual($money));
-        self::assertFalse($money->isEqual($money2));
+        self::assertTrue($money->equals($money));
+        self::assertFalse($money->equals($money2));
     }
 
     public function testAddPositive(): void

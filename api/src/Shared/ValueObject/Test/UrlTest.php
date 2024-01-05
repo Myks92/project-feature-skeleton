@@ -41,8 +41,8 @@ final class UrlTest extends TestCase
         $url = new Url('http://site.ru');
         $url2 = new Url('http://site2.ru'); // other
 
-        self::assertTrue($url->isEqual($url));
-        self::assertFalse($url->isEqual($url2));
+        self::assertTrue($url->equals($url));
+        self::assertFalse($url->equals($url2));
     }
 }
 

@@ -13,5 +13,5 @@ interface ValueObjectInterface
     /**
      * @param T $object
      */
-    public function isEqual(self $object): bool;
+    public function equals(self $object): bool;
 }

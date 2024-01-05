@@ -40,8 +40,8 @@ final class PhoneTest extends TestCase
         $phone = new Phone(7, $number);
         $phone2 = new Phone(98, $number);
 
-        self::assertTrue($phone->isEqual($phone));
-        self::assertFalse($phone->isEqual($phone2));
+        self::assertTrue($phone->equals($phone));
+        self::assertFalse($phone->equals($phone2));
     }
 
     public function testNegativeCountry(): void

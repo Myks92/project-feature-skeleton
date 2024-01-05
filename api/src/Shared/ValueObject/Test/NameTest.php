@@ -62,8 +62,8 @@ final class NameTest extends TestCase
         $name = new Name('First', 'Last', 'Middle');
         $name2 = new Name('First 2', 'Last 2', 'Middle 2'); // other
 
-        self::assertTrue($name->isEqual($name));
-        self::assertFalse($name->isEqual($name2));
+        self::assertTrue($name->equals($name));
+        self::assertFalse($name->equals($name2));
     }
 }
 

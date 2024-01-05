@@ -47,8 +47,8 @@ abstract readonly class Url implements ValueObjectInterface, Stringable
         return $this->value;
     }
 
-    final public function isEqual(ValueObjectInterface $object): bool
+    final public function equals(ValueObjectInterface $object): bool
     {
-        return $this->getValue() === $object->getValue();
+        return $this->value === $object->value;
     }
 }

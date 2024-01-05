@@ -26,7 +26,7 @@ final class CurrencyTest extends TestCase
         $currency = Currency::USD;
         $currency2 = Currency::EUR; // other
 
-        self::assertTrue($currency->isEqual($currency));
-        self::assertFalse($currency->isEqual($currency2));
+        self::assertTrue($currency->equals($currency));
+        self::assertFalse($currency->equals($currency2));
     }
 }

@@ -74,8 +74,10 @@ abstract readonly class Name implements ValueObjectInterface, Stringable
         ]));
     }
 
-    final public function isEqual(ValueObjectInterface $object): bool
+    final public function equals(ValueObjectInterface $object): bool
     {
-        return $this->getFull() === $object->getFull();
+        return $this->first === $object->first &&
+            $this->last === $object->last &&
+            $this->middle === $object->middle;
     }
 }

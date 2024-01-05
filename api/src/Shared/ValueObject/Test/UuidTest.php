@@ -59,8 +59,8 @@ final class UuidTest extends TestCase
         $id = new Id(Uuid::uuid4()->toString());
         $id2 = new Id(Uuid::uuid4()->toString());
 
-        self::assertTrue($id->isEqual($id));
-        self::assertFalse($id->isEqual($id2));
+        self::assertTrue($id->equals($id));
+        self::assertFalse($id->equals($id2));
     }
 }
 

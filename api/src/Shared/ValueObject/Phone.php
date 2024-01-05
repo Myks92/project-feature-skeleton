@@ -90,8 +90,9 @@ abstract readonly class Phone implements ValueObjectInterface, Stringable
         return $this->number;
     }
 
-    final public function isEqual(ValueObjectInterface $object): bool
+    final public function equals(ValueObjectInterface $object): bool
     {
-        return $this->getFull() === $object->getFull();
+        return $this->country === $object->country &&
+            $this->number === $object->number;
     }
 }

@@ -182,7 +182,7 @@ enum Currency: string implements ValueObjectInterface
         return $this->name;
     }
 
-    public function isEqual(ValueObjectInterface $object): bool
+    public function equals(ValueObjectInterface $object): bool
     {
         return $this->getValue() === $object->getValue();
     }
