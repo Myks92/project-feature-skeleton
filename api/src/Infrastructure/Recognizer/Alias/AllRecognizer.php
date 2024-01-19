@@ -32,6 +32,7 @@ final readonly class AllRecognizer implements AliasRecognizerInterface
                 return true;
             }
         }
+
         return false;
     }
 

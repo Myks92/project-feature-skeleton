@@ -8,8 +8,6 @@ use App\Shared\Notifier\Channel\Email\MessageInterface as EmailMessageInterface;
 use App\Shared\Notifier\Channel\MessageInterface;
 use App\Shared\Notifier\Transport\Exception\MessageSendException;
 use App\Shared\Notifier\Transport\TransportInterface;
-use Exception;
-use LogicException;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
@@ -22,7 +20,7 @@ use Symfony\Component\Mime\Email;
 final readonly class Transport implements TransportInterface
 {
     public function __construct(
-        private MailerInterface $mailer
+        private MailerInterface $mailer,
     ) {}
 
     public function supports(MessageInterface $message): bool
@@ -33,10 +31,10 @@ final readonly class Transport implements TransportInterface
     public function send(MessageInterface $message): void
     {
         if (!$message instanceof EmailMessageInterface) {
-            throw new LogicException(sprintf(
+            throw new \LogicException(sprintf(
                 'The message must be an instance of %s (%s given).',
                 EmailMessageInterface::class,
-                $message::class
+                $message::class,
             ));
         }
 
@@ -47,8 +45,8 @@ final readonly class Transport implements TransportInterface
 
         try {
             $this->mailer->send($email);
-        } catch (Exception $exception) {
-            throw new MessageSendException($exception->getMessage(), (int)$exception->getCode(), $exception);
+        } catch (\Exception $exception) {
+            throw new MessageSendException($exception->getMessage(), (int) $exception->getCode(), $exception);
         }
     }
 }

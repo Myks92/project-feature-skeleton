@@ -8,7 +8,6 @@ use App\Contracts\Recognizer\Alias\AliasRecognizerInterface;
 use App\Infrastructure\Recognizer\Alias\Exception\AliasNotRecognizedException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\Mapping\MappingException;
-use LogicException;
 
 /**
  * @template T
@@ -19,7 +18,7 @@ use LogicException;
 final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasRecognizerInterface
 {
     public function __construct(
-        private EntityManagerInterface $em
+        private EntityManagerInterface $em,
     ) {}
 
     public function supports(mixed $data): bool
@@ -36,6 +35,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
 
         try {
             $this->em->getClassMetadata($className)->getTableName();
+
             return true;
         } catch (MappingException) {
             return false;
@@ -48,6 +48,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
             throw new AliasNotRecognizedException();
         }
         $className = $this->getClassName($data);
+
         return $this->em->getClassMetadata($className)->getTableName();
     }
 
@@ -59,6 +60,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
         if (\is_string($data)) {
             return $data;
         }
-        throw new LogicException('Type not supported.');
+
+        throw new \LogicException('Type not supported.');
     }
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Normalizer;
 
 use App\Contracts\Paginator\PaginationInterface;
-use InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
@@ -20,7 +19,7 @@ final class PaginationJsonNormalizer implements NormalizerInterface
         ];
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof PaginationInterface && $format === 'json';
     }
@@ -28,10 +27,10 @@ final class PaginationJsonNormalizer implements NormalizerInterface
     /**
      * @return array{items: iterable<mixed, mixed>, pagination: array{count: int, total: int, perPage: int, page: int, pages: float}}
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         if (!$object instanceof PaginationInterface) {
-            throw new InvalidArgumentException(sprintf('The object must implement "%s".', PaginationInterface::class));
+            throw new \InvalidArgumentException(sprintf('The object must implement "%s".', PaginationInterface::class));
         }
 
         return [

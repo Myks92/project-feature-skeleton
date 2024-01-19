@@ -6,8 +6,6 @@ namespace App\Http\Test\Listener\Serializer;
 
 use App\Http\Listener\Serializer\NotNormalizableValueExceptionListener;
 use App\Shared\Validator\ValidationException;
-use Exception;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -28,7 +26,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
@@ -48,7 +46,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
             $this->createStub(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new Exception('Some Error.')
+            new \Exception('Some Error.'),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
@@ -66,7 +64,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
                 'types' => implode(', ', ['string']),
                 'current' => 'int',
             ]),
-            self::equalTo('exceptions')
+            self::equalTo('exceptions'),
         )->willReturn('Тип должен быть одним из "string" (задано "int").');
 
         $listener = new NotNormalizableValueExceptionListener($logger, $translator);
@@ -83,7 +81,7 @@ final class NotNormalizableValueExceptionListenerTest extends TestCase
         try {
             $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
             self::fail('Expected exception is not thrown');
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             self::assertInstanceOf(ValidationException::class, $exception);
             self::assertCount(1, $errors = $exception->getErrors()->getErrors());
             $error = end($errors);

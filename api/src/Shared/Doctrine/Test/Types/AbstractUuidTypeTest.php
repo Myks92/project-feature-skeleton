@@ -8,11 +8,9 @@ use App\Shared\Doctrine\Types\AbstractUuidType;
 use App\Shared\ValueObject\Uuid;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 
 /**
  * @internal
@@ -26,12 +24,12 @@ final class AbstractUuidTypeTest extends TestCase
 
     protected AbstractUuidType $type;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->platform = $this->createMock(AbstractPlatform::class);
         /** @psalm-suppress InternalMethod */
-        $this->type = new class() extends AbstractUuidType {
+        $this->type = new class () extends AbstractUuidType {
             protected const NAME = 'test_uuid';
 
             protected function getClassName(): string
@@ -60,10 +58,10 @@ final class AbstractUuidTypeTest extends TestCase
 
     public function testPHPNotUuidConvertsToStringFailed(): void
     {
-        $value = new stdClass();
+        $value = new \stdClass();
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert PHP value of type stdClass to type test_uuid. Expected one of the following types: test_uuid'
+            'Could not convert PHP value of type stdClass to type test_uuid. Expected one of the following types: test_uuid',
         );
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
@@ -73,7 +71,7 @@ final class AbstractUuidTypeTest extends TestCase
         $value = '00000000-0000-0000-0000-000000000000';
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert PHP value \'00000000-0000-0000-0000-000000000000\' to type test_uuid. Expected one of the following types: test_uuid'
+            'Could not convert PHP value \'00000000-0000-0000-0000-000000000000\' to type test_uuid. Expected one of the following types: test_uuid',
         );
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
@@ -103,7 +101,7 @@ final class AbstractUuidTypeTest extends TestCase
         $value = '12345';
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert database value "12345" to Doctrine Type '
+            'Could not convert database value "12345" to Doctrine Type ',
         );
         $this->type->convertToPHPValue($value, $this->platform);
     }

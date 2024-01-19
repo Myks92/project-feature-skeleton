@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject\Test;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
@@ -27,7 +26,7 @@ final class UuidTest extends TestCase
     {
         $id = new Id($value = Uuid::uuid4()->toString());
 
-        self::assertSame($value, (string)$id);
+        self::assertSame($value, (string) $id);
     }
 
     public function testCase(): void
@@ -43,13 +42,13 @@ final class UuidTest extends TestCase
 
     public function testIncorrect(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Id('12345');
     }
 
     public function testEmpty(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress InvalidArgument */
         new Id('');
     }

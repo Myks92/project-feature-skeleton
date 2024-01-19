@@ -19,7 +19,7 @@ final class PsrEventDispatcherTest extends TestCase
 {
     public function testDispatch(): void
     {
-        $event = new class() implements DomainEventInterface {
+        $event = new class () implements DomainEventInterface {
             public string $id = '00000000-0000-0000-0000-000000000000';
         };
 

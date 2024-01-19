@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Listener;
 
 use App\Http\Response\JsonResponse;
-use DomainException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
@@ -20,7 +19,7 @@ final readonly class DomainExceptionListener
 {
     public function __construct(
         private LoggerInterface $logger,
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {}
 
     public function __invoke(ExceptionEvent $event): void
@@ -28,7 +27,7 @@ final readonly class DomainExceptionListener
         $exception = $event->getThrowable();
         $request = $event->getRequest();
 
-        if (!$exception instanceof DomainException) {
+        if (!$exception instanceof \DomainException) {
             return;
         }
 

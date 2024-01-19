@@ -9,8 +9,6 @@ use App\Http\Response\JsonResponse;
 use App\Shared\Validator\Error;
 use App\Shared\Validator\Errors;
 use App\Shared\Validator\ValidationException;
-use Exception;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -28,7 +26,7 @@ final class ValidationExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
@@ -44,7 +42,7 @@ final class ValidationExceptionListenerTest extends TestCase
             $this->createStub(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new Exception('No validation exception.')
+            new \Exception('No validation exception.'),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
@@ -68,15 +66,15 @@ final class ValidationExceptionListenerTest extends TestCase
                 new Errors([
                     new Error('email', 'Incorrect email.'),
                     new Error('firstName', 'This value should not be blank.'),
-                ])
-            )
+                ]),
+            ),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
 
         self::assertInstanceOf(JsonResponse::class, $response = $event->getResponse());
         self::assertSame(422, $response->getStatusCode());
-        self::assertJson($body = (string)$response->getContent());
+        self::assertJson($body = (string) $response->getContent());
 
         /** @var array $data */
         $data = json_decode($body, true, 512, JSON_THROW_ON_ERROR);

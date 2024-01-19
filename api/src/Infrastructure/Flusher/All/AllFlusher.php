@@ -17,7 +17,7 @@ final readonly class AllFlusher implements FlusherInterface
      * @param iterable<FlusherInterface> $flushers
      */
     public function __construct(
-        private iterable $flushers
+        private iterable $flushers,
     ) {
         Assert::allIsInstanceOf($flushers, FlusherInterface::class);
     }

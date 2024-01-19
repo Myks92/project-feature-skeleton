@@ -7,7 +7,6 @@ namespace App\Shared\Mailer\Test;
 use App\Shared\Mailer\File;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
 
 /**
  * @internal
@@ -65,13 +64,13 @@ final class FileTest extends TestCase
 
     public function testFromPathThrowExceptionIfFileNotExist(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(\RuntimeException::class);
         File::fromPath('file-not-exist');
     }
 
     public function testFromPathThrowExceptionIfFileIsDirectory(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(\RuntimeException::class);
         File::fromPath(__DIR__);
     }
 }

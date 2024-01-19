@@ -9,7 +9,6 @@ use App\Infrastructure\Bus\Symfony\Middleware\ValidationMiddleware;
 use App\Shared\Validator\ValidationException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Middleware\StackInterface;
 
@@ -25,7 +24,7 @@ final class ValidationMiddlewareTest extends TestCase
      */
     public function testValidateAndNext(): void
     {
-        $command = new stdClass();
+        $command = new \stdClass();
 
         $validator = $this->createMock(ValidatorInterface::class);
         $validator->expects(self::once())->method('validate')->with(
@@ -48,7 +47,7 @@ final class ValidationMiddlewareTest extends TestCase
      */
     public function testValidateFailedException(): void
     {
-        $command = new stdClass();
+        $command = new \stdClass();
 
         $exception = $this->createStub(ValidationException::class);
 

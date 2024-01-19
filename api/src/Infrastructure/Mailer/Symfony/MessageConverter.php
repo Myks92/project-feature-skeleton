@@ -83,6 +83,7 @@ final class MessageConverter
             if (!\is_string($address)) {
                 // email address without name
                 $addresses[] = new Address($name);
+
                 continue;
             }
             $addresses[] = new Address($address, $name);
@@ -100,7 +101,7 @@ final class MessageConverter
             if ($headers->has($name)) {
                 $headers->remove($name);
             }
-            foreach ((array)$value as $v) {
+            foreach ((array) $value as $v) {
                 $headers->addTextHeader($name, $v);
             }
         }
@@ -119,9 +120,9 @@ final class MessageConverter
             $path = $file->getPath();
 
             $part = new DataPart(
-                body: $path === null ? (string)$file->getContent() : new PartFile($path),
+                body: $path === null ? (string) $file->getContent() : new PartFile($path),
                 filename: $file->getName(),
-                contentType: $file->getContentType()
+                contentType: $file->getContentType(),
             );
 
             if ($file->isEmbed()) {

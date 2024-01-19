@@ -19,6 +19,11 @@ use Symfony\Component\Validator\Exception\ValidationFailedException;
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
 final class ValidationFailedExceptionListener
 {
+    private static function violationToError(ConstraintViolationInterface $violation): Error
+    {
+        return new Error($violation->getPropertyPath(), (string) $violation->getMessage());
+    }
+
     public function __invoke(ExceptionEvent $event): void
     {
         $exception = $event->getThrowable();
@@ -33,10 +38,5 @@ final class ValidationFailedExceptionListener
         }
 
         throw new ValidationException(new Errors($errors));
-    }
-
-    private static function violationToError(ConstraintViolationInterface $violation): Error
-    {
-        return new Error($violation->getPropertyPath(), (string)$violation->getMessage());
     }
 }

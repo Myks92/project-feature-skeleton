@@ -7,12 +7,9 @@ namespace App\Shared\Mailer\Test;
 use App\Contracts\Mailer\MessageInterface;
 use App\Shared\Mailer\File;
 use App\Shared\Mailer\Message;
-use DateTimeImmutable;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
 
 /**
  * @internal
@@ -24,20 +21,11 @@ final class MessageTest extends TestCase
 {
     private Message $message;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
         $this->message = new Message();
-    }
-
-    public function testSubject(): void
-    {
-        $subject = 'Test subject';
-        $message = $this->message->subject($subject);
-
-        self::assertNotSame($message, $this->message);
-        self::assertSame($subject, $message->getSubject());
     }
 
     public static function charsetDataProvider(): array
@@ -46,15 +34,6 @@ final class MessageTest extends TestCase
             ['utf-8'],
             ['iso-8859-2'],
         ];
-    }
-
-    #[DataProvider('charsetDataProvider')]
-    public function testCharset(string $charset): void
-    {
-        $message = $this->message->charset($charset);
-
-        self::assertNotSame($message, $this->message);
-        self::assertSame($charset, $message->getCharset());
     }
 
     public static function addressesDataProvider(): array
@@ -77,6 +56,46 @@ final class MessageTest extends TestCase
                 ['foo@example.com' => 'foo', 'bar@example.com' => 'bar'],
             ],
         ];
+    }
+
+    /**
+     * @return list<list<MessageInterface::PRIORITY_*>>
+     */
+    public static function priorityDataProvider(): array
+    {
+        return [
+            [MessageInterface::PRIORITY_HIGHEST],
+            [MessageInterface::PRIORITY_HIGH],
+            [MessageInterface::PRIORITY_NORMAL],
+            [MessageInterface::PRIORITY_LOW],
+            [MessageInterface::PRIORITY_LOWEST],
+        ];
+    }
+
+    public static function headerDataProvider(): array
+    {
+        return [
+            ['X-Foo', 'Bar', ['Bar']],
+            ['X-Fuzz', ['Bar', 'Baz'], ['Bar', 'Baz']],
+        ];
+    }
+
+    public function testSubject(): void
+    {
+        $subject = 'Test subject';
+        $message = $this->message->subject($subject);
+
+        self::assertNotSame($message, $this->message);
+        self::assertSame($subject, $message->getSubject());
+    }
+
+    #[DataProvider('charsetDataProvider')]
+    public function testCharset(string $charset): void
+    {
+        $message = $this->message->charset($charset);
+
+        self::assertNotSame($message, $this->message);
+        self::assertSame($charset, $message->getCharset());
     }
 
     /**
@@ -141,29 +160,15 @@ final class MessageTest extends TestCase
 
     public function testDate(): void
     {
-        $date = new DateTimeImmutable();
+        $date = new \DateTimeImmutable();
         $message = $this->message->date($date);
 
         self::assertNotSame($message, $this->message);
         self::assertNotSame($date, $message->getDate());
-        self::assertInstanceOf(DateTimeImmutable::class, $message->getDate());
+        self::assertInstanceOf(\DateTimeImmutable::class, $message->getDate());
         self::assertSame($date->getTimestamp(), $message
             ->getDate()
             ->getTimestamp());
-    }
-
-    /**
-     * @return list<list<MessageInterface::PRIORITY_*>>
-     */
-    public static function priorityDataProvider(): array
-    {
-        return [
-            [MessageInterface::PRIORITY_HIGHEST],
-            [MessageInterface::PRIORITY_HIGH],
-            [MessageInterface::PRIORITY_NORMAL],
-            [MessageInterface::PRIORITY_LOW],
-            [MessageInterface::PRIORITY_LOWEST],
-        ];
     }
 
     /**
@@ -194,14 +199,6 @@ final class MessageTest extends TestCase
 
         self::assertNotSame($message, $this->message);
         self::assertSame($address, $message->getSender());
-    }
-
-    public static function headerDataProvider(): array
-    {
-        return [
-            ['X-Foo', 'Bar', ['Bar']],
-            ['X-Fuzz', ['Bar', 'Baz'], ['Bar', 'Baz']],
-        ];
     }
 
     /**
@@ -361,7 +358,7 @@ final class MessageTest extends TestCase
         self::assertNotSame($this->message, $this->message->attach($file));
         self::assertNotSame($this->message, $this->message->header('name', 'value'));
         self::assertNotSame($this->message, $this->message->headers([]));
-        self::assertNotSame($this->message, $this->message->date(new DateTimeImmutable()));
+        self::assertNotSame($this->message, $this->message->date(new \DateTimeImmutable()));
         self::assertNotSame($this->message, $this->message->priority(MessageInterface::PRIORITY_NORMAL));
         self::assertNotSame($this->message, $this->message->returnPath('bounce@example.com'));
         self::assertNotSame($this->message, $this->message->sender('sender@example.com'));
@@ -399,7 +396,7 @@ final class MessageTest extends TestCase
         $image = imagecreatetruecolor(120, 20);
 
         if ($image === false) {
-            throw new RuntimeException('Unable create a new true color image.');
+            throw new \RuntimeException('Unable create a new true color image.');
         }
 
         $textColor = imagecolorallocate($image, 233, 14, 91);

@@ -7,7 +7,6 @@ namespace App\Infrastructure\Serializer\Symfony\Test;
 use App\Infrastructure\Serializer\Symfony\Serializer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 use Symfony\Component\Serializer\Context\ContextBuilderInterface;
 use Symfony\Component\Serializer\Context\Encoder\JsonEncoderContextBuilder;
 use Symfony\Component\Serializer\Context\Normalizer\JsonSerializableNormalizerContextBuilder;
@@ -31,7 +30,7 @@ final class SerializerTest extends TestCase
         $origin->expects(self::once())->method('serialize')->with(
             self::equalTo($data),
             'json',
-            $defaultContextBuilder->toArray()
+            $defaultContextBuilder->toArray(),
         )->willReturn('{"name":"API"}');
 
         $serializer = new Serializer($origin);
@@ -52,7 +51,7 @@ final class SerializerTest extends TestCase
         $origin->expects(self::once())->method('serialize')->with(
             self::equalTo($data),
             'json',
-            $defaultContextBuilder->toArray()
+            $defaultContextBuilder->toArray(),
         )->willReturn('{"name":"API"}');
 
         $serializer = new Serializer($origin);
@@ -63,7 +62,7 @@ final class SerializerTest extends TestCase
     public function testDeserialize(): void
     {
         $data = '{"name":"API"}';
-        $result = new stdClass();
+        $result = new \stdClass();
         $result->name = 'API';
 
         $defaultContextBuilder = $this->createDefaultContextBuilderForDeserialize();
@@ -71,20 +70,20 @@ final class SerializerTest extends TestCase
         $origin = $this->createMock(SerializerInterface::class);
         $origin->expects(self::once())->method('deserialize')->with(
             self::equalTo($data),
-            stdClass::class,
+            \stdClass::class,
             'json',
-            $defaultContextBuilder->toArray()
+            $defaultContextBuilder->toArray(),
         )->willReturn($result);
 
         $serializer = new Serializer($origin);
 
-        self::assertSame($result, $serializer->deserialize($data, stdClass::class, 'json'));
+        self::assertSame($result, $serializer->deserialize($data, \stdClass::class, 'json'));
     }
 
     public function testDeserializeWithContext(): void
     {
         $data = '{"name":"API"}';
-        $result = new stdClass();
+        $result = new \stdClass();
         $result->name = 'API';
 
         $paramsContextBuilder = (new SerializerContextBuilder())
@@ -95,14 +94,14 @@ final class SerializerTest extends TestCase
         $origin = $this->createMock(SerializerInterface::class);
         $origin->expects(self::once())->method('deserialize')->with(
             self::equalTo($data),
-            stdClass::class,
+            \stdClass::class,
             'json',
-            $defaultContextBuilder->toArray()
+            $defaultContextBuilder->toArray(),
         )->willReturn($result);
 
         $serializer = new Serializer($origin);
 
-        self::assertSame($result, $serializer->deserialize($data, stdClass::class, 'json', $paramsContextBuilder->toArray()));
+        self::assertSame($result, $serializer->deserialize($data, \stdClass::class, 'json', $paramsContextBuilder->toArray()));
     }
 
     private function createDefaultContextBuilderForSerialize(): ContextBuilderInterface

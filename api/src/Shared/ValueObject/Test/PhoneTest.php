@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Phone as SharedPhone;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -30,7 +29,7 @@ final class PhoneTest extends TestCase
     {
         $phone = $this->createPhone($country = 7, $number = '9995552233');
 
-        self::assertSame($country . $number, (string)$phone);
+        self::assertSame($country . $number, (string) $phone);
     }
 
     public function testEqual(): void
@@ -46,27 +45,27 @@ final class PhoneTest extends TestCase
 
     public function testNegativeCountry(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress InvalidArgument */
         new Phone(-7, '9995552233');
     }
 
     public function testCountryLengthMax(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress InvalidArgument */
         new Phone(3333, '9995552233');
     }
 
     public function testNumberLengthMin(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Phone(7, '999555223');
     }
 
     public function testNumberLengthMax(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Phone(7, '99955522331');
     }
 

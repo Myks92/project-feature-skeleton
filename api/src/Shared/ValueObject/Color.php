@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
-use InvalidArgumentException;
 
 /**
  * @template-implements ValueObjectInterface<Color>
@@ -31,10 +30,10 @@ abstract readonly class Color implements ValueObjectInterface
         }
 
         if (!preg_match('/^[a-fA-F0-9]+$/', $color)) {
-            throw new InvalidArgumentException('HEX color does not match format.');
+            throw new \InvalidArgumentException('HEX color does not match format.');
         }
         if (\strlen($color) !== 6) {
-            throw new InvalidArgumentException('HEX color needs to be 6 or 3 digits long.');
+            throw new \InvalidArgumentException('HEX color needs to be 6 or 3 digits long.');
         }
 
         /** @var non-empty-string $color */

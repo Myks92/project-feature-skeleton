@@ -13,7 +13,7 @@ final readonly class Channels
      * @param iterable<string, ChannelInterface> $channels
      */
     public function __construct(
-        private iterable $channels
+        private iterable $channels,
     ) {}
 
     /**

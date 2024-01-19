@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Contracts\Filesystem;
 
 use App\Contracts\Filesystem\Exception\FilesystemExceptionInterface;
-use DateTimeInterface;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -110,7 +109,7 @@ interface FilesystemReaderInterface
      *
      * @throws FilesystemExceptionInterface
      */
-    public function temporaryUrl(string $path, DateTimeInterface $expiresAt, array $config = []): string;
+    public function temporaryUrl(string $path, \DateTimeInterface $expiresAt, array $config = []): string;
 
     /**
      * @param non-empty-string $path

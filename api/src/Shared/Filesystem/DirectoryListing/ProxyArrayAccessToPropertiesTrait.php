@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Shared\Filesystem\DirectoryListing;
 
-use ReturnTypeWillChange;
-use RuntimeException;
-
 /**
  * @internal
  *
@@ -16,29 +13,29 @@ trait ProxyArrayAccessToPropertiesTrait
 {
     public function offsetExists(mixed $offset): bool
     {
-        $property = $this->formatPropertyName((string)$offset);
+        $property = $this->formatPropertyName((string) $offset);
 
         return isset($this->{$property});
     }
 
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     public function offsetGet(mixed $offset): mixed
     {
-        $property = $this->formatPropertyName((string)$offset);
+        $property = $this->formatPropertyName((string) $offset);
 
         return $this->{$property};
     }
 
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        throw new RuntimeException('Properties can not be manipulated');
+        throw new \RuntimeException('Properties can not be manipulated');
     }
 
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     public function offsetUnset(mixed $offset): void
     {
-        throw new RuntimeException('Properties can not be manipulated');
+        throw new \RuntimeException('Properties can not be manipulated');
     }
 
     private function formatPropertyName(string $offset): string

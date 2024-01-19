@@ -25,8 +25,6 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
      */
     private array $recordedEvents = [];
 
-    abstract public function getId(): AggregateIdInterface;
-
     final public function isEquals(self $entity): bool
     {
         return $this->getId()->getValue() === $entity->getId()->getValue();
@@ -39,6 +37,7 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
     {
         $events = $this->recordedEvents;
         $this->recordedEvents = [];
+
         return $events;
     }
 
@@ -46,6 +45,8 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
     {
         return $this->aggregateVersion;
     }
+
+    abstract public function getId(): AggregateIdInterface;
 
     final protected function recordEvent(DomainEventInterface $event): void
     {

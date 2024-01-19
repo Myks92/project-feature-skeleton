@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface as SymfonyDeno
 final readonly class Denormalizer implements DenormalizerInterface
 {
     public function __construct(
-        private SymfonyDenormalizerInterface $denormalizer
+        private SymfonyDenormalizerInterface $denormalizer,
     ) {}
 
     /**

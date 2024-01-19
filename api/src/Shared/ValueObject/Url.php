@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
-use InvalidArgumentException;
-use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Url>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract readonly class Url implements ValueObjectInterface, Stringable
+abstract readonly class Url implements ValueObjectInterface, \Stringable
 {
     /**
      * @var non-empty-string
@@ -25,8 +23,8 @@ abstract readonly class Url implements ValueObjectInterface, Stringable
      */
     public function __construct(string $value)
     {
-        if (false === filter_var($value, FILTER_VALIDATE_URL)) {
-            throw new InvalidArgumentException('Invalid Url.');
+        if (filter_var($value, FILTER_VALIDATE_URL) === false) {
+            throw new \InvalidArgumentException('Invalid Url.');
         }
         $this->value = $value;
     }

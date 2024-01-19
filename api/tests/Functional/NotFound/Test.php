@@ -19,7 +19,7 @@ final class Test extends WebTestCase
         $response = $this->jsonRequest('GET', '/not-found');
 
         self::assertSame(404, $response->getStatusCode());
-        self::assertJson($body = (string)$response->getContent());
+        self::assertJson($body = (string) $response->getContent());
 
         $data = Json::decode($body);
 

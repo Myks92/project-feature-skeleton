@@ -35,6 +35,7 @@ final class DoctrineTransactionWrapperFlusherTest extends TestCase
         $em = $this->createMock(EntityManager::class);
         $em->expects(self::once())->method('wrapInTransaction')->with(self::callback(static function (callable $func): bool {
             $func();
+
             return true;
         }));
 

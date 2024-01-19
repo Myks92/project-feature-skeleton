@@ -6,7 +6,6 @@ namespace App\Infrastructure\Bus\Symfony\Test\Command;
 
 use App\Contracts\Bus\Command\CommandInterface;
 use App\Infrastructure\Bus\Symfony\Command\CommandBus;
-use DomainException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -21,7 +20,7 @@ final class CommandBusTest extends TestCase
 {
     public function testSuccess(): void
     {
-        $command = new class() implements CommandInterface {
+        $command = new class () implements CommandInterface {
             public string $id = '';
         };
 
@@ -38,13 +37,13 @@ final class CommandBusTest extends TestCase
 
     public function testFailed(): void
     {
-        $command = new class() implements CommandInterface {
+        $command = new class () implements CommandInterface {
             public string $id = '';
         };
 
         $failedException = $this->createMock(HandlerFailedException::class);
         $failedException->expects(self::once())->method('getWrappedExceptions')
-            ->willReturn([new DomainException('Not found.')]);
+            ->willReturn([new \DomainException('Not found.')]);
 
         $messageBus = $this->createMock(MessageBusInterface::class);
         $messageBus->expects(self::once())->method('dispatch')->with(
@@ -54,7 +53,7 @@ final class CommandBusTest extends TestCase
 
         $commandBus = new CommandBus($messageBus);
 
-        $this->expectException(DomainException::class);
+        $this->expectException(\DomainException::class);
         $commandBus->dispatch($command);
     }
 }

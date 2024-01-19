@@ -7,7 +7,6 @@ namespace App\Infrastructure\Serializer\Symfony\Test\Normalizer;
 use App\Infrastructure\Serializer\Symfony\Normalizer\Denormalizer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 use Symfony\Component\Serializer\Context\ContextBuilderInterface;
 use Symfony\Component\Serializer\Context\Normalizer\JsonSerializableNormalizerContextBuilder;
 use Symfony\Component\Serializer\Context\SerializerContextBuilder;
@@ -29,15 +28,15 @@ final class DenormalizerTest extends TestCase
         $origin->expects(self::once())->method('denormalize')
             ->with(
                 ['name' => 'John'],
-                stdClass::class,
+                \stdClass::class,
                 null,
-                $defaultContextBuilder->toArray()
+                $defaultContextBuilder->toArray(),
             )
-            ->willReturn($object = new stdClass());
+            ->willReturn($object = new \stdClass());
 
         $denormalizer = new Denormalizer($origin);
 
-        $result = $denormalizer->denormalize(['name' => 'John'], stdClass::class);
+        $result = $denormalizer->denormalize(['name' => 'John'], \stdClass::class);
 
         self::assertSame($object, $result);
     }
@@ -46,14 +45,14 @@ final class DenormalizerTest extends TestCase
     {
         $origin = $this->createStub(DenormalizerInterface::class);
         $origin->method('denormalize')->willThrowException(
-            $exception = new PartialDenormalizationException([], [])
+            $exception = new PartialDenormalizationException([], []),
         );
 
         $denormalizer = new Denormalizer($origin);
 
         $this->expectExceptionObject($exception);
 
-        $denormalizer->denormalize(['name' => 42], stdClass::class);
+        $denormalizer->denormalize(['name' => 42], \stdClass::class);
     }
 
     private function createDefaultContextBuilderForDeserialize(): ContextBuilderInterface

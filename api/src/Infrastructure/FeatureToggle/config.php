@@ -9,7 +9,6 @@ use App\Contracts\FeatureToggle\FeatureFlagInterface;
 use App\Contracts\FeatureToggle\FeatureSwitcherInterface;
 use App\Infrastructure\FeatureToggle\Memory\MemoryFeatures;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-
 use function Symfony\Component\DependencyInjection\Loader\Configurator\param;
 
 return static function (ContainerConfigurator $configurator): void {

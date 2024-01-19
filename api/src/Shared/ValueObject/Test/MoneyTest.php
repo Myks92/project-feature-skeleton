@@ -6,7 +6,6 @@ namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Currency;
 use App\Shared\ValueObject\Money as SharedMoney;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -39,7 +38,7 @@ final class MoneyTest extends TestCase
         /** @psalm-suppress RedundantCastGivenDocblockType */
         $currencyValue = $currency->getValue();
 
-        self::assertSame($amount . ' ' . $currencyValue, (string)$money);
+        self::assertSame($amount . ' ' . $currencyValue, (string) $money);
     }
 
     public function testEqual(): void
@@ -103,7 +102,7 @@ final class MoneyTest extends TestCase
 
     public function testDivideZero(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $money = new Money(1200, $this->createCurrency());
         /** @psalm-suppress UnusedMethodCall */
         $money->divide(0);

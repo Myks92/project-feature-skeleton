@@ -30,7 +30,7 @@ final class DomainEventDispatcherFlusherTest extends TestCase
 
     public function testFlush(): void
     {
-        $domainEvent = new class() implements DomainEventInterface {
+        $domainEvent = new class () implements DomainEventInterface {
             public string $id = '00000000-0000-0000-0000-000000000000';
         };
 
@@ -39,7 +39,7 @@ final class DomainEventDispatcherFlusherTest extends TestCase
 
         $dispatcher = $this->createMock(EventDispatcherInterface::class);
         $dispatcher->expects(self::once())->method('dispatch')->with(
-            self::equalTo($domainEvent)
+            self::equalTo($domainEvent),
         );
 
         $flusher = new DomainEventDispatcherFlusher($dispatcher);

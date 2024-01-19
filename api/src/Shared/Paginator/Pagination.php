@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\Paginator;
 
 use App\Contracts\Paginator\PaginationInterface;
-use ArrayIterator;
-use ArrayObject;
 use Iterator;
-use ReturnTypeWillChange;
 
 /**
  * @template TKey
@@ -19,13 +16,18 @@ use ReturnTypeWillChange;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class Pagination implements Iterator, PaginationInterface
+final class Pagination implements \Iterator, PaginationInterface
 {
     private int $currentPageNumber = 1;
+
     private int $numItemsPerPage = 10;
+
     private iterable $items = [];
+
     private int $totalCount = 10;
+
     private array $paginatorOptions = [];
+
     private array $customParameters = [];
 
     public function rewind(): void
@@ -33,7 +35,7 @@ final class Pagination implements Iterator, PaginationInterface
         if (\is_object($this->items)) {
             $items = get_mangled_object_vars($this->items);
             reset($items);
-            $this->items = new ArrayObject($items);
+            $this->items = new \ArrayObject($items);
         } else {
             reset($this->items);
         }
@@ -42,7 +44,7 @@ final class Pagination implements Iterator, PaginationInterface
     /**
      * @psalm-suppress InvalidArgument
      */
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     public function current(): mixed
     {
         return current($this->items);
@@ -51,11 +53,12 @@ final class Pagination implements Iterator, PaginationInterface
     /**
      * @psalm-suppress InvalidArgument
      */
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     public function key(): null|int|string
     {
         if (\is_object($this->items)) {
             $items = get_mangled_object_vars($this->items);
+
             return key($items);
         }
 
@@ -155,7 +158,7 @@ final class Pagination implements Iterator, PaginationInterface
      */
     public function offsetExists(mixed $offset): bool
     {
-        if ($this->items instanceof ArrayIterator) {
+        if ($this->items instanceof \ArrayIterator) {
             return \array_key_exists($offset, iterator_to_array($this->items));
         }
 
@@ -166,7 +169,7 @@ final class Pagination implements Iterator, PaginationInterface
      * @psalm-param string|int $offset
      * @psalm-suppress InvalidArrayAccess
      */
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     public function offsetGet(mixed $offset): mixed
     {
         return $this->items[$offset];
@@ -179,7 +182,7 @@ final class Pagination implements Iterator, PaginationInterface
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        if (null === $offset) {
+        if ($offset === null) {
             $this->items[] = $value;
         } else {
             $this->items[$offset] = $value;

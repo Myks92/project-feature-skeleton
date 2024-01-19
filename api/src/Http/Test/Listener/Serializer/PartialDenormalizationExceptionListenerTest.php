@@ -7,8 +7,6 @@ namespace App\Http\Test\Listener\Serializer;
 use App\Http\Listener\Serializer\PartialDenormalizationExceptionListener;
 use App\Shared\PHPUnit\ConsecutiveTrait;
 use App\Shared\Validator\ValidationException;
-use Exception;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -32,7 +30,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
 
     private EventDispatcher $dispatcher;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
@@ -52,7 +50,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
             $this->createStub(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new Exception('Some Error.')
+            new \Exception('Some Error.'),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
@@ -69,7 +67,7 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
             'The type must be one of "{types}" ("{current}" given).',
         ))->willReturn(
             'Тип должен быть одним из "string" (задано "int").',
-            'Тип должен быть одним из "int" (задано "string").'
+            'Тип должен быть одним из "int" (задано "string").',
         );
 
         $listener = new PartialDenormalizationExceptionListener($logger, $translator);
@@ -85,14 +83,14 @@ final class PartialDenormalizationExceptionListenerTest extends TestCase
                 [
                     NotNormalizableValueException::createForUnexpectedDataType('Error', 42, ['string'], 'name'),
                     NotNormalizableValueException::createForUnexpectedDataType('Error', 'John', ['int'], 'age'),
-                ]
-            )
+                ],
+            ),
         );
 
         try {
             $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
             self::fail('Expected exception is not thrown');
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             self::assertInstanceOf(ValidationException::class, $exception);
             self::assertCount(2, $errors = $exception->getErrors()->getErrors());
             $error = $errors[0];

@@ -7,8 +7,6 @@ namespace App\Http\Test\Listener;
 use App\Contracts\Bus\Query\NotFoundException;
 use App\Http\Listener\NotFoundExceptionListener;
 use App\Http\Response\JsonResponse;
-use Exception;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -28,7 +26,7 @@ final class NotFoundExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
@@ -49,7 +47,7 @@ final class NotFoundExceptionListenerTest extends TestCase
             $this->createMock(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new Exception('No not found exception.')
+            new \Exception('No not found exception.'),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
@@ -68,7 +66,7 @@ final class NotFoundExceptionListenerTest extends TestCase
         $translator->expects(self::once())->method('trans')->with(
             self::equalTo('Some error.'),
             self::equalTo([]),
-            self::equalTo('exceptions')
+            self::equalTo('exceptions'),
         )->willReturn('Ошибка.');
 
         $listener = new NotFoundExceptionListener($logger, $translator);
@@ -79,14 +77,14 @@ final class NotFoundExceptionListenerTest extends TestCase
             $this->createMock(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new class('Some error.') extends Exception implements NotFoundException {}
+            new class ('Some error.') extends \Exception implements NotFoundException {},
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
 
         self::assertInstanceOf(JsonResponse::class, $response = $event->getResponse());
         self::assertSame(404, $response->getStatusCode());
-        self::assertJson($body = (string)$response->getContent());
+        self::assertJson($body = (string) $response->getContent());
 
         /** @var array $data */
         $data = json_decode($body, true, 512, JSON_THROW_ON_ERROR);

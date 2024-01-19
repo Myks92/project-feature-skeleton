@@ -22,7 +22,7 @@ final class ValidationExceptionTest extends TestCase
         $exception = new ValidationException(
             $errors = new Errors([
                 new Error('firstName', 'This value should not be blank.'),
-            ])
+            ]),
         );
 
         self::assertSame('Invalid input.', $exception->getMessage());

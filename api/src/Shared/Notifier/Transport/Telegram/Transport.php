@@ -8,7 +8,6 @@ use App\Shared\Notifier\Channel\MessageInterface;
 use App\Shared\Notifier\Channel\Telegram\MessageInterface as TelegramMessageInterface;
 use App\Shared\Notifier\Transport\Exception\MessageSendException;
 use App\Shared\Notifier\Transport\TransportInterface;
-use LogicException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -36,10 +35,10 @@ final readonly class Transport implements TransportInterface
     public function send(MessageInterface $message): void
     {
         if (!$message instanceof TelegramMessageInterface) {
-            throw new LogicException(sprintf(
+            throw new \LogicException(sprintf(
                 'The message must be an instance of %s (%s given).',
                 TelegramMessageInterface::class,
-                $message::class
+                $message::class,
             ));
         }
 
@@ -56,6 +55,7 @@ final readonly class Transport implements TransportInterface
         if ($response->getStatusCode() !== 200) {
             /** @var array{description: string, error_code: string} $result */
             $result = json_decode($response->getContent(false), true, 512, JSON_THROW_ON_ERROR);
+
             throw new MessageSendException(sprintf(
                 'Unable to post the Telegram message: %s (code %s)',
                 $result['description'],

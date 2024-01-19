@@ -22,7 +22,7 @@ final class EmptyResponseTest extends TestCase
         self::assertSame(204, $response->getStatusCode());
         self::assertFalse($response->headers->has('Content-Type'));
 
-        self::assertSame('', (string)$response->getContent());
+        self::assertSame('', (string) $response->getContent());
         self::assertSame('', $response->getContent());
     }
 

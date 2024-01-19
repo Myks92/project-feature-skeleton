@@ -6,8 +6,6 @@ namespace App\Http\Test\Listener;
 
 use App\Contracts\Validator\Exception\ValidationFailed;
 use App\Http\Listener\ValidationFailedExceptionListener;
-use Exception;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -28,7 +26,7 @@ final class ValidationFailedExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
@@ -44,7 +42,7 @@ final class ValidationFailedExceptionListenerTest extends TestCase
             $this->createStub(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new Exception('No validation exception.')
+            new \Exception('No validation exception.'),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
@@ -69,8 +67,8 @@ final class ValidationFailedExceptionListenerTest extends TestCase
                 new ConstraintViolationList([
                     new ConstraintViolation('Incorrect email', null, [], null, 'email', 'not-email'),
                     new ConstraintViolation('Empty password', null, [], null, 'password', ''),
-                ])
-            )
+                ]),
+            ),
         );
 
         try {

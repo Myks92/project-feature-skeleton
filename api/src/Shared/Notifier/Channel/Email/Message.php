@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Notifier\Channel\Email;
 
 use App\Contracts\Notifier\NotificationInterface;
-use InvalidArgumentException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -25,20 +24,20 @@ final class Message implements MessageInterface
         private string $content,
     ) {
         if (empty($to)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an email, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an email, it cannot be empty.', self::class));
         }
         if (empty($subject)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an subject, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an subject, it cannot be empty.', self::class));
         }
         if (empty($content)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an text, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an text, it cannot be empty.', self::class));
         }
     }
 
     public static function fromNotification(NotificationInterface $notification, RecipientInterface $recipient): self
     {
         if (empty($recipient->getEmail())) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an email, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an email, it cannot be empty.', self::class));
         }
 
         return new self($recipient->getEmail(), $notification->getSubject() ?? 'Notification', $notification->getContent());
@@ -80,7 +79,7 @@ final class Message implements MessageInterface
     public function subject(string $subject): self
     {
         if (empty($subject)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an subject, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an subject, it cannot be empty.', self::class));
         }
         $this->subject = $subject;
 

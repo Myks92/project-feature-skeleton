@@ -44,7 +44,7 @@ final class PaginationJsonNormalizerTest extends TestCase
         $translator->expects(self::once())->method('trans')->with(
             self::equalTo('Some error'),
             self::equalTo([]),
-            self::equalTo('exceptions')
+            self::equalTo('exceptions'),
         )->willReturn('Ошибка');
 
         $normalizer = new DefaultJsonExceptionNormalizer($translator);
@@ -64,7 +64,7 @@ final class PaginationJsonNormalizerTest extends TestCase
         $translator->expects(self::once())->method('trans')->with(
             self::equalTo('404 Not Found'),
             self::equalTo([]),
-            self::equalTo('exceptions')
+            self::equalTo('exceptions'),
         )->willReturn('404 Не найдено');
 
         $normalizer = new DefaultJsonExceptionNormalizer($translator);

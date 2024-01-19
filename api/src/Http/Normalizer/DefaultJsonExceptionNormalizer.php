@@ -25,7 +25,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
         ];
     }
 
-    public function supportsNormalization($data, string $format = null, array $context = []): bool
+    public function supportsNormalization($data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof FlattenException && $format === 'json';
     }
@@ -33,7 +33,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
     /**
      * @return array{message: string}
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         if (!$object instanceof FlattenException) {
             throw new InvalidArgumentException(sprintf('The object must implement "%s".', FlattenException::class));

@@ -8,11 +8,6 @@ use App\Shared\Bus\Command\Attribute\CommandHandler;
 use App\Shared\Bus\Event\Attribute\EventHandler;
 use App\Shared\Bus\Query\Attribute\QueryHandler;
 use App\Shared\DomainEvent\Attribute\EventListener;
-use Override;
-use ReflectionClass;
-use ReflectionMethod;
-use ReflectionNamedType;
-use Reflector;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -22,7 +17,7 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  */
 final class InfrastructureBundle extends AbstractBundle
 {
-    #[Override]
+    #[\Override]
     public function build(ContainerBuilder $container): void
     {
         $this->registerCommandBus($container);
@@ -40,14 +35,14 @@ final class InfrastructureBundle extends AbstractBundle
             static function (
                 ChildDefinition $definition,
                 CommandHandler $attribute,
-                Reflector $reflector,
+                \Reflector $reflector,
             ): void {
-                if (!$reflector instanceof ReflectionClass) {
+                if (!$reflector instanceof \ReflectionClass) {
                     return;
                 }
                 $method = '__invoke';
                 $reflectorMethod = $reflector->getMethod($method);
-                /** @var ReflectionNamedType|null $reflectorMethodType */
+                /** @var \ReflectionNamedType|null $reflectorMethodType */
                 $reflectorMethodType = $reflectorMethod->getParameters()[0]->getType();
                 $definition->addTag('messenger.message_handler', [
                     'bus' => 'command.bus',
@@ -55,7 +50,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'handles' => $reflectorMethodType?->getName(),
                     'from_transport' => $attribute->async ? 'async' : 'sync',
                 ]);
-            }
+            },
         );
     }
 
@@ -66,14 +61,14 @@ final class InfrastructureBundle extends AbstractBundle
             static function (
                 ChildDefinition $definition,
                 QueryHandler $attribute,
-                Reflector $reflector,
+                \Reflector $reflector,
             ): void {
-                if (!$reflector instanceof ReflectionClass) {
+                if (!$reflector instanceof \ReflectionClass) {
                     return;
                 }
                 $method = '__invoke';
                 $reflectorMethod = $reflector->getMethod($method);
-                /** @var ReflectionNamedType|null $reflectorMethodType */
+                /** @var \ReflectionNamedType|null $reflectorMethodType */
                 $reflectorMethodType = $reflectorMethod->getParameters()[0]->getType();
                 $definition->addTag('messenger.message_handler', [
                     'bus' => 'query.bus',
@@ -81,7 +76,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'handles' => $reflectorMethodType?->getName(),
                     'from_transport' => $attribute->async ? 'async' : 'sync',
                 ]);
-            }
+            },
         );
     }
 
@@ -92,9 +87,9 @@ final class InfrastructureBundle extends AbstractBundle
             static function (
                 ChildDefinition $definition,
                 EventHandler $attribute,
-                ReflectionClass|ReflectionMethod|Reflector $reflector,
+                \ReflectionClass|\ReflectionMethod|\Reflector $reflector,
             ): void {
-                $method = ($reflector instanceof ReflectionMethod) ? $reflector->getName() : '__invoke';
+                $method = ($reflector instanceof \ReflectionMethod) ? $reflector->getName() : '__invoke';
                 $definition->addTag('messenger.message_handler', [
                     'bus' => 'event.bus',
                     'method' => $method,
@@ -102,7 +97,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'from_transport' => $attribute->async ? 'async' : 'sync',
                     'priority' => $attribute->priority,
                 ]);
-            }
+            },
         );
     }
 
@@ -113,15 +108,15 @@ final class InfrastructureBundle extends AbstractBundle
             static function (
                 ChildDefinition $definition,
                 EventListener $attribute,
-                ReflectionClass|ReflectionMethod|Reflector $reflector,
+                \ReflectionClass|\ReflectionMethod|\Reflector $reflector,
             ): void {
-                $method = ($reflector instanceof ReflectionMethod) ? $reflector->getName() : '__invoke';
+                $method = ($reflector instanceof \ReflectionMethod) ? $reflector->getName() : '__invoke';
                 $definition->addTag('kernel.event_listener', [
                     'method' => $method,
                     'handles' => $attribute->event,
                     'priority' => $attribute->priority,
                 ]);
-            }
+            },
         );
     }
 }

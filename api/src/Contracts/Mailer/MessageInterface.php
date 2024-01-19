@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Contracts\Mailer;
 
-use DateTimeInterface;
-
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
@@ -69,9 +67,9 @@ interface MessageInterface
     /**
      * Returns the date when the message was sent, or null if it was not set.
      *
-     * @return DateTimeInterface|null the date when the message was sent
+     * @return \DateTimeInterface|null the date when the message was sent
      */
-    public function getDate(): ?DateTimeInterface;
+    public function getDate(): ?\DateTimeInterface;
 
     /**
      * Returns the priority of this message.

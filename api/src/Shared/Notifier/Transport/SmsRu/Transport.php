@@ -8,7 +8,6 @@ use App\Shared\Notifier\Channel\MessageInterface;
 use App\Shared\Notifier\Channel\Sms\MessageInterface as SmsMessageInterface;
 use App\Shared\Notifier\Transport\Exception\MessageSendException;
 use App\Shared\Notifier\Transport\TransportInterface;
-use LogicException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -36,10 +35,10 @@ final readonly class Transport implements TransportInterface
     public function send(MessageInterface $message): void
     {
         if (!$message instanceof SmsMessageInterface) {
-            throw new LogicException(sprintf(
+            throw new \LogicException(sprintf(
                 'The message must be an instance of %s (%s given).',
                 SmsMessageInterface::class,
-                $message::class
+                $message::class,
             ));
         }
 

@@ -10,7 +10,6 @@ use App\Shared\Notifier\Channel\ChannelInterface;
 use App\Shared\Notifier\Channel\Sms\NotificationInterface as SmsNotificationInterface;
 use App\Shared\Notifier\Channel\Sms\RecipientInterface as SmsRecipientInterface;
 use App\Shared\Notifier\Transport\TransportInterface;
-use LogicException;
 
 /**
  * @template TNotification of NotificationInterface
@@ -23,7 +22,7 @@ use LogicException;
 final readonly class Channel implements ChannelInterface
 {
     public function __construct(
-        private TransportInterface $transport
+        private TransportInterface $transport,
     ) {}
 
     public function supports(NotificationInterface $notification, RecipientInterface $recipient): bool
@@ -34,10 +33,10 @@ final readonly class Channel implements ChannelInterface
     public function notify(NotificationInterface $notification, RecipientInterface $recipient): void
     {
         if (!$recipient instanceof SmsRecipientInterface) {
-            throw new LogicException(sprintf(
+            throw new \LogicException(sprintf(
                 'The recipient must be an instance of %s (%s given).',
                 SmsRecipientInterface::class,
-                $recipient::class
+                $recipient::class,
             ));
         }
 

@@ -13,7 +13,7 @@ final readonly class Error implements ContractError
 {
     public function __construct(
         private string $propertyPath,
-        private string $message
+        private string $message,
     ) {}
 
     public function getPropertyPath(): string

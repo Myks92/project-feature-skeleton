@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Contracts\Aggregate;
 
-use Stringable;
-
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface AggregateIdInterface extends Stringable
+interface AggregateIdInterface extends \Stringable
 {
     public function getValue(): string;
 

@@ -8,7 +8,6 @@ use App\Contracts\Mailer\MessageInterface;
 use App\Infrastructure\Mailer\Symfony\MessageConverter;
 use App\Shared\Mailer\File;
 use App\Shared\Mailer\Message;
-use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Mime\Email;
@@ -36,7 +35,7 @@ final class MessageConverterTest extends TestCase
             ->subject($subject = 'reply-to@example.com')
             ->text($text = 'Test plain text body')
             ->html($html = 'Test plain text body')
-            ->date($date = new DateTimeImmutable())
+            ->date($date = new \DateTimeImmutable())
             ->attach($attach = File::fromContent('Content', 'text.txt', 'plain/text'));
 
         $email = (new Email())
@@ -52,7 +51,7 @@ final class MessageConverterTest extends TestCase
             ->text($text, $message->getCharset())
             ->html($html, $message->getCharset())
             ->date($date)
-            ->attach((string)$attach->getContent(), $attach->getName(), $attach->getContentType());
+            ->attach((string) $attach->getContent(), $attach->getName(), $attach->getContentType());
 
         $emailHeaders = $email->getHeaders();
         foreach ($headers as $name => $value) {

@@ -25,6 +25,7 @@ final class InterfaceNameAliasRecognizer implements AliasRecognizerInterface
         if (!$this->supports($data)) {
             throw new AliasNotRecognizedException();
         }
+
         return $data;
     }
 }

@@ -47,8 +47,9 @@ final readonly class AllAvailableChannelsNotifier implements NotifierInterface
                 $this->logger->warning(sprintf(
                     'Notification "%s" does not support "%s" channel.',
                     $notification::class,
-                    $channel::class
+                    $channel::class,
                 ), ['notification' => $notification, 'recipient' => $recipient]);
+
                 continue;
             }
 

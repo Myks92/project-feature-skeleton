@@ -22,7 +22,7 @@ final readonly class ExtraAttributesExceptionListener
 {
     public function __construct(
         private LoggerInterface $logger,
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {}
 
     public function __invoke(ExceptionEvent $event): void
@@ -44,13 +44,14 @@ final readonly class ExtraAttributesExceptionListener
         ]);
 
         throw new ValidationException(new Errors(
-            array_map($this->convertAttributeToValidationError(...), $exception->getExtraAttributes())
+            array_map($this->convertAttributeToValidationError(...), $exception->getExtraAttributes()),
         ));
     }
 
     private function convertAttributeToValidationError(string $attribute): Error
     {
         $message = $this->translator->trans('The attribute is not allowed.', [], 'exceptions');
+
         return new Error($attribute, $message);
     }
 }

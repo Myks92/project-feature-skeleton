@@ -6,14 +6,13 @@ namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
-use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Name>
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract readonly class Name implements ValueObjectInterface, Stringable
+abstract readonly class Name implements ValueObjectInterface, \Stringable
 {
     /**
      * @param non-empty-string $first
@@ -23,7 +22,7 @@ abstract readonly class Name implements ValueObjectInterface, Stringable
     public function __construct(
         private string $first,
         private string $last,
-        private ?string $middle = null
+        private ?string $middle = null,
     ) {
         Assert::notEmpty($first);
         Assert::notEmpty($last);
@@ -76,8 +75,8 @@ abstract readonly class Name implements ValueObjectInterface, Stringable
 
     final public function equals(ValueObjectInterface $object): bool
     {
-        return $this->first === $object->first &&
-            $this->last === $object->last &&
-            $this->middle === $object->middle;
+        return $this->first === $object->first
+            && $this->last === $object->last
+            && $this->middle === $object->middle;
     }
 }

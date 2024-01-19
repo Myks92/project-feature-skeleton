@@ -7,15 +7,13 @@ namespace App\Infrastructure\Doctrine\Types;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\JsonType;
-use JsonException;
-use Override;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 final class JsonUnescapedType extends JsonType
 {
-    #[Override]
+    #[\Override]
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if ($value === null) {
@@ -24,7 +22,7 @@ final class JsonUnescapedType extends JsonType
 
         try {
             return json_encode($value, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION);
-        } catch (JsonException $e) {
+        } catch (\JsonException $e) {
             /** @psalm-suppress TooManyArguments */
             throw ConversionException::conversionFailedSerialization($value, 'json', $e->getMessage(), $e);
         }

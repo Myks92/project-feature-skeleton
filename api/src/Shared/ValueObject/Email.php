@@ -6,7 +6,6 @@ namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
-use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Email>
@@ -15,7 +14,7 @@ use Stringable;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract readonly class Email implements ValueObjectInterface, Stringable
+abstract readonly class Email implements ValueObjectInterface, \Stringable
 {
     /**
      * @var non-empty-string
@@ -54,6 +53,7 @@ abstract readonly class Email implements ValueObjectInterface, Stringable
     {
         /** @var list<non-empty-string> $parts */
         $parts = explode('@', $this->getValue());
+
         return $parts[0];
     }
 
@@ -64,6 +64,7 @@ abstract readonly class Email implements ValueObjectInterface, Stringable
     {
         /** @var list<non-empty-string> $parts */
         $parts = explode('@', $this->getValue());
+
         return $parts[1];
     }
 

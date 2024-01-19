@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Mailer;
 
 use App\Contracts\Mailer\FileInterface;
-use Exception;
-use RuntimeException;
 
 final readonly class File implements FileInterface
 {
@@ -21,7 +19,7 @@ final readonly class File implements FileInterface
      * @param string|null $content the content that should be used to attach the file
      * @param string|null $contentType MIME type that should be used to attach the file
      *
-     * @throws Exception {@see https://www.php.net/manual/en/function.random-bytes.php}
+     * @throws \Exception {@see https://www.php.net/manual/en/function.random-bytes.php}
      */
     private function __construct(
         private ?string $name,
@@ -40,9 +38,9 @@ final readonly class File implements FileInterface
      * @param string|null $name the name that should be used to attach the file
      * @param string|null $contentType MIME type that should be used to attach the file
      *
-     * @throws Exception {@see https://www.php.net/manual/en/function.random-bytes.php}
+     * @throws \Exception {@see https://www.php.net/manual/en/function.random-bytes.php}
      */
-    public static function fromContent(string $content, string $name = null, string $contentType = null): self
+    public static function fromContent(string $content, ?string $name = null, ?string $contentType = null): self
     {
         return new self($name, null, $content, $contentType, false);
     }
@@ -54,13 +52,13 @@ final readonly class File implements FileInterface
      * @param string|null $name the name that should be used to attach the file
      * @param string|null $contentType MIME type that should be used to attach the file
      *
-     * @throws RuntimeException if the specified file does not exist
-     * @throws Exception {@see https://www.php.net/manual/en/function.random-bytes.php}
+     * @throws \RuntimeException if the specified file does not exist
+     * @throws \Exception {@see https://www.php.net/manual/en/function.random-bytes.php}
      */
-    public static function fromPath(string $path, string $name = null, string $contentType = null): self
+    public static function fromPath(string $path, ?string $name = null, ?string $contentType = null): self
     {
         if (!is_file($path)) {
-            throw new RuntimeException("The file {$path} does not exist.");
+            throw new \RuntimeException("The file {$path} does not exist.");
         }
 
         return new self($name, $path, null, $contentType, true);

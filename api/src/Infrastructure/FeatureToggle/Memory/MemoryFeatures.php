@@ -14,7 +14,7 @@ final class MemoryFeatures implements FeatureFlagInterface, FeatureSwitcherInter
      * @param array<string, bool> $features
      */
     public function __construct(
-        private array $features
+        private array $features,
     ) {}
 
     public function isEnabled(string $name): bool
@@ -22,6 +22,7 @@ final class MemoryFeatures implements FeatureFlagInterface, FeatureSwitcherInter
         if (!\array_key_exists($name, $this->features)) {
             return false;
         }
+
         return $this->features[$name];
     }
 

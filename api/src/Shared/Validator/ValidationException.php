@@ -5,19 +5,17 @@ declare(strict_types=1);
 namespace App\Shared\Validator;
 
 use App\Contracts\Validator\Exception\ValidationFailed;
-use RuntimeException;
-use Throwable;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final class ValidationException extends RuntimeException implements ValidationFailed
+final class ValidationException extends \RuntimeException implements ValidationFailed
 {
     public function __construct(
         private readonly Errors $errors,
         string $message = 'Invalid input.',
         int $code = 0,
-        Throwable $previous = null
+        ?\Throwable $previous = null,
     ) {
         parent::__construct($message, $code, $previous);
     }

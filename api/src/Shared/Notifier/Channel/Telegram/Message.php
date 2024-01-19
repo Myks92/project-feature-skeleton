@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Notifier\Channel\Telegram;
 
 use App\Contracts\Notifier\NotificationInterface;
-use InvalidArgumentException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -23,10 +22,10 @@ final class Message implements MessageInterface
         private string $parseMode = self::PARSE_MODE_HTML,
     ) {
         if (empty($chatId)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an chatId, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an chatId, it cannot be empty.', self::class));
         }
         if (empty($content)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an text, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an text, it cannot be empty.', self::class));
         }
     }
 
@@ -41,7 +40,7 @@ final class Message implements MessageInterface
     public function chatId(string $chatId): self
     {
         if (empty($chatId)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an chatId, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an chatId, it cannot be empty.', self::class));
         }
         $this->chatId = $chatId;
 
@@ -59,7 +58,7 @@ final class Message implements MessageInterface
     public function content(string $content): self
     {
         if (empty($content)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs an text, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs an text, it cannot be empty.', self::class));
         }
         $this->content = $content;
 

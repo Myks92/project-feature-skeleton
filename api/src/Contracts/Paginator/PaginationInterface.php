@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Contracts\Paginator;
 
 use ArrayAccess;
-use Countable;
 use Traversable;
 
 /**
@@ -17,7 +16,7 @@ use Traversable;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface PaginationInterface extends Countable, Traversable, ArrayAccess
+interface PaginationInterface extends \Countable, Traversable, ArrayAccess
 {
     /**
      * @param iterable<TKey, TValue> $items

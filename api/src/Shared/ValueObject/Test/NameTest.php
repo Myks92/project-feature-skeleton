@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Name as SharedName;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -30,19 +29,19 @@ final class NameTest extends TestCase
     {
         $name = new Name($first = 'First', $last = 'Last', $middle = 'Middle');
 
-        self::assertSame($first . ' ' . $last . ' ' . $middle, (string)$name);
+        self::assertSame($first . ' ' . $last . ' ' . $middle, (string) $name);
     }
 
     public function testFirstEmpty(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress  InvalidArgument */
         new Name('', 'Last', 'Middle');
     }
 
     public function testLastEmpty(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress  InvalidArgument */
         new Name('First', '', 'Middle');
     }

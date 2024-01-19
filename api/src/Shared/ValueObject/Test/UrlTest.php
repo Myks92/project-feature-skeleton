@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Url as SharedUrl;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -27,12 +26,12 @@ final class UrlTest extends TestCase
     {
         $url = new Url($value = 'http://site.ru');
 
-        self::assertSame($value, (string)$url);
+        self::assertSame($value, (string) $url);
     }
 
     public function testIncorrect(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Url('www.site.ru');
     }
 

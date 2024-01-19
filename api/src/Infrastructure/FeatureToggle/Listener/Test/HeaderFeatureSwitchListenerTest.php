@@ -22,6 +22,11 @@ final class HeaderFeatureSwitchListenerTest extends TestCase
 {
     use ConsecutiveTrait;
 
+    private static function createRequest(): Request
+    {
+        return Request::create('GET', 'http://test');
+    }
+
     public function testEmpty(): void
     {
         $switcher = $this->createMock(FeatureSwitcherInterface::class);
@@ -59,10 +64,5 @@ final class HeaderFeatureSwitchListenerTest extends TestCase
         );
 
         $listener($event);
-    }
-
-    private static function createRequest(): Request
-    {
-        return Request::create('GET', 'http://test');
     }
 }

@@ -7,7 +7,6 @@ namespace App\Infrastructure\Bus\Symfony\Test\Query;
 use App\Contracts\Bus\Query\NotFoundException as ContractNotFoundException;
 use App\Contracts\Bus\Query\QueryInterface;
 use App\Infrastructure\Bus\Symfony\Query\QueryBus;
-use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
@@ -27,7 +26,7 @@ final class QueryBusTest extends TestCase
      */
     public function testSuccess(): void
     {
-        $query = new class() implements QueryInterface {
+        $query = new class () implements QueryInterface {
             public string $id = '';
         };
 
@@ -50,7 +49,7 @@ final class QueryBusTest extends TestCase
 
     public function testFailed(): void
     {
-        $query = new class() implements QueryInterface {
+        $query = new class () implements QueryInterface {
             public string $id = '';
         };
 
@@ -71,4 +70,4 @@ final class QueryBusTest extends TestCase
     }
 }
 
-class NotFoundException extends Exception implements ContractNotFoundException {}
+final class NotFoundException extends \Exception implements ContractNotFoundException {}

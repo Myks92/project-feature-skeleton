@@ -8,7 +8,6 @@ use App\Http\Response\JsonResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 
 /**
  * @internal
@@ -17,6 +16,32 @@ use stdClass;
 #[CoversClass(JsonResponse::class)]
 final class JsonResponseTest extends TestCase
 {
+    /**
+     * @return iterable<array-key, array>
+     */
+    public static function getCases(): iterable
+    {
+        $object = new \stdClass();
+        $object->str = 'value';
+        $object->int = 1;
+        $object->none = null;
+
+        $array = [
+            'str' => 'value',
+            'int' => 1,
+            'none' => null,
+        ];
+
+        return [
+            'null' => [null, '{}'],
+            'empty' => ['', '""'],
+            'number' => [12, '12'],
+            'string' => ['12', '"12"'],
+            'object' => [$object, '{"str":"value","int":1,"none":null}'],
+            'array' => [$array, '{"str":"value","int":1,"none":null}'],
+        ];
+    }
+
     public function testWithCode(): void
     {
         $response = new JsonResponse(0, 201);
@@ -37,31 +62,5 @@ final class JsonResponseTest extends TestCase
         self::assertSame('application/json', $response->headers->get('Content-Type'));
         self::assertSame($expect, $response->getContent());
         self::assertSame(200, $response->getStatusCode());
-    }
-
-    /**
-     * @return iterable<array-key, array>
-     */
-    public static function getCases(): iterable
-    {
-        $object = new stdClass();
-        $object->str = 'value';
-        $object->int = 1;
-        $object->none = null;
-
-        $array = [
-            'str' => 'value',
-            'int' => 1,
-            'none' => null,
-        ];
-
-        return [
-            'null' => [null, '{}'],
-            'empty' => ['', '""'],
-            'number' => [12, '12'],
-            'string' => ['12', '"12"'],
-            'object' => [$object, '{"str":"value","int":1,"none":null}'],
-            'array' => [$array, '{"str":"value","int":1,"none":null}'],
-        ];
     }
 }

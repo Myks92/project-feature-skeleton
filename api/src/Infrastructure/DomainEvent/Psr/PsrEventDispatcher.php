@@ -13,7 +13,7 @@ use App\Contracts\DomainEvent\EventDispatcherInterface;
 final readonly class PsrEventDispatcher implements EventDispatcherInterface
 {
     public function __construct(
-        private \Psr\EventDispatcher\EventDispatcherInterface $dispatcher
+        private \Psr\EventDispatcher\EventDispatcherInterface $dispatcher,
     ) {}
 
     public function dispatch(DomainEventInterface ...$events): void

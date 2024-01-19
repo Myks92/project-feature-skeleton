@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Filesystem\DirectoryListing;
 
 use ArrayAccess;
-use JsonSerializable;
 
 /**
  * @psalm-type TFileAttributes = array{type: self::TYPE_FILE, path: string, file_size: int|null, visibility: string|null, last_modified: int|null, mime_type: string|null, extra_metadata: array}
@@ -15,7 +14,7 @@ use JsonSerializable;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface StorageAttributes extends JsonSerializable, ArrayAccess
+interface StorageAttributes extends \JsonSerializable, ArrayAccess
 {
     public const ATTRIBUTE_PATH = 'path';
     public const ATTRIBUTE_TYPE = 'type';
@@ -27,6 +26,11 @@ interface StorageAttributes extends JsonSerializable, ArrayAccess
     public const TYPE_FILE = 'file';
     public const TYPE_DIRECTORY = 'dir';
 
+    /**
+     * @param TDirectoryAttributes|TFileAttributes $attributes
+     */
+    public static function fromArray(array $attributes): self;
+
     public function path(): string;
 
     /**
@@ -37,11 +41,6 @@ interface StorageAttributes extends JsonSerializable, ArrayAccess
     public function visibility(): null|string;
 
     public function lastModified(): null|int;
-
-    /**
-     * @param TDirectoryAttributes|TFileAttributes $attributes
-     */
-    public static function fromArray(array $attributes): self;
 
     public function isFile(): bool;
 

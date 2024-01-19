@@ -15,7 +15,7 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 final readonly class Handler
 {
     public function __construct(
-        private TransportInterface $transport
+        private TransportInterface $transport,
     ) {}
 
     public function __invoke(MessageInterface $message): void

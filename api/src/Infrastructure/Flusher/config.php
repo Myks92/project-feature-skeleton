@@ -9,7 +9,6 @@ use App\Infrastructure\Flusher\All\AllFlusher;
 use App\Infrastructure\Flusher\Doctrine\DoctrineFlusher;
 use App\Infrastructure\Flusher\DomainEvent\DomainEventDispatcherFlusher;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-
 use function Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;
 
 return static function (ContainerConfigurator $configurator): void {

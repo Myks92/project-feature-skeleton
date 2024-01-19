@@ -17,6 +17,19 @@ use Symfony\Component\HttpKernel\KernelEvents;
 #[AsEventListener(event: KernelEvents::EXCEPTION)]
 final class ValidationExceptionListener
 {
+    /**
+     * @return array<string, string>
+     */
+    private static function errorsArray(Errors $errors): array
+    {
+        $errorsArray = [];
+        foreach ($errors->getErrors() as $error) {
+            $errorsArray[$error->getPropertyPath()] = $error->getMessage();
+        }
+
+        return $errorsArray;
+    }
+
     public function __invoke(ExceptionEvent $event): void
     {
         $exception = $event->getThrowable();
@@ -33,17 +46,5 @@ final class ValidationExceptionListener
         $event->setResponse(new JsonResponse([
             'errors' => self::errorsArray($exception->getErrors()),
         ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    private static function errorsArray(Errors $errors): array
-    {
-        $errorsArray = [];
-        foreach ($errors->getErrors() as $error) {
-            $errorsArray[$error->getPropertyPath()] = $error->getMessage();
-        }
-        return $errorsArray;
     }
 }

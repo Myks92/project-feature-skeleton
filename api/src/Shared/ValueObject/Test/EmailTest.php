@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\ValueObject\Test;
 
 use App\Shared\ValueObject\Email as SharedEmail;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -27,7 +26,7 @@ final class EmailTest extends TestCase
     {
         $email = new Email($value = 'email@app.test');
 
-        self::assertSame($value, (string)$email);
+        self::assertSame($value, (string) $email);
     }
 
     public function testCase(): void
@@ -62,19 +61,19 @@ final class EmailTest extends TestCase
 
     public function testIncorrect(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Email('not-email');
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Email('email@app.test ');
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         new Email(' email@app.test');
     }
 
     public function testEmpty(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress InvalidArgument */
         new Email('');
     }

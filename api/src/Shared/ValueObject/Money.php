@@ -6,7 +6,6 @@ namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
-use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Money>
@@ -14,11 +13,11 @@ use Stringable;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract readonly class Money implements ValueObjectInterface, Stringable
+abstract readonly class Money implements ValueObjectInterface, \Stringable
 {
     public function __construct(
         private float $amount,
-        private Currency $currency
+        private Currency $currency,
     ) {}
 
     /**
@@ -27,6 +26,7 @@ abstract readonly class Money implements ValueObjectInterface, Stringable
     public function __toString(): string
     {
         $currencyValue = $this->getCurrency()->getValue();
+
         return $this->amount . ' ' . $currencyValue;
     }
 
@@ -37,6 +37,7 @@ abstract readonly class Money implements ValueObjectInterface, Stringable
     final public function add(float $quantity): static
     {
         $amount = $this->getAmount() + $quantity;
+
         return new static($amount, $this->getCurrency());
     }
 
@@ -56,7 +57,8 @@ abstract readonly class Money implements ValueObjectInterface, Stringable
     final public function multiply(float $multiplier): static
     {
         $amount = $this->getAmount() * $multiplier;
-        return new static((int)$amount, $this->getCurrency());
+
+        return new static((int) $amount, $this->getCurrency());
     }
 
     /**
@@ -66,13 +68,14 @@ abstract readonly class Money implements ValueObjectInterface, Stringable
     {
         Assert::greaterThan($divisor, 0);
         $amount = $this->getAmount() / $divisor;
-        return new static((int)$amount, $this->getCurrency());
+
+        return new static((int) $amount, $this->getCurrency());
     }
 
     final public function equals(ValueObjectInterface $object): bool
     {
         return
-            $this->amount === $object->amount &&
-            $this->currency === $object->currency;
+            $this->amount === $object->amount
+            && $this->currency === $object->currency;
     }
 }

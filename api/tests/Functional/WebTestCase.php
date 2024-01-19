@@ -10,7 +10,6 @@ use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManagerInterface;
-use Override;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as SymfonyWebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -24,7 +23,7 @@ abstract class WebTestCase extends SymfonyWebTestCase
 {
     protected KernelBrowser $client;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
@@ -36,6 +35,7 @@ abstract class WebTestCase extends SymfonyWebTestCase
     final public function jsonRequest(string $method, string $path, array $body = [], array $headers = []): Response
     {
         $this->client->jsonRequest($method, $path, $body, $headers);
+
         return $this->client->getResponse();
     }
 

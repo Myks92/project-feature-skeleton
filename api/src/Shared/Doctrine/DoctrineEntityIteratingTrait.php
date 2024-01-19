@@ -22,7 +22,7 @@ trait DoctrineEntityIteratingTrait
     private function iterateOverEntities(
         EntityManagerInterface $doctrine,
         string $className,
-        int $batchCount = 100
+        int $batchCount = 100,
     ): iterable {
         $repository = $doctrine->getRepository($className);
         $offset = 0;

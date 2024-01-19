@@ -22,9 +22,19 @@ final class DirectoryAttributes implements StorageAttributes
         private string $path,
         private readonly ?string $visibility = null,
         private readonly ?int $lastModified = null,
-        private readonly array $extraMetadata = []
+        private readonly array $extraMetadata = [],
     ) {
         $this->path = ltrim($this->path, '/');
+    }
+
+    public static function fromArray(array $attributes): self
+    {
+        return new self(
+            path: $attributes[StorageAttributes::ATTRIBUTE_PATH],
+            visibility: $attributes[StorageAttributes::ATTRIBUTE_VISIBILITY] ?? null,
+            lastModified: $attributes[StorageAttributes::ATTRIBUTE_LAST_MODIFIED] ?? null,
+            extraMetadata: $attributes[StorageAttributes::ATTRIBUTE_EXTRA_METADATA] ?? [],
+        );
     }
 
     public function path(): string
@@ -71,16 +81,6 @@ final class DirectoryAttributes implements StorageAttributes
         $clone->path = $path;
 
         return $clone;
-    }
-
-    public static function fromArray(array $attributes): self
-    {
-        return new self(
-            path: $attributes[StorageAttributes::ATTRIBUTE_PATH],
-            visibility: $attributes[StorageAttributes::ATTRIBUTE_VISIBILITY] ?? null,
-            lastModified: $attributes[StorageAttributes::ATTRIBUTE_LAST_MODIFIED] ?? null,
-            extraMetadata: $attributes[StorageAttributes::ATTRIBUTE_EXTRA_METADATA] ?? []
-        );
     }
 
     /**

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Contracts\Mailer;
 
-use Throwable;
-
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
@@ -16,7 +14,7 @@ interface MailerInterface
      *
      * @param MessageInterface $message the email message instance to be sent
      *
-     * @throws Throwable if sending failed
+     * @throws \Throwable if sending failed
      */
     public function send(MessageInterface $message): void;
 }

@@ -10,13 +10,10 @@ use App\Shared\Filesystem\DirectoryListing\DirectoryListing;
 use App\Shared\Filesystem\DirectoryListing\FileAttributes;
 use App\Shared\Filesystem\DirectoryListing\StorageAttributes;
 use App\Shared\Filesystem\Exception\FilesystemException;
-use DateTimeInterface;
-use Generator;
 use League\Flysystem\DirectoryAttributes as FlysystemDirectoryAttributes;
 use League\Flysystem\FileAttributes as FlysystemFileAttributes;
 use League\Flysystem\FilesystemException as FlysystemFilesystemException;
 use League\Flysystem\FilesystemOperator;
-use Throwable;
 
 /**
  * @see https://flysystem.thephpleague.com/docs/usage/filesystem-api
@@ -133,7 +130,7 @@ final readonly class Filesystem implements FilesystemInterface
         }
     }
 
-    public function temporaryUrl(string $path, DateTimeInterface $expiresAt, array $config = []): string
+    public function temporaryUrl(string $path, \DateTimeInterface $expiresAt, array $config = []): string
     {
         try {
             /** @var non-empty-string */
@@ -226,9 +223,9 @@ final readonly class Filesystem implements FilesystemInterface
     }
 
     /**
-     * @return Generator<mixed, StorageAttributes>
+     * @return \Generator<mixed, StorageAttributes>
      */
-    private function pipeListing(iterable $listing): Generator
+    private function pipeListing(iterable $listing): \Generator
     {
         try {
             /** @var \League\Flysystem\StorageAttributes $item */
@@ -240,7 +237,7 @@ final readonly class Filesystem implements FilesystemInterface
                         visibility: $item->visibility(),
                         lastModified: $item->lastModified(),
                         mimeType: $item->mimeType(),
-                        extraMetadata: $item->extraMetadata()
+                        extraMetadata: $item->extraMetadata(),
                     );
                 }
                 if ($item instanceof FlysystemDirectoryAttributes) {
@@ -248,11 +245,11 @@ final readonly class Filesystem implements FilesystemInterface
                         path: $item->path(),
                         visibility: $item->visibility(),
                         lastModified: $item->lastModified(),
-                        extraMetadata: $item->extraMetadata()
+                        extraMetadata: $item->extraMetadata(),
                     );
                 }
             }
-        } catch (Throwable $exception) {
+        } catch (\Throwable $exception) {
             throw FilesystemException::fromThrowable($exception);
         }
     }

@@ -6,7 +6,6 @@ namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
-use Stringable;
 
 /**
  * @template-implements ValueObjectInterface<Uuid>
@@ -14,7 +13,7 @@ use Stringable;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract readonly class Uuid implements ValueObjectInterface, Stringable
+abstract readonly class Uuid implements ValueObjectInterface, \Stringable
 {
     /**
      * @var non-empty-string

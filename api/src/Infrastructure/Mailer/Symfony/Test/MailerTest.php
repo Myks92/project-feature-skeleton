@@ -9,7 +9,6 @@ use App\Infrastructure\Mailer\Symfony\MessageConverter;
 use App\Infrastructure\Mailer\Symfony\SymfonyMailer;
 use App\Shared\Mailer\File;
 use App\Shared\Mailer\Message;
-use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Mailer\MailerInterface as AdapterMailer;
@@ -37,7 +36,7 @@ final class MailerTest extends TestCase
             ->subject('reply-to@example.com')
             ->text('Test plain text body')
             ->html('<p>Test plain text body</p>>')
-            ->date(new DateTimeImmutable())
+            ->date(new \DateTimeImmutable())
             ->attach(File::fromContent('Content', 'text.txt', 'plain/text'));
 
         $email = MessageConverter::toEmail($message);

@@ -6,7 +6,6 @@ namespace App\Infrastructure\Bus\Symfony\Test\Event;
 
 use App\Contracts\Bus\Event\EventInterface;
 use App\Infrastructure\Bus\Symfony\Event\EventBus;
-use DomainException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -21,7 +20,7 @@ final class EventBusTest extends TestCase
 {
     public function testSuccess(): void
     {
-        $event = new class() implements EventInterface {
+        $event = new class () implements EventInterface {
             public string $id = '';
         };
 
@@ -38,13 +37,13 @@ final class EventBusTest extends TestCase
 
     public function testFailed(): void
     {
-        $event = new class() implements EventInterface {
+        $event = new class () implements EventInterface {
             public string $id = '';
         };
 
         $failedException = $this->createMock(HandlerFailedException::class);
         $failedException->expects(self::once())->method('getWrappedExceptions')
-            ->willReturn([new DomainException('Not found.')]);
+            ->willReturn([new \DomainException('Not found.')]);
 
         $messageBus = $this->createMock(MessageBusInterface::class);
         $messageBus->expects(self::once())->method('dispatch')->with(
@@ -54,7 +53,7 @@ final class EventBusTest extends TestCase
 
         $eventBus = new EventBus($messageBus);
 
-        self::expectException(DomainException::class);
+        self::expectException(\DomainException::class);
         $eventBus->dispatch($event);
     }
 }

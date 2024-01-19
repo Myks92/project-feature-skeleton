@@ -14,10 +14,10 @@ use App\Shared\Paginator\Pagination;
 final readonly class KnpPaginator implements PaginatorInterface
 {
     public function __construct(
-        private \Knp\Component\Pager\PaginatorInterface $paginator
+        private \Knp\Component\Pager\PaginatorInterface $paginator,
     ) {}
 
-    public function paginate(mixed $target, int $page = 1, int $limit = null, array $options = []): PaginationInterface
+    public function paginate(mixed $target, int $page = 1, ?int $limit = null, array $options = []): PaginationInterface
     {
         $origin = $this->paginator->paginate($target, $page, $limit, $options);
 

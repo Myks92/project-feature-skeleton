@@ -8,15 +8,13 @@ use App\Shared\Aggregate\AbstractAggregateId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\GuidType;
-use InvalidArgumentException;
-use Override;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
 abstract class AbstractAggregateIdType extends GuidType
 {
-    #[Override]
+    #[\Override]
     final public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
@@ -30,7 +28,7 @@ abstract class AbstractAggregateIdType extends GuidType
         throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [$this->getName()]);
     }
 
-    #[Override]
+    #[\Override]
     final public function convertToPHPValue($value, AbstractPlatform $platform): ?AbstractAggregateId
     {
         if (empty($value)) {
@@ -44,14 +42,14 @@ abstract class AbstractAggregateIdType extends GuidType
 
         try {
             $aggregateId = new $className($value);
-        } catch (InvalidArgumentException) {
+        } catch (\InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
 
         return $aggregateId;
     }
 
-    #[Override]
+    #[\Override]
     final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

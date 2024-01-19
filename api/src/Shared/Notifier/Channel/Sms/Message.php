@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Notifier\Channel\Sms;
 
 use App\Contracts\Notifier\NotificationInterface;
-use InvalidArgumentException;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -18,13 +17,13 @@ final class Message implements MessageInterface
      */
     public function __construct(
         private string $phone,
-        private string $content
+        private string $content,
     ) {
         if (empty($phone)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs a phone number, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs a phone number, it cannot be empty.', self::class));
         }
         if (empty($content)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs a text, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs a text, it cannot be empty.', self::class));
         }
     }
 
@@ -39,7 +38,7 @@ final class Message implements MessageInterface
     public function phone(string $phone): self
     {
         if (empty($phone)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs a phone number, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs a phone number, it cannot be empty.', self::class));
         }
         $this->phone = $phone;
 
@@ -57,7 +56,7 @@ final class Message implements MessageInterface
     public function content(string $content): self
     {
         if (empty($content)) {
-            throw new InvalidArgumentException(sprintf('"%s" needs a text, it cannot be empty.', self::class));
+            throw new \InvalidArgumentException(sprintf('"%s" needs a text, it cannot be empty.', self::class));
         }
         $this->content = $content;
 

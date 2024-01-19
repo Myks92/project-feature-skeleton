@@ -15,7 +15,7 @@ final readonly class Errors implements ContractErrors
      * @param array<array-key, Error> $errors
      */
     public function __construct(
-        private array $errors = []
+        private array $errors = [],
     ) {}
 
     /**

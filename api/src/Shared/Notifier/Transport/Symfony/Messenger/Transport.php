@@ -7,7 +7,6 @@ namespace App\Shared\Notifier\Transport\Symfony\Messenger;
 use App\Shared\Notifier\Channel\MessageInterface;
 use App\Shared\Notifier\Transport\Exception\MessageSendException;
 use App\Shared\Notifier\Transport\TransportInterface;
-use Exception;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
@@ -19,7 +18,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 final readonly class Transport implements TransportInterface
 {
     public function __construct(
-        private MessageBusInterface $bus
+        private MessageBusInterface $bus,
     ) {}
 
     public function supports(MessageInterface $message): bool
@@ -31,8 +30,8 @@ final readonly class Transport implements TransportInterface
     {
         try {
             $this->bus->dispatch($message);
-        } catch (Exception $exception) {
-            throw new MessageSendException($exception->getMessage(), (int)$exception->getCode(), $exception);
+        } catch (\Exception $exception) {
+            throw new MessageSendException($exception->getMessage(), (int) $exception->getCode(), $exception);
         }
     }
 }

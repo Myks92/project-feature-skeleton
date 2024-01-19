@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Shared\Validator\Constraint;
 
-use Attribute;
-use Override;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Compound;
 
@@ -14,10 +12,10 @@ use Symfony\Component\Validator\Constraints\Compound;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-#[Attribute]
+#[\Attribute]
 final class UuidNotBlank extends Compound
 {
-    #[Override]
+    #[\Override]
     protected function getConstraints(array $options): array
     {
         return [

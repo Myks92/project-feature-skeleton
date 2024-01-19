@@ -7,10 +7,8 @@ namespace App\Infrastructure\Validator\Symfony\Test;
 use App\Infrastructure\Validator\Symfony\SymfonyValidator;
 use App\Shared\Validator\Error;
 use App\Shared\Validator\ValidationException;
-use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -24,7 +22,7 @@ final class SymfonyValidatorTest extends TestCase
 {
     public function testValid(): void
     {
-        $command = new stdClass();
+        $command = new \stdClass();
 
         $origin = $this->createMock(ValidatorInterface::class);
         $origin->expects(self::once())->method('validate')
@@ -38,7 +36,7 @@ final class SymfonyValidatorTest extends TestCase
 
     public function testNotValid(): void
     {
-        $command = new stdClass();
+        $command = new \stdClass();
 
         $origin = $this->createMock(ValidatorInterface::class);
         $origin->expects(self::once())->method('validate')
@@ -50,7 +48,7 @@ final class SymfonyValidatorTest extends TestCase
                     ['{{ value }}' => ''],
                     'firstName',
                     'firstName',
-                    ''
+                    '',
                 ),
             ]));
 
@@ -59,7 +57,7 @@ final class SymfonyValidatorTest extends TestCase
         try {
             $validator->validate($command);
             self::fail('Expected exception is not thrown.');
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             self::assertInstanceOf(ValidationException::class, $exception);
             self::assertCount(1, $errors = $exception->getErrors()->getErrors());
             self::assertInstanceOf(Error::class, $error = end($errors));

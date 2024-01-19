@@ -23,7 +23,7 @@ final readonly class PartialDenormalizationExceptionListener
 {
     public function __construct(
         private LoggerInterface $logger,
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {}
 
     public function __invoke(ExceptionEvent $event): void
@@ -45,7 +45,7 @@ final readonly class PartialDenormalizationExceptionListener
         ]);
 
         throw new ValidationException(new Errors(
-            array_map($this->convertExceptionToValidationError(...), $exception->getErrors())
+            array_map($this->convertExceptionToValidationError(...), $exception->getErrors()),
         ));
     }
 

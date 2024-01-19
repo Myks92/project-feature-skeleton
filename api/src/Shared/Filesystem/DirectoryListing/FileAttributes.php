@@ -24,9 +24,21 @@ final class FileAttributes implements StorageAttributes
         private readonly ?string $visibility = null,
         private readonly ?int $lastModified = null,
         private readonly ?string $mimeType = null,
-        private readonly array $extraMetadata = []
+        private readonly array $extraMetadata = [],
     ) {
         $this->path = ltrim($this->path, '/');
+    }
+
+    public static function fromArray(array $attributes): self
+    {
+        return new self(
+            path: $attributes[StorageAttributes::ATTRIBUTE_PATH],
+            fileSize: $attributes[StorageAttributes::ATTRIBUTE_FILE_SIZE] ?? null,
+            visibility: $attributes[StorageAttributes::ATTRIBUTE_VISIBILITY] ?? null,
+            lastModified: $attributes[StorageAttributes::ATTRIBUTE_LAST_MODIFIED] ?? null,
+            mimeType: $attributes[StorageAttributes::ATTRIBUTE_MIME_TYPE] ?? null,
+            extraMetadata: $attributes[StorageAttributes::ATTRIBUTE_EXTRA_METADATA] ?? [],
+        );
     }
 
     /**
@@ -83,18 +95,6 @@ final class FileAttributes implements StorageAttributes
         $clone->path = $path;
 
         return $clone;
-    }
-
-    public static function fromArray(array $attributes): self
-    {
-        return new self(
-            path: $attributes[StorageAttributes::ATTRIBUTE_PATH],
-            fileSize: $attributes[StorageAttributes::ATTRIBUTE_FILE_SIZE] ?? null,
-            visibility: $attributes[StorageAttributes::ATTRIBUTE_VISIBILITY] ?? null,
-            lastModified: $attributes[StorageAttributes::ATTRIBUTE_LAST_MODIFIED] ?? null,
-            mimeType: $attributes[StorageAttributes::ATTRIBUTE_MIME_TYPE] ?? null,
-            extraMetadata: $attributes[StorageAttributes::ATTRIBUTE_EXTRA_METADATA] ?? []
-        );
     }
 
     /**

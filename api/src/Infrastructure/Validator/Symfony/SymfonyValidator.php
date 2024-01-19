@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator
 final readonly class SymfonyValidator implements ValidatorInterface
 {
     public function __construct(
-        private SymfonyValidatorInterface $validator
+        private SymfonyValidatorInterface $validator,
     ) {}
 
     public function validate(object $value): void
@@ -28,8 +28,9 @@ final readonly class SymfonyValidator implements ValidatorInterface
             $errors = [];
             /** @var ConstraintViolation $violation */
             foreach ($violations as $violation) {
-                $errors[] = new Error($violation->getPropertyPath(), (string)$violation->getMessage());
+                $errors[] = new Error($violation->getPropertyPath(), (string) $violation->getMessage());
             }
+
             throw new ValidationException(new Errors($errors));
         }
     }

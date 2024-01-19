@@ -6,8 +6,6 @@ namespace App\Http\Test\Listener\Serializer;
 
 use App\Http\Listener\Serializer\ExtraAttributesExceptionListener;
 use App\Shared\Validator\ValidationException;
-use Exception;
-use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -28,7 +26,7 @@ final class ExtraAttributesExceptionListenerTest extends TestCase
 {
     private EventDispatcher $dispatcher;
 
-    #[Override]
+    #[\Override]
     protected function setUp(): void
     {
         $this->dispatcher = new EventDispatcher();
@@ -48,7 +46,7 @@ final class ExtraAttributesExceptionListenerTest extends TestCase
             $this->createStub(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new Exception('Some Error.')
+            new \Exception('Some Error.'),
         );
 
         $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
@@ -67,7 +65,7 @@ final class ExtraAttributesExceptionListenerTest extends TestCase
         $translator->expects(self::once())->method('trans')->with(
             self::equalTo('The attribute is not allowed.'),
             self::equalTo([]),
-            self::equalTo('exceptions')
+            self::equalTo('exceptions'),
         )->willReturn('Этот атрибут не разрешен.');
 
         $listener = new ExtraAttributesExceptionListener($logger, $translator);
@@ -78,13 +76,13 @@ final class ExtraAttributesExceptionListenerTest extends TestCase
             $this->createStub(HttpKernelInterface::class),
             new Request([], [], [], [], [], ['CONTENT_TYPE' => 'application/json']),
             HttpKernelInterface::MAIN_REQUEST,
-            new ExtraAttributesException(['age'])
+            new ExtraAttributesException(['age']),
         );
 
         try {
             $this->dispatcher->dispatch($event, KernelEvents::EXCEPTION);
             self::fail('Expected exception is not thrown');
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             self::assertInstanceOf(ValidationException::class, $exception);
             self::assertCount(1, $errors = $exception->getErrors()->getErrors());
             $error = end($errors);

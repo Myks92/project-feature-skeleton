@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace App\Infrastructure\FeatureToggle\Twig\Extension;
 
 use App\Contracts\FeatureToggle\FeatureFlagInterface;
-use Override;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class FeatureFlagExtension extends AbstractExtension
 {
     public function __construct(
-        private readonly FeatureFlagInterface $flag
+        private readonly FeatureFlagInterface $flag,
     ) {}
 
     /**
      * @return TwigFunction[]
      */
-    #[Override]
+    #[\Override]
     public function getFunctions(): array
     {
         return [

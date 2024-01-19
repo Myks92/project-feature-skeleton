@@ -5,27 +5,15 @@ declare(strict_types=1);
 namespace App\Shared\Aggregate;
 
 use App\Contracts\Aggregate\AggregateRootInterface;
-use InvalidArgumentException;
-use Stringable;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final readonly class AggregateType implements Stringable
+final readonly class AggregateType implements \Stringable
 {
     public function __construct(
-        private string $aggregateType
+        private string $aggregateType,
     ) {}
-
-    public function __toString(): string
-    {
-        return $this->aggregateType;
-    }
-
-    public function toString(): string
-    {
-        return $this->aggregateType;
-    }
 
     /**
      * Use this factory when aggregate type should be detected based on given aggregate root.
@@ -38,12 +26,12 @@ final readonly class AggregateType implements Stringable
     /**
      * Use this factory when aggregate type equals to aggregate root class
      * The factory makes sure that the aggregate root class exists.
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public static function fromAggregateRootClass(string $aggregateRootClass): self
     {
         if (!class_exists($aggregateRootClass)) {
-            throw new InvalidArgumentException(sprintf('Aggregate root class %s can not be found', $aggregateRootClass));
+            throw new \InvalidArgumentException(sprintf('Aggregate root class %s can not be found', $aggregateRootClass));
         }
 
         return new self($aggregateRootClass);
@@ -51,15 +39,25 @@ final readonly class AggregateType implements Stringable
 
     /**
      * Use this factory when the aggregate type is not equal to the aggregate root class.
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public static function fromString(string $aggregateTypeString): self
     {
         if (empty($aggregateTypeString)) {
-            throw new InvalidArgumentException('AggregateType must be a non empty string');
+            throw new \InvalidArgumentException('AggregateType must be a non empty string');
         }
 
         return new self($aggregateTypeString);
+    }
+
+    public function __toString(): string
+    {
+        return $this->aggregateType;
+    }
+
+    public function toString(): string
+    {
+        return $this->aggregateType;
     }
 
     public function isEqual(self $other): bool

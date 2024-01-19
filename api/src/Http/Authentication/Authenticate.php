@@ -9,7 +9,7 @@ use Symfony\Bundle\SecurityBundle\Security as SymfonySecurity;
 final readonly class Authenticate
 {
     public function __construct(
-        private SymfonySecurity $security
+        private SymfonySecurity $security,
     ) {}
 
     public function getIdentity(): Identity

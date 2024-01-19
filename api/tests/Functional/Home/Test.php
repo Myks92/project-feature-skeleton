@@ -25,7 +25,7 @@ final class Test extends WebTestCase
         $response = $this->jsonRequest('GET', '/');
 
         self::assertSame(200, $response->getStatusCode());
-        self::assertJson($content = (string)$response->getContent());
+        self::assertJson($content = (string) $response->getContent());
         self::assertSame('{"name":"API"}', $content);
     }
 }

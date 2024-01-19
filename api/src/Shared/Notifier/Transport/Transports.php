@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Notifier\Transport;
 
 use App\Shared\Notifier\Channel\MessageInterface;
-use LogicException;
 
 /**
  * @template T of MessageInterface
@@ -19,7 +18,7 @@ final readonly class Transports implements TransportInterface
      * @param iterable<array-key, TransportInterface> $transports
      */
     public function __construct(
-        private iterable $transports
+        private iterable $transports,
     ) {}
 
     public function supports(MessageInterface $message): bool
@@ -29,13 +28,14 @@ final readonly class Transports implements TransportInterface
                 return true;
             }
         }
+
         return false;
     }
 
     public function send(MessageInterface $message): void
     {
         if (!$this->supports($message)) {
-            throw new LogicException(sprintf('Transport not supported for %s.', $message::class));
+            throw new \LogicException(sprintf('Transport not supported for %s.', $message::class));
         }
 
         foreach ($this->transports as $transport) {

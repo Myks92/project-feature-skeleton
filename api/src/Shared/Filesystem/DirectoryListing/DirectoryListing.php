@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Filesystem\DirectoryListing;
 
-use ArrayIterator;
-use Generator;
 use IteratorAggregate;
-use Traversable;
 
 /**
  * @template T as StorageAttributes
@@ -16,13 +13,13 @@ use Traversable;
  *
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-final readonly class DirectoryListing implements IteratorAggregate
+final readonly class DirectoryListing implements \IteratorAggregate
 {
     /**
      * @param iterable<T> $listing
      */
     public function __construct(
-        private iterable $listing
+        private iterable $listing,
     ) {}
 
     /**
@@ -30,7 +27,7 @@ final readonly class DirectoryListing implements IteratorAggregate
      */
     public function filter(callable $filter): self
     {
-        $generator = (static function (iterable $listing) use ($filter): Generator {
+        $generator = (static function (iterable $listing) use ($filter): \Generator {
             /** @var T $item */
             foreach ($listing as $item) {
                 if ($filter($item)) {
@@ -49,8 +46,8 @@ final readonly class DirectoryListing implements IteratorAggregate
      */
     public function map(callable $mapper): self
     {
-        /** @var Generator<mixed, T> $generator */
-        $generator = (static function (iterable $listing) use ($mapper): Generator {
+        /** @var \Generator<mixed, T> $generator */
+        $generator = (static function (iterable $listing) use ($mapper): \Generator {
             /** @var T $item */
             foreach ($listing as $item) {
                 yield $mapper($item);
@@ -73,13 +70,13 @@ final readonly class DirectoryListing implements IteratorAggregate
     }
 
     /**
-     * @return Traversable<T>
+     * @return \Traversable<T>
      */
-    public function getIterator(): Traversable
+    public function getIterator(): \Traversable
     {
-        return $this->listing instanceof Traversable
+        return $this->listing instanceof \Traversable
             ? $this->listing
-            : new ArrayIterator($this->listing);
+            : new \ArrayIterator($this->listing);
     }
 
     /**
@@ -87,7 +84,7 @@ final readonly class DirectoryListing implements IteratorAggregate
      */
     public function toArray(): array
     {
-        return $this->listing instanceof Traversable
+        return $this->listing instanceof \Traversable
             ? iterator_to_array($this->listing, false)
             : $this->listing;
     }
