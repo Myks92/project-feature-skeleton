@@ -40,6 +40,7 @@
     "icanhazstring/composer-unused": "^0.8.11",
     "overtrue/phplint": "^9.0",
     "phpunit/phpunit": "^10.5",
+    "phpyh/coding-standard": "^2.5",
     "psalm/plugin-phpunit": "^0.18.4",
     "psalm/plugin-symfony": "^5.1",
     "qossmic/deptrac-shim": "^1.0",

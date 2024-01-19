@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff1375238ad5758980ab6213cba89fde",
+    "content-hash": "5da636925442daa040d44f2d15d0b876",
     "packages": [
         {
             "name": "brick/math",
@@ -9233,6 +9233,56 @@
                 }
             ],
             "time": "2023-12-27T15:13:52+00:00"
+        },
+        {
+            "name": "phpyh/coding-standard",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpyh/coding-standard.git",
+                "reference": "bfaa46a1488b7be9e3ccc74a4d5e810626a99cc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpyh/coding-standard/zipball/bfaa46a1488b7be9e3ccc74a4d5e810626a99cc9",
+                "reference": "bfaa46a1488b7be9e3ccc74a4d5e810626a99cc9",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^3.14.3",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "vimeo/psalm": "^5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPyh\\CodingStandard\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valentin Udaltsov",
+                    "email": "udaltsov.valentin@gmail.com"
+                }
+            ],
+            "description": "PHPyh Coding Standard For PHP CS Fixer",
+            "keywords": [
+                "Static code analysis",
+                "fixer",
+                "standards",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/phpyh/coding-standard/issues",
+                "source": "https://github.com/phpyh/coding-standard/tree/2.5.0"
+            },
+            "time": "2023-09-13T12:11:08+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
