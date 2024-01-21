@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 use PHPyh\CodingStandard\PhpCsFixerCodingStandard;
 
-$finder = PhpCsFixer\Finder::create()
+$finder = Finder::create()
     ->in([
         __DIR__ . '/bin',
-        __DIR__ . '/config',
         __DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
@@ -16,10 +17,12 @@ $finder = PhpCsFixer\Finder::create()
         __FILE__,
     ]);
 
-$config = (new PhpCsFixer\Config())
+$config = (new Config())
     ->setCacheFile(__DIR__ . '/var/cache/.php_cs')
     ->setFinder($finder);
 
-(new PhpCsFixerCodingStandard())->applyTo($config);
+(new PhpCsFixerCodingStandard())->applyTo($config, [
+    '@PHPUnit100Migration:risky' => true,
+]);
 
 return $config;
