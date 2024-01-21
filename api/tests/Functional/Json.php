@@ -11,16 +11,18 @@ final class Json
 {
     /**
      * @noRector
+     *
      * @psalm-suppress PossiblyUnusedMethod
      */
     public static function decode(string $data): array
     {
-        /** @psalm-var array */
+        /* @psalm-var array */
         return json_decode($data, true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
      * @noRector
+     *
      * @psalm-suppress PossiblyUnusedMethod
      */
     public static function encode(mixed $data): string

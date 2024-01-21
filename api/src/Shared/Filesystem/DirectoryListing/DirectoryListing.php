@@ -64,7 +64,7 @@ final readonly class DirectoryListing implements \IteratorAggregate
     {
         $listing = $this->toArray();
 
-        usort($listing, static fn (StorageAttributes $a, StorageAttributes $b): int => $a->path() <=> $b->path());
+        usort($listing, static fn(StorageAttributes $a, StorageAttributes $b): int => $a->path() <=> $b->path());
 
         return new self($listing);
     }

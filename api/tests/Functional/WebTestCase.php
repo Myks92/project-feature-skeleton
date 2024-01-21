@@ -46,6 +46,7 @@ abstract class WebTestCase extends SymfonyWebTestCase
 
     /**
      * @param array<array-key, class-string<AbstractFixture>> $fixtures
+     *
      * @psalm-suppress PossiblyUnusedMethod
      */
     protected function loadFixtures(array $fixtures): void
