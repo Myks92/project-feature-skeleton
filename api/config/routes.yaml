@@ -1,5 +1,5 @@
-main:
-    resource: ../src/Http/Action
+home:
+    resource: ../src/Http/Action/Home
     type: attribute
     trailing_slash_on_root: false
     stateless: true
