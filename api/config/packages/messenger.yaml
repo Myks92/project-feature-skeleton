@@ -1,7 +1,3 @@
-parameters:
-    env(MESSENGER_ASYNC_TRANSPORT_DSN): 'sync://'
-    env(MESSENGER_SYNC_TRANSPORT_DSN): 'sync://'
-
 framework:
     messenger:
         # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
@@ -29,17 +25,17 @@ framework:
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
-            async: '%env(MESSENGER_ASYNC_TRANSPORT_DSN)%'
-            #failed: '%env(MESSENGER_FAILED_TRANSPORT_DSN)%'
-            sync: '%env(MESSENGER_SYNC_TRANSPORT_DSN)%'
+            commands: '%env(MESSENGER_COMMANDS_TRANSPORT_DSN)%'
+            events: '%env(MESSENGER_EVENTS_TRANSPORT_DSN)%'
+            queries: '%env(MESSENGER_QUERIES_TRANSPORT_DSN)%'
 
         routing:
-            App\Contracts\Bus\Command\CommandInterface: async
-            App\Contracts\Bus\Query\QueryInterface: sync
-            App\Contracts\Bus\Event\EventInterface: async
+            App\Contracts\Bus\Command\CommandInterface: commands
+            App\Contracts\Bus\Event\EventInterface: events
+            App\Contracts\Bus\Query\QueryInterface: queries
 
 when@test:
     framework:
         messenger:
             transports:
-                async: 'in-memory://?serialize=true'
+                events: 'in-memory://?serialize=true'

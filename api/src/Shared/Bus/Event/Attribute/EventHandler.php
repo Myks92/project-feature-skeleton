@@ -12,7 +12,7 @@ final readonly class EventHandler
 {
     public function __construct(
         public string $event,
-        public bool $async = true,
+        public ?string $transport = null,
         public int $priority = 0,
     ) {}
 }

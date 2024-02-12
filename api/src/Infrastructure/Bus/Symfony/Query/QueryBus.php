@@ -29,7 +29,7 @@ final class QueryBus implements QueryBusInterface
         try {
             return $this->handleQuery($query);
         } catch (HandlerFailedException $e) {
-            throw $e->getWrappedExceptions()[0];
+            throw current($e->getWrappedExceptions());
         }
     }
 }

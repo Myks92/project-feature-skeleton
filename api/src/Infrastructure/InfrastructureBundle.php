@@ -48,7 +48,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'bus' => 'command.bus',
                     'method' => $method,
                     'handles' => $reflectorMethodType?->getName(),
-                    'from_transport' => $attribute->async ? 'async' : 'sync',
+                    'from_transport' => $attribute->transport
                 ]);
             },
         );
@@ -74,7 +74,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'bus' => 'query.bus',
                     'method' => $method,
                     'handles' => $reflectorMethodType?->getName(),
-                    'from_transport' => $attribute->async ? 'async' : 'sync',
+                    'from_transport' => $attribute->transport,
                 ]);
             },
         );
@@ -94,7 +94,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'bus' => 'event.bus',
                     'method' => $method,
                     'handles' => $attribute->event,
-                    'from_transport' => $attribute->async ? 'async' : 'sync',
+                    'from_transport' => $attribute->transport,
                     'priority' => $attribute->priority,
                 ]);
             },

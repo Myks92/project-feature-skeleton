@@ -54,8 +54,9 @@ services:
             MAILER_FROM_EMAIL: App <mail@app.test>
             NOTIFIER_TELEGRAM_TOKEN: secret
             NOTIFIER_SMS_RU_API_ID: secret
-            MESSENGER_ASYNC_TRANSPORT_DSN: sync://
-            MESSENGER_SYNC_TRANSPORT_DSN: sync://
+            MESSENGER_COMMANDS_TRANSPORT_DSN: sync://
+            MESSENGER_EVENTS_TRANSPORT_DSN: sync://
+            MESSENGER_QUERIES_TRANSPORT_DSN: sync://
         volumes:
             - ./api:/app
     
@@ -80,8 +81,9 @@ services:
             MAILER_FROM_EMAIL: App <mail@app.test>
             NOTIFIER_TELEGRAM_TOKEN: secret
             NOTIFIER_SMS_RU_API_ID: secret
-            MESSENGER_ASYNC_TRANSPORT_DSN: sync://
-            MESSENGER_SYNC_TRANSPORT_DSN: sync://
+            MESSENGER_COMMANDS_TRANSPORT_DSN: sync://
+            MESSENGER_EVENTS_TRANSPORT_DSN: sync://
+            MESSENGER_QUERIES_TRANSPORT_DSN: sync://
         volumes:
             - ./api:/app
     

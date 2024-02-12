@@ -11,6 +11,6 @@ namespace App\Shared\Bus\Query\Attribute;
 final readonly class QueryHandler
 {
     public function __construct(
-        public bool $async = false,
+        public ?string $transport = null,
     ) {}
 }

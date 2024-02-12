@@ -11,6 +11,6 @@ namespace App\Shared\Bus\Command\Attribute;
 final readonly class CommandHandler
 {
     public function __construct(
-        public bool $async = true,
+        public ?string $transport = null,
     ) {}
 }
