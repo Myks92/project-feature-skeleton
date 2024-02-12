@@ -6,6 +6,7 @@ namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @template-implements ValueObjectInterface<Name>
@@ -15,15 +16,23 @@ use App\Shared\Assert;
 abstract readonly class Name implements ValueObjectInterface, \Stringable
 {
     /**
-     * @param non-empty-string $first
      * @param non-empty-string $last
+     * @param non-empty-string $first
      * @param non-empty-string|null $middle
      */
     public function __construct(
-        private string $first,
+        #[ORM\Column(type: 'string', length: 64)]
         private string $last,
+        #[ORM\Column(type: 'string', length: 64)]
+        private string $first,
+        #[ORM\Column(type: 'string', length: 64, nullable: true)]
         private ?string $middle = null,
     ) {
+        Assert::lengthBetween($last, 1, 64);
+        Assert::lengthBetween($first, 1, 64);
+        if ($middle !== null) {
+            Assert::lengthBetween($middle, 1, 64);
+        }
         Assert::notEmpty($first);
         Assert::notEmpty($last);
     }
@@ -39,17 +48,17 @@ abstract readonly class Name implements ValueObjectInterface, \Stringable
     /**
      * @return non-empty-string
      */
-    final public function getFirst(): string
+    final public function getLast(): string
     {
-        return $this->first;
+        return $this->last;
     }
 
     /**
      * @return non-empty-string
      */
-    final public function getLast(): string
+    final public function getFirst(): string
     {
-        return $this->last;
+        return $this->first;
     }
 
     /**
@@ -67,16 +76,16 @@ abstract readonly class Name implements ValueObjectInterface, \Stringable
     {
         /** @var non-empty-string */
         return implode($separator, array_filter([
-            $this->first,
             $this->last,
+            $this->first,
             $this->middle,
         ]));
     }
 
     final public function equals(ValueObjectInterface $object): bool
     {
-        return $this->first === $object->first
-            && $this->last === $object->last
-            && $this->middle === $object->middle;
+        return $this->last === $object->getLast()
+            && $this->first === $object->getFirst()
+            && $this->middle === $object->getMiddle();
     }
 }

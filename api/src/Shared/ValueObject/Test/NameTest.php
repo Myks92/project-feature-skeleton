@@ -17,49 +17,49 @@ final class NameTest extends TestCase
 {
     public function testSuccess(): void
     {
-        $name = new Name($first = 'First', $last = 'Last', $middle = 'Middle');
+        $name = new Name($last = 'Last', $first = 'First', $middle = 'Middle');
 
-        self::assertSame($first, $name->getFirst());
         self::assertSame($last, $name->getLast());
+        self::assertSame($first, $name->getFirst());
         self::assertSame($middle, $name->getMiddle());
-        self::assertSame($first . ' ' . $last . ' ' . $middle, $name->getFull());
+        self::assertSame($last . ' ' . $first . ' ' . $middle, $name->getFull());
     }
 
     public function testToString(): void
     {
-        $name = new Name($first = 'First', $last = 'Last', $middle = 'Middle');
+        $name = new Name($last = 'Last', $first = 'First', $middle = 'Middle');
 
-        self::assertSame($first . ' ' . $last . ' ' . $middle, (string) $name);
-    }
-
-    public function testFirstEmpty(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        /** @psalm-suppress  InvalidArgument */
-        new Name('', 'Last', 'Middle');
+        self::assertSame($last . ' ' . $first . ' ' . $middle, (string) $name);
     }
 
     public function testLastEmpty(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         /** @psalm-suppress  InvalidArgument */
-        new Name('First', '', 'Middle');
+        new Name('', 'First', 'Middle');
+    }
+
+    public function testFirstEmpty(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        /** @psalm-suppress  InvalidArgument */
+        new Name('Last', '', 'Middle');
     }
 
     public function testMiddleEmpty(): void
     {
-        $name = new Name($first = 'First', $last = 'Last');
+        $name = new Name($last = 'Last', $first = 'First');
 
-        self::assertSame($first, $name->getFirst());
         self::assertSame($last, $name->getLast());
+        self::assertSame($first, $name->getFirst());
         self::assertNull($name->getMiddle());
-        self::assertSame($first . ' ' . $last, $name->getFull());
+        self::assertSame($last . ' ' . $first, $name->getFull());
     }
 
     public function testEqual(): void
     {
-        $name = new Name('First', 'Last', 'Middle');
-        $name2 = new Name('First 2', 'Last 2', 'Middle 2'); // other
+        $name = new Name('Last', 'First', 'Middle');
+        $name2 = new Name('Last 2', 'First 2', 'Middle 2'); // other
 
         self::assertTrue($name->equals($name));
         self::assertFalse($name->equals($name2));
