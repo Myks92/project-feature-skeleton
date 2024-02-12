@@ -17,7 +17,6 @@ framework:
                 middleware:
                     - App\Infrastructure\Bus\Symfony\Middleware\ValidationMiddleware
                     - router_context
-                    - doctrine_transaction
 
             query.bus:
                 middleware:
@@ -27,7 +26,6 @@ framework:
                 default_middleware: allow_no_handlers
                 middleware:
                     - router_context
-                    - doctrine_transaction
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
