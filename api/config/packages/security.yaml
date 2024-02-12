@@ -10,10 +10,11 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            lazy: true
+        api:
+            pattern: ^/v1
+            security: true
             stateless: true
-            provider: users_in_memory
+            oauth2: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

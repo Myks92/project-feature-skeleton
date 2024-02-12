@@ -39,7 +39,7 @@ abstract class WebTestCase extends SymfonyWebTestCase
         return $this->client->getResponse();
     }
 
-    final public function loginUser(IdentityInterface&UserInterface $identity, string $firewall = 'main'): void
+    final public function auth(IdentityInterface&UserInterface $identity, string $firewall = 'api'): void
     {
         $this->client->loginUser($identity, $firewall);
     }
