@@ -24,12 +24,20 @@ final class QueryBus implements QueryBusInterface
         $this->messageBus = $queryBus;
     }
 
+    /**
+     * @template T
+     *
+     * @param QueryInterface<T> $query
+     *
+     * @return T
+     */
     public function dispatch(QueryInterface $query, array $metadata = []): mixed
     {
         try {
+            /** @var  T */
             return $this->handleQuery($query);
         } catch (HandlerFailedException $e) {
-            throw current($e->getWrappedExceptions());
+            throw current($e->getWrappedExceptions()) ?: new \RuntimeException($e->getMessage());
         }
     }
 }

@@ -20,6 +20,7 @@ final class CommandBusTest extends TestCase
 {
     public function testSuccess(): void
     {
+        /** @psalm-suppress MissingTemplateParam */
         $command = new class () implements CommandInterface {
             public string $id = '';
         };
@@ -37,6 +38,7 @@ final class CommandBusTest extends TestCase
 
     public function testFailed(): void
     {
+        /** @psalm-suppress MissingTemplateParam */
         $command = new class () implements CommandInterface {
             public string $id = '';
         };

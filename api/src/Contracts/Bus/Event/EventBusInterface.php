@@ -9,5 +9,10 @@ namespace App\Contracts\Bus\Event;
  */
 interface EventBusInterface
 {
+    /**
+     * @template T
+     *
+     * @param EventInterface<T> $event
+     */
     public function dispatch(EventInterface $event, array $metadata = []): void;
 }

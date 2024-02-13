@@ -10,6 +10,10 @@ namespace App\Contracts\Bus\Command;
 interface CommandBusInterface
 {
     /**
+     * @template T
+     *
+     * @param CommandInterface<T> $command
+     *
      * @throws \DomainException
      */
     public function dispatch(CommandInterface $command, array $metadata = []): void;

@@ -20,6 +20,7 @@ final class EventBusTest extends TestCase
 {
     public function testSuccess(): void
     {
+        /** @psalm-suppress MissingTemplateParam */
         $event = new class () implements EventInterface {
             public string $id = '';
         };
@@ -37,6 +38,7 @@ final class EventBusTest extends TestCase
 
     public function testFailed(): void
     {
+        /** @psalm-suppress MissingTemplateParam */
         $event = new class () implements EventInterface {
             public string $id = '';
         };

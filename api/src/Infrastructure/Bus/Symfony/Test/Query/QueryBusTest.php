@@ -26,6 +26,7 @@ final class QueryBusTest extends TestCase
      */
     public function testSuccess(): void
     {
+        /** @psalm-suppress MissingTemplateParam */
         $query = new class () implements QueryInterface {
             public string $id = '';
         };
@@ -49,6 +50,7 @@ final class QueryBusTest extends TestCase
 
     public function testFailed(): void
     {
+        /** @psalm-suppress MissingTemplateParam */
         $query = new class () implements QueryInterface {
             public string $id = '';
         };

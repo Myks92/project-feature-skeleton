@@ -25,37 +25,36 @@ final class MessageConverter
         if (($date = $message->getDate()) !== null) {
             $email->date($date);
         }
-        if (!empty($sender = $message->getSender())) {
+        if (($sender = $message->getSender()) !== null) {
             $email->sender(...self::convertAddresses($sender));
         }
-        if (!empty($from = $message->getFrom())) {
+        if (($from = $message->getFrom()) !== null) {
             $email->from(...self::convertAddresses($from));
         }
-        if (!empty($to = $message->getTo())) {
+        if (($to = $message->getTo()) !== null) {
             $email->to(...self::convertAddresses($to));
         }
-        if (!empty($cc = $message->getCc())) {
+        if (($cc = $message->getCc()) !== null) {
             $email->cc(...self::convertAddresses($cc));
         }
-        if (!empty($bcc = $message->getBcc())) {
+        if (($bcc = $message->getBcc()) !== null) {
             $email->bcc(...self::convertAddresses($bcc));
         }
-        if (!empty($replyTo = $message->getReplyTo())) {
+        if (($replyTo = $message->getReplyTo()) !== null) {
             $email->replyTo(...self::convertAddresses($replyTo));
         }
-        if (!empty($returnPath = $message->getReturnPath())) {
+        if (($returnPath = $message->getReturnPath()) !== null) {
             $email->returnPath(...self::convertAddresses($returnPath));
         }
-        if (!empty($subject = $message->getSubject())) {
+        if (($subject = $message->getSubject()) !== null) {
             $email->subject($subject);
         }
-        if (!empty($text = $message->getText())) {
+        if (($text = $message->getText()) !== null) {
             $email->text($text, $message->getCharset());
         }
-        if (!empty($html = $message->getHtml())) {
+        if (($html = $message->getHtml()) !== null) {
             $email->html($html, $message->getCharset());
         }
-
         if (!empty($message->getHeaders())) {
             $email->setHeaders(self::convertHeaders($email->getHeaders(), $message->getHeaders()));
         }
