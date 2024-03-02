@@ -1,5 +1,6 @@
 {
   "name": "myks92/project-feature-skeleton",
+  "description": "Project feature skeleton",
   "type": "project",
   "license": "MIT",
   "minimum-stability": "stable",
@@ -18,7 +19,7 @@
     "symfony/flex": "^2.4",
     "symfony/framework-bundle": "7.0.*",
     "symfony/http-client": "7.0.*",
-    "symfony/http-client-contracts": "^3.4",
+    "symfony/http-client-contracts": "*",
     "symfony/mailer": "7.0.*",
     "symfony/messenger": "7.0.*",
     "symfony/monolog-bundle": "^3.10",
