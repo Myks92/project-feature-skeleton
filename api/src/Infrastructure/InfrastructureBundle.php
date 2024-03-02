@@ -48,7 +48,7 @@ final class InfrastructureBundle extends AbstractBundle
                     'bus' => 'command.bus',
                     'method' => $method,
                     'handles' => $reflectorMethodType?->getName(),
-                    'from_transport' => $attribute->transport
+                    'from_transport' => $attribute->transport,
                 ]);
             },
         );

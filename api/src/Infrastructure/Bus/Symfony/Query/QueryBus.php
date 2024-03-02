@@ -34,7 +34,7 @@ final class QueryBus implements QueryBusInterface
     public function dispatch(QueryInterface $query, array $metadata = []): mixed
     {
         try {
-            /** @var  T */
+            /** @var T */
             return $this->handleQuery($query);
         } catch (HandlerFailedException $e) {
             throw current($e->getWrappedExceptions()) ?: new \RuntimeException($e->getMessage());
