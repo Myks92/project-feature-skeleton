@@ -72,6 +72,7 @@ final readonly class DirectoryListing implements \IteratorAggregate
     /**
      * @return \Traversable<T>
      */
+    #[\Override]
     public function getIterator(): \Traversable
     {
         return $this->listing instanceof \Traversable

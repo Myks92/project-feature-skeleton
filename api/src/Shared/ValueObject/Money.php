@@ -23,6 +23,7 @@ abstract readonly class Money implements ValueObjectInterface, \Stringable
     /**
      * @return non-empty-string
      */
+    #[\Override]
     public function __toString(): string
     {
         $currencyValue = $this->getCurrency()->getValue();
@@ -72,6 +73,7 @@ abstract readonly class Money implements ValueObjectInterface, \Stringable
         return new static((int) $amount, $this->getCurrency());
     }
 
+    #[\Override]
     final public function equals(ValueObjectInterface $object): bool
     {
         return

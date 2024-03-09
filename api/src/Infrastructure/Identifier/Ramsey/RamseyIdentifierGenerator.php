@@ -12,6 +12,7 @@ use Ramsey\Uuid\Uuid;
  */
 final class RamseyIdentifierGenerator implements IdentifierGeneratorInterface
 {
+    #[\Override]
     public function generate(): string
     {
         return Uuid::uuid7()->toString();

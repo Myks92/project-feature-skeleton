@@ -50,6 +50,7 @@ final readonly class AggregateType implements \Stringable
         return new self($aggregateTypeString);
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return $this->aggregateType;

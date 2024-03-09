@@ -33,6 +33,7 @@ abstract readonly class Email implements ValueObjectInterface, \Stringable
     /**
      * @return non-empty-string
      */
+    #[\Override]
     public function __toString(): string
     {
         return $this->value;
@@ -68,6 +69,7 @@ abstract readonly class Email implements ValueObjectInterface, \Stringable
         return $parts[1];
     }
 
+    #[\Override]
     final public function equals(ValueObjectInterface $object): bool
     {
         return $this->value === $object->value;

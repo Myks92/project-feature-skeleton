@@ -25,6 +25,7 @@ final readonly class AllRecognizer implements AliasRecognizerInterface
         Assert::allIsInstanceOf($aliases, AliasRecognizerInterface::class);
     }
 
+    #[\Override]
     public function supports(mixed $data): bool
     {
         foreach ($this->aliases as $alias) {
@@ -36,6 +37,7 @@ final readonly class AllRecognizer implements AliasRecognizerInterface
         return false;
     }
 
+    #[\Override]
     public function recognize(mixed $data): string
     {
         foreach ($this->aliases as $alias) {

@@ -18,6 +18,7 @@ final readonly class ValidationMiddleware implements MiddlewareInterface
         private ValidatorInterface $validator,
     ) {}
 
+    #[\Override]
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {
         $message = $envelope->getMessage();

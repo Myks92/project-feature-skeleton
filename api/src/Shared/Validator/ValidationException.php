@@ -20,6 +20,7 @@ final class ValidationException extends \RuntimeException implements ValidationF
         parent::__construct($message, $code, $previous);
     }
 
+    #[\Override]
     public function getErrors(): Errors
     {
         return $this->errors;

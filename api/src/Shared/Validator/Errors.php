@@ -21,6 +21,7 @@ final readonly class Errors implements ContractErrors
     /**
      * @return array<array-key, Error>
      */
+    #[\Override]
     public function getErrors(): array
     {
         return $this->errors;

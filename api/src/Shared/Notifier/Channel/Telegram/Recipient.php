@@ -20,6 +20,7 @@ final readonly class Recipient implements RecipientInterface
         }
     }
 
+    #[\Override]
     public function getChatId(): string
     {
         return $this->chatId;

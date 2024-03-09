@@ -60,6 +60,7 @@ abstract readonly class Phone implements ValueObjectInterface, \Stringable
     /**
      * @return non-empty-string
      */
+    #[\Override]
     public function __toString(): string
     {
         return $this->getFull();
@@ -89,6 +90,7 @@ abstract readonly class Phone implements ValueObjectInterface, \Stringable
         return $this->number;
     }
 
+    #[\Override]
     final public function equals(ValueObjectInterface $object): bool
     {
         return $this->country === $object->country

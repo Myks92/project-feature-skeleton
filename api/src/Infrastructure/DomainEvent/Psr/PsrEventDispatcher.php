@@ -16,6 +16,7 @@ final readonly class PsrEventDispatcher implements EventDispatcherInterface
         private \Psr\EventDispatcher\EventDispatcherInterface $dispatcher,
     ) {}
 
+    #[\Override]
     public function dispatch(DomainEventInterface ...$events): void
     {
         foreach ($events as $event) {

@@ -28,56 +28,45 @@ final class MessageTest extends TestCase
         $this->message = new Message();
     }
 
-    public static function charsetDataProvider(): array
+    public static function charsetDataProvider(): \Iterator
     {
-        return [
-            ['utf-8'],
-            ['iso-8859-2'],
+        yield ['utf-8'];
+        yield ['iso-8859-2'];
+    }
+
+    public static function addressesDataProvider(): \Iterator
+    {
+        yield [
+            'foo@example.com',
+            'foo@example.com',
+        ];
+        yield [
+            ['foo@example.com', 'bar@example.com'],
+            ['foo@example.com', 'bar@example.com'],
+        ];
+        yield [
+            ['foo@example.com' => 'foo'],
+            ['foo@example.com' => 'foo'],
+        ];
+        yield [
+            ['foo@example.com' => 'foo', 'bar@example.com' => 'bar'],
+            ['foo@example.com' => 'foo', 'bar@example.com' => 'bar'],
         ];
     }
 
-    public static function addressesDataProvider(): array
+    public static function priorityDataProvider(): \Iterator
     {
-        return [
-            [
-                'foo@example.com',
-                'foo@example.com',
-            ],
-            [
-                ['foo@example.com', 'bar@example.com'],
-                ['foo@example.com', 'bar@example.com'],
-            ],
-            [
-                ['foo@example.com' => 'foo'],
-                ['foo@example.com' => 'foo'],
-            ],
-            [
-                ['foo@example.com' => 'foo', 'bar@example.com' => 'bar'],
-                ['foo@example.com' => 'foo', 'bar@example.com' => 'bar'],
-            ],
-        ];
+        yield [MessageInterface::PRIORITY_HIGHEST];
+        yield [MessageInterface::PRIORITY_HIGH];
+        yield [MessageInterface::PRIORITY_NORMAL];
+        yield [MessageInterface::PRIORITY_LOW];
+        yield [MessageInterface::PRIORITY_LOWEST];
     }
 
-    /**
-     * @return list<list<MessageInterface::PRIORITY_*>>
-     */
-    public static function priorityDataProvider(): array
+    public static function headerDataProvider(): \Iterator
     {
-        return [
-            [MessageInterface::PRIORITY_HIGHEST],
-            [MessageInterface::PRIORITY_HIGH],
-            [MessageInterface::PRIORITY_NORMAL],
-            [MessageInterface::PRIORITY_LOW],
-            [MessageInterface::PRIORITY_LOWEST],
-        ];
-    }
-
-    public static function headerDataProvider(): array
-    {
-        return [
-            ['X-Foo', 'Bar', ['Bar']],
-            ['X-Fuzz', ['Bar', 'Baz'], ['Bar', 'Baz']],
-        ];
+        yield ['X-Foo', 'Bar', ['Bar']];
+        yield ['X-Fuzz', ['Bar', 'Baz'], ['Bar', 'Baz']];
     }
 
     public function testSubject(): void

@@ -20,6 +20,7 @@ final readonly class EventBus implements EventBusInterface
         private MessageBusInterface $eventBus,
     ) {}
 
+    #[\Override]
     public function dispatch(EventInterface $event, array $metadata = []): void
     {
         $stamps = $this->getStamps($metadata);

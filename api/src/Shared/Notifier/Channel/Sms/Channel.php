@@ -25,11 +25,13 @@ final readonly class Channel implements ChannelInterface
         private TransportInterface $transport,
     ) {}
 
+    #[\Override]
     public function supports(NotificationInterface $notification, RecipientInterface $recipient): bool
     {
         return $recipient instanceof SmsRecipientInterface;
     }
 
+    #[\Override]
     public function notify(NotificationInterface $notification, RecipientInterface $recipient): void
     {
         if (!$recipient instanceof SmsRecipientInterface) {

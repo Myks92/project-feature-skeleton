@@ -21,6 +21,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
         private EntityManagerInterface $em,
     ) {}
 
+    #[\Override]
     public function supports(mixed $data): bool
     {
         if (!\is_object($data) && !\is_string($data)) {
@@ -42,6 +43,7 @@ final readonly class DoctrineEntityTableNameAliasRecognizer implements AliasReco
         }
     }
 
+    #[\Override]
     public function recognize(mixed $data): string
     {
         if (!$this->supports($data)) {

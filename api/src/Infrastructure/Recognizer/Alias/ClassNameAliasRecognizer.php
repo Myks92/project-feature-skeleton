@@ -15,11 +15,13 @@ use App\Infrastructure\Recognizer\Alias\Exception\AliasNotRecognizedException;
  */
 final class ClassNameAliasRecognizer implements AliasRecognizerInterface
 {
+    #[\Override]
     public function supports(mixed $data): bool
     {
         return \is_string($data) && class_exists($data, false);
     }
 
+    #[\Override]
     public function recognize(mixed $data): string
     {
         if (!$this->supports($data)) {

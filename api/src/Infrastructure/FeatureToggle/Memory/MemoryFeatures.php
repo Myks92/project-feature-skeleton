@@ -17,6 +17,7 @@ final class MemoryFeatures implements FeatureFlagInterface, FeatureSwitcherInter
         private array $features,
     ) {}
 
+    #[\Override]
     public function isEnabled(string $name): bool
     {
         if (!\array_key_exists($name, $this->features)) {
@@ -26,11 +27,13 @@ final class MemoryFeatures implements FeatureFlagInterface, FeatureSwitcherInter
         return $this->features[$name];
     }
 
+    #[\Override]
     public function enable(string $name): void
     {
         $this->features[$name] = true;
     }
 
+    #[\Override]
     public function disable(string $name): void
     {
         $this->features[$name] = false;
@@ -39,6 +42,7 @@ final class MemoryFeatures implements FeatureFlagInterface, FeatureSwitcherInter
     /**
      * @return string[]
      */
+    #[\Override]
     public function getAllEnabled(): array
     {
         return array_keys(array_filter($this->features));

@@ -16,6 +16,7 @@ final readonly class TwigTemplate implements TemplateInterface
         public Environment $twig,
     ) {}
 
+    #[\Override]
     public function render(string $name, array $context = []): string
     {
         return $this->twig->render($name, $context);

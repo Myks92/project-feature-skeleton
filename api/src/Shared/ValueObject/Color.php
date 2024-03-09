@@ -48,6 +48,7 @@ abstract readonly class Color implements ValueObjectInterface
         return $this->value;
     }
 
+    #[\Override]
     final public function equals(ValueObjectInterface $object): bool
     {
         return $this->value === $object->value;

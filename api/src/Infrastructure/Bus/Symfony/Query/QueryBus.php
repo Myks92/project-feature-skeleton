@@ -31,6 +31,7 @@ final class QueryBus implements QueryBusInterface
      *
      * @return T
      */
+    #[\Override]
     public function dispatch(QueryInterface $query, array $metadata = []): mixed
     {
         try {

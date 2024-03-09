@@ -45,6 +45,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getPhone(): string
     {
         return $this->phone;
@@ -63,6 +64,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getContent(): string
     {
         return $this->content;

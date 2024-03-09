@@ -17,6 +17,7 @@ final readonly class KnpPaginator implements PaginatorInterface
         private \Knp\Component\Pager\PaginatorInterface $paginator,
     ) {}
 
+    #[\Override]
     public function paginate(mixed $target, int $page = 1, ?int $limit = null, array $options = []): PaginationInterface
     {
         $origin = $this->paginator->paginate($target, $page, $limit, $options);

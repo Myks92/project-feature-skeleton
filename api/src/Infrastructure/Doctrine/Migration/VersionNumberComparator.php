@@ -9,6 +9,7 @@ use Doctrine\Migrations\Version\Version;
 
 final class VersionNumberComparator implements Comparator
 {
+    #[\Override]
     public function compare(Version $a, Version $b): int
     {
         return strcmp($this->getNumber($a), $this->getNumber($b));

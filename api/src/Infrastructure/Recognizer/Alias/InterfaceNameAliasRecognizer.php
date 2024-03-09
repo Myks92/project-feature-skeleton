@@ -15,11 +15,13 @@ use App\Infrastructure\Recognizer\Alias\Exception\AliasNotRecognizedException;
  */
 final class InterfaceNameAliasRecognizer implements AliasRecognizerInterface
 {
+    #[\Override]
     public function supports(mixed $data): bool
     {
         return \is_string($data) && interface_exists($data, false);
     }
 
+    #[\Override]
     public function recognize(mixed $data): string
     {
         if (!$this->supports($data)) {

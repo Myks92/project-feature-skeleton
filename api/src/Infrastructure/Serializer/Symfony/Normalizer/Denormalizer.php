@@ -23,6 +23,7 @@ final readonly class Denormalizer implements DenormalizerInterface
      * @param class-string<T> $type
      * @return T
      */
+    #[\Override]
     public function denormalize(mixed $data, string $type): object
     {
         $contextBuilder = (new SerializerContextBuilder())

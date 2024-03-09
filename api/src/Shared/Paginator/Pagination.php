@@ -30,6 +30,7 @@ final class Pagination implements \Iterator, PaginationInterface
 
     private array $customParameters = [];
 
+    #[\Override]
     public function rewind(): void
     {
         if (\is_object($this->items)) {
@@ -45,6 +46,7 @@ final class Pagination implements \Iterator, PaginationInterface
      * @psalm-suppress InvalidArgument
      */
     #[\ReturnTypeWillChange]
+    #[\Override]
     public function current(): mixed
     {
         return current($this->items);
@@ -54,6 +56,7 @@ final class Pagination implements \Iterator, PaginationInterface
      * @psalm-suppress InvalidArgument
      */
     #[\ReturnTypeWillChange]
+    #[\Override]
     public function key(): null|int|string
     {
         if (\is_object($this->items)) {
@@ -68,6 +71,7 @@ final class Pagination implements \Iterator, PaginationInterface
     /**
      * @psalm-suppress InvalidArgument
      */
+    #[\Override]
     public function next(): void
     {
         next($this->items);
@@ -76,6 +80,7 @@ final class Pagination implements \Iterator, PaginationInterface
     /**
      * @psalm-suppress InvalidArgument
      */
+    #[\Override]
     public function valid(): bool
     {
         return key($this->items) !== null;
@@ -84,16 +89,19 @@ final class Pagination implements \Iterator, PaginationInterface
     /**
      * @psalm-suppress InvalidArgument
      */
+    #[\Override]
     public function count(): int
     {
         return \count($this->items);
     }
 
+    #[\Override]
     public function setItems(iterable $items): void
     {
         $this->items = $items;
     }
 
+    #[\Override]
     public function getItems(): iterable
     {
         return $this->items;
@@ -102,51 +110,61 @@ final class Pagination implements \Iterator, PaginationInterface
     /**
      * @return mixed|null
      */
+    #[\Override]
     public function getCustomParameter(string $name): mixed
     {
         return $this->customParameters[$name] ?? null;
     }
 
+    #[\Override]
     public function setCustomParameters(array $parameters): void
     {
         $this->customParameters = $parameters;
     }
 
+    #[\Override]
     public function setCurrentPageNumber(int $pageNumber): void
     {
         $this->currentPageNumber = $pageNumber;
     }
 
+    #[\Override]
     public function getCurrentPageNumber(): int
     {
         return $this->currentPageNumber;
     }
 
+    #[\Override]
     public function setItemNumberPerPage(int $numItemsPerPage): void
     {
         $this->numItemsPerPage = $numItemsPerPage;
     }
 
+    #[\Override]
     public function getItemNumberPerPage(): int
     {
         return $this->numItemsPerPage;
     }
 
+    #[\Override]
     public function setTotalItemCount(int $numTotal): void
     {
         $this->totalCount = $numTotal;
     }
 
+    #[\Override]
     public function getTotalItemCount(): int
     {
         return $this->totalCount;
     }
 
+    #[\Override]
     public function setPaginatorOptions(array $options): void
     {
         $this->paginatorOptions = $options;
     }
 
+    #[\Override]
     public function getPaginatorOption(string $name): mixed
     {
         return $this->paginatorOptions[$name] ?? null;
@@ -156,6 +174,7 @@ final class Pagination implements \Iterator, PaginationInterface
      * @psalm-param string|int $offset
      * @psalm-suppress InvalidArgument
      */
+    #[\Override]
     public function offsetExists(mixed $offset): bool
     {
         if ($this->items instanceof \ArrayIterator) {
@@ -170,6 +189,7 @@ final class Pagination implements \Iterator, PaginationInterface
      * @psalm-suppress InvalidArrayAccess
      */
     #[\ReturnTypeWillChange]
+    #[\Override]
     public function offsetGet(mixed $offset): mixed
     {
         return $this->items[$offset];
@@ -180,6 +200,7 @@ final class Pagination implements \Iterator, PaginationInterface
      * @psalm-suppress InvalidArrayAccess
      * @psalm-suppress InvalidArrayAssignment
      */
+    #[\Override]
     public function offsetSet(mixed $offset, mixed $value): void
     {
         if ($offset === null) {
@@ -193,6 +214,7 @@ final class Pagination implements \Iterator, PaginationInterface
      * @psalm-param string|int $offset
      * @psalm-suppress InvalidArrayAccess
      */
+    #[\Override]
     public function offsetUnset(mixed $offset): void
     {
         unset($this->items[$offset]);

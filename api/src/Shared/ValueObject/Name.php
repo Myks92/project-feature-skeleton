@@ -6,6 +6,7 @@ namespace App\Shared\ValueObject;
 
 use App\Contracts\ValueObject\ValueObjectInterface;
 use App\Shared\Assert;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,11 +22,11 @@ abstract readonly class Name implements ValueObjectInterface, \Stringable
      * @param non-empty-string|null $middle
      */
     public function __construct(
-        #[ORM\Column(type: 'string', length: 64)]
+        #[ORM\Column(type: Types::STRING, length: 64)]
         private string $last,
-        #[ORM\Column(type: 'string', length: 64)]
+        #[ORM\Column(type: Types::STRING, length: 64)]
         private string $first,
-        #[ORM\Column(type: 'string', length: 64, nullable: true)]
+        #[ORM\Column(type: Types::STRING, length: 64, nullable: true)]
         private ?string $middle = null,
     ) {
         Assert::lengthBetween($last, 1, 64);
@@ -40,6 +41,7 @@ abstract readonly class Name implements ValueObjectInterface, \Stringable
     /**
      * @return non-empty-string
      */
+    #[\Override]
     public function __toString(): string
     {
         return $this->getFull();
@@ -82,6 +84,7 @@ abstract readonly class Name implements ValueObjectInterface, \Stringable
         ]));
     }
 
+    #[\Override]
     final public function equals(ValueObjectInterface $object): bool
     {
         return $this->last === $object->getLast()

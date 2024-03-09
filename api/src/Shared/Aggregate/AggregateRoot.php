@@ -33,6 +33,7 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
     /**
      * @return list<DomainEventInterface>
      */
+    #[\Override]
     final public function releaseEvents(): array
     {
         $events = $this->recordedEvents;
@@ -41,11 +42,13 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
         return $events;
     }
 
+    #[\Override]
     final public function getAggregateVersion(): int
     {
         return $this->aggregateVersion;
     }
 
+    #[\Override]
     abstract public function getId(): AggregateIdInterface;
 
     final protected function recordEvent(DomainEventInterface $event): void

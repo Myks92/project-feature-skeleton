@@ -32,6 +32,7 @@ abstract readonly class Url implements ValueObjectInterface, \Stringable
     /**
      * @return non-empty-string
      */
+    #[\Override]
     public function __toString(): string
     {
         return $this->getValue();
@@ -45,6 +46,7 @@ abstract readonly class Url implements ValueObjectInterface, \Stringable
         return $this->value;
     }
 
+    #[\Override]
     final public function equals(ValueObjectInterface $object): bool
     {
         return $this->value === $object->value;

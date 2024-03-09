@@ -18,6 +18,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
         private TranslatorInterface $translator,
     ) {}
 
+    #[\Override]
     public function getSupportedTypes(?string $format): array
     {
         return [
@@ -25,6 +26,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
         ];
     }
 
+    #[\Override]
     public function supportsNormalization($data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof FlattenException && $format === 'json';
@@ -33,6 +35,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
     /**
      * @return array{message: string}
      */
+    #[\Override]
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         if (!$object instanceof FlattenException) {

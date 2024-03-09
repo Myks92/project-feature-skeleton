@@ -20,16 +20,19 @@ abstract class AbstractAggregateId implements AggregateIdInterface
         $this->value = mb_strtolower($value);
     }
 
+    #[\Override]
     final public function __toString(): string
     {
         return $this->getValue();
     }
 
+    #[\Override]
     final public function getValue(): string
     {
         return $this->value;
     }
 
+    #[\Override]
     final public function isEqual(AggregateIdInterface $aggregateId): bool
     {
         return $this->value === $aggregateId->getValue();

@@ -18,6 +18,7 @@ final readonly class DomainEventDispatcherFlusher implements FlusherInterface
         private EventDispatcherInterface $dispatcher,
     ) {}
 
+    #[\Override]
     public function flush(AggregateRootInterface ...$roots): void
     {
         foreach ($roots as $root) {

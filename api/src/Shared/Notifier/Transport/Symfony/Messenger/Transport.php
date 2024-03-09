@@ -21,11 +21,13 @@ final readonly class Transport implements TransportInterface
         private MessageBusInterface $bus,
     ) {}
 
+    #[\Override]
     public function supports(MessageInterface $message): bool
     {
         return true;
     }
 
+    #[\Override]
     public function send(MessageInterface $message): void
     {
         try {

@@ -17,6 +17,7 @@ final readonly class SymfonyMailer implements MailerInterface
         private AdapterMailer $mailer,
     ) {}
 
+    #[\Override]
     public function send(MessageInterface $message): void
     {
         $email = MessageConverter::toEmail($message);

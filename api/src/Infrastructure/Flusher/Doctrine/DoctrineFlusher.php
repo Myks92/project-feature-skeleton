@@ -17,6 +17,7 @@ final readonly class DoctrineFlusher implements FlusherInterface
         private EntityManagerInterface $em,
     ) {}
 
+    #[\Override]
     public function flush(AggregateRootInterface ...$roots): void
     {
         $this->em->flush();

@@ -26,6 +26,7 @@ final readonly class AllAvailableChannelsNotifier implements NotifierInterface
         private LoggerInterface $logger,
     ) {}
 
+    #[\Override]
     public function send(NotificationInterface $notification, RecipientInterface ...$recipients): void
     {
         foreach ($recipients as $recipient) {

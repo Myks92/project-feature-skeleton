@@ -25,6 +25,7 @@ final readonly class Notifiers implements NotifierInterface
         private iterable $notifiers,
     ) {}
 
+    #[\Override]
     public function send(NotificationInterface $notification, RecipientInterface ...$recipients): void
     {
         foreach ($this->notifiers as $notifier) {

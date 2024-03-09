@@ -16,6 +16,7 @@ final readonly class Identity implements IdentityInterface, UserInterface
         private array $roles,
     ) {}
 
+    #[\Override]
     public function getId(): string
     {
         return $this->id;
@@ -24,13 +25,16 @@ final readonly class Identity implements IdentityInterface, UserInterface
     /**
      * @return string[]
      */
+    #[\Override]
     public function getRoles(): array
     {
         return $this->roles;
     }
 
+    #[\Override]
     public function eraseCredentials(): void {}
 
+    #[\Override]
     public function getUserIdentifier(): string
     {
         return $this->getId();

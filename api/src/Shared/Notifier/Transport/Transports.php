@@ -21,6 +21,7 @@ final readonly class Transports implements TransportInterface
         private iterable $transports,
     ) {}
 
+    #[\Override]
     public function supports(MessageInterface $message): bool
     {
         foreach ($this->transports as $transport) {
@@ -32,6 +33,7 @@ final readonly class Transports implements TransportInterface
         return false;
     }
 
+    #[\Override]
     public function send(MessageInterface $message): void
     {
         if (!$this->supports($message)) {

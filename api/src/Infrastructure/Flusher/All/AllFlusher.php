@@ -22,6 +22,7 @@ final readonly class AllFlusher implements FlusherInterface
         Assert::allIsInstanceOf($flushers, FlusherInterface::class);
     }
 
+    #[\Override]
     public function flush(AggregateRootInterface ...$roots): void
     {
         foreach ($this->flushers as $flusher) {

@@ -27,11 +27,13 @@ final readonly class Transport implements TransportInterface
         private string $token,
     ) {}
 
+    #[\Override]
     public function supports(MessageInterface $message): bool
     {
         return $message instanceof TelegramMessageInterface;
     }
 
+    #[\Override]
     public function send(MessageInterface $message): void
     {
         if (!$message instanceof TelegramMessageInterface) {

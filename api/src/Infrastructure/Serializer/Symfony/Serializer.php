@@ -18,6 +18,7 @@ final readonly class Serializer implements SerializerInterface
         private \Symfony\Component\Serializer\SerializerInterface $serializer,
     ) {}
 
+    #[\Override]
     public function serialize(mixed $data, string $format, array $context = []): string
     {
         $contextBuilder = (new JsonEncoderContextBuilder())
@@ -27,6 +28,7 @@ final readonly class Serializer implements SerializerInterface
         return $this->serializer->serialize($data, $format, $contextBuilder->toArray());
     }
 
+    #[\Override]
     public function deserialize(mixed $data, string $type, string $format, array $context = []): mixed
     {
         $contextBuilder = (new SerializerContextBuilder())

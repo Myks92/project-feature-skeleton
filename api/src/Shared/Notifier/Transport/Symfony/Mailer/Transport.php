@@ -23,11 +23,13 @@ final readonly class Transport implements TransportInterface
         private MailerInterface $mailer,
     ) {}
 
+    #[\Override]
     public function supports(MessageInterface $message): bool
     {
         return $message instanceof EmailMessageInterface;
     }
 
+    #[\Override]
     public function send(MessageInterface $message): void
     {
         if (!$message instanceof EmailMessageInterface) {

@@ -53,6 +53,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getTo(): string
     {
         return $this->to;
@@ -86,6 +87,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getSubject(): string
     {
         return $this->subject;
@@ -101,6 +103,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getContent(): string
     {
         return $this->content;

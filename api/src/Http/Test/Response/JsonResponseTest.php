@@ -16,10 +16,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(JsonResponse::class)]
 final class JsonResponseTest extends TestCase
 {
-    /**
-     * @return iterable<array-key, array>
-     */
-    public static function getCases(): iterable
+    public static function getCases(): \Iterator
     {
         $object = new \stdClass();
         $object->str = 'value';
@@ -31,15 +28,12 @@ final class JsonResponseTest extends TestCase
             'int' => 1,
             'none' => null,
         ];
-
-        return [
-            'null' => [null, '{}'],
-            'empty' => ['', '""'],
-            'number' => [12, '12'],
-            'string' => ['12', '"12"'],
-            'object' => [$object, '{"str":"value","int":1,"none":null}'],
-            'array' => [$array, '{"str":"value","int":1,"none":null}'],
-        ];
+        yield 'null' => [null, '{}'];
+        yield 'empty' => ['', '""'];
+        yield 'number' => [12, '12'];
+        yield 'string' => ['12', '"12"'];
+        yield 'object' => [$object, '{"str":"value","int":1,"none":null}'];
+        yield 'array' => [$array, '{"str":"value","int":1,"none":null}'];
     }
 
     public function testWithCode(): void

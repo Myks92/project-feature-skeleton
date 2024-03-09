@@ -18,6 +18,7 @@ final readonly class CommandBus implements CommandBusInterface
         private MessageBusInterface $commandBus,
     ) {}
 
+    #[\Override]
     public function dispatch(CommandInterface $command, array $metadata = []): void
     {
         try {

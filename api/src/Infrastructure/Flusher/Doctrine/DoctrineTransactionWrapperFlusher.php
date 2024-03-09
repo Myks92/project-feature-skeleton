@@ -18,6 +18,7 @@ final readonly class DoctrineTransactionWrapperFlusher implements FlusherInterfa
         private FlusherInterface $flusher,
     ) {}
 
+    #[\Override]
     public function flush(AggregateRootInterface ...$roots): void
     {
         $this->em->wrapInTransaction(function () use ($roots): void {

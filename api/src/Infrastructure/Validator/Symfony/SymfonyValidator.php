@@ -20,6 +20,7 @@ final readonly class SymfonyValidator implements ValidatorInterface
         private SymfonyValidatorInterface $validator,
     ) {}
 
+    #[\Override]
     public function validate(object $value): void
     {
         $violations = $this->validator->validate($value);

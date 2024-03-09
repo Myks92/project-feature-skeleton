@@ -20,6 +20,7 @@ final readonly class Recipient implements RecipientInterface
         }
     }
 
+    #[\Override]
     public function getEmail(): string
     {
         return $this->email;

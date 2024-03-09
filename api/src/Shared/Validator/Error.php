@@ -16,11 +16,13 @@ final readonly class Error implements ContractError
         private string $message,
     ) {}
 
+    #[\Override]
     public function getPropertyPath(): string
     {
         return $this->propertyPath;
     }
 
+    #[\Override]
     public function getMessage(): string
     {
         return $this->message;

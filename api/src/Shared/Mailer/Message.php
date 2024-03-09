@@ -92,6 +92,7 @@ final class Message implements MessageInterface
         return $addresses;
     }
 
+    #[\Override]
     public function getCharset(): string
     {
         return $this->charset;
@@ -105,6 +106,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getFrom(): null|array|string
     {
         return $this->from;
@@ -121,6 +123,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getTo(): null|array|string
     {
         return $this->to;
@@ -137,6 +140,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getReplyTo(): null|array|string
     {
         return $this->replyTo;
@@ -153,6 +157,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getCc(): null|array|string
     {
         return $this->cc;
@@ -169,6 +174,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getBcc(): null|array|string
     {
         return $this->bcc;
@@ -185,6 +191,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getSubject(): ?string
     {
         return $this->subject;
@@ -198,6 +205,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
@@ -211,6 +219,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getPriority(): int
     {
         return $this->priority;
@@ -227,6 +236,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getReturnPath(): ?string
     {
         return $this->returnPath;
@@ -240,6 +250,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getSender(): ?string
     {
         return $this->sender;
@@ -253,6 +264,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getText(): ?string
     {
         return $this->text;
@@ -266,6 +278,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getHtml(): ?string
     {
         return $this->html;
@@ -279,6 +292,7 @@ final class Message implements MessageInterface
         return $new;
     }
 
+    #[\Override]
     public function getAttachments(): array
     {
         return $this->attachments;
@@ -295,6 +309,7 @@ final class Message implements MessageInterface
     /**
      * @return array<string, string[]>
      */
+    #[\Override]
     public function getHeaders(): array
     {
         return $this->headers;

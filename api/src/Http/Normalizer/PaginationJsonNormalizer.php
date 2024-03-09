@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 final class PaginationJsonNormalizer implements NormalizerInterface
 {
+    #[\Override]
     public function getSupportedTypes(?string $format): array
     {
         return [
@@ -19,6 +20,7 @@ final class PaginationJsonNormalizer implements NormalizerInterface
         ];
     }
 
+    #[\Override]
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof PaginationInterface && $format === 'json';
@@ -27,6 +29,7 @@ final class PaginationJsonNormalizer implements NormalizerInterface
     /**
      * @return array{items: iterable<mixed, mixed>, pagination: array{count: int, total: int, perPage: int, page: int, pages: float}}
      */
+    #[\Override]
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         if (!$object instanceof PaginationInterface) {

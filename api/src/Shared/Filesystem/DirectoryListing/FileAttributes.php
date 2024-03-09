@@ -29,6 +29,7 @@ final class FileAttributes implements StorageAttributes
         $this->path = ltrim($this->path, '/');
     }
 
+    #[\Override]
     public static function fromArray(array $attributes): self
     {
         return new self(
@@ -44,11 +45,13 @@ final class FileAttributes implements StorageAttributes
     /**
      * @return self::TYPE_*
      */
+    #[\Override]
     public function type(): string
     {
         return $this->type;
     }
 
+    #[\Override]
     public function path(): string
     {
         return $this->path;
@@ -59,11 +62,13 @@ final class FileAttributes implements StorageAttributes
         return $this->fileSize;
     }
 
+    #[\Override]
     public function visibility(): ?string
     {
         return $this->visibility;
     }
 
+    #[\Override]
     public function lastModified(): ?int
     {
         return $this->lastModified;
@@ -74,21 +79,25 @@ final class FileAttributes implements StorageAttributes
         return $this->mimeType;
     }
 
+    #[\Override]
     public function extraMetadata(): array
     {
         return $this->extraMetadata;
     }
 
+    #[\Override]
     public function isFile(): bool
     {
         return true;
     }
 
+    #[\Override]
     public function isDir(): bool
     {
         return false;
     }
 
+    #[\Override]
     public function withPath(string $path): self
     {
         $clone = clone $this;
@@ -100,6 +109,7 @@ final class FileAttributes implements StorageAttributes
     /**
      * @return TFileAttributes
      */
+    #[\Override]
     public function jsonSerialize(): array
     {
         return [

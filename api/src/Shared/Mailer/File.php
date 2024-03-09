@@ -64,36 +64,43 @@ final readonly class File implements FileInterface
         return new self($name, $path, null, $contentType, true);
     }
 
+    #[\Override]
     public function getId(): string
     {
         return $this->id;
     }
 
+    #[\Override]
     public function getCid(): string
     {
         return "cid:{$this->getId()}";
     }
 
+    #[\Override]
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    #[\Override]
     public function getPath(): ?string
     {
         return $this->path;
     }
 
+    #[\Override]
     public function getContent(): ?string
     {
         return $this->content;
     }
 
+    #[\Override]
     public function getContentType(): ?string
     {
         return $this->contentType;
     }
 
+    #[\Override]
     public function isEmbed(): bool
     {
         return $this->embed;

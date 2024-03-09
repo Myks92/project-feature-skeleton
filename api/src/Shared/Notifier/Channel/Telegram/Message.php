@@ -47,6 +47,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getChatId(): string
     {
         return $this->chatId;
@@ -65,6 +66,7 @@ final class Message implements MessageInterface
         return $this;
     }
 
+    #[\Override]
     public function getContent(): string
     {
         return $this->content;
@@ -83,6 +85,7 @@ final class Message implements MessageInterface
     /**
      * @return self::PARSE_MODE_*
      */
+    #[\Override]
     public function getParseMode(): string
     {
         return $this->parseMode;
