@@ -1,15 +1,5 @@
 home:
-    resource: ../src/Http/Action/Home
-    type: attribute
-    trailing_slash_on_root: false
-    stateless: true
-    defaults:
-        _format: json
-
-v1:
-    resource: ../src/Http/Action/V1
-    prefix: /v1
-    name_prefix: v1.
+    resource: ../src/Http/Action
     type: attribute
     trailing_slash_on_root: false
     stateless: true
