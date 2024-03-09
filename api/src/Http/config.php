@@ -25,4 +25,6 @@ return static function (ContainerConfigurator $configurator): void {
         './Response',
         './Test',
     ]);
+
+    $services->load('App\\Http\\Response\\', './Response/**/*Factory.php');
 };
