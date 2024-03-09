@@ -69,7 +69,7 @@ api-wait-db:
 	$(PHP) wait-for-it api-postgres:5432 -t 30
 
 api-migrations: ## Применение миграций
-	- $(APP_CLI) doctrine:migrations:migrate -- --no-interaction
+	$(APP_CLI) doctrine:migrations:migrate -- --no-interaction --allow-no-migration
 
 api-migrations-diff: ## Создание миграций
 	$(APP_CLI) doctrine:migrations:diff -- --no-interaction
