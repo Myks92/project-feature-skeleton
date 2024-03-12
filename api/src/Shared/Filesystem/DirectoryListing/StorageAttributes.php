@@ -38,9 +38,9 @@ interface StorageAttributes extends \JsonSerializable, ArrayAccess
      */
     public function type(): string;
 
-    public function visibility(): null|string;
+    public function visibility(): ?string;
 
-    public function lastModified(): null|int;
+    public function lastModified(): ?int;
 
     public function isFile(): bool;
 
