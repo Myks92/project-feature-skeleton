@@ -1,5 +1,5 @@
 doctrine_migrations:
     migrations_paths:
         'App\Migration': '%kernel.project_dir%/migrations'
-    enable_profiler: '%kernel.debug%'
+    enable_profiler: false
     organize_migrations: BY_YEAR
