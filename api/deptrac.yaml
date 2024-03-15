@@ -9,7 +9,7 @@ deptrac:
         - { name: Http, collectors: [ { type: directory, value: src/Http/.* } ] }
         - { name: Console, collectors: [ { type: directory, value: src/Console/.* } ] }
         - { name: Infrastructure, collectors: [ { type: directory, value: src/Infrastructure/.* } ] }
-        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Http|Infrastructure|Console|Contracts|Kernel).* } ] }
+        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Http|Infrastructure|Console|Contracts).* } ] }
         - { name: Contracts, collectors: [ { type: directory, value: src/Contracts/.* } ] }
         - { name: PHP, collectors: [ { type: php_internal, value: .* } ] }
 

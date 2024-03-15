@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Infrastructure;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -18,8 +18,9 @@ final class Kernel extends BaseKernel
     private function configureContainer(ContainerConfigurator $container): void
     {
         $configDir = $this->getConfigDir();
+        $projectDir = $this->getProjectDir();
+
         $container->import($configDir . '/{packages}/*.{php,yaml}');
-        $container->import($configDir . '/{services}/*.{php,yaml}');
-        $container->import('./**/config.{php,yaml}');
+        $container->import($projectDir . '/src/**/config.php');
     }
 }

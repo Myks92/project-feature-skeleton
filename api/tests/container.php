@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Kernel;
+use App\Infrastructure\Kernel;
 
 $appKernel = new Kernel('tests', false);
 $appKernel->boot();
