@@ -6,7 +6,7 @@ namespace App\Infrastructure\FeatureToggle\Listener\Test;
 
 use App\Contracts\FeatureToggle\FeatureSwitcherInterface;
 use App\Infrastructure\FeatureToggle\Listener\CookieFeatureSwitcherListener;
-use App\Shared\PHPUnit\ConsecutiveTrait;
+use App\Infrastructure\PHPUnit\ConsecutiveTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;

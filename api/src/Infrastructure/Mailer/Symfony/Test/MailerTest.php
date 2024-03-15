@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Infrastructure\Mailer\Symfony\Test;
 
 use App\Contracts\Mailer\MessageInterface;
+use App\Infrastructure\Mailer\File;
+use App\Infrastructure\Mailer\Message;
 use App\Infrastructure\Mailer\Symfony\MessageConverter;
 use App\Infrastructure\Mailer\Symfony\SymfonyMailer;
-use App\Shared\Mailer\File;
-use App\Shared\Mailer\Message;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Mailer\MailerInterface as AdapterMailer;

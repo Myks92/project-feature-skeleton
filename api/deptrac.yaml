@@ -9,15 +9,13 @@ deptrac:
         - { name: Http, collectors: [ { type: directory, value: src/Http/.* } ] }
         - { name: Console, collectors: [ { type: directory, value: src/Console/.* } ] }
         - { name: Infrastructure, collectors: [ { type: directory, value: src/Infrastructure/.* } ] }
-        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Shared|Http|Infrastructure|Console|Contracts|Kernel).* } ] }
+        - { name: Feature, collectors: [ { type: className, regex: ^App\\(?!Http|Infrastructure|Console|Contracts|Kernel).* } ] }
         - { name: Contracts, collectors: [ { type: directory, value: src/Contracts/.* } ] }
-        - { name: Shared, collectors: [ { type: directory, value: src/Shared/.* } ] }
         - { name: PHP, collectors: [ { type: php_internal, value: .* } ] }
 
     ruleset:
-        Http: [ Http, Feature, Shared, +Contracts ]
-        Console: [ Console, Feature, Shared, +Contracts ]
-        Infrastructure: [ Shared, +Contracts ]
-        Feature: [ Shared, +Contracts ]
-        Shared: [ +Contracts ]
+        Http: [ Http, Feature, Infrastructure, +Contracts ]
+        Console: [ Console, Feature, Infrastructure, +Contracts ]
+        Infrastructure: [ Infrastructure, +Contracts ]
+        Feature: [ Infrastructure, +Contracts ]
         Contracts: [ PHP ]

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Validator\Symfony\Test;
 
+use App\Infrastructure\Validator\Error;
 use App\Infrastructure\Validator\Symfony\SymfonyValidator;
-use App\Shared\Validator\Error;
-use App\Shared\Validator\ValidationException;
+use App\Infrastructure\Validator\ValidationException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\ConstraintViolation;

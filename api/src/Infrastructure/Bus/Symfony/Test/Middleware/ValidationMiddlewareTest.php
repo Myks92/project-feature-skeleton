@@ -6,7 +6,7 @@ namespace App\Infrastructure\Bus\Symfony\Test\Middleware;
 
 use App\Contracts\Validator\ValidatorInterface;
 use App\Infrastructure\Bus\Symfony\Middleware\ValidationMiddleware;
-use App\Shared\Validator\ValidationException;
+use App\Infrastructure\Validator\ValidationException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;

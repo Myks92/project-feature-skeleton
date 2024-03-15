@@ -6,9 +6,9 @@ namespace App\Http\Test\Listener;
 
 use App\Http\Listener\ValidationExceptionListener;
 use App\Http\Response\JsonResponse;
-use App\Shared\Validator\Error;
-use App\Shared\Validator\Errors;
-use App\Shared\Validator\ValidationException;
+use App\Infrastructure\Validator\Error;
+use App\Infrastructure\Validator\Errors;
+use App\Infrastructure\Validator\ValidationException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;

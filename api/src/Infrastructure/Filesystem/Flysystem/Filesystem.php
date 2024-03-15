@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Infrastructure\Filesystem\Flysystem;
 
 use App\Contracts\Filesystem\FilesystemInterface;
-use App\Shared\Filesystem\DirectoryListing\DirectoryAttributes;
-use App\Shared\Filesystem\DirectoryListing\DirectoryListing;
-use App\Shared\Filesystem\DirectoryListing\FileAttributes;
-use App\Shared\Filesystem\DirectoryListing\StorageAttributes;
-use App\Shared\Filesystem\Exception\FilesystemException;
+use App\Infrastructure\Filesystem\DirectoryListing\DirectoryAttributes;
+use App\Infrastructure\Filesystem\DirectoryListing\DirectoryListing;
+use App\Infrastructure\Filesystem\DirectoryListing\FileAttributes;
+use App\Infrastructure\Filesystem\DirectoryListing\StorageAttributes;
+use App\Infrastructure\Filesystem\Exception\FilesystemException;
 use League\Flysystem\DirectoryAttributes as FlysystemDirectoryAttributes;
 use League\Flysystem\FileAttributes as FlysystemFileAttributes;
 use League\Flysystem\FilesystemException as FlysystemFilesystemException;

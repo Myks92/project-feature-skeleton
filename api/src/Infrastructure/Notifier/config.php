@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace App\Infrastructure\Notifier;
 
 use App\Contracts\Notifier\NotifierInterface;
-use App\Shared\Notifier\Channel;
-use App\Shared\Notifier\Notifier;
-use App\Shared\Notifier\Transport;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;

@@ -6,7 +6,7 @@ namespace App\Infrastructure\Flusher\All;
 
 use App\Contracts\Aggregate\AggregateRootInterface;
 use App\Contracts\Flusher\FlusherInterface;
-use App\Shared\Assert;
+use App\Infrastructure\Assert;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>

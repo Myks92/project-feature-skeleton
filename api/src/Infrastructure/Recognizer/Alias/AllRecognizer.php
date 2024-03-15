@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Infrastructure\Recognizer\Alias;
 
 use App\Contracts\Recognizer\Alias\AliasRecognizerInterface;
+use App\Infrastructure\Assert;
 use App\Infrastructure\Recognizer\Alias\Exception\AliasNotRecognizedException;
-use App\Shared\Assert;
 
 /**
  * @template T

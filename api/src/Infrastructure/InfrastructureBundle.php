@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure;
 
-use App\Shared\Bus\Command\Attribute\CommandHandler;
-use App\Shared\Bus\Event\Attribute\EventHandler;
-use App\Shared\Bus\Query\Attribute\QueryHandler;
+use App\Infrastructure\Bus\Command\Attribute\CommandHandler;
+use App\Infrastructure\Bus\Event\Attribute\EventHandler;
+use App\Infrastructure\Bus\Query\Attribute\QueryHandler;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;

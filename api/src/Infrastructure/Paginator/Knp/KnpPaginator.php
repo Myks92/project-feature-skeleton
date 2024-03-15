@@ -6,7 +6,7 @@ namespace App\Infrastructure\Paginator\Knp;
 
 use App\Contracts\Paginator\PaginationInterface;
 use App\Contracts\Paginator\PaginatorInterface;
-use App\Shared\Paginator\Pagination;
+use App\Infrastructure\Paginator\Pagination;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
