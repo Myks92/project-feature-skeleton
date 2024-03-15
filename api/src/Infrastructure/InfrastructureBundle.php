@@ -7,7 +7,6 @@ namespace App\Infrastructure;
 use App\Shared\Bus\Command\Attribute\CommandHandler;
 use App\Shared\Bus\Event\Attribute\EventHandler;
 use App\Shared\Bus\Query\Attribute\QueryHandler;
-use App\Shared\DomainEvent\Attribute\EventListener;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -23,7 +22,6 @@ final class InfrastructureBundle extends AbstractBundle
         $this->registerCommandBus($container);
         $this->registerQueryBus($container);
         $this->registerEventBus($container);
-        $this->registerEventListener($container);
 
         parent::build($container);
     }
@@ -95,25 +93,6 @@ final class InfrastructureBundle extends AbstractBundle
                     'method' => $method,
                     'handles' => $attribute->event,
                     'from_transport' => $attribute->transport,
-                    'priority' => $attribute->priority,
-                ]);
-            },
-        );
-    }
-
-    private function registerEventListener(ContainerBuilder $container): void
-    {
-        $container->registerAttributeForAutoconfiguration(
-            EventListener::class,
-            static function (
-                ChildDefinition $definition,
-                EventListener $attribute,
-                \ReflectionClass|\ReflectionMethod|\Reflector $reflector,
-            ): void {
-                $method = ($reflector instanceof \ReflectionMethod) ? $reflector->getName() : '__invoke';
-                $definition->addTag('kernel.event_listener', [
-                    'method' => $method,
-                    'handles' => $attribute->event,
                     'priority' => $attribute->priority,
                 ]);
             },
