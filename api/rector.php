@@ -68,5 +68,5 @@ return RectorConfig::configure()
         NameImportingPostRector::class => [__DIR__ . '/src/Infrastructure/Notifier/config.php'],
         StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations', __DIR__ . '/src/**/Migration'],
     ])
-    ->withSymfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml')
+    ->withSymfonyContainerXml(__DIR__ . '/var/cache/dev/App_Infrastructure_KernelDevDebugContainer.xml')
     ->withSymfonyContainerPhp(__DIR__ . '/tests/container.php');
