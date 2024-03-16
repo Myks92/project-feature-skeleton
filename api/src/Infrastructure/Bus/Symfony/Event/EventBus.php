@@ -6,6 +6,7 @@ namespace App\Infrastructure\Bus\Symfony\Event;
 
 use App\Contracts\Bus\Event\EventBusInterface;
 use App\Contracts\Bus\Event\EventInterface;
+use App\Contracts\DomainEvent\DomainEventInterface;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\StampInterface;
@@ -21,7 +22,7 @@ final readonly class EventBus implements EventBusInterface
     ) {}
 
     #[\Override]
-    public function dispatch(EventInterface $event, array $metadata = []): void
+    public function dispatch(EventInterface|DomainEventInterface $event, array $metadata = []): void
     {
         $stamps = $this->getStamps($metadata);
 

@@ -1,0 +1,101 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Infrastructure\Flusher\Test;
+
+use App\Contracts\Aggregate\AggregateRootInterface;
+use App\Contracts\Bus\Event\EventBusInterface;
+use App\Contracts\DomainEvent\DomainEventInterface;
+use App\Contracts\DomainEvent\ReleaseEventsInterface;
+use App\Contracts\Flusher\FlusherInterface;
+use App\Infrastructure\Flusher\EventBusFlusher;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @internal
+ * @author Maksim Vorozhtsov <myks1992@mail.ru>
+ */
+#[CoversClass(EventBusFlusher::class)]
+final class EventBusFlusherTest extends TestCase
+{
+    public function testInterface(): void
+    {
+        $flusher = $this->createStub(EventBusInterface::class);
+        $flusher = new EventBusFlusher($flusher);
+
+        self::assertInstanceOf(FlusherInterface::class, $flusher);
+    }
+
+    public function testFlush(): void
+    {
+        $domainEvent = new class () implements DomainEventInterface {
+            public string $id = '00000000-0000-0000-0000-000000000000';
+        };
+
+        $aggregateRoot = $this->createMockForIntersectionOfInterfaces([AggregateRootInterface::class, ReleaseEventsInterface::class]);
+        $aggregateRoot->expects(self::once())->method('releaseEvents')->willReturn([$domainEvent]);
+
+        $flusher = $this->createMock(EventBusInterface::class);
+        $flusher->expects(self::once())->method('dispatch')->with(
+            self::equalTo($domainEvent),
+        );
+
+        $flusher = new EventBusFlusher($flusher);
+
+        /** @var AggregateRootInterface&ReleaseEventsInterface $aggregateRoot */
+        $flusher->flush($aggregateRoot);
+    }
+
+    public function testFlushManyAggregateRootInterface(): void
+    {
+        $domainEvent = new class () implements DomainEventInterface {
+            public string $id = '00000000-0000-0000-0000-000000000000';
+        };
+
+        /** @var AggregateRootInterface&ReleaseEventsInterface $aggregateRoot1 */
+        $aggregateRoot1 = $this->createMockForIntersectionOfInterfaces([AggregateRootInterface::class, ReleaseEventsInterface::class])
+            ->expects(self::once())->method('releaseEvents')->willReturn([$domainEvent]);
+
+        /** @var AggregateRootInterface&ReleaseEventsInterface $aggregateRoot2 */
+        $aggregateRoot2 = $this->createMockForIntersectionOfInterfaces([AggregateRootInterface::class, ReleaseEventsInterface::class])
+            ->expects(self::once())->method('releaseEvents')->willReturn([$domainEvent]);
+
+        /** @var AggregateRootInterface&ReleaseEventsInterface $aggregateRoot3 */
+        $aggregateRoot3 = $this->createMockForIntersectionOfInterfaces([AggregateRootInterface::class, ReleaseEventsInterface::class])
+            ->expects(self::once())->method('releaseEvents')->willReturn([$domainEvent]);
+
+        $flusher = $this->createMock(EventBusInterface::class);
+        $flusher->expects(self::exactly(3))->method('dispatch');
+
+        $flusher = new EventBusFlusher($flusher);
+
+        $flusher->flush($aggregateRoot1, $aggregateRoot2, $aggregateRoot3);
+    }
+
+    public function testFlushWithoutAggregateRootInterface(): void
+    {
+        $aggregateRoot = $this->createMockForIntersectionOfInterfaces([AggregateRootInterface::class, ReleaseEventsInterface::class]);
+        $aggregateRoot->expects(self::never())->method('releaseEvents');
+
+        $flusher = $this->createMock(EventBusInterface::class);
+        $flusher->expects(self::never())->method('dispatch');
+
+        $flusher = new EventBusFlusher($flusher);
+
+        $flusher->flush();
+    }
+
+    public function testFlushWithoutReleaseEventsInterface(): void
+    {
+        $aggregateRoot = $this->createStub(AggregateRootInterface::class);
+        $flusher = $this->createMock(EventBusInterface::class);
+        $flusher->expects(self::never())->method('dispatch');
+
+        $flusher = new EventBusFlusher($flusher);
+
+        $this->expectExceptionMessage(sprintf('Root must implement %s', ReleaseEventsInterface::class));
+        $flusher->flush($aggregateRoot);
+    }
+}
