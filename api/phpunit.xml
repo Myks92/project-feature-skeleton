@@ -34,6 +34,12 @@
         <include>
             <directory>src</directory>
         </include>
+        <exclude>
+            <directory>src/*/Test</directory>
+            <directory>src/*/*/Test</directory>
+            <directory>src/*/*/*/Test</directory>
+            <directory>src/*/Test/Unit</directory>
+        </exclude>
     </source>
 
 </phpunit>
