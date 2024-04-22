@@ -22,7 +22,7 @@ abstract class AbstractUuidType extends GuidType
         }
 
         if ($value instanceof Uuid) {
-            return $value->getValue();
+            return $value->value;
         }
 
         throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [$this->getName()]);

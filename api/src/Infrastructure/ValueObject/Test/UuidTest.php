@@ -19,7 +19,7 @@ final class UuidTest extends TestCase
     {
         $id = new Id($value = Uuid::uuid4()->toString());
 
-        self::assertSame($value, $id->getValue());
+        self::assertSame($value, $id->value);
     }
 
     public function testToString(): void
@@ -27,17 +27,6 @@ final class UuidTest extends TestCase
         $id = new Id($value = Uuid::uuid4()->toString());
 
         self::assertSame($value, (string) $id);
-    }
-
-    public function testCase(): void
-    {
-        $value = Uuid::uuid4()->toString();
-        /** @var non-empty-string $upper */
-        $upper = mb_strtoupper($value);
-
-        $id = new Id($upper);
-
-        self::assertSame($value, $id->getValue());
     }
 
     public function testIncorrect(): void

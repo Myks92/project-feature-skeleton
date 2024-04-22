@@ -86,7 +86,7 @@ final class AbstractUuidTypeTest extends TestCase
         $value = '00000000-0000-0000-0000-000000000000';
         $phpValue = $this->type->convertToPHPValue($value, $this->platform);
         self::assertNotNull($phpValue);
-        self::assertSame($value, $phpValue->getValue());
+        self::assertSame($value, $phpValue->value);
     }
 
     public function testDatabaseStringConvertsToUuidNotUuid(): void

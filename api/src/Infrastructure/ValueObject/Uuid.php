@@ -16,17 +16,11 @@ use App\Infrastructure\Assert;
 abstract readonly class Uuid implements ValueObjectInterface, \Stringable
 {
     /**
-     * @var non-empty-string
-     */
-    private string $value;
-
-    /**
      * @param non-empty-string $value
      */
-    public function __construct(string $value)
+    public function __construct(public string $value)
     {
         Assert::uuid($value);
-        $this->value = mb_strtolower($value);
     }
 
     /**
@@ -34,14 +28,6 @@ abstract readonly class Uuid implements ValueObjectInterface, \Stringable
      */
     #[\Override]
     public function __toString(): string
-    {
-        return $this->getValue();
-    }
-
-    /**
-     * @return non-empty-string
-     */
-    final public function getValue(): string
     {
         return $this->value;
     }
