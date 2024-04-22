@@ -50,12 +50,6 @@ abstract class AbstractUuidType extends GuidType
         return $uuid;
     }
 
-    #[\Override]
-    final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
-    {
-        return true;
-    }
-
     /**
      * @return class-string<Uuid>
      */

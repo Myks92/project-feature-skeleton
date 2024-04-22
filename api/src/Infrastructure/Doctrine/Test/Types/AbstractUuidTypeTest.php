@@ -30,16 +30,9 @@ final class AbstractUuidTypeTest extends TestCase
         $this->platform = $this->createMock(AbstractPlatform::class);
         /** @psalm-suppress InternalMethod */
         $this->type = new class () extends AbstractUuidType {
-            protected const NAME = 'test_uuid';
-
             protected function getClassName(): string
             {
                 return UuidTest::class;
-            }
-
-            public function getName(): string
-            {
-                return self::NAME;
             }
         };
     }
@@ -61,7 +54,7 @@ final class AbstractUuidTypeTest extends TestCase
         $value = new \stdClass();
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert PHP value of type stdClass to type test_uuid. Expected one of the following types: test_uuid',
+            'Could not convert PHP value of type stdClass to type guid. Expected one of the following types: guid',
         );
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
@@ -71,7 +64,7 @@ final class AbstractUuidTypeTest extends TestCase
         $value = '00000000-0000-0000-0000-000000000000';
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert PHP value \'00000000-0000-0000-0000-000000000000\' to type test_uuid. Expected one of the following types: test_uuid',
+            'Could not convert PHP value \'00000000-0000-0000-0000-000000000000\' to type guid. Expected one of the following types: guid',
         );
         $this->type->convertToDatabaseValue($value, $this->platform);
     }

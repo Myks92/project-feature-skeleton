@@ -90,7 +90,7 @@ api-check-cs: ## Проверка стиля кода
 	$(COMPOSER) php-cs-fixer fix -- --dry-run --diff
 
 api-check-schema: ## Проверка схемы база данных
-	$(APP_CLI) doctrine:schema:validate
+	$(APP_CLI) doctrine:schema:validate -- -v
 
 api-check-composer-validate: ## Проверка валидности composer.json
 	$(COMPOSER) validate

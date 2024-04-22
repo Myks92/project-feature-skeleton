@@ -33,12 +33,6 @@ abstract class AbstractEmailType extends StringType
         }
     }
 
-    #[\Override]
-    final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
-    {
-        return true;
-    }
-
     /**
      * @return class-string<Email>
      */

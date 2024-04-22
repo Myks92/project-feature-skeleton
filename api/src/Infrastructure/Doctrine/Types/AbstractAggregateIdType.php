@@ -49,12 +49,6 @@ abstract class AbstractAggregateIdType extends GuidType
         return $aggregateId;
     }
 
-    #[\Override]
-    final public function requiresSQLCommentHint(AbstractPlatform $platform): bool
-    {
-        return true;
-    }
-
     /**
      * @return class-string<AbstractAggregateId>
      */

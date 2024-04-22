@@ -41,6 +41,9 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $c
         ->autoconfigure();
 
     $services->set(FixPostgreSQLDefaultSchemaListener::class);
+    $services->set(FixDoctrineMigrationSchemaListener::class)->args([
+        '$configuration' => service('doctrine.migrations.storage.table_storage'),
+    ]);
 
     $services->set(VersionNumberComparator::class)
         ->tag('doctrine.migrations.dependency_factory');
