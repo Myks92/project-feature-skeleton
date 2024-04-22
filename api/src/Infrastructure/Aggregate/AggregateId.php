@@ -10,9 +10,9 @@ use App\Infrastructure\Assert;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-abstract class AbstractAggregateId implements AggregateIdInterface
+abstract readonly class AggregateId implements AggregateIdInterface
 {
-    private readonly string $value;
+    private string $value;
 
     final public function __construct(string $value)
     {

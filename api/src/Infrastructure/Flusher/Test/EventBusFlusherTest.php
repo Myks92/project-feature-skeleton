@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Flusher\Test;
 
-use App\Contracts\Aggregate\AggregateIdInterface;
 use App\Contracts\Aggregate\AggregateRootInterface;
 use App\Contracts\Bus\Event\EventBusInterface;
 use App\Contracts\DomainEvent\DomainEventInterface;
 use App\Contracts\DomainEvent\ReleaseEventsInterface;
 use App\Contracts\Flusher\FlusherInterface;
-use App\Infrastructure\Aggregate\AbstractAggregateId;
 use App\Infrastructure\Flusher\EventBusFlusher;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -53,11 +51,6 @@ final class EventBusFlusherTest extends TestCase
     public function testFlushManyAggregateRootInterface(): void
     {
         $aggregateRoot = new class () implements AggregateRootInterface, ReleaseEventsInterface {
-            public function getId(): AggregateIdInterface
-            {
-                return new class ('00000000-0000-0000-0000-000000000001') extends AbstractAggregateId {};
-            }
-
             public function releaseEvents(): array
             {
                 return [new class () implements DomainEventInterface {

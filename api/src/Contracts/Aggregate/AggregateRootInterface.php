@@ -7,7 +7,4 @@ namespace App\Contracts\Aggregate;
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
  */
-interface AggregateRootInterface
-{
-    public function getId(): AggregateIdInterface;
-}
+interface AggregateRootInterface {}

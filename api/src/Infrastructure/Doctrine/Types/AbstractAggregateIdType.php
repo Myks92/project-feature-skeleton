@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Doctrine\Types;
 
-use App\Infrastructure\Aggregate\AbstractAggregateId;
+use App\Infrastructure\Aggregate\AggregateId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\GuidType;
@@ -21,7 +21,7 @@ abstract class AbstractAggregateIdType extends GuidType
             return null;
         }
 
-        if ($value instanceof AbstractAggregateId) {
+        if ($value instanceof AggregateId) {
             return $value->getValue();
         }
 
@@ -29,7 +29,7 @@ abstract class AbstractAggregateIdType extends GuidType
     }
 
     #[\Override]
-    final public function convertToPHPValue($value, AbstractPlatform $platform): ?AbstractAggregateId
+    final public function convertToPHPValue($value, AbstractPlatform $platform): ?AggregateId
     {
         if (empty($value)) {
             return null;
@@ -50,7 +50,7 @@ abstract class AbstractAggregateIdType extends GuidType
     }
 
     /**
-     * @return class-string<AbstractAggregateId>
+     * @return class-string<AggregateId>
      */
     abstract protected function getClassName(): string;
 }

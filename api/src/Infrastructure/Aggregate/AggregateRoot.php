@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Aggregate;
 
-use App\Contracts\Aggregate\AggregateIdInterface;
 use App\Contracts\Aggregate\AggregateRootInterface;
 use App\Contracts\Aggregate\AggregateVersioningInterface;
 use App\Contracts\DomainEvent\DomainEventInterface;
@@ -25,11 +24,6 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
      */
     private array $recordedEvents = [];
 
-    final public function isEquals(self $entity): bool
-    {
-        return $this->getId()->getValue() === $entity->getId()->getValue();
-    }
-
     /**
      * @return list<DomainEventInterface>
      */
@@ -47,9 +41,6 @@ abstract class AggregateRoot implements AggregateRootInterface, AggregateVersion
     {
         return $this->aggregateVersion;
     }
-
-    #[\Override]
-    abstract public function getId(): AggregateIdInterface;
 
     final protected function recordEvent(DomainEventInterface $event): void
     {
