@@ -12,6 +12,7 @@ $finder = Finder::create()
         __DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/translations',
     ])
     ->append([
         __FILE__,
