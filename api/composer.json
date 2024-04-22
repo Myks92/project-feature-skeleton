@@ -89,7 +89,7 @@
   "scripts": {
     "app": "php bin/console",
     "lint": "phplint",
-    "php-cs-fixer": "php-cs-fixer --config=.php-cs-fixer.php --allow-risky=yes",
+    "php-cs-fixer": "php-cs-fixer --config=.php-cs-fixer.php",
     "psalm": "psalm --config=psalm.xml",
     "deptrac": "deptrac --config-file=deptrac.yaml --cache-file=var/cache/.deptrac",
     "rector": "rector",
