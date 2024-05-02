@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
+use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodeQuality\Rector\ClassMethod\LocallyCalledStaticMethodToNonStaticRector;
 use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\Config\RectorConfig;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
 use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
-use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
-use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
@@ -21,11 +20,14 @@ use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNeverTypeRector;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__ . '/migrations',
+        __DIR__ . '/bin',
+        __DIR__ . '/config',
+        __DIR__ . '/public',
         __DIR__ . '/src',
-        __DIR__ . '/tests'
+        __DIR__ . '/tests',
+        __DIR__ . '/translations'
     ])
-    ->withCache(__DIR__ . '/var/cache/rector')
+    ->withCache(__DIR__ . '/var/cache/rector', FileCacheStorage::class)
     ->withPhpSets()
     ->withRootFiles()
     ->withImportNames(
@@ -44,11 +46,14 @@ return RectorConfig::configure()
     )
     ->withSets([
         SymfonySetList::SYMFONY_64,
+        SymfonySetList::CONFIGS,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
 
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        DoctrineSetList::DOCTRINE_DBAL_40,
+        DoctrineSetList::DOCTRINE_ORM_214,
 
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
@@ -57,14 +62,12 @@ return RectorConfig::configure()
     ->withSkip([
         ReturnNeverTypeRector::class,
         AddSeeTestAnnotationRector::class,
-        StringableForToStringRector::class,
         RemoveExtraParametersRector::class,
         PreferPHPUnitThisCallRector::class,
         DisallowedEmptyRuleFixerRector::class,
         NullToStrictStringFuncCallArgRector::class,
         FlipTypeControlToUseExclusiveTypeRector::class,
         LocallyCalledStaticMethodToNonStaticRector::class,
-        ClassPropertyAssignToConstructorPromotionRector::class => [__DIR__ . '/src/**/Entity'],
         NameImportingPostRector::class => [__DIR__ . '/src/Infrastructure/Notifier/config.php'],
         StringClassNameToClassConstantRector::class => [__DIR__ . '/migrations', __DIR__ . '/src/**/Migration'],
     ])
