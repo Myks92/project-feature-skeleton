@@ -16,8 +16,8 @@ use App\Infrastructure\Assert;
  */
 abstract readonly class Phone implements ValueObjectInterface, \Stringable
 {
-    final public const PATTERN_COUNTRY = '/^\\d{1,3}$/';
-    final public const PATTERN_NUMBER = '/^\\d{10}$/';
+    final public const string PATTERN_COUNTRY = '/^\\d{1,3}$/';
+    final public const string PATTERN_NUMBER = '/^\\d{10}$/';
 
     /**
      * @var PhoneCountryType

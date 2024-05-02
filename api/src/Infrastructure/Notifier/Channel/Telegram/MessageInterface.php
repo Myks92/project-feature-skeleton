@@ -11,9 +11,9 @@ use App\Infrastructure\Notifier\Channel\MessageInterface as BaseMessageInterface
  */
 interface MessageInterface extends BaseMessageInterface
 {
-    public const PARSE_MODE_HTML = 'HTML';
-    public const PARSE_MODE_MARKDOWN = 'Markdown';
-    public const PARSE_MODE_MARKDOWN_V2 = 'MarkdownV2';
+    public const string PARSE_MODE_HTML = 'HTML';
+    public const string PARSE_MODE_MARKDOWN = 'Markdown';
+    public const string PARSE_MODE_MARKDOWN_V2 = 'MarkdownV2';
 
     /**
      * @return non-empty-string

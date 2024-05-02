@@ -9,11 +9,11 @@ namespace App\Contracts\Mailer;
  */
 interface MessageInterface
 {
-    public const PRIORITY_HIGHEST = 1;
-    public const PRIORITY_HIGH = 2;
-    public const PRIORITY_NORMAL = 3;
-    public const PRIORITY_LOW = 4;
-    public const PRIORITY_LOWEST = 5;
+    public const int PRIORITY_HIGHEST = 1;
+    public const int PRIORITY_HIGH = 2;
+    public const int PRIORITY_NORMAL = 3;
+    public const int PRIORITY_LOW = 4;
+    public const int PRIORITY_LOWEST = 5;
 
     /**
      * Returns the charset of this message.

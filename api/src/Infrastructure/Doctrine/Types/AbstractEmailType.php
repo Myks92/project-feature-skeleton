@@ -6,8 +6,9 @@ namespace App\Infrastructure\Doctrine\Types;
 
 use App\Infrastructure\ValueObject\Email;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\SerializationFailed;
 use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\Types;
 
 abstract class AbstractEmailType extends StringType
 {
@@ -28,8 +29,8 @@ abstract class AbstractEmailType extends StringType
 
         try {
             return empty($value) ? null : new $className($value);
-        } catch (\InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, $this->getName());
+        } catch (\InvalidArgumentException $exception) {
+            throw SerializationFailed::new($value, Types::STRING, $exception->getMessage());
         }
     }
 

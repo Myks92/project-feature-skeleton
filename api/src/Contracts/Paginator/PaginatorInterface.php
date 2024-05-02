@@ -9,5 +9,8 @@ namespace App\Contracts\Paginator;
  */
 interface PaginatorInterface
 {
+    /**
+     * @param array<string, mixed>  $options
+     */
     public function paginate(mixed $target, int $page = 1, ?int $limit = null, array $options = []): PaginationInterface;
 }

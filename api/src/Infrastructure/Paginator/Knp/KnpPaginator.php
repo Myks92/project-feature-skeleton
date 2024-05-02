@@ -22,7 +22,6 @@ final readonly class KnpPaginator implements PaginatorInterface
     {
         $origin = $this->paginator->paginate($target, $page, $limit, $options);
 
-        /** @psalm-var array $items */
         $items = $origin->getItems();
 
         $pagination = new Pagination();

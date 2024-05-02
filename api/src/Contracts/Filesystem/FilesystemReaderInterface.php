@@ -14,13 +14,13 @@ interface FilesystemReaderInterface
     /**
      * The shallow listings will always provide you with every file and directory in the listed path.
      */
-    final public const LIST_SHALLOW = false;
+    final public const bool LIST_SHALLOW = false;
 
     /**
      * The deep listings may provide you with the directories, but will always return all the files
      * contained in the path.
      */
-    final public const LIST_DEEP = true;
+    final public const bool LIST_DEEP = true;
 
     /**
      * @param non-empty-string $path

@@ -6,8 +6,10 @@ namespace App\Infrastructure\Doctrine\Types;
 
 use App\Infrastructure\Aggregate\AggregateId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\InvalidType;
+use Doctrine\DBAL\Types\Exception\SerializationFailed;
 use Doctrine\DBAL\Types\GuidType;
+use Doctrine\DBAL\Types\Types;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -25,7 +27,7 @@ abstract class AbstractAggregateIdType extends GuidType
             return $value->getValue();
         }
 
-        throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [$this->getName()]);
+        throw InvalidType::new($value, Types::GUID, [Types::GUID]);
     }
 
     #[\Override]
@@ -42,8 +44,8 @@ abstract class AbstractAggregateIdType extends GuidType
 
         try {
             $aggregateId = new $className($value);
-        } catch (\InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, $this->getName());
+        } catch (\InvalidArgumentException $exception) {
+            throw SerializationFailed::new($value, Types::GUID, $exception->getMessage());
         }
 
         return $aggregateId;

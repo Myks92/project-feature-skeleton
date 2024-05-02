@@ -9,7 +9,7 @@ namespace App\Contracts\Serializer;
  */
 interface SerializerInterface
 {
-    public const FORMAT_JSON = 'json';
+    public const string FORMAT_JSON = 'json';
 
     /**
      * Serializes data in the appropriate format.

@@ -25,24 +25,24 @@ return RectorConfig::configure()
         __DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
-        __DIR__ . '/translations'
+        __DIR__ . '/translations',
     ])
     ->withCache(__DIR__ . '/var/cache/rector', FileCacheStorage::class)
     ->withPhpSets()
     ->withRootFiles()
     ->withImportNames(
         importShortClasses: false,
-        removeUnusedImports: true
+        removeUnusedImports: true,
     )
     ->withPreparedSets(
         deadCode: true,
         codeQuality: true,
-        typeDeclarations: true
+        typeDeclarations: true,
     )
     ->withAttributesSets(
         symfony: true,
         doctrine: true,
-        phpunit: true
+        phpunit: true,
     )
     ->withSets([
         SymfonySetList::SYMFONY_64,
