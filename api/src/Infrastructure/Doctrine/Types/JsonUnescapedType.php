@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\SerializationFailed;
 use Doctrine\DBAL\Types\JsonType;
 
 /**
@@ -24,7 +24,7 @@ final class JsonUnescapedType extends JsonType
             return json_encode($value, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION);
         } catch (\JsonException $e) {
             /** @psalm-suppress TooManyArguments */
-            throw ConversionException::conversionFailedSerialization($value, 'json', $e->getMessage(), $e);
+            throw SerializationFailed::new($value, 'json', $e->getMessage(), $e);
         }
     }
 }

@@ -56,8 +56,7 @@ final class JsonUnescapedTypeTest extends TestCase
         $object->recursion = $object;
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert PHP type \'stdClass\' to \'json\', as an \'Recursion detected\' error' .
-            ' was triggered by the serialization',
+            'Could not convert PHP type "stdClass" to "json". An error was triggered by the serialization: Recursion detected',
         );
         $this->type->convertToDatabaseValue($object, $this->platform);
     }

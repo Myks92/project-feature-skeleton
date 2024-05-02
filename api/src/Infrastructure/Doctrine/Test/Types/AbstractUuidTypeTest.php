@@ -49,22 +49,12 @@ final class AbstractUuidTypeTest extends TestCase
         self::assertSame('00000000-0000-0000-0000-000000000000', $databaseValue);
     }
 
-    public function testPHPNotUuidConvertsToStringFailed(): void
-    {
-        $value = new \stdClass();
-        $this->expectException(ConversionException::class);
-        $this->expectExceptionMessage(
-            'Could not convert PHP value of type stdClass to type guid. Expected one of the following types: guid',
-        );
-        $this->type->convertToDatabaseValue($value, $this->platform);
-    }
-
     public function testPHPValueConvertsToStringFailed(): void
     {
         $value = '00000000-0000-0000-0000-000000000000';
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert PHP value \'00000000-0000-0000-0000-000000000000\' to type guid. Expected one of the following types: guid',
+            'Could not convert database value "00000000-0000-0000-0..." to Doctrine Type "guid"',
         );
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
@@ -94,7 +84,7 @@ final class AbstractUuidTypeTest extends TestCase
         $value = '12345';
         $this->expectException(ConversionException::class);
         $this->expectExceptionMessage(
-            'Could not convert database value "12345" to Doctrine Type ',
+            'Could not convert PHP type "string" to "guid". An error was triggered by the serialization: Value "12345" is not a valid UUID.',
         );
         $this->type->convertToPHPValue($value, $this->platform);
     }

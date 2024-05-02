@@ -6,8 +6,10 @@ namespace App\Infrastructure\Doctrine\Types;
 
 use App\Infrastructure\ValueObject\Uuid;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\SerializationFailed;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\GuidType;
+use Doctrine\DBAL\Types\Types;
 
 /**
  * @author Maksim Vorozhtsov <myks1992@mail.ru>
@@ -15,7 +17,7 @@ use Doctrine\DBAL\Types\GuidType;
 abstract class AbstractUuidType extends GuidType
 {
     #[\Override]
-    final public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
+    final public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -25,11 +27,11 @@ abstract class AbstractUuidType extends GuidType
             return $value->value;
         }
 
-        throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [$this->getName()]);
+        throw ValueNotConvertible::new($value, Types::GUID);
     }
 
     #[\Override]
-    final public function convertToPHPValue($value, AbstractPlatform $platform): ?Uuid
+    final public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?Uuid
     {
         if (empty($value)) {
             return null;
@@ -43,8 +45,8 @@ abstract class AbstractUuidType extends GuidType
 
         try {
             $uuid = new $className($value);
-        } catch (\InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, $this->getName());
+        } catch (\InvalidArgumentException $e) {
+            throw SerializationFailed::new($value, Types::GUID, $e->getMessage());
         }
 
         return $uuid;
