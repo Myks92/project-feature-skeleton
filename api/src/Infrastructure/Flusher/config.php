@@ -19,9 +19,7 @@ return static function (ContainerConfigurator $configurator): void {
 
     $services->set(EventBusFlusher::class)->tag(FlusherInterface::class, ['priority' => -910]);
     $services->set(DoctrineFlusher::class)->tag(FlusherInterface::class, ['priority' => -915]);
-    $services->set(AllFlusher::class)->args([
-        '$flushers' => tagged_iterator(FlusherInterface::class),
-    ]);
+    $services->set(AllFlusher::class)->arg('$flushers', tagged_iterator(FlusherInterface::class));
 
     $services->alias(FlusherInterface::class, AllFlusher::class);
 };
