@@ -44,6 +44,7 @@ final readonly class DefaultJsonExceptionNormalizer implements NormalizerInterfa
 
         $message = match ($object->getStatusCode()) {
             404 => '404 Not Found',
+            500 => 'Internal Server Error',
             default => $object->getMessage(),
         };
 

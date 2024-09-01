@@ -75,4 +75,23 @@ final class DefaultJsonExceptionNormalizerTest extends TestCase
 
         self::assertSame(['message' => '404 Не найдено'], $data);
     }
+
+    public function test500Normalize(): void
+    {
+        $translator = $this->createMock(TranslatorInterface::class);
+        $translator->expects(self::once())->method('trans')->with(
+            self::equalTo('Internal Server Error'),
+            self::equalTo([]),
+            self::equalTo('exceptions'),
+        )->willReturn('Внутренняя ошибка сервера');
+
+        $normalizer = new DefaultJsonExceptionNormalizer($translator);
+
+        $flattened = $this->createMock(FlattenException::class);
+        $flattened->expects(self::once())->method('getStatusCode')->willReturn(500);
+
+        $data = $normalizer->normalize($flattened, 'json');
+
+        self::assertSame(['message' => 'Внутренняя ошибка сервера'], $data);
+    }
 }
